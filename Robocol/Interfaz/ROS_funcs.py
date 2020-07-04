@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+import rospy
+
+if __name__ == '__main__':
+    try:
+        node_fpga()
+    except rospy.ROSInterruptException:
+        pass

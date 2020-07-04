@@ -1,0 +1,41 @@
+<!-- Interfaz/templates/interfaz/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    What chat room would you like to enter?<br>
+    <input id="room-name-input" type="text" size="100"><br>
+    <input id="room-name-output" type="text" size="100"><br>
+    <input id="room-name-submit" type="button" value="Enter"><br>
+
+    <script>
+        //document.querySelector('#room-name-output').value = window.location.host;
+        const chatSocket = new WebSocket('ws://'+window.location.host+'/ws/interfaz/');
+        //document.querySelector('#room-name-output').value = window.location.host;
+        chatSocket.onmessage = function(e)
+        {
+            //document.querySelector('#room-name-output').value = "Test";
+            const data = JSON.parse(e.data);
+            document.querySelector('#room-name-output').value = (data.message);
+        };
+
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            //document.querySelector('#room-name-output').value = roomName;
+            //document.querySelector('#room-name-output').value = "Prueba";
+            chatSocket.send(JSON.stringify({'message': roomName}));
+            //window.location.pathname = '/Interfaz/' + roomName + '/';
+        };
+    </script>
+</body>
+</html>
