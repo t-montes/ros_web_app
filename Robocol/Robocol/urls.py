@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('interfaz/', include('Interfaz.urls')),
+    path('', include('Interfaz.urls')),
     path('admin/', admin.site.urls),
 ]
