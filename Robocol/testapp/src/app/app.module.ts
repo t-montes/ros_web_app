@@ -5,6 +5,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
@@ -16,7 +17,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     BrowserModule,
     AppRoutingModule,
     PruebaModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
