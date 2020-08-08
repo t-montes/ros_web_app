@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PruebaModule } from './prueba/prueba.module';
 import { BrazoModule } from './brazo/brazo.module';
+import { TraccionModule } from './traccion/traccion.module';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     AppRoutingModule,
     PruebaModule,
     BrazoModule,
+    TraccionModule,
     SocketIoModule.forRoot(config),
     NgbModule
   ],
