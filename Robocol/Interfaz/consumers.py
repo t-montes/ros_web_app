@@ -9,25 +9,25 @@ import threading
 import time
 
 
-import eventlet
-import socketio
+# import eventlet
+# import socketio
 
-sio = socketio.Server()
-app = socketio.WSGIApp(sio)
+# sio = socketio.Server()
+# app = socketio.WSGIApp(sio)
 
-@sio.event
-def connect(sid, environ):
-    print('connect ', sid)
+# @sio.event
+# def connect(sid, environ):
+#     print('connect ', sid)
 
-@sio.event
-def my_message(sid, data):
-    print('message ', data)
+# @sio.event
+# def my_message(sid, data):
+#     print('message ', data)
 
-@sio.event
-def disconnect(sid):
-    print('disconnect ', sid)
+# @sio.event
+# def disconnect(sid):
+#     print('disconnect ', sid)
 
-eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
+# eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
 
 # Channel REDIS layer
