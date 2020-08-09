@@ -24,16 +24,16 @@ export class BrazoService {
     this.socket.emit('get_joint_' + joint_number + '_value');
   }
 
-  //Create the function that will tell the Socket Server to start increasing the joint's value, it means the button is pressed
+  //Create the function that will tell the Socket Server to start increasing or decreasing the joint's value, it means a button is pressed
 
-  increase_joint_value(joint_number: string){
-    this.socket.emit('increase_joint_' + joint_number + '_value');
+  change_joint_value(joint_number: string, order: string){
+    this.socket.emit('change_joint_' + joint_number + '_' + order);
   }
 
 
-  //Create the function that will tell the Socket Server to stop increasing the joint's value, it means the button is unpressed
+  //Create the function that will tell the Socket Server to stop changing the joint's value, it means the button is unpressed
 
-  stop_increasing_joint_value(joint_number: string){
-    this.socket.emit('stop_increasing_joint_' + joint_number + '_value');
+  stop_changing_joint_value(joint_number: string){
+    this.socket.emit('stop_changing_joint_' + joint_number + '_value');
   }
 }

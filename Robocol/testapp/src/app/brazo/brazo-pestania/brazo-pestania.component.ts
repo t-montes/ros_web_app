@@ -84,4 +84,16 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
     this.brazoService.get_joint_value(joint_number);  
   }
 
+  //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the joint
+
+  change_joint_value(joint_number: string, order: string){
+    this.brazoService.change_joint_value(joint_number, order);
+  }
+
+  //This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the joint
+
+  stop_changing_joint_value(joint_number: string){
+    this.brazoService.stop_changing_joint_value(joint_number);
+  }
+
 }
