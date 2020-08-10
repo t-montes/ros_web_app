@@ -10,32 +10,32 @@
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 1:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="1_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="1_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button (mousedown)="change_joint_value('1', 'decrease')" (mouseup)="stop_changing_joint_value('1')" id="1_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="1_ADELANTE" (mousedown)="change_joint_value('1', 'increase')" (mouseup)="stop_changing_joint_value('1')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 2:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="2_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="2_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button id="2_ATRAS" (mousedown)="change_joint_value('2', 'decrease')" (mouseup)="stop_changing_joint_value('2')" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="2_ADELANTE" (mousedown)="change_joint_value('2', 'increase')" (mouseup)="stop_changing_joint_value('2')" (mousedown)="change_joint_value('2', 'increase')" (mouseup)="stop_changing_joint_value('2')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 3:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="3_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="3_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button id="3_ATRAS" (mousedown)="change_joint_value('3', 'decrease')" (mouseup)="stop_changing_joint_value('3')" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="3_ADELANTE" (mousedown)="change_joint_value('3', 'increase')" (mouseup)="stop_changing_joint_value('3')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 4:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="4_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="4_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button id="4_ATRAS" (mousedown)="change_joint_value('4', 'decrease')" (mouseup)="stop_changing_joint_value('4')" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="4_ADELANTE" (mousedown)="change_joint_value('4', 'increase')" (mouseup)="stop_changing_joint_value('4')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 		</div>
@@ -44,24 +44,24 @@
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 5:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="5_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="5_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button id="5_ATRAS" (mousedown)="change_joint_value('5', 'decrease')" (mouseup)="stop_changing_joint_value('5')" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="5_ADELANTE" (mousedown)="change_joint_value('5', 'increase')" (mouseup)="stop_changing_joint_value('5')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 6:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="6_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="6_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button id="6_ATRAS" (mousedown)="change_joint_value('6', 'decrease')" (mouseup)="stop_changing_joint_value('6')" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="6_ADELANTE" (mousedown)="change_joint_value('6', 'increase')" (mouseup)="stop_changing_joint_value('6')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 
 			<div class="col align-items-center justify-content-center columna_botones">
 				<label style="color: black" class="align-items-center justify-content-center">Joint 7:</label>
 				<div class="row align-items-center justify-content-center">
-					<button id="7_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-					<button id="7_ADELANTE" type="button" class="btn btn-secondary button_right">=></button>
+					<button id="7_ATRAS" (mousedown)="change_joint_value('7', 'decrease')" (mouseup)="stop_changing_joint_value('7')" type="button" class="btn btn-secondary button_left"><=</button>
+					<button id="7_ADELANTE" (mousedown)="change_joint_value('7', 'increase')" (mouseup)="stop_changing_joint_value('7')" type="button" class="btn btn-secondary button_right">=></button>
 				</div>
 			</div>
 		</div>
@@ -72,15 +72,15 @@
 	<div class="col-sm-12 col-md-6 col-lg-4">
 		<div class="row">
 			<div class="col-6">
-			<label>Joint 1:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint1"><br>
-			<label>Joint 2:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint2"><br>
-			<label>Joint 3:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint3"><br>
-			<label>Joint 4:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint4"><br>
+			<label>Joint 1:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_1_value}}°" id = "joint1"><br>
+			<label>Joint 2:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_2_value}}°" id = "joint2"><br>
+			<label>Joint 3:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_3_value}}°" id = "joint3"><br>
+			<label>Joint 4:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_4_value}}°" id = "joint4"><br>
 		</div>
 		<div class="col-6">
-			<label>Joint 5:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint5"><br>
-			<label>Joint 6:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint6"><br>
-			<label>Joint 7:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="0" id = "joint7"><br>
+			<label>Joint 5:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_5_value}}°" id = "joint5"><br>
+			<label>Joint 6:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_6_value}}°" id = "joint6"><br>
+			<label>Joint 7:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_7_value}}°" id = "joint7"><br>
 		</div>
 			<label style="font-weight: 100;margin-bottom: 10px;display: inline-block;margin-right: 20px">End Effector:</label><br>
 			<input type="range" min="0" max="255" value="0" class="slider" id="garra" onchange="sendMessage(this.value)">

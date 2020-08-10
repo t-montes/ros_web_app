@@ -8,7 +8,29 @@ from std_msgs.msg import String
 import threading
 import time
 
-#Channel REDIS layer
+
+# import eventlet
+# import socketio
+
+# sio = socketio.Server()
+# app = socketio.WSGIApp(sio)
+
+# @sio.event
+# def connect(sid, environ):
+#     print('connect ', sid)
+
+# @sio.event
+# def my_message(sid, data):
+#     print('message ', data)
+
+# @sio.event
+# def disconnect(sid):
+#     print('disconnect ', sid)
+
+# eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
+
+
+# Channel REDIS layer
 # channel_layer = channels.layers.get_channel_layer()
 
 message = ''
