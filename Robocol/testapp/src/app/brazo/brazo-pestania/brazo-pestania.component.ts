@@ -18,6 +18,7 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
   joint_5_value: number;
   joint_6_value: number;
   joint_7_value: number;
+  gripper_value: number;
 
   //Define the variables that will play as Subscribers to the BrazoService's variables, so that when they (BrazoService variables) change, these variables (Component) will change too
 
@@ -28,45 +29,51 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
   private _joint_5_Sub: Subscription;
   private _joint_6_Sub: Subscription;
   private _joint_7_Sub: Subscription;
+  private _gripper_Sub: Subscription;
 
   constructor(private brazoService: BrazoService) { }
 
   ngOnInit(): void {
 
-  	//Define initial values for the variables
+    //Define initial values for the variables
 
-  	this.joint_1_value = 0;
-  	this.joint_2_value = 0;
-  	this.joint_3_value = 0;
-  	this.joint_4_value = 0;
-  	this.joint_5_value = 0;
-  	this.joint_6_value = 0;
-  	this.joint_7_value = 0;
+    this.joint_1_value = 0;
+    this.joint_2_value = 0;
+    this.joint_3_value = 0;
+    this.joint_4_value = 0;
+    this.joint_5_value = 0;
+    this.joint_6_value = 0;
+    this.joint_7_value = 0;
+    this.gripper_value = 0;
 
-  	//Make the subscribers subscribe to their correspondent BrazoService variable
+    //Make the subscribers subscribe to their correspondent BrazoService variable
 
-  	this._joint_1_Sub = this.brazoService.joint_1_value.subscribe(value_received => this.joint_1_value = value_received);
-  	this._joint_2_Sub = this.brazoService.joint_2_value.subscribe(value_received => this.joint_2_value = value_received);
-  	this._joint_3_Sub = this.brazoService.joint_3_value.subscribe(value_received => this.joint_3_value = value_received);
-  	this._joint_4_Sub = this.brazoService.joint_4_value.subscribe(value_received => this.joint_4_value = value_received);
-  	this._joint_5_Sub = this.brazoService.joint_5_value.subscribe(value_received => this.joint_5_value = value_received);
-  	this._joint_6_Sub = this.brazoService.joint_6_value.subscribe(value_received => this.joint_6_value = value_received);
-  	this._joint_7_Sub = this.brazoService.joint_7_value.subscribe(value_received => this.joint_7_value = value_received);
+    this._joint_1_Sub = this.brazoService.joint_1_value.subscribe(value_received => this.joint_1_value = value_received);
+    this._joint_2_Sub = this.brazoService.joint_2_value.subscribe(value_received => this.joint_2_value = value_received);
+    this._joint_3_Sub = this.brazoService.joint_3_value.subscribe(value_received => this.joint_3_value = value_received);
+    this._joint_4_Sub = this.brazoService.joint_4_value.subscribe(value_received => this.joint_4_value = value_received);
+    this._joint_5_Sub = this.brazoService.joint_5_value.subscribe(value_received => this.joint_5_value = value_received);
+    this._joint_6_Sub = this.brazoService.joint_6_value.subscribe(value_received => this.joint_6_value = value_received);
+    this._joint_7_Sub = this.brazoService.joint_7_value.subscribe(value_received => this.joint_7_value = value_received);
+    this._gripper_Sub = this.brazoService.gripper_value.subscribe(value_received => this.gripper_value = value_received);
 
-  	//We ask for the values of the joints to start the labels
+    //We ask for the values of the joints to start the labels
 
-  	this.get_joint_value('1');
-  	this.get_joint_value('2');
-  	this.get_joint_value('3');
-  	this.get_joint_value('4');
-  	this.get_joint_value('5');
-  	this.get_joint_value('6');
-  	this.get_joint_value('7');
+    this.get_joint_value('1');
+    this.get_joint_value('2');
+    this.get_joint_value('3');
+    this.get_joint_value('4');
+    this.get_joint_value('5');
+    this.get_joint_value('6');
+    this.get_joint_value('7');
+    this.get_gripper_value();
+
+
   }
 
   ngOnDestroy() {
 
-  	//When this component is destroyed, the subscribers must unsubscribe
+    //When this component is destroyed, the subscribers must unsubscribe
 
     this._joint_1_Sub.unsubscribe();
     this._joint_2_Sub.unsubscribe();
@@ -75,6 +82,7 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
     this._joint_5_Sub.unsubscribe();
     this._joint_6_Sub.unsubscribe();
     this._joint_7_Sub.unsubscribe();
+    this._gripper_Sub.unsubscribe();
   }
 
 
@@ -96,6 +104,17 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
     this.brazoService.stop_changing_joint_value(joint_number);
   }
 
-  
+  //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the gripper
+
+  get_gripper_value(){
+    this.brazoService.get_gripper_value();  
+  }
+
+  //This function will call the BrazoService function, so the Socket Server will be asked to modify the value of the gripper
+
+  change_gripper_value(new_value:string){
+    console.log(new_value);
+    //this.brazoService.change_gripper_value(new_value);
+  }
 
 }
