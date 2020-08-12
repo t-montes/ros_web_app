@@ -20,7 +20,7 @@ export class BrazoService {
   constructor(private socket: Socket) { }
 
   //Create the function that will emit a message to the Socket Server, asking for a joint's value or the gripper's value
-  //{object (is the name of the attribute): number (it could be ¨joint_ + a number¨ or the word ¨gripper¨)}
+  //{object (is the name of the attribute): object (it could be ¨joint_ + a number¨ or the word ¨gripper¨)}
   get_value(object: string) {
     this.socket.emit('get_value', {object: object});
   }
