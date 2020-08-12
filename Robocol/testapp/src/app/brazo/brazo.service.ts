@@ -19,34 +19,22 @@ export class BrazoService {
 
   constructor(private socket: Socket) { }
 
-  //Create the function that will emit a message to the Socket Server, asking for the joint's value
-
-  get_joint_value(joint_number: string) {
-    this.socket.emit('get_joint_' + joint_number + '_value');
+  //Create the function that will emit a message to the Socket Server, asking for a joint's value or the gripper's value
+  //{object (is the name of the attribute): object (it could be ¨joint_ + a number¨ or the word ¨gripper¨)}
+  get_value(object: string) {
+    this.socket.emit('get_value', {object: object});
   }
 
-  //Create the function that will tell the Socket Server to start increasing or decreasing the joint's value, it means a button is pressed
+  //Create the function that will tell the Socket Server to start increasing or decreasing a joint's value or the gripper's value, it means a button is pressed
 
-  change_joint_value(joint_number: string, order: string){
-    this.socket.emit('change_joint_' + joint_number + '_' + order);
+  change_value(object: string, action: string){
+    this.socket.emit('change_value', {object: object, action: action});
   }
 
 
-  //Create the function that will tell the Socket Server to stop changing the joint's value, it means the button is unpressed
+  //Create the function that will tell the Socket Server to stop changing the value of the object that was changing, it means all of the buttons are unpressed
 
-  stop_changing_joint_value(joint_number: string){
-    this.socket.emit('stop_changing_joint_' + joint_number + '_value');
-  }
-
-  //Create the function that will emit a message to the Socket Server, asking for the gripper's value
-
-  get_gripper_value() {
-    this.socket.emit('get_gripper_value');
-  }
-
-  //Create the function that will tell the Socket Server to change the gripper's value
-
-  change_gripper_value(new_value:number){
-    this.socket.emit('change_gripper_value_' + new_value);
+  stop_changing_value(){
+    this.socket.emit('stop_changing_value');
   }
 }

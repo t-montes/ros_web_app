@@ -59,14 +59,14 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
 
     //We ask for the values of the joints to start the labels
 
-    this.get_joint_value('1');
-    this.get_joint_value('2');
-    this.get_joint_value('3');
-    this.get_joint_value('4');
-    this.get_joint_value('5');
-    this.get_joint_value('6');
-    this.get_joint_value('7');
-    this.get_gripper_value();
+    this.get_value('joint_1');
+    this.get_value('joint_2');
+    this.get_value('joint_3');
+    this.get_value('joint_4');
+    this.get_value('joint_5');
+    this.get_value('joint_6');
+    this.get_value('joint_7');
+    this.get_value('gripper');
 
 
   }
@@ -86,35 +86,22 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
   }
 
 
-  //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the joint
+  //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
 
-  get_joint_value(joint_number: string){
-    this.brazoService.get_joint_value(joint_number);  
+  get_value(object: string){
+    this.brazoService.get_value(object);  
   }
 
-  //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the joint
+  //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
 
-  change_joint_value(joint_number: string, order: string){
-    this.brazoService.change_joint_value(joint_number, order);
+  change_value(object: string, action: string){
+    this.brazoService.change_value(object, action);
   }
 
-  //This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the joint
+  //This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
 
-  stop_changing_joint_value(joint_number: string){
-    this.brazoService.stop_changing_joint_value(joint_number);
-  }
-
-  //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the gripper
-
-  get_gripper_value(){
-    this.brazoService.get_gripper_value();  
-  }
-
-  //This function will call the BrazoService function, so the Socket Server will be asked to modify the value of the gripper
-
-  change_gripper_value(new_value:string){
-    console.log(new_value);
-    //this.brazoService.change_gripper_value(new_value);
+  stop_changing_value(){
+    this.brazoService.stop_changing_value();
   }
 
 }
