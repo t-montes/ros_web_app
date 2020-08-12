@@ -10,6 +10,14 @@ io.on("connection", socket => {
     contador++;
     socket.emit("mensaje", "Este es el mensaje número " + contador);
   });
+
+  //Prueba para el brazo
+  socket.on('change_value', (object) => {
+    contador++;
+    socket.emit('gripper_value', contador);
+  });
+
+
 });
 
 
