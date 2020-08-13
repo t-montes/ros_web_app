@@ -1,9 +1,7 @@
 label{
 		font-family: Helvetica;
 }
-
-
-	.button_disabled_motors{
+.button_disabled_motors{
 		background:#cc6868;
 		border:0;
 		color:#fff;
@@ -15,12 +13,12 @@ label{
 		border-radius: 20px;
 		/*margin-top: 5px;
 		padding:3px;*/
-	}
-	.button_disabled_motors:active{
+}
+.button_disabled_motors:active{
 		background-color: #944949;
-	}
+}
 
-	.button_enabled_motors{
+.button_enabled_motors{
 		background:#449850;
 		border:0;
 		color:#fff;
@@ -32,11 +30,26 @@ label{
 		border-radius: 20px;
 		/*margin-top: 5px;
 		padding:3px;*/
-	}	
-	.button_enabled_motors:active{
+}	
+.button_enabled_motors:active{
 		background-color: #335a39;
+}
+.contenedorPeque{
+	z-index: 4;
+	height: 85px;
+	width: 150px;
+	position: absolute;
+	padding:0 9px ;
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.41);
+	background: #91b0d017;
+	margin: auto;
 	}
-
+	.contenedorPeque label {
+		margin: 0 auto;
+		text-align: center;
+		display: block;
+	}
 
 input:focus,input:active,button:focus,button:active{
 		outline:none;
@@ -66,22 +79,7 @@ input:focus,input:active,button:focus,button:active{
 	width: 220px;
 }
 	
-	.contenedorPeque{
-	z-index: 4;
-	height: 85px;
-	width: 150px;
-	position: absolute;
-	padding:0 9px ;
-	border-radius: 20px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.41);
-	background: #91b0d017;
-	margin: auto;
-	}
-	.contenedorPeque label {
-		margin: 0 auto;
-		text-align: center;
-		display: block;
-	}
+	
 
 .slider {
 	-webkit-appearance: none;
@@ -110,7 +108,7 @@ input:focus,input:active,button:focus,button:active{
 	--acid-height: 0;
 	--display-charging: "none";
 }
-
+/*************
 .cell {
 	width: 285px;
 	height: 114px;
@@ -123,7 +121,7 @@ input:focus,input:active,button:focus,button:active{
 	left: 0;
 	right: 0;
 }
-
+/*
 .percentage {
 	font-size: 100%;
 	font-weight: bold;
@@ -228,7 +226,7 @@ input:focus,input:active,button:focus,button:active{
 	fill: white;
 
 }	
-@-webkit-keyframes move-forever {
+/*@-webkit-keyframes move-forever {
 	0% {
 		-webkit-transform: translate(-90px, 0%);
 		transform: translate(-90px, 0%);
@@ -248,7 +246,7 @@ input:focus,input:active,button:focus,button:active{
 		transform: translate(85px, 0%);
 	}
 }
-
+*/
 /*	font-family: 'RoboFont';
 	src: url('{% static 'fonts/Bank Gothic Medium.ttf' %}');
 }*/
