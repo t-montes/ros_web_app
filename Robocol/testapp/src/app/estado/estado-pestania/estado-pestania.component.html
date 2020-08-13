@@ -1,0 +1,220 @@
+<p>estado-pestania works!</p>
+
+<body scroll="no" style="background: rgba(255,255,255,1); margin: 0;height: 100vh;overflow: hidden;">
+
+	<div id="state_tests" style="z-index: 4;height: 522px;width: 710px;position: absolute;padding:29px;top: 0;bottom: 0;left: 50px;border-radius: 20px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);background: #ffffff08;margin: auto;">
+
+		<!--<img src="{% static 'img/Rover_icon_status.png' %}" style="position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin:auto;width: auto;height: 422px"> -->
+
+		<label id="temperature" style="position: absolute;left: 0;right: 0;top: 165px;bottom: 0;margin:auto;display: block;text-align: center;color: white">Temperature<br>0 &degC</label>
+
+
+		<div class= "contenedorPeque" id="state_tests" style="top: 55px; left: 25px"	>
+
+			<label id="L0_speed" >Speed: 0 RPM</label>
+			<label id="L0_current">Current: 0 A</label>
+
+			<button id="B2" class="button_enabled_motors">Enabled</button>
+
+		</div>
+
+		<div class= "contenedorPeque" id="state_tests1" style="top: 189px;left: 25px" >
+
+			<label id="L1_speed" > Speed: 0 RPM</label>
+			<label id="L1_current">Current: 0 A</label>
+
+			<button id="B1" class="button_enabled_motors">Enabled</button>
+			
+		</div>
+
+		<div class= "contenedorPeque" id="state_tests" style="top: 380px;left: 25px">
+
+			<label id="L2_speed" >Speed: 0 RPM</label>
+			<label id="L2_current" >Current: 0 A</label>
+
+			<button id="B0" class="button_enabled_motors">Enabled</button>
+			
+		</div>
+		<div class= "contenedorPeque" id="state_tests" style="top: 55px;right: 25px">
+
+			<label id="R0_speed" >Speed: 0 RPM</label>
+			<label id="R0_current" >Current: 0 A</label>
+
+			<button id="B5" class="button_enabled_motors">Enabled</button>
+
+		</div>
+		<div  class= "contenedorPeque" id="state_tests" style="top: 189px;right: 25px">
+
+			<label id="R1_speed" >Speed: 0 RPM</label>
+			<label id="R1_current" >Current: 0 A</label>
+
+			<button id="B4" class="button_enabled_motors">Enabled</button>
+			
+		</div>
+
+		<div class= "contenedorPeque" id="state_tests" style="top: 380px;right: 25px">
+
+			<label id="R2_speed" >Speed: 0 RPM</label>
+			<label id="R2_current" >Current: 0 A</label>
+
+			<button id="B3" class="button_enabled_motors">Enabled</button>
+			
+		</div>
+
+		<!-- Hecho Franz -->
+		<div class= "contenedorPeque" id="state_tests" style="top: 440px;right: 300px; height: 42px">
+
+			<button id="B6" style="margin: 4.5px 0" class="button_enabled_motors">Enable All</button>
+			
+		</div>
+		<!-- Termina Hecho Franz -->	
+	</div>
+
+	<div id="batteries" style="z-index: 4;height: 470px;width: calc(100vw - 818px - 108px - 50px);position: absolute;padding:29px;top: 0;bottom: 0;right: 50px;border-radius: 20px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);background: #ffffff08;margin: auto;">
+
+		<div class="cell" style="top:20px">
+
+			<div id="battery" class="battery">
+				<div class="acid-container">
+					<label style="color: rgba(0, 0, 0, 1);font-size: 20px;position: absolute;left: 333px;top: 140px;">Steppers</label>
+					<div class="acid">
+						<div id="level0" class="fill"></div>
+
+						<svg class="waves"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							viewBox="0 24 150 28"
+							preserveAspectRatio="none">
+							<defs>
+								<path id="gentle-wave"
+								d="M-160 44c30 0 
+								58-18 88-18s
+								58 18 88 18 
+								58-18 88-18 
+								58 18 88 18
+								v44h-352z" />
+							</defs>
+							<g class="parallax">
+								<use xlink:href="#gentle-wave" x="50" y="0" fill="#4579e2" id="ola1_0"/>
+								<use xlink:href="#gentle-wave" x="50" y="3" fill="#3461c1" id="ola2_0"/>
+								<use xlink:href="#gentle-wave" x="50" y="6" fill="#2d55aa" id="ola3_0"/>  
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+
+			<div class="percentage">
+				<i id="icon" class="fas fa-plug"></i><span id="percentage0">0</span> V
+			</div>
+		</div>
+
+		<div class="cell" style="top:145px">
+
+			<div id="battery" class="battery">
+				<div class="acid-container">
+					<label style="color: white;font-size: 20px;position: absolute;left: 57px;top: 22px;">Digital Systems</label>
+					<div class="acid">
+
+						<div id="level1" class="fill"></div>
+
+						<svg class="waves"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							viewBox="0 24 150 28"
+							preserveAspectRatio="none">
+							<defs>
+								<path id="gentle-wave"
+								d="M-160 44c30 0 
+								58-18 88-18s
+								58 18 88 18 
+								58-18 88-18 
+								58 18 88 18
+								v44h-352z" />
+							</defs>
+							<g class="parallax">
+								<use xlink:href="#gentle-wave" x="50" y="0" fill="#4579e2" id="ola1_1"/>
+								<use xlink:href="#gentle-wave" x="50" y="3" fill="#3461c1" id="ola2_1"/>
+								<use xlink:href="#gentle-wave" x="50" y="6" fill="#2d55aa" id="ola3_1"/>  
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div class="percentage">
+				<i id="icon" class="fas fa-plug"></i><span id="percentage1">0</span> V
+			</div>
+		</div>
+
+		<div class="cell" style="top:270px">
+			<div id="battery" class="battery">
+				<div class="acid-container">
+					<label style="color: white;font-size: 20px;position: absolute;left: 88px;top: 22px;">Traction</label>
+					<div class="acid">
+
+						<div id="level2" class="fill"></div>
+
+						<svg class="waves"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							viewBox="0 24 150 28"
+							preserveAspectRatio="none">
+							<defs>
+								<path id="gentle-wave"
+								d="M-160 44c30 0 
+								58-18 88-18s
+								58 18 88 18 
+								58-18 88-18 
+								58 18 88 18
+								v44h-352z" />
+							</defs>
+							<g class="parallax">
+								<use xlink:href="#gentle-wave" x="50" y="0" fill="#4579e2" id="ola1_2"/>
+								<use xlink:href="#gentle-wave" x="50" y="3" fill="#3461c1" id="ola2_2"/>
+								<use xlink:href="#gentle-wave" x="50" y="6" fill="#2d55aa" id="ola3_2"/>  
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div class="percentage">
+				<i id="icon" class="fas fa-plug"></i><span id="percentage2">0</span> V
+			</div>
+		</div>
+
+		<div class="cell" style="top:395px">
+			<div id="battery" class="battery">
+				<div class="acid-container">
+					<label style="color: white;font-size: 20px;position: absolute;left: 65px;top: 22px;">Access Point</label>
+					<div class="acid">
+						<div id="level3" class="fill"></div>
+						<svg class="waves"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							viewBox="0 24 150 28"
+							preserveAspectRatio="none">
+							<defs>
+								<path id="gentle-wave"
+								d="M-160 44c30 0 
+								58-18 88-18s
+								58 18 88 18 
+								58-18 88-18 
+								58 18 88 18
+								v44h-352z" />
+							</defs>
+							<g class="parallax">
+								<use xlink:href="#gentle-wave" x="50" y="0" fill="#4579e2" id="ola1_3"/>
+								<use xlink:href="#gentle-wave" x="50" y="3" fill="#3461c1" id="ola2_3"/>
+								<use xlink:href="#gentle-wave" x="50" y="6" fill="#2d55aa" id="ola3_3"/>  
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div class="percentage">
+				<i id="icon" class="fas fa-plug"></i><span id="percentage3">0</span> V
+			</div>
+		</div>
+	</div>
+</body>
+
