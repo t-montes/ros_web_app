@@ -121,7 +121,7 @@ input:focus,input:active,button:focus,button:active{
 	left: 0;
 	right: 0;
 }
-/*
+
 .percentage {
 	font-size: 100%;
 	font-weight: bold;
@@ -154,7 +154,7 @@ input:focus,input:active,button:focus,button:active{
 .info a {
 	color: inherit;
 }
-
+*//*
 .battery {
 	position: relative;
 	width: 250px;
@@ -225,8 +225,8 @@ input:focus,input:active,button:focus,button:active{
 	animation-duration: 3s;
 	fill: white;
 
-}	
-/*@-webkit-keyframes move-forever {
+}	*/
+@-webkit-keyframes move-forever {
 	0% {
 		-webkit-transform: translate(-90px, 0%);
 		transform: translate(-90px, 0%);
@@ -246,7 +246,7 @@ input:focus,input:active,button:focus,button:active{
 		transform: translate(85px, 0%);
 	}
 }
-*/
+
 /*	font-family: 'RoboFont';
 	src: url('{% static 'fonts/Bank Gothic Medium.ttf' %}');
 }*/
