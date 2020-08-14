@@ -108,7 +108,7 @@ input:focus,input:active,button:focus,button:active{
 	--acid-height: 0;
 	--display-charging: "none";
 }
-/*************
+
 .cell {
 	width: 285px;
 	height: 114px;
@@ -154,7 +154,7 @@ input:focus,input:active,button:focus,button:active{
 .info a {
 	color: inherit;
 }
-*//*
+
 .battery {
 	position: relative;
 	width: 250px;

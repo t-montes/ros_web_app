@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+/*import * as $ from "jquery";*/
+import { $ } from "../jquery-3.1.1";
 
 @Component({
   selector: 'app-estado-pestania',
@@ -13,8 +15,10 @@ export class EstadoPestaniaComponent implements OnInit {
   }
 
 }
-/*
-$("#btn5").animate({ 
+/*alert("estado-pestania");*/
+
+alert( $.fn.jquery )
+/*jQuery("#btn5").animate({ 
 	boxShadow: "0px 0px 10px 0px rgb(0, 0, 0)",
 	backgroundColor: 'rgba(0,0,0,0.18)'
 }); 
@@ -153,6 +157,5 @@ function enviarToggle(id_but, new_state) {
 if (navigator.appVersion.indexOf("Win")!=-1) 
 {
 	$('#titulo').css('margin-top','-10px');
-}
+}*/
 
-*/
