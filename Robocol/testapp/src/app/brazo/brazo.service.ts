@@ -28,6 +28,7 @@ export class BrazoService {
   //Create the function that will tell the Socket Server to start increasing or decreasing a joint's value or the gripper's value, it means a button is pressed
 
   change_value(object: string, action: string){
+    console.log('Gripper change.');
     this.socket.emit('change_value', {object: object, action: action});
   }
 
