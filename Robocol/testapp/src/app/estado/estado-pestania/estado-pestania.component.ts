@@ -17,7 +17,7 @@ export class EstadoPestaniaComponent implements OnInit {
 }
 /*alert("estado-pestania");*/
 
-alert( $.fn.jquery )
+//alert( $.fn.jquery )
 /*jQuery("#btn5").animate({ 
 	boxShadow: "0px 0px 10px 0px rgb(0, 0, 0)",
 	backgroundColor: 'rgba(0,0,0,0.18)'
