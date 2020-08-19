@@ -20,8 +20,15 @@ export class BrazoPestaniaComponent implements OnInit, OnDestroy {
   joint_7_value: number;
   gripper_value: number;
 
-  min_value:number = -150;
-  max_value:number = 150;
+  //Define the variables for the maximum and minimun values of the joints
+
+  min_value_joint:number = -150;
+  max_value_joint:number = 150;
+
+  //Define the variables for the maximum and minimun values of the gripper
+
+  min_value_gripper:number = 0;
+  max_value_gripper:number = 100;
 
   //Define the variables that will play as Subscribers to the BrazoService's variables, so that when they (BrazoService variables) change, these variables (Component) will change too
 

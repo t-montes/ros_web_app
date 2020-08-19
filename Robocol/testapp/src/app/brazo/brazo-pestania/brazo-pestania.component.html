@@ -1,34 +1,43 @@
-<div class="row" style="margin-top: 15px">
-   <div class="col-4">
-         <div class="col">
-            <div class="row">
+<div class="row justify-content-center" style="margin-top: 15px">
+   <div class="col-4 text-center justify-content-center">
+         <div class="col text-center justify-content-center">
+            <div class="row text-center justify-content-center" style="margin-bottom: 10px;">
                <h4>Vertical movement:</h4>
             </div>
-            <div class="row">
-               <button>UP</button>
-               <button>DOWN</button>
+            <div class="row text-center justify-content-center" >
+               <button style="margin-right: 5px">UP</button>
+               <button style="margin-left: 5px;">DOWN</button>
             </div>
+            <hr style="margin-bottom: 30px; margin-top: 30px;">
          </div>
-         <div class="col">
-            <div class="row">
+         <div class="col justify-content-center">
+            <div class="row justify-content-center" style="margin-bottom: 10px;">
                <h4>Horizontal movement:</h4>
             </div>
-            <div class="col">
-               <button>UP</button>
-               <div class="row">
+            <div class="col justify-content-center">
+               <button style="margin-bottom: 7px;">FRONT</button>
+               <div class="row justify-content-center">
                   <button>LEFT</button>
-                  <button>DOWN</button>
+                  <button style="margin-left: 7px; margin-right: 7px;">REAR</button>
                   <button>RIGHT</button>
                </div>
             </div>
+            <hr style="margin-bottom: 30px; margin-top: 30px;">
          </div>
          <div class="col">
-            <div class="row">
+            <div class="row justify-content-center" style="margin-bottom: 10px;">
                <h4>Rotation:</h4>
             </div>
-            <div class="row">
-               <button>LEFT</button>
-               <button>RIGHT</button>
+            <div class="row justify-content-center">
+               <div class="col">
+                  <h5>Roll</h5>
+               </div>
+               <div class="col">
+                  <h5>Pitch</h5>
+               </div>
+               <div class="col">
+                  <h5>Yaw</h5>
+               </div>
             </div>
          </div>
       <div class="row">
@@ -51,7 +60,7 @@
                   <td><button (mousedown)="change_value('joint_1', 'decrease')" (mouseup)="stop_changing_value()" id="1_ATRAS" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center col-6" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px;">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_1_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_1_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_1_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_1_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="1_ADELANTE" (mousedown)="change_value('joint_1', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
@@ -62,7 +71,7 @@
                   <td><button id="2_ATRAS" (mousedown)="change_value('joint_2', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_2_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_2_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_2_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_2_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="2_ADELANTE" (mousedown)="change_value('joint_2', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
@@ -73,7 +82,7 @@
                   <td><button id="3_ATRAS" (mousedown)="change_value('joint_3', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_3_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_3_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_3_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_3_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="3_ADELANTE" (mousedown)="change_value('joint_3', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
@@ -84,7 +93,7 @@
                   <td><button id="4_ATRAS" (mousedown)="change_value('joint_4', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_4_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_4_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_4_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_4_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="4_ADELANTE" (mousedown)="change_value('joint_4', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
@@ -95,7 +104,7 @@
                   <td><button id="5_ATRAS" (mousedown)="change_value('joint_5', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_5_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_5_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_5_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_5_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="5_ADELANTE" (mousedown)="change_value('joint_5', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
@@ -106,7 +115,7 @@
                   <td><button id="6_ATRAS" (mousedown)="change_value('joint_6', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_6_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_6_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_6_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_6_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="6_ADELANTE" (mousedown)="change_value('joint_6', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
@@ -117,11 +126,22 @@
                   <td><button id="7_ATRAS" (mousedown)="change_value('joint_7', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
                   <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{joint_7_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_7_value}}" attr.aria-valuemin="{{min_value}}" attr.aria-valuemax="{{max_value}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{joint_7_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_7_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
                      </div>
                   </td>
                   <td><button id="7_ADELANTE" (mousedown)="change_value('joint_7', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
                   <td><input disabled style="color: black;font-size: 15px;" name="" value="{{joint_7_value}}°" id = "joint7"></td>
+               </tr>
+               <tr>
+                  <th scope="row">Gripper</th>
+                  <td><button id="gripper_ATRAS" (mousedown)="change_value('gripper', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+                  <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{gripper_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{gripper_value}}" attr.aria-valuemin="{{min_value_gripper}}" attr.aria-valuemax="{{max_value_gripper}}"></div>
+                     </div>
+                  </td>
+                  <td><button id="gripper_ADELANTE" (mousedown)="change_value('gripper', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+                  <td><input disabled style="color: black;font-size: 15px;" name="" value="{{gripper_value}}°" id = "gripper"></td>
                </tr>
             </tbody>
          </table>  
