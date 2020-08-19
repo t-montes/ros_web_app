@@ -12,6 +12,14 @@ import time
 import eventlet
 import socketio
 
+# print('Launching frontend...')
+# os.system('cd ~/catkin_ws')
+# os.system('ls')
+# os.system('cd testapp')
+# os.system('ls')
+# os.system('ng serve')
+# print('Frontend launched.')
+
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
 
@@ -50,17 +58,20 @@ rospy.Subscriber('topic_subs', String, callback)
 
 class HomeConsumer(WebsocketConsumer):
     def connect(self):
-        # REVISAR COMO HACER ESTO (AGREGUÉ os,time,threading, y falta el layer de channels)
+        # REVISAR COMO HACER ESTO
+        # (AGREGUÉ os,time,threading, y falta el layer de channels)
         # self.room_name = 'e'+str(time.time())
 		# self.room_group_name = 'bgUpdateConsumers_sensors'
 		# async_to_sync(self.channel_layer.group_add)(self.room_group_name, self.channel_name)
+        print('HomeConsumer connect')
         self.accept()
 
     def disconnect(self, close_code):
-        pass
+        print('HomeConsumer disconnect')
 
     def receive(self, text_data):
         global message
+        print('HomeConsumer receive')
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         self.send(text_data=json.dumps({'message': message}))
