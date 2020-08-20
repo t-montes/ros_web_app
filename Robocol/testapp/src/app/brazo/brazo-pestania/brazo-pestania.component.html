@@ -1,83 +1,157 @@
-<div class="row" style="margin-top: 15px">
-    <div id="sidebar" class="col" style="width: 100%">
-        <img src="../../../assets/arm_labels.png" alt="Brazo">
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="row">
-            <div class="col-6">
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 1:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button (mousedown)="change_value('joint_1', 'decrease')" (mouseup)="stop_changing_value()" id="1_ATRAS" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="1_ADELANTE" (mousedown)="change_value('joint_1', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 2:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button id="2_ATRAS" (mousedown)="change_value('joint_2', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="2_ADELANTE" (mousedown)="change_value('joint_2', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 3:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button id="3_ATRAS" (mousedown)="change_value('joint_3', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="3_ADELANTE" (mousedown)="change_value('joint_3', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 4:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button id="4_ATRAS" (mousedown)="change_value('joint_4', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="4_ADELANTE" (mousedown)="change_value('joint_4', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
+<div class="row justify-content-center" style="margin-top: 15px">
+   <div class="col-md-6 col-lg-4 text-center justify-content-center">
+      <div class="col text-center justify-content-center">
+         <div class="row text-center justify-content-center" style="margin-bottom: 10px;">
+            <h4>Vertical movement:</h4>
+         </div>
+         <div class="row text-center justify-content-center" >
+            <button style="margin-right: 5px">UP</button>
+            <button style="margin-left: 5px;">DOWN</button>
+         </div>
+         <hr style="margin-bottom: 30px; margin-top: 30px;">
+      </div>
+      <div class="col justify-content-center">
+         <div class="row justify-content-center" style="margin-bottom: 10px;">
+            <h4>Horizontal movement:</h4>
+         </div>
+         <div class="col justify-content-center">
+            <button style="margin-bottom: 7px;">FRONT</button>
+            <div class="row justify-content-center">
+               <button>LEFT</button>
+               <button style="margin-left: 7px; margin-right: 7px;">REAR</button>
+               <button>RIGHT</button>
             </div>
-            <div class="col-6">
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 5:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button id="5_ATRAS" (mousedown)="change_value('joint_5', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="5_ADELANTE" (mousedown)="change_value('joint_5', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 6:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button id="6_ATRAS" (mousedown)="change_value('joint_6', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="6_ADELANTE" (mousedown)="change_value('joint_6', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
-                <div class="col align-items-center justify-content-center columna_botones">
-                    <label style="color: black" class="align-items-center justify-content-center">Joint 7:</label>
-                    <div class="row align-items-center justify-content-center">
-                        <button id="7_ATRAS" (mousedown)="change_value('joint_7', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-                        <button id="7_ADELANTE" (mousedown)="change_value('joint_7', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button>
-                    </div>
-                </div>
+         </div>
+         <hr style="margin-bottom: 30px; margin-top: 30px;">
+      </div>
+      <div class="col">
+         <div class="row justify-content-center" style="margin-bottom: 10px;">
+            <h4>Rotation:</h4>
+         </div>
+         <div class="row justify-content-center">
+            <div class="col justify-content-center">
+               <h5>Roll</h5>
+               <div class="row justify-content-center">
+                  <button>CCW</button>
+                  <button>CW</button>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="row">
-            <div class="col-6">
-                <label>Joint 1:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_1_value}}°" id = "joint1"><br>
-                <label>Joint 2:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_2_value}}°" id = "joint2"><br>
-                <label>Joint 3:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_3_value}}°" id = "joint3"><br>
-                <label>Joint 4:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_4_value}}°" id = "joint4"><br>
+            <div class="col justify-content-center">
+               <h5>Pitch</h5>
+               <div class="row justify-content-center">
+                  <button>CCW</button>
+                  <button>CW</button>
+               </div>
             </div>
-            <div class="col-6">
-                <label>Joint 5:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_5_value}}°" id = "joint5"><br>
-                <label>Joint 6:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_6_value}}°" id = "joint6"><br>
-                <label>Joint 7:</label><input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{joint_7_value}}°" id = "joint7"><br>
+            <div class="col justify-content-center">
+               <h5>Yaw</h5>
+               <div class="row justify-content-center">
+                  <button>CCW</button>
+                  <button>CW</button>
+               </div>
             </div>
-        </div>
-        <div class="row">
-            <label style="font-weight: 100;margin-bottom: 10px;display: inline-block;margin-right: 20px">End Effector:</label><br>
-            <input disabled style="color: black;padding: 5px;font-size: 12px;margin-bottom: 50px" name="" value="{{gripper_value}}°" id = "gripper">
-            <button id="gripper_ATRAS" (mousedown)="change_value('gripper', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button>
-            <button id="gripper_ADELANTE" (mousedown)="change_value('gripper', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button> 
-        </div>
-    </div>
+         </div>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+      </div>
+   </div>
+   <div class="col-md-6 col-lg-3 justify-content-center text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px;">
+      <img style="width: 270px" src="../../../assets/arm_labels.png" alt="Brazo">
+   </div>
+   <div class="col-lg-5">
+      <table class="table">
+         <tbody>
+            <tr>
+               <th scope="row">Joint 1</th>
+               <td><button (mousedown)="change_value('joint_1', 'decrease')" (mouseup)="stop_changing_value()" id="1_ATRAS" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center col-6" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px;">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_1_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_1_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="1_ADELANTE" (mousedown)="change_value('joint_1', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{joint_1_value}}°" id = "joint1"></td>
+            </tr>
+            <tr>
+               <th scope="row">Joint 2</th>
+               <td><button id="2_ATRAS" (mousedown)="change_value('joint_2', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_2_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_2_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="2_ADELANTE" (mousedown)="change_value('joint_2', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{joint_2_value}}°" id = "joint2"></td>
+            </tr>
+            <tr>
+               <th scope="row">Joint 3</th>
+               <td><button id="3_ATRAS" (mousedown)="change_value('joint_3', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_3_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_3_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="3_ADELANTE" (mousedown)="change_value('joint_3', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{joint_3_value}}°" id = "joint3"></td>
+            </tr>
+            <tr>
+               <th scope="row">Joint 4</th>
+               <td><button id="4_ATRAS" (mousedown)="change_value('joint_4', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_4_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_4_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="4_ADELANTE" (mousedown)="change_value('joint_4', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{joint_4_value}}°" id = "joint4"></td>
+            </tr>
+            <tr>
+               <th scope="row">Joint 5</th>
+               <td><button id="5_ATRAS" (mousedown)="change_value('joint_5', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_5_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_5_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="5_ADELANTE" (mousedown)="change_value('joint_5', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{joint_5_value}}°" id = "joint5"></td>
+            </tr>
+            <tr>
+               <th scope="row">Joint 6</th>
+               <td><button id="6_ATRAS" (mousedown)="change_value('joint_6', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_6_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_6_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="6_ADELANTE" (mousedown)="change_value('joint_6', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px;width: 100px;" name="" value="{{joint_6_value}}°" id = "joint6"></td>
+            </tr>
+            <tr>
+               <th scope="row">Joint 7</th>
+               <td><button id="7_ATRAS" (mousedown)="change_value('joint_7', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{joint_7_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_7_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
+                  </div>
+               </td>
+               <td><button id="7_ADELANTE" (mousedown)="change_value('joint_7', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{joint_7_value}}°" id = "joint7"></td>
+            </tr>
+            <tr>
+               <th scope="row">Gripper</th>
+               <td><button id="gripper_ATRAS" (mousedown)="change_value('gripper', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_left"><=</button></td>
+               <td class="text-center" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px">
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{gripper_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{gripper_value}}" attr.aria-valuemin="{{min_value_gripper}}" attr.aria-valuemax="{{max_value_gripper}}"></div>
+                  </div>
+               </td>
+               <td><button id="gripper_ADELANTE" (mousedown)="change_value('gripper', 'increase')" (mouseup)="stop_changing_value()" type="button" class="btn btn-secondary button_right">=></button></td>
+               <td><input disabled style="color: black;font-size: 15px; width: 100px;" name="" value="{{gripper_value}}°" id = "gripper"></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
 </div>

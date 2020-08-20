@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 /*import * as $ from "jquery";*/
+<<<<<<< HEAD
 declare var $: any;
 /* { $ } from "../jquery-3.1.1";*/
+=======
+// import { $ } from "../jquery-3.1.1";
+>>>>>>> 77ffd3c8753d5e5586202c50934427cfb621e902
 
 @Component({
   selector: 'app-estado-pestania',
@@ -18,8 +22,13 @@ export class EstadoPestaniaComponent implements OnInit {
 }
 /*alert("estado-pestania");*/
 
+<<<<<<< HEAD
 //alert( $.fn.jquery )
 /*$("#btn5").animate({ 
+=======
+// alert( $.fn.jquery )
+/*jQuery("#btn5").animate({ 
+>>>>>>> 77ffd3c8753d5e5586202c50934427cfb621e902
 	boxShadow: "0px 0px 10px 0px rgb(0, 0, 0)",
 	backgroundColor: 'rgba(0,0,0,0.18)'
 }); */

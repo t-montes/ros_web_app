@@ -9,25 +9,37 @@ import threading
 import time
 
 
-# import eventlet
-# import socketio
+import eventlet
+import socketio
 
-# sio = socketio.Server()
-# app = socketio.WSGIApp(sio)
+# print('Launching frontend...')
+# os.system('cd ~/catkin_ws')
+# os.system('ls')
+# os.system('cd testapp')
+# os.system('ls')
+# os.system('ng serve')
+# print('Frontend launched.')
 
-# @sio.event
-# def connect(sid, environ):
-#     print('connect ', sid)
+sio = socketio.Server(cors_allowed_origins='*')
+app = socketio.WSGIApp(sio)
 
-# @sio.event
-# def my_message(sid, data):
-#     print('message ', data)
+@sio.event
+def connect(sid, environ):
+    print('connect ', sid)
 
-# @sio.event
-# def disconnect(sid):
-#     print('disconnect ', sid)
+@sio.event
+def my_message(sid, data):
+    print('message ', data)
 
-# eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
+@sio.event
+def disconnect(sid):
+    print('disconnect ', sid)
+
+@sio.on('change_value')
+def change_value(sid, data):
+    print('Change value: ',data)
+
+eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
 
 # Channel REDIS layer
@@ -46,17 +58,20 @@ rospy.Subscriber('topic_subs', String, callback)
 
 class HomeConsumer(WebsocketConsumer):
     def connect(self):
-        # REVISAR COMO HACER ESTO (AGREGUÉ os,time,threading, y falta el layer de channels)
+        # REVISAR COMO HACER ESTO
+        # (AGREGUÉ os,time,threading, y falta el layer de channels)
         # self.room_name = 'e'+str(time.time())
 		# self.room_group_name = 'bgUpdateConsumers_sensors'
 		# async_to_sync(self.channel_layer.group_add)(self.room_group_name, self.channel_name)
+        print('HomeConsumer connect')
         self.accept()
 
     def disconnect(self, close_code):
-        pass
+        print('HomeConsumer disconnect')
 
     def receive(self, text_data):
         global message
+        print('HomeConsumer receive')
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         self.send(text_data=json.dumps({'message': message}))
