@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 /*import * as $ from "jquery";*/
-import { $ } from "../jquery-3.1.1";
+declare var $: any;
+/* { $ } from "../jquery-3.1.1";*/
 
 @Component({
   selector: 'app-estado-pestania',
@@ -17,44 +18,43 @@ export class EstadoPestaniaComponent implements OnInit {
 }
 /*alert("estado-pestania");*/
 
-alert( $.fn.jquery )
-/*jQuery("#btn5").animate({ 
+//alert( $.fn.jquery )
+/*$("#btn5").animate({ 
 	boxShadow: "0px 0px 10px 0px rgb(0, 0, 0)",
 	backgroundColor: 'rgba(0,0,0,0.18)'
-}); 
+}); */
 
 function refreshLevel(level, bat) {
 	level = level + 2.6
 	document.getElementById("level"+bat).style.setProperty('--acid-height', (level * document.getElementById("battery").clientHeight) + "px");
 	level = level - 2.6
-		if (level < 0.25) {
-			//document.body.style.setProperty('--background-color', "#c0392b");
-			let color = 'rgba(192, 57, 43'
-			$("#ola1_"+bat).css({'fill':color+', 0.3)'})
-			$("#ola2_"+bat).css({'fill':color+', 0.5)'})
-			$("#ola3_"+bat).css({'fill':color+')'})
-			$("#level"+bat).css({'background':color+')'})
+	if (level  < 0.25) {
+		//document.body.style.setProperty('--background-color', "#c0392b");
+		let color = 'rgba(192, 57, 43'
+		$("#ola1_"+bat).css({'fill':color+', 0.3)'})
+		$("#ola2_"+bat).css({'fill':color+', 0.5)'})
+		$("#ola3_"+bat).css({'fill':color+')'})
+		$("#level"+bat).css({'background':color+')'})
 
-		} else if (level < 0.5) {
+	} else if (level < 0.5) {
 			//document.body.style.setProperty('--background-color', "#f39c12");
-			let color = 'rgba(243, 156, 18'
-			$("#ola1_"+bat).css({'fill':color+', 0.3)'})
-			$("#ola2_"+bat).css({'fill':color+', 0.5)'})
-			$("#ola3_"+bat).css({'fill':color+')'})
-			$("#level"+bat).css({'background':color+')'})
-		} else {
-			//document.body.style.setProperty('--background-color', "#27ae60");
-			let color = 'rgba(39, 174, 96'
-			$("#ola1_"+bat).css({'fill':color+', 0.3)'})
-			$("#ola2_"+bat).css({'fill':color+', 0.5)'})
-			$("#ola3_"+bat).css({'fill':color+')'})
-			$("#level"+bat).css({'background':color+')'})
-		}
+		let color = 'rgba(243, 156, 18'
+		$("#ola1_"+bat).css({'fill':color+', 0.3)'})
+		$("#ola2_"+bat).css({'fill':color+', 0.5)'})
+		$("#ola3_"+bat).css({'fill':color+')'})
+		$("#level"+bat).css({'background':color+')'})
+	} else {
+		//document.body.style.setProperty('--background-color', "#27ae60");
+		let color = 'rgba(39, 174, 96'
+		$("#ola1_"+bat).css({'fill':color+', 0.3)'})
+		$("#ola2_"+bat).css({'fill':color+', 0.5)'})
+		$("#ola3_"+bat).css({'fill':color+')'})
+		$("#level"+bat).css({'background':color+')'})
 	}
-
-	//refreshLevel(0.9,0)
-	//refreshLevel(0.4,1)
-	//refreshLevel(0.2,2)
+}
+//refreshLevel(0.9,0)
+//refreshLevel(0.4,1)
+//refreshLevel(0.2,2)
 function changeButtonStatus(nBut, state) {
 
 	if (state==false)
@@ -73,8 +73,11 @@ function changeButtonStatus(nBut, state) {
 
 }
 
-
-let addr = 'ws://'+$(location).attr('href').replace("http://", "").replace("status", "")+'ws/bgUpdate_status/'
+//*************************
+const TOGGLE_MOT_STATUS = 0
+const CURRENT_TH = 10
+const TEMP_TH = 50
+/*let addr = 'ws://'+$(location).attr('href').replace("http://", "").replace("status", "")+'ws/bgUpdate_status/'
 var mainSocket = new WebSocket(addr);
 
 mainSocket.onmessage = function(e)
@@ -139,10 +142,7 @@ mainSocket.onmessage = function(e)
 	changeButtonStatus(5, data['R2_status'])
 	// changeButtonStatus(6, data['R2_status'])
 }
-
-const TOGGLE_MOT_STATUS = 0
-const CURRENT_TH = 10
-const TEMP_TH = 50
+// aca irian las constantes 
 
 function enviarToggle(id_but, new_state) {
 		var toSend = {};
@@ -153,9 +153,9 @@ function enviarToggle(id_but, new_state) {
 
 		mainSocket.send(JSON.stringify(toSend));
 }
-
+/*
 if (navigator.appVersion.indexOf("Win")!=-1) 
 {
 	$('#titulo').css('margin-top','-10px');
-}*/
-
+}
+*/
