@@ -1,0 +1,212 @@
+label
+{
+	font-family: Helvetica;
+}
+table, th, td
+{
+	border: 1px solid black;
+	text-align: center;
+	font-size: 14px;
+	/* line-height: 150px; */
+}
+input
+{
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+/*EVA*/
+#EVA_info
+{
+	/* z-index: 1; */
+	/* height: 300px; */
+	width: calc(100vw - 4% - 50px);
+	position: absolute;
+	padding:1%;
+	/* top: 600px; */
+	/* bottom: 0; */
+	left: 50px;
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	background: #00000020;
+	margin: auto;
+}
+/* #EVA_table
+{
+	width:100%;
+	position: relative;
+	top:-20px
+} */
+
+/*Sample 1*/
+#EVA_1_1
+{
+	background:indianred;
+}
+#EVA_1_2
+{
+	background:lightgreen;
+}
+#EVA_1_3
+{
+	background:lightgreen;
+}
+#EVA_1_4
+{
+	background:lightgreen;
+}
+#EVA_1_5
+{
+	background:lightgreen;
+}
+#EVA_1_6
+{
+	background:lightgreen;
+}
+/*Sample 2*/
+#EVA_2_1
+{
+	background:lightblue;
+}
+#EVA_2_2
+{
+	background:lightblue;
+}
+#EVA_2_3
+{
+	background:lightblue;
+}
+#EVA_2_4
+{
+	background:lightblue;
+}
+#EVA_2_5
+{
+	background:lightblue;
+}
+#EVA_2_6
+{
+	background:lightblue;
+}
+/*Sample 3*/
+#EVA_3_1
+{
+	background:lightblue;
+}
+#EVA_3_2
+{
+	background:lightblue;
+}
+#EVA_3_3
+{
+	background:lightblue;
+}
+#EVA_3_4
+{
+	background:lightblue;
+}
+#EVA_3_5
+{
+	background:lightblue;
+}
+#EVA_3_6
+{
+	background:lightblue;
+}
+#EVA_pos
+{
+	background:lightyellow;
+}
+
+
+
+/*Sample 1*/
+#EVA_1_1 input
+{
+	width:100%;
+}
+#EVA_1_2 input
+{
+	width:100%;
+}
+#EVA_1_3 input
+{
+	width:100%;
+}
+#EVA_1_4 input
+{
+	width:100%;
+}
+#EVA_1_5 input
+{
+	width:100%;
+}
+#EVA_1_6 input
+{
+	width:100%;
+}
+/*Sample 2*/
+#EVA_2_1 input
+{
+	width:100%;
+}
+#EVA_2_2 input
+{
+	width:100%;
+}
+#EVA_2_3 input
+{
+	width:100%;
+}
+#EVA_2_4 input
+{
+	width:100%;
+}
+#EVA_2_5 input
+{
+	width:100%;
+}
+#EVA_2_6 input
+{
+	width:100%;
+}
+/*Sample 3*/
+#EVA_3_1 input
+{
+	width:100%;
+}
+#EVA_3_2 input
+{
+	width:100%;
+}
+#EVA_3_3 input
+{
+	width:100%;
+}
+#EVA_3_4 input
+{
+	width:100%;
+}
+#EVA_3_5 input
+{
+	width:100%;
+}
+#EVA_3_6 input
+{
+	width:100%;
+}
+#EVA_pos input
+{
+	width:100%;
+}
+
+/*img*/
+/* #sample_img
+{
+	z-index: 4;
+	position: absolute;
+	padding:2%;
+	top: 80px;
+	right: 50px;
+} */

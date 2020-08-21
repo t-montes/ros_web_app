@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { PruebaModule } from './prueba/prueba.module';
 import { BrazoModule } from './brazo/brazo.module';
 import { TraccionModule } from './traccion/traccion.module';
+import { SensoricaModule } from './sensorica/sensorica.module';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     PruebaModule,
     BrazoModule,
     TraccionModule,
+    SensoricaModule,
     SocketIoModule.forRoot(config),
     NgbModule
   ],

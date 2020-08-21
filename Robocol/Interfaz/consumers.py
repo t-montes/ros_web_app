@@ -41,7 +41,6 @@ def change_value(sid, data):
 
 eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
-
 # Channel REDIS layer
 # channel_layer = channels.layers.get_channel_layer()
 

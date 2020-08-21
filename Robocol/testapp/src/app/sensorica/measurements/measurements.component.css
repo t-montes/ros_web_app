@@ -1,0 +1,132 @@
+label
+{
+	font-family: Helvetica;
+}
+/* Sensor measurements. */
+#sensors_measurements
+{
+	/* z-index: 4; */
+	height: 470px;
+	/* width: calc(40vw - 4% - 0px); */
+	/* position: absolute; */
+	padding:2%;
+	top: 0px;
+	/* bottom: 0; */
+	/* left: 50px; */
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	background: #00000020
+}
+.sensors_measurements_title
+{
+	position: relative;
+	top: 0px;
+	text-align: center
+}
+.sensors_measurements_box
+{
+	text-align: center;
+	margin-top: 10px;
+}
+.sensors_measurements_box input
+{
+	display: block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 49%;
+	padding: 3px;
+	font-size: 16px;
+	font-family: Helvetica;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border: 2px solid #fff;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+.sensors_measurements_box_2
+{
+	text-align: center;
+}
+.sensors_measurements_box_2 input
+{
+	display: block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 49%;
+	padding: 3px;
+	font-size: 16px;
+	font-family: Helvetica;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border: 2px solid #fff;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+.sensors_measurements_box_title
+{
+	display: inline-block;
+	margin-right: 10%;
+	text-align: left;
+}
+#temperature
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#ph
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#humidity
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#air_quality
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#co
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#co2
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#methane
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#hydrogen
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
