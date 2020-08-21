@@ -1,0 +1,28 @@
+
+.barraBrazo{
+	width:330px; 
+	height:400px; 
+	overflow: scroll;
+
+}
+.boxtopic{
+	z-index: 4;
+	height: 522px;
+	width: 510px;
+	/*position: absolute;*/
+	padding:29px;
+	
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	background: #00000020;
+	margin: 0;
+
+}
+.label1{
+	/*position: absolute;*/
+	
+	bottom: 0;
+	margin:auto;
+	display: block;text-align: center;
+	color: black
+}

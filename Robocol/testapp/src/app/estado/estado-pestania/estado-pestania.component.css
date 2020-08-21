@@ -110,12 +110,12 @@ input:focus,input:active,button:focus,button:active{
 }
 
 .cell {
-	width: 285px;
+	/*width: 285px;*/
 	height: 114px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	/*flex-direction: column;*/
 	position: absolute;
 	margin:auto;
 	left: 0;
@@ -123,17 +123,27 @@ input:focus,input:active,button:focus,button:active{
 }
 
 .percentage {
-	font-size: 100%;
+	font-size: 157%;
 	font-weight: bold;
-	color: white;
-	margin-top: 15px;
+	color: black;
+	/*margin-top: 15px;*/
 	font-family: Helvetica
 }
 .percentage i {
 	margin-right: 6px;
 	display: var(--display-charging);
 }
-
+.corriente {
+	font-size: 157%;
+	font-weight: bold;
+	color: black;
+	/*margin-top: 15px;*/
+	font-family: Helvetica
+}
+.corriente i {
+	margin-right: 6px;
+	display: var(--display-charging);
+}
 .info {
 	position: absolute;
 	bottom: 0;
@@ -156,13 +166,13 @@ input:focus,input:active,button:focus,button:active{
 }
 
 .battery {
-	position: relative;
+	/*position: absolute;*/
 	width: 250px;
 	height: 70px;
 	border: 4px solid #FFF;
 	border-radius: 25px;
 }
-.battery:after {
+/*.battery:after {
 	position: absolute;
 	top: 20px;
 	right: -14px;
@@ -171,6 +181,16 @@ input:focus,input:active,button:focus,button:active{
 	background-color: #FFF;
 	border-radius: 0px 5px 5px 0px;
 	content: '';
+}*/
+.end_battery{
+	position: absolute;
+	top: 20px;
+	/*right: -14px;*/
+	width: 10px;
+	height: 30px;
+	background-color: #FFF;
+	border-radius: 0px 5px 5px 0px;
+	display: inline-block;
 }
 
 .acid-container {
@@ -183,7 +203,7 @@ input:focus,input:active,button:focus,button:active{
 	height: 250px;
 	display: flex;
 	flex-direction: column;
-	flex-flow: column-reverse;
+	/*flex-flow: column-reverse;*/
 }
 .acid-container .acid .fill {
 	background: white;
