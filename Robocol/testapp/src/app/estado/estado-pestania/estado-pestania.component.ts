@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 /*import * as $ from "jquery";*/
-<<<<<<< HEAD
 declare var $: any;
 /* { $ } from "../jquery-3.1.1";*/
-=======
 // import { $ } from "../jquery-3.1.1";
->>>>>>> 77ffd3c8753d5e5586202c50934427cfb621e902
 
 @Component({
   selector: 'app-estado-pestania',
@@ -20,18 +17,6 @@ export class EstadoPestaniaComponent implements OnInit {
   }
 
 }
-/*alert("estado-pestania");*/
-
-<<<<<<< HEAD
-//alert( $.fn.jquery )
-/*$("#btn5").animate({ 
-=======
-// alert( $.fn.jquery )
-/*jQuery("#btn5").animate({ 
->>>>>>> 77ffd3c8753d5e5586202c50934427cfb621e902
-	boxShadow: "0px 0px 10px 0px rgb(0, 0, 0)",
-	backgroundColor: 'rgba(0,0,0,0.18)'
-}); */
 
 function refreshLevel(level, bat) {
 	level = level + 2.6
@@ -71,7 +56,7 @@ function changeButtonStatus(nBut, state) {
 		$("#B"+nBut).attr('class', 'button_disabled_motors');
 		$("#B"+nBut).html("Disabled")
 		$("#B"+nBut).attr('onclick', 'enviarToggle(this.id, true)');
-			
+
 	}
 		else
 	{
@@ -151,7 +136,7 @@ mainSocket.onmessage = function(e)
 	changeButtonStatus(5, data['R2_status'])
 	// changeButtonStatus(6, data['R2_status'])
 }
-// aca irian las constantes 
+// aca irian las constantes
 
 function enviarToggle(id_but, new_state) {
 		var toSend = {};
@@ -163,7 +148,7 @@ function enviarToggle(id_but, new_state) {
 		mainSocket.send(JSON.stringify(toSend));
 }
 /*
-if (navigator.appVersion.indexOf("Win")!=-1) 
+if (navigator.appVersion.indexOf("Win")!=-1)
 {
 	$('#titulo').css('margin-top','-10px');
 }
