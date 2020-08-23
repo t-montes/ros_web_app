@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="col-4 p-3">
+    <div class="h4">Login</div>
+    <form [formGroup]="userForm" (ngSubmit)="!userForm.invalid && login(userForm.value)">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="name">
+          Name
+        </label>
+        <input novalidate id="name" class="form-control" formControlName="name" placeholder="Your username or your email">
+        <div class="alert alert-danger alert-dismissible fade show"
+          *ngIf="userForm.get('name').hasError('required') && userForm.get('name').touched">
+          Name required
+        </div>
+
+      </div>
+
+      <div class="form-group  mx-sm-3 mb-2">
+        <label for="password">
+          Password
+        </label>
+        <input id="password" type="password" class="form-control" formControlName="password"
+          placeholder="Your password">
+        <div class="alert alert-danger alert-dismissible fade show"
+          *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
+          Password required
+        </div>
+      </div>
+      <div class="form-group  mx-sm-3 mb-2">
+        <label for="role">
+          Role
+        </label>
+        <select class="form-control" id="role" rows="3" formControlName="role">
+          <option [value]="e" *ngFor="let e of roles">{{e}}</option>
+
+        </select>
+
+        <div class="alert alert-danger alert-dismissible fade show"
+          *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched">
+          Role required
+        </div>
+
+
+
+      </div>
+
+      <div class="row  m-3">
+				<button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Login</button>
+				<button type="button" class="btn btn-danger ml-3" >Cancel</button>
+			</div>
+    </form>
+  </div>
+</div>
