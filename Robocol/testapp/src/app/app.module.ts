@@ -3,10 +3,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { NgModule } from '@angular/core';
-import { PruebaModule } from './submarino/prueba/prueba.module';
+//ROVER
 import { BrazoModule } from './rover/brazo/brazo.module';
 import { TraccionModule } from './rover/traccion/traccion.module';
 import { SensoricaModule } from './rover/sensorica/sensorica.module';
+
+//SUBMARINO
+import { EstadosubModule } from "./submarino/estadosub/estadosub.module";
+import { NavegacionModule } from "./submarino/navegacion/navegacion.module";
+import { PinzaModule } from "./submarino/pinza/pinza.module"; 
+
+//LUNABOT
+import { EstadolunaModule } from "./lunabot/estadoluna/estadoluna.module";
+import { PruebaModule } from './lunabot/prueba/prueba.module';
+
 import { HomeViewComponent } from './views/home/home.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -30,10 +40,21 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PruebaModule,
+
+    //ROVER
     BrazoModule,
     TraccionModule,
     SensoricaModule,
+
+    //SUBMARINO
+    EstadosubModule,
+    NavegacionModule,
+    PinzaModule,
+
+    //LUNABOT
+    EstadolunaModule,
+    PruebaModule,
+    
     SocketIoModule.forRoot(config),
     NgbModule,
     AuthModule,

@@ -12,6 +12,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
          <ul class="nav navbar-nav">
+
+
+            <!-- Pestanas del ROVER -->
+
             <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
                <a routerLinkActive="active" 
                   routerLink="/brazo" class="nav-link">Brazo <span class="sr-only">(current)</span>  </a>
@@ -32,10 +36,34 @@
                <a routerLinkActive="active" 
                   routerLink="/sensorica" class="nav-link">Sensórica <span class="sr-only">(current)</span>  </a>
             </li>
+
+
+            <!-- Pestanas del SUBMARINO -->
             <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
+               <a routerLinkActive="active" 
+                  routerLink="/navegacion" class="nav-link">Navegación <span class="sr-only">(current)</span>  </a>
+            </li>
+            <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
+               <a routerLinkActive="active" 
+                  routerLink="/pinza" class="nav-link">Pinza <span class="sr-only">(current)</span>  </a>
+            </li>
+            <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
+               <a routerLinkActive="active" 
+                  routerLink="/estadoSub" class="nav-link">Estado<span class="sr-only">(current)</span>  </a>
+            </li>
+
+
+            <!-- Pestanas del LUNABOT-->
+
+            <li class="nav-item" *ngxPermissionsOnly="['LUNABOT']">
                <a routerLinkActive="active" 
                   routerLink="/prueba" class="nav-link">Prueba <span class="sr-only">(current)</span>  </a>
             </li>
+            <li class="nav-item" *ngxPermissionsOnly="['LUNABOT']">
+               <a routerLinkActive="active" 
+                  routerLink="/estadoLuna" class="nav-link">Estado <span class="sr-only">(current)</span>  </a>
+            </li>
+
          </ul>
 
 

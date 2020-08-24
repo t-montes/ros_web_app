@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { PruebaService } from '../prueba.service';
+import { PruebaService } from './prueba.service';
 
 @Component({
   selector: 'app-prueba',
