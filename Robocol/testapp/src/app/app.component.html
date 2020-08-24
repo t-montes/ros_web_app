@@ -12,31 +12,44 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
          <ul class="nav navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
                <a routerLinkActive="active" 
                   routerLink="/brazo" class="nav-link">Brazo <span class="sr-only">(current)</span>  </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
                <a routerLinkActive="active" 
                   routerLink="/traccion" class="nav-link">Tracción <span class="sr-only">(current)</span>  </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
                <a routerLinkActive="active" 
                   routerLink="/estado" class="nav-link">Estado <span class="sr-only">(current)</span>  </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
                <a routerLinkActive="active" 
                   routerLink="/estadoTopicos" class="nav-link">Estado de topicos <span class="sr-only">(current)</span>  </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
                <a routerLinkActive="active" 
                   routerLink="/sensorica" class="nav-link">Sensórica <span class="sr-only">(current)</span>  </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
                <a routerLinkActive="active" 
                   routerLink="/prueba" class="nav-link">Prueba <span class="sr-only">(current)</span>  </a>
             </li>
          </ul>
+
+
+         <div class="collapse navbar-collapse flex-grow-1 text-right">
+            <ul class="navbar-nav ml-auto">
+               <span class="navbar-text">
+                  <span class="badge badge-warning" *ngxPermissionsOnly="['ROVER']">ROVER</span>
+                  <span class="badge badge-warning" *ngxPermissionsOnly="['SUBMARINO']">SUBMARINO</span>
+                  <span class="badge badge-warning" *ngxPermissionsOnly="['LUNABOT']">LUNABOT</span>
+                  
+                </span>
+            </ul>
+         </div>
+
       </div>
    </nav>
 
@@ -44,3 +57,4 @@
   <router-outlet></router-outlet>
 </main>
 </div>
+

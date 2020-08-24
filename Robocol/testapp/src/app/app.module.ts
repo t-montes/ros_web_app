@@ -24,7 +24,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeViewComponent
   ],
   imports: [
     BrowserModule,

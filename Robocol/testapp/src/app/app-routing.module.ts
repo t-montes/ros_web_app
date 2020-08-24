@@ -10,33 +10,73 @@ import { EstadoTopicosComponent } from './rover/estado/estado-topicos/estado-top
 import { AuthModule } from './auth/auth.module';
 
 import { NgxPermissionsGuard } from 'ngx-permissions';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [ 
-    HomeViewComponent
+    
   ],
   imports: [
     RouterModule.forRoot([
-      { path: 'home', component: HomeViewComponent },
-      { path: 'brazo', component: BrazoPestaniaComponent },
-      { path: 'traccion', component: TraccionComponent },
-      { path: 'estado', component: EstadoPestaniaComponent},
-      { path: 'estadoTopicos', component: EstadoTopicosComponent},
-      { path: 'sensorica', component: SensoricaComponent },
+      //Visible para todos
+      { path: 'home', component: AuthComponent },
+
+
+      //Visible para ROVER
+      { path: 'brazo', 
+        component: BrazoPestaniaComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+          only: ['ROVER']
+        } }},
+      { path: 'traccion', 
+        component: TraccionComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+          only: ['ROVER']
+      } }},
+      { path: 'estado', 
+        component: EstadoPestaniaComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+          only: ['ROVER']
+      } }},
+      { path: 'estadoTopicos', 
+        component: EstadoTopicosComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+          only: ['ROVER']
+      } }},
+      { path: 'sensorica', 
+        component: SensoricaComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+          only: ['ROVER']
+      } }},
+      
+
+
+      // Visible para SUBMARINO
       { path: 'prueba', 
         component: PruebaComponent,
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-          only: ['LUNABOTICS']
+          only: ['SUBMARINO']
         } }},
 
-      { path: '**', redirectTo: 'home' }
+      // Rutas que no existen redirigir a home  
+      { path: '**', redirectTo: 'home' },
+      { path: ' ', redirectTo: 'home' }
     ])
   ],
   exports: [
-    RouterModule,
-    HomeViewComponent
+    RouterModule
   ],
   providers: [],
 

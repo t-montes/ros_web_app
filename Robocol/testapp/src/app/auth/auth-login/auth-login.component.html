@@ -1,52 +1,40 @@
-<div class="container-fluid">
-  <div class="col-4 p-3">
-    <div class="h4">Login</div>
-    <form [formGroup]="userForm" (ngSubmit)="!userForm.invalid && login(userForm.value)">
-      <div class="form-group mx-sm-3 mb-2">
-        <label for="name">
-          Name
-        </label>
-        <input novalidate id="name" class="form-control" formControlName="name" placeholder="Your username or your email">
-        <div class="alert alert-danger alert-dismissible fade show"
-          *ngIf="userForm.get('name').hasError('required') && userForm.get('name').touched">
-          Name required
-        </div>
-
+<div cass="container-fluid">
+  <div class="card-group">
+    <div class="card">
+      <img src="././assets/Rover.png" class="card-img-top" id="imgRover" alt="Rover">
+      <div class="card-body">
+        <h5 class="card-title">Rover</h5>
+        <p class="card-text">
+          <button type="button" class="btn btn-dark"
+          (click)="login('ROVER')">Entra Aquí</button>
+        </p>
+        <p class="card-text"><small class="text-muted">Activo</small></p>
       </div>
-
-      <div class="form-group  mx-sm-3 mb-2">
-        <label for="password">
-          Password
-        </label>
-        <input id="password" type="password" class="form-control" formControlName="password"
-          placeholder="Your password">
-        <div class="alert alert-danger alert-dismissible fade show"
-          *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
-          Password required
-        </div>
+    </div>
+    <div class="card">
+      <img src="././assets/Submarino.png" class="card-img-top" id="imgSubmarino" alt="Submarino">
+      <div class="card-body">
+        <h5 class="card-title">Submarino</h5>
+        <p class="card-text">
+          <button type="button" class="btn btn-dark"
+          (click)="login('SUBMARINO')">Entra Aquí</button>
+        </p>
+        <p class="card-text"><small class="text-muted">Ultima vez activo hace 3 minutos</small></p>
       </div>
-      <div class="form-group  mx-sm-3 mb-2">
-        <label for="role">
-          Role
-        </label>
-        <select class="form-control" id="role" rows="3" formControlName="role">
-          <option [value]="e" *ngFor="let e of roles">{{e}}</option>
-
-        </select>
-
-        <div class="alert alert-danger alert-dismissible fade show"
-          *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched">
-          Role required
-        </div>
-
-
-
+    </div>
+    <div class="card">
+      <img src="././assets/Lunabot.png" class="card-img-top" id="imgLunabot" alt="Lunabot">
+      <div class="card-body">
+        <h5 class="card-title">Lunabot</h5>
+        <p class="card-text">
+          <button type="button" class="btn btn-dark"
+          (click)="login('LUNABOT')">Entra Aquí</button>
+        </p>
+        <p class="card-text"><small class="text-muted">Ultima vez activo hace 3 minutos</small></p>
       </div>
-
-      <div class="row  m-3">
-				<button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Login</button>
-				<button type="button" class="btn btn-danger ml-3" >Cancel</button>
-			</div>
-    </form>
+    </div>
   </div>
+
+
 </div>
+

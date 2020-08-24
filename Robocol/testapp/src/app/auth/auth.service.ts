@@ -27,11 +27,11 @@ export class AuthService {
       this.setGuestRole();
     } else if (role === 'ROVER') {
       this.setRoverRole();
-    } else if (role === 'SUMBARINO') {
+    } else if (role === 'SUBMARINO') {
       this.setSubmarinoRole();
     }
-    else if (role === 'LUNABOTICS') {
-      this.setLunaboticsRole();
+    else if (role === 'LUNABOT') {
+      this.setLunabotRole();
     }
   }
 
@@ -52,10 +52,10 @@ export class AuthService {
     localStorage.setItem('role', 'SUBMARINO');
   }
 
-  setLunaboticsRole(): void {
+  setLunabotRole(): void {
     this.roleService.flushRoles();
-    this.roleService.addRole('LUNABOTICS', ['']);
-    localStorage.setItem('role', 'LUNABOTICS');
+    this.roleService.addRole('LUNABOT', ['']);
+    localStorage.setItem('role', 'LUNABOT');
   }
 
 
@@ -73,9 +73,8 @@ export class AuthService {
     } else if (role === 'SUBMARINO'){
       this.setSubmarinoRole()
     } else if (role === 'LUNABOTICS'){
-      this.setLunaboticsRole()
+      this.setLunabotRole()
     }
-    this.router.navigateByUrl('/clients/list');
   }
 
   /**

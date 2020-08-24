@@ -25,17 +25,17 @@ export class AuthLoginComponent implements OnInit {
 
   }
   login(user): void {
-    this.authService.login(user.role);
+    this.authService.login(user);
     this.toastrService.success('Successfully login')
   }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      //name: ['', [Validators.required]],
+      //password: ['', [Validators.required]],
       role: ['ROVER', [Validators.required]],
     });
     this.user = new User();
-    this.roles = ['ROVER', 'SUBMARINO', 'LUNABOTICS'];
+    this.roles = ['ROVER', 'SUBMARINO', 'LUNABOT'];
   }
 }
