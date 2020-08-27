@@ -1,0 +1,15 @@
+button{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 6px;
+	padding-left: 6px;
+	margin-left: 3px;
+}
+
+.button_left{
+	margin-right: 3px;
+}
+
+.button_right{
+	margin-left: 3px;
+}
