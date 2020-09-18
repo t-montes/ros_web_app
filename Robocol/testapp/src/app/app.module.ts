@@ -30,6 +30,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPermissionsModule} from 'ngx-permissions'; 
 import { from } from 'rxjs';
 
+//Para slider
+import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
 @NgModule({
@@ -55,6 +58,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     EstadolunaModule,
     PruebaModule,
     
+    NgxBootstrapSliderModule,
     SocketIoModule.forRoot(config),
     NgbModule,
     AuthModule,
