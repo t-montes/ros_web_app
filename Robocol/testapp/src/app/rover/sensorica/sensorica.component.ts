@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sensorica.component.html',
   styleUrls: ['./sensorica.component.css']
 })
-export class SensoricaComponent implements OnInit {
+export class SensoricaComponent implements OnInit
+{
+  public isCollapsedEVA = true;
+  public isCollapsedMeas = true;
+  public isCollapsedAnalysis = true;
+  public isCollapsedDrill = true;
+  public isCollapsedLive = false;
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

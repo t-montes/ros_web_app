@@ -8,9 +8,15 @@ import { StationComponent } from './station/station.component';
 import { LiveComponent } from './live/live.component';
 import { DrillingComponent } from './drilling/drilling.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from '@angular/platform-browser';
+
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule,
+    NgbModule
   ],
   declarations: [
     SensoricaComponent,
@@ -20,6 +26,8 @@ import { DrillingComponent } from './drilling/drilling.component';
     StationComponent,
     LiveComponent,
     DrillingComponent
-  ]
+  ],
+  providers: [],
+  bootstrap: [SensoricaComponent]
 })
 export class SensoricaModule { }
