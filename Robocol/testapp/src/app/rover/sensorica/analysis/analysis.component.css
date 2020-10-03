@@ -23,7 +23,13 @@ label
 }
 .categories
 {
+	color: white;
 	/* position: relative; */
 	/* top: 50px; */
 	/* right: 10px */
+}
+
+pre
+{
+	color: white;
 }

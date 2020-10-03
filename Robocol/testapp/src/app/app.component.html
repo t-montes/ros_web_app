@@ -1,86 +1,63 @@
-<div>
-   <nav class="navbar navbar-expand-sm navbar-dark bg-dark navbar-fixed-top">
-      <div class="navbar-header">
-         <a class="navbar-brand" href="#"><img style="height: 48px; padding: 2px 10px;" src="../assets/robocol-BLANCO.png"></a>
+<div class="bg-dark text-white" id="page">
+  <nav class="navbar navbar-expand-sm navbar-fixed-top" id="top-bar">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img style="height: 48px; padding: 2px 10px;" src="../assets/robocol-BLANCO.png"></a>
+    </div>
 
-      </div>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-         <ul class="nav navbar-nav">
-
-
-            <!-- Pestanas del ROVER -->
-
-            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
-               <a routerLinkActive="active" 
-                  routerLink="/brazo" class="nav-link">Brazo <span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
-               <a routerLinkActive="active" 
-                  routerLink="/traccion" class="nav-link">Tracción <span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
-               <a routerLinkActive="active" 
-                  routerLink="/estado" class="nav-link">Estado <span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
-               <a routerLinkActive="active" 
-                  routerLink="/estadoTopicos" class="nav-link">Ros Info<span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
-               <a routerLinkActive="active" 
-                  routerLink="/sensorica" class="nav-link">Sensórica <span class="sr-only">(current)</span>  </a>
-            </li>
-
-
-            <!-- Pestanas del SUBMARINO -->
-            <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
-               <a routerLinkActive="active" 
-                  routerLink="/navegacion" class="nav-link">Navegación <span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
-               <a routerLinkActive="active" 
-                  routerLink="/pinza" class="nav-link">Pinza <span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
-               <a routerLinkActive="active" 
-                  routerLink="/estadoSub" class="nav-link">Estado<span class="sr-only">(current)</span>  </a>
-            </li>
-
-
-            <!-- Pestanas del LUNABOT-->
-
-            <li class="nav-item" *ngxPermissionsOnly="['LUNABOT']">
-               <a routerLinkActive="active" 
-                  routerLink="/prueba" class="nav-link">Prueba <span class="sr-only">(current)</span>  </a>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['LUNABOT']">
-               <a routerLinkActive="active" 
-                  routerLink="/estadoLuna" class="nav-link">Estado <span class="sr-only">(current)</span>  </a>
-            </li>
-
-         </ul>
-
-
-         <div class="collapse navbar-collapse flex-grow-1 text-right">
-            <ul class="navbar-nav ml-auto">
-               <span class="navbar-text">
-                  <span class="badge badge-warning" *ngxPermissionsOnly="['ROVER']">ROVER</span>
-                  <span class="badge badge-warning" *ngxPermissionsOnly="['SUBMARINO']">SUBMARINO</span>
-                  <span class="badge badge-warning" *ngxPermissionsOnly="['LUNABOT']">LUNABOT</span>
-                  
-                </span>
-            </ul>
-         </div>
-
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="nav navbar-nav">
+        <!-- Pestanas del ROVER -->
+        <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
+          <a routerLinkActive="active" routerLink="/brazo" class="nav-link">Brazo <span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
+          <a routerLinkActive="active" routerLink="/traccion" class="nav-link">Tracción <span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
+          <a routerLinkActive="active" routerLink="/estado" class="nav-link">Estado <span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
+          <a routerLinkActive="active" routerLink="/estadoTopicos" class="nav-link">Ros Info<span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
+          <a routerLinkActive="active" routerLink="/sensorica" class="nav-link">Sensórica <span class="sr-only">(current)</span>  </a>
+        </li>
+        <!-- Pestanas del SUBMARINO -->
+        <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
+          <a routerLinkActive="active" routerLink="/navegacion" class="nav-link">Navegación <span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
+          <a routerLinkActive="active" routerLink="/pinza" class="nav-link">Pinza <span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUBMARINO']">
+          <a routerLinkActive="active" routerLink="/estadoSub" class="nav-link">Estado<span class="sr-only">(current)</span>  </a>
+        </li>
+        <!-- Pestanas del LUNABOT -->
+        <li class="nav-item" *ngxPermissionsOnly="['LUNABOT']">
+          <a routerLinkActive="active" routerLink="/prueba" class="nav-link">Prueba <span class="sr-only">(current)</span>  </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['LUNABOT']">
+          <a routerLinkActive="active" routerLink="/estadoLuna" class="nav-link">Estado <span class="sr-only">(current)</span>  </a>
+        </li>
+      </ul>
+      <!-- Elementos de la derecha barra superior. -->
+      <div class="collapse navbar-collapse flex-grow-1 text-right">
+        <ul class="navbar-nav ml-auto">
+          <span class="navbar-text">
+            <span class="badge badge-warning" *ngxPermissionsOnly="['ROVER']">ROVER</span>
+            <span class="badge badge-warning" *ngxPermissionsOnly="['SUBMARINO']">SUBMARINO</span>
+            <span class="badge badge-warning" *ngxPermissionsOnly="['LUNABOT']">LUNABOT</span>
+          </span>
+        </ul>
       </div>
-   </nav>
-
-<main role="main" class="container-fluid">
-  <router-outlet></router-outlet>
-</main>
+      &nbsp;&nbsp;
+      <button type="button" class="btn btn-outline-warning">Iniciar Sesión</button>
+    </div>
+  </nav>
+  <main role="main" class="container-fluid bg-dark">
+    <router-outlet></router-outlet>
+  </main>
 </div>
-

@@ -1,24 +1,46 @@
-
-#imgRover
+#rover_card
 {
-   -webkit-filter: invert(1);
-   filter: invert(1);
-   background-color: lightgrey;
+  background-color: transparent;
+  /* -webkit-filter: invert(1); */
+  /* filter: invert(1); */
+  /* background-color: rgba(245, 245, 245, 0.2); */
+  /* text-emphasis-color: grey; */
+  /* background-color: rgba(245, 245, 245, 0.5); */
 }
 
-#imgSubmarino
+#submarine_card
 {
-   -webkit-filter: invert(1);
-   filter: invert(1);
-   background-color: lightgrey;
-   width: 101%;
+  background-color: transparent;
+  /* -webkit-filter: invert(1); */
+  /* filter: invert(1); */
+  /* background-color: lightgrey; */
+  /* width: 101%; */
 }
 
-#imgLunabot
+#lunabot_card
 {
-   -webkit-filter: invert(1);
-   filter: invert(1);
-   background-color:  lightgrey;
-   height: 50%;
-   width: 80%;
+  background-color: transparent;
+  /* -webkit-filter: invert(1); */
+  /* filter: invert(1); */
+  /* background-color:  lightgrey; */
+  /* height: 50%; */
+  /* width: 80%; */
+}
+
+/* #projects_container
+{
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+.fill
+{
+    min-height: 100%;
+    height: 100%;
+} */
+
+.card
+{
+  border: 6px solid yellow;
 }

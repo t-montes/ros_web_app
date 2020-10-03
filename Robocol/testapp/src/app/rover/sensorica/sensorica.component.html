@@ -1,31 +1,28 @@
 <div class="container">
   <p>
-    <button type="button" class="btn btn-outline-primary" (click)="isCollapsedEVA = !isCollapsedEVA"
-            [attr.aria-expanded]="!isCollapsedEVA" aria-controls="collapseEVA">
-      EVA
+    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedEVA = !isCollapsedEVA" [attr.aria-expanded]="!isCollapsedEVA" aria-controls="collapseEVA">
+    EVA
     </button>
-    <button type="button" class="btn btn-outline-primary" (click)="isCollapsedMeas = !isCollapsedMeas"
-            [attr.aria-expanded]="!isCollapsedMeas" aria-controls="collapseMeas">
-      Measurements
+    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedMeas = !isCollapsedMeas" [attr.aria-expanded]="!isCollapsedMeas" aria-controls="collapseMeas">
+    Measurements
     </button>
-    <button type="button" class="btn btn-outline-primary" (click)="isCollapsedAnalysis = !isCollapsedAnalysis"
-            [attr.aria-expanded]="!isCollapsedAnalysis" aria-controls="collapseAnalysis">
-      Analysis
+    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedAnalysis = !isCollapsedAnalysis" [attr.aria-expanded]="!isCollapsedAnalysis" aria-controls="collapseAnalysis">
+    Analysis
     </button>
-    <button type="button" class="btn btn-outline-primary" (click)="isCollapsedDrill = !isCollapsedDrill"
-            [attr.aria-expanded]="!isCollapsedDrill" aria-controls="collapseDrill">
-      Drilling
+    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedDrill = !isCollapsedDrill" [attr.aria-expanded]="!isCollapsedDrill" aria-controls="collapseDrill">
+    Drilling
     </button>
-    <button type="button" class="btn btn-outline-primary" (click)="isCollapsedLive = !isCollapsedLive"
-            [attr.aria-expanded]="!isCollapsedLive" aria-controls="collapseLive">
-      Live
+    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedLive = !isCollapsedLive" [attr.aria-expanded]="!isCollapsedLive" aria-controls="collapseLive">
+    Live
+    </button>
+    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedStation = !isCollapsedStation" [attr.aria-expanded]="!isCollapsedStation" aria-controls="collapseStation">
+    Station
     </button>
   </p>
-
   <div id="collapseEVA" [ngbCollapse]="isCollapsedEVA">
     <div class="row">
       <div class="col">
-        <div class="card">
+        <div class="card-transparent">
           <div class="card-body">
             <app-eva></app-eva>
           </div>
@@ -33,30 +30,21 @@
       </div>
     </div>
   </div>
-
   <div id="collapseMeas" [ngbCollapse]="isCollapsedMeas">
     <div class="row">
       <div class="col">
-        <div class="card">
+        <div class="card-transparent">
           <div class="card-body">
             <app-measurements></app-measurements>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <app-analysis></app-analysis>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-
   <div id="collapseAnalysis" [ngbCollapse]="isCollapsedAnalysis">
     <div class="row">
       <div class="col">
-        <div class="card">
+        <div class="card-transparent">
           <div class="card-body">
             <app-analysis></app-analysis>
           </div>
@@ -64,81 +52,25 @@
       </div>
     </div>
   </div>
-
   <div id="collapseDrill" [ngbCollapse]="isCollapsedDrill">
-    <div class="card">
+    <div class="card-transparent">
       <div class="card-body">
         <app-drilling></app-drilling>
       </div>
     </div>
   </div>
-
   <div id="collapseLive" [ngbCollapse]="isCollapsedLive">
-    <div class="card">
+    <div class="card-transparent">
       <div class="card-body">
         <app-live></app-live>
       </div>
     </div>
   </div>
-
-</div>
-
-<!-- <div class="container"> -->
-  <!-- <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" >Measurements</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" >EVA</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" >Weather Station</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" >Live</a>
-    </li>
-  </ul> -->
-  <!-- <h2>Simple Collapsible</h2>
-  <p>Click on the button to toggle between showing and hiding content.</p>
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-  <div id="demo" class="collapse">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </div> -->
-  <!-- <div class="row">
-    <div class="card">
-    	<div class="card-body">
-        <div class="row">
-          <div class="col">
-            <app-measurements></app-measurements>
-          </div>
-          <div class="col">
-            <app-analysis></app-analysis>
-          </div>
-        </div>
+  <div id="collapseStation" [ngbCollapse]="isCollapsedStation">
+    <div class="card-transparent">
+      <div class="card-body">
+        <app-station></app-station>
       </div>
-    </div> -->
-    <!-- <div class="col">
-      <div class="card">
-      	<div class="card-body">
-          <div class="col">
-            <div class="row">
-              <app-station></app-station>
-            </div>
-            <div class="row">
-              <app-drilling></app-drilling>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <app-eva></app-eva>
-    </div>
-    <div class="col">
-      <app-live></app-live>
-    </div>
-  </div> -->
-<!-- </div> -->
+</div>

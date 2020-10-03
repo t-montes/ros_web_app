@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeasurementsComponent } from './measurements/measurements.component';
 
 @Component({
   selector: 'app-sensorica',
@@ -12,6 +13,7 @@ export class SensoricaComponent implements OnInit
   public isCollapsedAnalysis = true;
   public isCollapsedDrill = true;
   public isCollapsedLive = false;
+  public isCollapsedStation = false;
 
   constructor() { }
   ngOnInit() { }
