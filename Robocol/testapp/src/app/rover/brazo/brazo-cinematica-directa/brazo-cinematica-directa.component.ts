@@ -112,6 +112,7 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
 
   stop_changing_value(){
     this.brazoService.stop_changing_value();
+    console.log('joint_6')
   }
 
 }

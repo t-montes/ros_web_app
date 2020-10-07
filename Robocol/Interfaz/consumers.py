@@ -35,9 +35,9 @@ def my_message(sid, data):
 def disconnect(sid):
     print('disconnect ', sid)
 
-@sio.on('change_value')
+@sio.on('get_value')
 def change_value(sid, data):
-    print('Change value: ',data)
+    emit('joint_7_value', 5)
 
 eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
