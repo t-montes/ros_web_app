@@ -36,6 +36,6 @@ export class BrazoService {
   //Create the function that will tell the Socket Server to stop changing the value of the object that was changing, it means all of the buttons are unpressed
 
   stop_changing_value(){
-    this.socket.emit('stop_changing_value');
+    this.socket.emit('stop_changing_value', {'mensaje': 'HOLA'});
   }
 }

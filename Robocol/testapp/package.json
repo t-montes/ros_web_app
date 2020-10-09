@@ -28,11 +28,20 @@
     "ngx-bootstrap-slider": "^1.9.0",
     "ngx-permissions": "^8.1.1",
     "ngx-socket-io": "^3.2.0",
+<<<<<<< HEAD
     "ngx-toastr": "^13.1.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.3",
     "rxjs-compat": "^6.6.3",
     "zone.js": "~0.11.1"
+=======
+    "ngx-toastr": "^13.0.0",
+    "rxjs": "~6.5.5",
+    "rxjs-compat": "^6.6.2",
+    "socket.io": "^2.3.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3"
+>>>>>>> dd1328efa9cc1cb5b6a1d83b45533739c77f5b1f
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1001.4",

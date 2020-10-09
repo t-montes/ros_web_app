@@ -47,13 +47,17 @@ def my_message(sid, data):
 def disconnect(sid):
     print('disconnect ', sid)
 
-@sio.on('change_value')
+@sio.on('get_value')
 def change_value(sid, data):
+<<<<<<< HEAD
     global temp
     print('Change value: ',data)
     sio.emit('get_value', {object: str(temp)})
     print('Message emitted correctly.')
 
+=======
+    emit('joint_7_value', 5)
+>>>>>>> dd1328efa9cc1cb5b6a1d83b45533739c77f5b1f
 
 eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
