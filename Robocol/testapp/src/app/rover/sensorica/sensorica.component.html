@@ -1,76 +1,111 @@
 <div class="container">
-  <p>
-    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedEVA = !isCollapsedEVA" [attr.aria-expanded]="!isCollapsedEVA" aria-controls="collapseEVA">
-    EVA
-    </button>
-    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedMeas = !isCollapsedMeas" [attr.aria-expanded]="!isCollapsedMeas" aria-controls="collapseMeas">
-    Measurements
-    </button>
-    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedAnalysis = !isCollapsedAnalysis" [attr.aria-expanded]="!isCollapsedAnalysis" aria-controls="collapseAnalysis">
-    Analysis
-    </button>
-    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedDrill = !isCollapsedDrill" [attr.aria-expanded]="!isCollapsedDrill" aria-controls="collapseDrill">
-    Drilling
-    </button>
-    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedLive = !isCollapsedLive" [attr.aria-expanded]="!isCollapsedLive" aria-controls="collapseLive">
-    Live
-    </button>
-    <button type="button" class="btn btn-outline-warning" (click)="isCollapsedStation = !isCollapsedStation" [attr.aria-expanded]="!isCollapsedStation" aria-controls="collapseStation">
-    Station
-    </button>
-  </p>
-  <div id="collapseEVA" [ngbCollapse]="isCollapsedEVA">
-    <div class="row">
-      <div class="col">
+  <div class="row">
+    <!-- <div class="container-fluid pl-1 pr-1" id="left_side"> -->
+    <!-- <div class="col"> -->
+
+
+    <div class="col-sm">
+      <!-- <div class="container"> -->
+      <!-- <div id="collapseLive" [ngbCollapse]="isCollapsedLive"> -->
+        <!-- <div class="card-transparent">
+          <div class="card-body"> -->
+            <app-live></app-live>
+          <!-- </div>
+        </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+    <!-- </div> -->
+    <!-- <div class="container-fluid" id="left_side">
+      <div id="collapseLive" [ngbCollapse]="isCollapsedLive">
         <div class="card-transparent">
           <div class="card-body">
-            <app-eva></app-eva>
+            <app-live></app-live>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="col" id="right_side"> -->
+    <!-- <div class="col"> -->
+
+
+    <div class="col-sm">
+      <div class="card-transparent">
+        <div class="card-body">
+          <div class="card bg-transparent border-black">
+            <div class="card-header text-center">
+              <p>
+                <button type="button" class="btn btn-outline-warning" (click)="isCollapsedEVA = !isCollapsedEVA" [attr.aria-expanded]="!isCollapsedEVA" aria-controls="collapseEVA">
+                EVA
+                </button>
+                <button type="button" class="btn btn-outline-warning" (click)="isCollapsedMeas = !isCollapsedMeas" [attr.aria-expanded]="!isCollapsedMeas" aria-controls="collapseMeas">
+                Measurements
+                </button>
+                <button type="button" class="btn btn-outline-warning" (click)="isCollapsedAnalysis = !isCollapsedAnalysis" [attr.aria-expanded]="!isCollapsedAnalysis" aria-controls="collapseAnalysis">
+                Analysis
+                </button>
+                <button type="button" class="btn btn-outline-warning" (click)="isCollapsedDrill = !isCollapsedDrill" [attr.aria-expanded]="!isCollapsedDrill" aria-controls="collapseDrill">
+                Drilling
+                </button>
+                <button type="button" class="btn btn-outline-warning" (click)="isCollapsedStation = !isCollapsedStation" [attr.aria-expanded]="!isCollapsedStation" aria-controls="collapseStation">
+                Station
+                </button>
+              </p>
+            </div>
+            <div class="card-body bg-transparent">
+              <div id="collapseEVA" [ngbCollapse]="isCollapsedEVA">
+                <div class="row">
+                  <div class="col">
+                    <div class="card-transparent">
+                      <div class="card-body">
+                        <app-eva></app-eva>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="collapseMeas" [ngbCollapse]="isCollapsedMeas">
+                <div class="row">
+                  <div class="col">
+                    <div class="card-transparent">
+                      <div class="card-body">
+                        <app-measurements></app-measurements>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="collapseAnalysis" [ngbCollapse]="isCollapsedAnalysis">
+                <div class="row">
+                  <div class="col">
+                    <div class="card-transparent">
+                      <div class="card-body">
+                        <app-analysis></app-analysis>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="collapseDrill" [ngbCollapse]="isCollapsedDrill">
+                <div class="card-transparent">
+                  <div class="card-body">
+                    <app-drilling></app-drilling>
+                  </div>
+                </div>
+              </div>
+              <div id="collapseStation" [ngbCollapse]="isCollapsedStation">
+                <div class="card-transparent">
+                  <div class="card-body">
+                    <app-station></app-station>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="collapseMeas" [ngbCollapse]="isCollapsedMeas">
-    <div class="row">
-      <div class="col">
-        <div class="card-transparent">
-          <div class="card-body">
-            <app-measurements></app-measurements>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="collapseAnalysis" [ngbCollapse]="isCollapsedAnalysis">
-    <div class="row">
-      <div class="col">
-        <div class="card-transparent">
-          <div class="card-body">
-            <app-analysis></app-analysis>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="collapseDrill" [ngbCollapse]="isCollapsedDrill">
-    <div class="card-transparent">
-      <div class="card-body">
-        <app-drilling></app-drilling>
-      </div>
-    </div>
-  </div>
-  <div id="collapseLive" [ngbCollapse]="isCollapsedLive">
-    <div class="card-transparent">
-      <div class="card-body">
-        <app-live></app-live>
-      </div>
-    </div>
-  </div>
-  <div id="collapseStation" [ngbCollapse]="isCollapsedStation">
-    <div class="card-transparent">
-      <div class="card-body">
-        <app-station></app-station>
-      </div>
-    </div>
+    <!-- </div> -->
+
   </div>
 </div>

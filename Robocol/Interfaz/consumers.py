@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Interfaz/consumers.py
+print('Consumers...')
 import os
 import json
 import rospy
@@ -7,18 +8,29 @@ from channels.generic.websocket import WebsocketConsumer
 from std_msgs.msg import String
 import threading
 import time
-
+from std_msgs.msg import Float32
 
 import eventlet
 import socketio
 
-# print('Launching frontend...')
-# os.system('cd ~/catkin_ws')
-# os.system('ls')
-# os.system('cd testapp')
-# os.system('ls')
-# os.system('ng serve')
-# print('Frontend launched.')
+print('Importing Successfully.')
+
+temp = 0.0
+
+def callback(param):
+    global message
+    message = param.data
+
+def callback_temp(param):
+    global temp
+    temp = param.data
+    print(temp)
+
+print('INICIANDO NODO....')
+rospy.init_node('Django_node', anonymous=True)
+rospy.Subscriber('topic_subs', String, callback)
+rospy.Subscriber('/temperatura', Float32, callback_temp)
+#pub_Connection = rospy.Publisher('topic_pub', String, queue_size=10)
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
@@ -37,7 +49,11 @@ def disconnect(sid):
 
 @sio.on('change_value')
 def change_value(sid, data):
+    global temp
     print('Change value: ',data)
+    sio.emit('get_value', {object: str(temp)})
+    print('Message emitted correctly.')
+
 
 eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
@@ -47,13 +63,7 @@ eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 message = ''
 GUI_UPDATE_RATE = 100E-3
 
-def callback(param):
-    global message
-    message = param.data
 
-rospy.init_node('Django_node', anonymous=True)
-rospy.Subscriber('topic_subs', String, callback)
-#pub_Connection = rospy.Publisher('topic_pub', String, queue_size=10)
 
 class HomeConsumer(WebsocketConsumer):
     def connect(self):
@@ -95,3 +105,21 @@ def ROS_exit_helper():
 			os._exit(0)
 		time.sleep(500E-3)
 threading.Thread(target=ROS_exit_helper).start()
+
+
+
+
+
+
+
+
+
+
+def ws_message(message):
+    print('Message')
+
+def ws_connect(message):
+    print('Connected new socket')
+
+def ws_disconnect(message):
+    print('Disonnected new socket')

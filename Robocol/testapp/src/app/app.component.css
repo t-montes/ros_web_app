@@ -1,6 +1,8 @@
 #top-bar
 {
   background-color: black;
+  /* font-family: "Morris"; */
+  /* width: 100%; */
 }
 .nav-link
 {
@@ -9,5 +11,36 @@
 
 #page
 {
-  height: 100%;
+  width: 100vw;
+  font-family: "Morris";
 }
+
+#background
+{
+  background-color: #343a40;
+  border: 0px;
+  width:100vw;
+  height:100vh;
+  font-family: "Morris";
+}
+
+/* .navbar-toggler
+{ */
+/* width: 47px; */
+/* height: 34px; */
+/* background-color: #ffffff;
+} */
+
+
+/* .navbar-toggler .line
+{
+  width: 100%;
+  float: left;
+  height: 2px;
+  background-color: #fff;
+  margin-bottom: 5px;
+} */
+
+/* .custom-toggler.navbar-toggler {
+    border-color: lightgreen;
+} */

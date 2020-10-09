@@ -1,4 +1,4 @@
-label
+/* label
 {
 	font-family: Helvetica;
 }
@@ -7,3 +7,14 @@ label
 	margin-top: 15px;
 	background: #dddddd20;
 }
+
+#left_side
+{
+	width: 50vw;
+	background-color: white;
+}
+
+#right_side
+{
+	width: 49vw;
+} */

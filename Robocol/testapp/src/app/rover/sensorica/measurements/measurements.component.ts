@@ -1,11 +1,67 @@
 import { Component } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { SensoricaService } from '../sensorica.service';
 
 @Component({
   selector: 'app-measurements',
   templateUrl: './measurements.component.html',
   styleUrls: ['./measurements.component.css']
 })
-export class MeasurementsComponent {
+export class MeasurementsComponent
+{
+
+  //Define the variables that will contain current values, which will be display in the html's labels
+  temperature_value: number;
+
+  //Define the variables for the maximum and minimun values of the joints
+  min_value_joint:number = -10;
+  max_value_joint:number = 150;
+
+
+  //Define the variables that will play as Subscribers to variables
+  private _temperature_Sub: Subscription;
+
+  constructor(private sensoricaService: SensoricaService) { }
+
+  ngOnInit(): void
+  {
+
+    //Define initial values for the variables
+    this.temperature_value = 0;
+
+    //Make the subscribers subscribe to their correspondent BrazoService variable
+
+    this._temperature_Sub = this.sensoricaService.temperature_value.subscribe(value_received => this.temperature_value = value_received);
+
+    //We ask for the values of the joints to start the labels
+    this.get_value('Temperature');
+  }
+
+  ngOnDestroy()
+  {
+    //When this component is destroyed, the subscribers must unsubscribe
+    this._temperature_Sub.unsubscribe();
+  }
+
+
+  //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
+  get_value(object: string)
+  {
+    this.sensoricaService.get_value(object);
+  }
+
+  //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
+  change_value(object: string, action: string)
+  {
+    this.sensoricaService.change_value(object, action);
+  }
+
+  //This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
+  stop_changing_value()
+  {
+    this.sensoricaService.stop_changing_value();
+  }
+
   public chartType: string = 'line';
 
   public chartDatasets: Array<any> = [

@@ -99,7 +99,7 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
   //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
 
   get_value(object: string){
-    this.brazoService.get_value(object);  
+    this.brazoService.get_value(object);
   }
 
   //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object

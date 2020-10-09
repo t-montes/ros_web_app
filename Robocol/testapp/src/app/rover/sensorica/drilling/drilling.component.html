@@ -1,31 +1,32 @@
-<div class="card-transparent">
+<div class="card border-warning bg-transparent">
+	<div class="card-header text-warning text-center">
+		Drilling
+	</div>
 	<div class="card-body">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col">
 				<h5 class="card-title">Drilling</h5>
 			</div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class="col">
 				<div class="row">
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">Depth</span>
-							</div>
-							<input disabled type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon3">Depth</span>
 						</div>
-					</div>
-					<div class="col">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">Force</span>
-							</div>
-							<input disabled type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-						</div>
+						<input disabled type="text" class="form-control" id="basic-url-1" aria-describedby="basic-addon3">
 					</div>
 				</div>
-				<button type="button" class="btn btn-dark">Drill!</button>
+				<div class="row">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon3">Force</span>
+						</div>
+						<input disabled type="text" class="form-control" id="basic-url-2" aria-describedby="basic-addon3">
+					</div>
+				</div>
+				<button (mousedown)="change_value('joint_1', 'decrease')" (mouseup)="stop_changing_value()" type="button" class="btn btn-dark">Drill!</button>
 				<button type="button" class="btn btn-danger">Stop</button>
 			</div>
 		</div>

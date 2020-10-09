@@ -3,7 +3,6 @@
 import os
 import sys
 
-
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Robocol.settings')
     try:
@@ -18,7 +17,6 @@ def main():
     arguments.pop()
     arguments.pop()
     execute_from_command_line(arguments)
-
 
 if __name__ == '__main__':
     main()

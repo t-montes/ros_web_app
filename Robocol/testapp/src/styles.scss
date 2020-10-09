@@ -1,0 +1,27 @@
+$theme-colors:
+(
+  "primary": #e4b503,
+  "warning": #e4b503,
+  "danger": #ff4136
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@font-face
+{
+  font-family: 'Morris';
+  src: url('assets/font/morris.ttf') format('truetype');
+}
+
+
+.serif {
+  font-family: "Morris";
+}
+
+.sansserif {
+  font-family: "Morris";
+}
+
+.monospace {
+  font-family: "Morris";
+}
