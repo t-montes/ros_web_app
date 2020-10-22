@@ -2,20 +2,25 @@
 import os
 import time,threading,math
 import numpy as np
-from std_srvs.srv import Empty, EmptyRequest
-from nav_msgs.msg import Odometry
+# from std_srvs.srv import Empty, EmptyRequest
+# from nav_msgs.msg import Odometry
 #ROS imports
 import rospy
-from master_msgs.msg import traction_Orders, imu_Speed, imu_Magnetism, pots, current, rpm, arm_Orders, connection, batteries, geociencia
-from master_msgs.srv import service_enable
+from std_msgs.msg import Float32
+import Interfaz.ROS_sensors as ROS_sensors
+# from master_msgs.msg import traction_Orders, imu_Speed, imu_Magnetism, pots, current, rpm, arm_Orders, connection, batteries, geociencia
+# from master_msgs.srv import service_enable
 
 class Interface(object):
 	def __init__(self):
-		print("Initializating Node...")
+		print("  Initializating Node...")
 		rospy.init_node('Interface_Node')
 		rospy.loginfo("Node successfully initialized.")
-		self.init_subscribers()
-		self.init_publishers()
+		# self.init_subscribers()
+		# self.init_publishers()
+		print("  Initializating sensors...")
+		ROS_sensors.init()
+		print("  Sensors init.")
 		rate = rospy.Rate(10)
 		while not rospy.is_shutdown():
 			rate.sleep()
@@ -35,16 +40,21 @@ class Interface(object):
 		self.pub_Connection = rospy.Publisher('topic_connection', connection, queue_size=10)
 
 	def init_subscribers(self):
-		rospy.Subscriber('topic_traction_orders', traction_Orders, self.traction_Orders_Callback)
-		rospy.Subscriber('topic_arm_orders', arm_Orders, self.arm_Orders_Callback)
-		rospy.Subscriber('topic_imu_speed', imu_Speed, self.IMU_Speed_Callback)
-		rospy.Subscriber('topic_imu_magnetism', imu_Magnetism, self.IMU_Magnetism_Callback)
-		rospy.Subscriber('topic_pots', pots, self.pots_Callback)
-		rospy.Subscriber('topic_current', current, self.current_Callback)
-		rospy.Subscriber('topic_rpm', rpm, self.RPM_Callback)
-		rospy.Subscriber ('odom', Odometry, self.odom_Callback)
-		rospy.Subscriber ('topic_bat', batteries, self.bat_Callback)
-		rospy.Subscriber ('topic_sensors', geociencia, self.sensors_Callback)
+		rospy.loginfo("Subscribers init...");
+		# rospy.Subscriber('temperature', Float32, self.temperature_callback)
+		# rospy.Subscriber('topic_traction_orders', traction_Orders, self.traction_Orders_Callback)
+		# rospy.Subscriber('topic_arm_orders', arm_Orders, self.arm_Orders_Callback)
+		# rospy.Subscriber('topic_imu_speed', imu_Speed, self.IMU_Speed_Callback)
+		# rospy.Subscriber('topic_imu_magnetism', imu_Magnetism, self.IMU_Magnetism_Callback)
+		# rospy.Subscriber('topic_pots', pots, self.pots_Callback)
+		# rospy.Subscriber('topic_current', current, self.current_Callback)
+		# rospy.Subscriber('topic_rpm', rpm, self.RPM_Callback)
+		# rospy.Subscriber ('odom', Odometry, self.odom_Callback)
+		# rospy.Subscriber ('topic_bat', batteries, self.bat_Callback)
+		# rospy.Subscriber ('topic_sensors', geociencia, self.sensors_Callback)
+
+	# def temperature_callback(self,param):
+	#     print(param)
 
 	def traction_Orders_Callback(self,param):
 		# global ultimo_derecho,ultimo_izquierdo,sensibilidad_jk
@@ -239,6 +249,16 @@ class Interface(object):
 	# 	rospy.loginfo("'" + object_name + "'' is in scene!")
 
 
+# # REVISAR COMO HACER ESTO ( NUEVO THREAD DE EXIT HELPER)
+# def threadGUIupdate_sensors():
+# 	global message
+# 	while True:
+# 		options = {}
+# 		#options['type'] = 'updateGUI'
+# 		options['message'] = message
+# 		async_to_sync(channel_layer.group_send)('bgUpdateConsumers_sensors',options)
+# 		time.sleep(GUI_UPDATE_RATE)
+# threading.Thread(target=threadGUIupdate_sensors).start()
 
 # if __name__ == '__main__':
 #     try:

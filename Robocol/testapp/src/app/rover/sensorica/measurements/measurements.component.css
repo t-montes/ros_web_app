@@ -2,6 +2,11 @@ label
 {
 	font-family: Helvetica;
 }
+th {
+    /* background-color: blue; */
+		font-family: Helvetica;
+    color: white;
+}
 /* Sensor measurements. */
 #sensors_measurements
 {

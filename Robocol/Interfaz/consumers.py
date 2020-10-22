@@ -1,73 +1,140 @@
 #!/usr/bin/env python3
 # Interfaz/consumers.py
 print('Consumers...')
-import os
-import json
+import os,sys
+# import json
 import rospy
 from channels.generic.websocket import WebsocketConsumer
-from std_msgs.msg import String
+# from std_msgs.msg import String
 import threading
-import time
-from std_msgs.msg import Float32
-
+# import time
+# from std_msgs.msg import Float32
+# import test_socket
 import eventlet
 import socketio
-
+# print(sys.path)
+import Interfaz.ROS_funcs as ROS
+import Interfaz.socket_arm as socket_arm
+import Interfaz.socket_ros_info as socket_ros_info
+import Interfaz.socket_sensors as socket_sensors
+import Interfaz.socket_status as socket_status
+import Interfaz.socket_traction as socket_traction
 print('Importing Successfully.')
 
-temp = 0.0
+# def thread_socket():
+#
+#
+# threading.Thread(target=thread_socket).start()
 
-def callback(param):
-    global message
-    message = param.data
+# interface = ROS.Interface()
 
-def callback_temp(param):
-    global temp
-    temp = param.data
-    print(temp)
+# print("  Initializating Node...")
+# rospy.init_node('Interface_Node')
+# rospy.loginfo("Node successfully initialized.")
+# interface = ROS.Interface()
+# # ROS threading
+# def thread_ros():
+#     print('\n ROS Init')
+#     while not rospy.is_shutdown():
+#         interface = ROS.Interface()
+# 	# while True:
+# 	# 	if rospy.is_shutdown():
+# 	# 		print("Killing Django...")
+# 	# 		os._exit(0)
+# 	# 	time.sleep(500E-3)
+# threading.Thread(target=thread_ros).start()
 
-print('INICIANDO NODO....')
-rospy.init_node('Django_node', anonymous=True)
-rospy.Subscriber('topic_subs', String, callback)
-rospy.Subscriber('/temperatura', Float32, callback_temp)
-#pub_Connection = rospy.Publisher('topic_pub', String, queue_size=10)
+# def ws_message(message):
+#     print('Message')
+#
+# def ws_connect(message):
+#     print('Connected new socket')
+#
+# def ws_disconnect(message):
+#     print('Disonnected new socket')
 
+# temp = 0.0
+#
+# def callback(param):
+#     global message
+#     message = param.data
+#
+# def callback_temp(param):
+#     global temp
+#     temp = param.data
+#     print(temp)
+#
+# print('INICIANDO NODO....')
+# rospy.init_node('Django_node', anonymous=True)
+# rospy.Subscriber('topic_subs', String, callback)
+# rospy.Subscriber('/temperatura', Float32, callback_temp)
+# pub_Connection = rospy.Publisher('topic_pub', String, queue_size=10)
+
+print('Creating socket as Server...')
 sio = socketio.Server(cors_allowed_origins='*')
+print('Socket Server created.')
+print('Creating WSGI App...')
 app = socketio.WSGIApp(sio)
+print('WSGI App created.')
 
 @sio.event
 def connect(sid, environ):
-    print('connect ', sid)
-
+    print('\n','connect ', sid,'\n')
 @sio.event
 def my_message(sid, data):
-    print('message ', data)
-
+    print('\n','message ', data,'\n')
 @sio.event
 def disconnect(sid):
-    print('disconnect ', sid)
+    print('\n','disconnect ', sid,'\n')
 
-@sio.on('get_value')
-def change_value(sid, data):
-<<<<<<< HEAD
-    global temp
-    print('Change value: ',data)
-    sio.emit('get_value', {object: str(temp)})
-    print('Message emitted correctly.')
+def thread_sensors_socket():
+    port = 4444
+    print('Listening on port',port,'\n')
+    eventlet.wsgi.server(eventlet.listen(('',port)), app)
 
-=======
-    emit('joint_7_value', 5)
->>>>>>> dd1328efa9cc1cb5b6a1d83b45533739c77f5b1f
+threading.Thread(target=thread_sensors_socket).start()
+# socket_arm.arm(sio)
+# socket_ros_info.ros_info(sio)
+socket_sensors.sensors(sio)
+# socket_status.status(sio)
+# socket_traction.traction(sio)
 
-eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
+
+
+# port = 4444
+# print('Listening on port',port,'\n')
+# eventlet.wsgi.server(eventlet.listen(('',port)), app)
+
+#
+# @sio.event
+# def connect(sid, environ):
+#     print('connect ', sid)
+#
+# @sio.event
+# def my_message(sid, data):
+#     print('message ', data)
+#
+# @sio.event
+# def disconnect(sid):
+#     print('disconnect ', sid)
+#
+# @sio.on('get_value')
+# def change_value(sid, data):
+#     global temp
+#     test = test_socket()
+#     # print('Change value: ',data)
+#     test.receive_socket(sio,data,temp)
+#     # sio.emit('get_value', temp)
+#     # print('Message emitted correctly.')
+#
+#
+# eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
 # Channel REDIS layer
 # channel_layer = channels.layers.get_channel_layer()
 
 message = ''
 GUI_UPDATE_RATE = 100E-3
-
-
 
 class HomeConsumer(WebsocketConsumer):
     def connect(self):
@@ -101,29 +168,11 @@ class HomeConsumer(WebsocketConsumer):
 #
 # threading.Thread(target=threadGUIupdate_sensors).start()
 
-#ROS auxiliary exit check
-def ROS_exit_helper():
-	while True:
-		if rospy.is_shutdown():
-			print("Killing Django...")
-			os._exit(0)
-		time.sleep(500E-3)
-threading.Thread(target=ROS_exit_helper).start()
-
-
-
-
-
-
-
-
-
-
-def ws_message(message):
-    print('Message')
-
-def ws_connect(message):
-    print('Connected new socket')
-
-def ws_disconnect(message):
-    print('Disonnected new socket')
+# #ROS auxiliary exit check
+# def ROS_exit_helper():
+# 	while True:
+# 		if rospy.is_shutdown():
+# 			print("Killing Django...")
+# 			os._exit(0)
+# 		time.sleep(500E-3)
+# threading.Thread(target=ROS_exit_helper).start()

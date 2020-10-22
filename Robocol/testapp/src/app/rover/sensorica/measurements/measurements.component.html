@@ -14,39 +14,39 @@
 							<table id="EVA_table">
 								<tr>
 									<th id="EVA_1_1">Temperature:</th>
-									<th id="EVA_1_3"><input disabled id="temperature" name="field1"/></th>
+									<th id="EVA_1_3"><input disabled id="temperature" name="field1" value="{{measurements_value['temp']}} °C"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">PH:</th>
-									<th id="EVA_1_3"><input disabled id="ph" name="field2"/></th>
+									<th id="EVA_1_3"><input disabled id="ph" name="field2" value="{{measurements_value['ph']}}"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">Humidity:</th>
-									<th id="EVA_1_3"><input disabled id="humidity" name="field1"/></th>
+									<th id="EVA_1_3"><input disabled id="humidity" name="field1" value="{{measurements_value['humidity']}} %"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">Air Quality:</th>
-									<th id="EVA_1_3"><input disabled id="air_quality" name="field1"/></th>
+									<th id="EVA_1_3"><input disabled id="air_quality" name="field1" value="{{measurements_value['air_quality']}}"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">CO:</th>
-									<th id="EVA_1_3"><input disabled id="co" name="field1"/></th>
+									<th id="EVA_1_3"><input disabled id="co" name="field1" value="{{measurements_value['co']}} ppm"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">CO2:</th>
-									<th id="EVA_1_3"><input disabled id="co2" name="field2"/></th>
+									<th id="EVA_1_3"><input disabled id="co2" name="field2" value="{{measurements_value['co2']}} ppm"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">Methane Concentration:</th>
-									<th id="EVA_1_3"><input disabled id="methane" name="field1"/></th>
+									<th id="EVA_1_3"><input disabled id="methane" name="field1" value="{{measurements_value['methane']}} ppm"/></th>
 								</tr>
 								<tr>
 									<th id="EVA_1_1">Hydrogen Concentration:</th>
-									<th id="EVA_1_3"><input disabled id="hydrogen" name="field1"/></th>
+									<th id="EVA_1_3"><input disabled id="hydrogen" name="field1" value="{{measurements_value['hydrogen']}} ppm"/></th>
 								</tr>
 							</table>
 				    </div>
-						<button (mousedown)="change_value('Temperature','get')" (mouseup)="stop_changing_value()" type="button" class="btn btn-dark">Get!</button>
+						<button (mousedown)="change_value('Measurements','get')" (mouseup)="stop_changing_value()" type="button" class="btn btn-warning">Get!</button>
 				  </div>
 				</div>
 			</div>
