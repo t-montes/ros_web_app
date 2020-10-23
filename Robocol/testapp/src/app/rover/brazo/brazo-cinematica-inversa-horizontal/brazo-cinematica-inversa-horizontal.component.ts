@@ -15,7 +15,8 @@ export class BrazoCinematicaInversaHorizontalComponent implements OnInit {
   {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/F activado.png', name: 'F activado'}, 
   {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/L activado.png', name: 'L activado'}, 
   {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/R activado.png', name: 'R activado'}
-  ]
+  ];
+  
   constructor() { }
 
   ngOnInit(): void {

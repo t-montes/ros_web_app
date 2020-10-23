@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brazo-cinematica-inversa-vertical.component.css']
 })
 export class BrazoCinematicaInversaVerticalComponent implements OnInit {
+  
   imageSrc:String;
 
   imageButtons = [
   {src:'../../../../assets/Brazo/Cinematica Inversa/Vertical/VERTICAL inicial.png', name: 'VERTICAL inicial'},
   {src:'../../../../assets/Brazo/Cinematica Inversa/Vertical/U activado.png', name: 'U activado'}, 
   {src:'../../../../assets/Brazo/Cinematica Inversa/Vertical/D activado.png', name: 'D activado'}
-  ]
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
