@@ -4,6 +4,8 @@ button{
 	padding-right: 6px;
 	padding-left: 6px;
 	margin-left: 3px;
+	background-color: transparent;
+	border-color: transparent;
 }
 
 .button_left{
@@ -13,3 +15,7 @@ button{
 .button_right{
 	margin-left: 3px;
 }
+
+table { 
+  border-collapse: collapse; 
+} 

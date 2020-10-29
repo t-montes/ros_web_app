@@ -47,7 +47,7 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
 
     //Define initial values for the variables
 
-    this.joint_1_value = 0;
+    this.joint_1_value = 50;
     this.joint_2_value = 0;
     this.joint_3_value = 0;
     this.joint_4_value = 0;

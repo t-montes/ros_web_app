@@ -1,47 +1,19 @@
-<div class="row justify-content-center" style="margin-top: 15px">
-   <div class="col-md-6 col-lg-6 text-center justify-content-center">
-      <div class="card text-center border-warning" style="background-color: transparent; margin-bottom: 30px;">
-         <div class="card-header border-warning text-warning">
-            Cámaras
-         </div>
-         <div class="card-body border-warning">
-            <app-live></app-live>
-         </div>
-      </div>
-      <div class="card text-center border-warning" style="background-color: transparent; margin-bottom: 30px;">
-         <div class="card-header border-warning text-warning">
-            Operation analisis - Safety level
-         </div>
-         <div class="card-body border-warning">
-            <app-analisis-operacion></app-analisis-operacion>
-         </div>
-      </div>
+<div class="col justify-content-center" style="margin-top: 15px; height: 100%;">
+   <div class="row justify-content-center align-middle text-center">
+  	<h1>Esta es la primera fila</h1>
    </div>
-   <div class="col-md-6 col-lg-6 justify-content-center text-center">
-      <div class="card text-center border-warning" style="background-color: transparent; margin-bottom: 30px;">
-         <div class="card-header border-warning text-warning">
-            <button class="btn btn-outline-warning" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="inversa directa">Cinemática directa/inversa</button>
-         </div>
-         <div class="card-body border-warning">
-            <div class="col">
-               <div class="collapse multi-collapse show" id="inversa">
-                  <app-brazo-cinematica-inversa-rotacion></app-brazo-cinematica-inversa-rotacion>
-               </div>
-            </div>
-            <div class="col">
-               <div class="collapse multi-collapse" id="directa">
-                  <app-brazo-cinematica-directa></app-brazo-cinematica-directa>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="card text-center border-warning" style="background-color: transparent; margin-bottom: 30px;">
-         <div class="card-header border-warning text-warning">
-            Operación por coordenadas
-         </div>
-         <div class="card-body border-warning">
-            <app-brazo-coordenadas></app-brazo-coordenadas>
-         </div>
-      </div>
+   <div class="row align-middle">
+  	<div class="col-3 justify-content-center align-middle text-center">
+   		<app-brazo-cinematica-directa></app-brazo-cinematica-directa>
+   	</div>
+   	<div class="col-5 justify-content-center align-middle text-center">
+   		<app-brazo-cinematica-inversa-rotacion></app-brazo-cinematica-inversa-rotacion>
+   	</div>
+   	<div class="col-2 justify-content-center align-middle text-center">
+   		<app-brazo-cinematica-inversa-vertical></app-brazo-cinematica-inversa-vertical>
+   	</div>
+   	<div class="col-2 justify-content-center align-middle text-center">
+   		<app-brazo-cinematica-inversa-horizontal></app-brazo-cinematica-inversa-horizontal>
+   	</div>
    </div>
 </div>
