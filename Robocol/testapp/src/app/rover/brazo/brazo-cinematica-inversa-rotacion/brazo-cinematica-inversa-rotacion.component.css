@@ -1,0 +1,41 @@
+.img-wrapper {
+  position: relative;
+ }
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.img-overlay:before {
+  content: ' ';
+  display: block;
+  /* adjust 'height' to position overlay content vertically */
+  height: 0%;
+}
+
+.btn {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  opacity: 0;
+}
+
+.td{
+  padding: 0px;
+}
+
+table { 
+  border-collapse: collapse;
+  margin-bottom: 0vh;
+  margin-top: 0vh;
+} 
