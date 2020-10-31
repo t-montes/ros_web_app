@@ -17,5 +17,15 @@ button{
 }
 
 table { 
-  border-collapse: collapse; 
+  border-collapse: collapse;
+  margin-bottom: 0vh;
+  margin-top: 0vh;
 } 
+
+td, th{
+	padding: 0px;
+}
+
+#joint1, #joint2, #joint3, #joint4, #joint5, #joint6, #joint7, #gripper{
+	width: 50px;
+}

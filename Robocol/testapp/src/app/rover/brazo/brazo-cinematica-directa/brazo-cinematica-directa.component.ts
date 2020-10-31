@@ -48,13 +48,13 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
     //Define initial values for the variables
 
     this.joint_1_value = 50;
-    this.joint_2_value = 0;
-    this.joint_3_value = 0;
-    this.joint_4_value = 0;
-    this.joint_5_value = 0;
-    this.joint_6_value = 0;
-    this.joint_7_value = 0;
-    this.gripper_value = 0;
+    this.joint_2_value = 30;
+    this.joint_3_value = 70;
+    this.joint_4_value = 80;
+    this.joint_5_value = 10;
+    this.joint_6_value = 19;
+    this.joint_7_value = 35;
+    this.gripper_value = 67;
 
     //Make the subscribers subscribe to their correspondent BrazoService variable
 

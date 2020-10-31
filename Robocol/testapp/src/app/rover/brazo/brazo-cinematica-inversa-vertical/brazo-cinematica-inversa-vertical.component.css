@@ -23,13 +23,19 @@
   height: 0%;
 }
 
-.btn {
+button {
   height: 100%;
   width: 100%;
   padding: 0px;
   opacity: 0;
 }
 
-.td{
-  padding: 0px;
+td, th{
+  padding: 0vh;
 }
+
+table { 
+  border-collapse: collapse;
+  margin-bottom: 0vh;
+  margin-top: 0vh;
+} 
