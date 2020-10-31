@@ -1,3 +1,6 @@
+
+
+
 /* h2
 {
   font-family: Helvetica;
@@ -24,3 +27,18 @@ input
 	top: 80px;
 	right: 50px;
 } */
+
+
+.no-gutters
+{
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 10;
+    padding-left: 10;
+    padding-right: 10;
+    padding-left: 10;
+  }
+}

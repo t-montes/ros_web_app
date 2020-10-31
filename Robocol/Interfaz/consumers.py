@@ -93,11 +93,12 @@ def thread_sensors_socket():
     eventlet.wsgi.server(eventlet.listen(('',port)), app)
 
 threading.Thread(target=thread_sensors_socket).start()
-# socket_arm.arm(sio)
-# socket_ros_info.ros_info(sio)
+
+socket_arm.arm(sio)
+socket_ros_info.ros_info(sio)
 socket_sensors.sensors(sio)
-# socket_status.status(sio)
-# socket_traction.traction(sio)
+socket_status.status(sio)
+socket_traction.traction(sio)
 
 
 

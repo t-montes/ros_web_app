@@ -17,13 +17,13 @@ def sensors(sio):
     print('  TESTING SENSORS')
     num = 1
     tem = 0.0
-    rospy.init_node('Interface_Sensors_Node')
-    def temperature_callback(param):
-        tem = param.data
-        sio.emit('measurements', {'temp':tem})
-        print(param)
-        
-    rospy.Subscriber('/temperatura', Float32, temperature_callback)
+    # rospy.init_node('Interface_Sensors_Node')
+    # def temperature_callback(param):
+    #     tem = param.data
+    #     sio.emit('measurements', {'temp':tem})
+    #     print(param)
+
+    # rospy.Subscriber('/temperatura', Float32, temperature_callback)
 
 
     @sio.on('get_value_sensors')
@@ -40,9 +40,7 @@ def sensors(sio):
         print('  data:',data)
         print('  object:',data['object'])
         print('  action:',data['action'])
-        # load_meas()
-
-
+        load_meas()
 
     def emit_value(temperature):
         sio.emit('measurements', {'temp':temperature})
@@ -59,9 +57,9 @@ def sensors(sio):
         sio.emit('measurements', {'temp':tem,'ph':ph1,'humidity':hum,'air_quality':air,'co':co1,'co2':co2,'methane':met,'hydrogen':hyd})
 
     # sensors = Interfaz.ROS_sensors.Sensors()
-    # while True:
+    while True:
     # while not sensors.is_off():
-        # load_meas()
+        load_meas()
         # tem = sensors.get_value()
         # tem = num
     #     print('Emitting...')

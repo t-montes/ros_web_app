@@ -8,12 +8,12 @@ import { MeasurementsComponent } from './measurements/measurements.component';
 })
 export class SensoricaComponent implements OnInit
 {
-  public isCollapsedEVA = true;
-  public isCollapsedMeas = false;
-  public isCollapsedAnalysis = true;
-  public isCollapsedDrill = true;
-  public isCollapsedLive = false;
-  public isCollapsedStation = true;
+  // public isCollapsedEVA = true;
+  // public isCollapsedMeas = false;
+  // public isCollapsedAnalysis = true;
+  // public isCollapsedDrill = true;
+  // public isCollapsedLive = false;
+  // public isCollapsedStation = true;
 
   constructor() { }
   ngOnInit() { }
