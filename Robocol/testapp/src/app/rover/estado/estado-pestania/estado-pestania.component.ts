@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 declare var $: any;
 /* { $ } from "../jquery-3.1.1";*/
 // import { $ } from "../jquery-3.1.1";
+import { Observable, Subscription } from 'rxjs';
+import { EstadoService } from '../estado.service';
 
 @Component({
   selector: 'app-estado-pestania',
@@ -11,11 +13,66 @@ declare var $: any;
 })
 export class EstadoPestaniaComponent implements OnInit {
 
-  constructor() { }
+	voltaje1_value: number ; //topico echo
+	voltaje2_value: number ; //Data
+	voltaje3_value: number ; //Type
+
+	private _voltaje1_value: Subscription; //topico echo
+	private _voltaje2_value: Subscription; //Data
+	private _voltaje3_value: Subscription; //Type
+
+
+  constructor(private estadoService: EstadoService) { }
 
   ngOnInit(): void {
-  }
 
+  	//Define initial values for the variables
+		this.voltaje1_value = 12; 
+		this.voltaje2_value = 13; 
+				this.voltaje3_value = 14; 
+
+		//Make the subscribers subscribe to their correspondent estadoService variable
+		this._voltaje1_value = this.estadoService.voltaje1_value.subscribe(
+			(value_received) => (this.voltaje1_value = value_received)
+		); //topico echo
+		this._voltaje2_value = this.estadoService.voltaje2_value.subscribe(
+			(value_received) => (this.voltaje2_value = value_received)
+		); //Data
+		this._voltaje3_value = this.estadoService.voltaje3_value.subscribe(
+			(value_received) => (this.voltaje3_value = value_received)
+		); //Type
+
+
+		//We ask for the values of the joints to start the labels
+		this.get_value('volate1'); //topico echo
+		this.get_value('volate2'); //Data
+		this.get_value('volate3'); //Type
+  }
+ngOnDestroy() {
+
+		this._voltaje1_value.unsubscribe(); //topico echo
+		this._voltaje2_value.unsubscribe(); //Data
+		this._voltaje3_value.unsubscribe(); //Type
+
+	}
+	//This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
+
+	get_value(object: string) {
+		this.estadoService.get_value(object);
+	}
+
+	//This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
+
+	change_value(object: string, action: string) {
+		this.estadoService.change_value(object, action);
+	}
+
+	//This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
+
+	stop_changing_value() {
+		this.estadoService.stop_changing_value();
+		console.log('joint_2');
+	}
 }
 
 function refreshLevel(level, bat) {

@@ -1,89 +1,82 @@
-.contenedor1{
-	/*z-index: 4;
+/* .contenedor1 { */
+/*z-index: 4;
 	height: 679px;*/
-	width: 93%;
-	padding:50px;
-	top: 0;bottom: 0;
+/* width: 93%;
+	padding: 50px;
+	top: 0;
+	bottom: 0;
 	border-radius: 20px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 	background: #00000020;
 	margin: 0;
 	display: inline-block;
 	text-align: left;
-	
 }
-.contenedor2{
-	
-	/*z-index: 3;
+.contenedor2 { */
+/*z-index: 3;
 	height: 679px;
 	width: 710px;*/
-	padding:50px;
-	top: 0; 
+/* padding: 50px;
+	top: 0;
 	bottom: 0;
-	/*left: 750px;*/
+	/*left: 750px;*/ /*
 	border-radius: 20px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 	background: #00000020;
 	margin: 0;
 	display: inline-block;
-}
-.label1{
+} */
+/* .label1 {
 	/*position: absolute;*/
-	
+/*
 	bottom: 0;
-	margin:auto;
+	margin: auto;
 	display: block;
 	text-align: center;
 	color: black;
 	font-size: 30px;
-}
+} */
 
-
-.barraBrazo{
-	/*width:500px; */
-	height:500px; 
+/* .barraBrazo {
+	/*width:500px; */ /*
+	height: 500px;
 	overflow: auto;
 	font-size: large;
-
-
-}
-.boxtopic{
+} */
+/* .boxtopic {
 	z-index: 4;
-	height: 522px;	
+	height: 522px;
 	width: 510px;
 	/*position: absolute;*/
-	padding:29px;
-	
+/*padding: 29px;
+
 	border-radius: 20px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 	background: #00000020;
 	margin: 0;
-
-}
-
-.labelTopEcho{
-
+} */
+/* 
+.labelTopEcho {
 	bottom: 0;
-	margin:0;
+	margin: 0;
 	display: inline;
 	text-align: left;
 	color: black;
 	font-size: x-large;
 	padding-right: 75px;
 	width: 430px;
-}
-.TopicoEcho{
+} */
+/* .TopicoEcho {
 	bottom: 0;
-	margin:0;
+	margin: 0;
 	display: inline;
 	text-align: right;
 	color: black;
 	/*width: -webkit-fill-available;*/
-}
-.labelData{
-
+/*} */
+/* .labelData {
 	bottom: 0;
-	margin:0;
+	margin: 0;
 	display: inline;
 	text-align: right;
 	color: black;
@@ -91,7 +84,32 @@
 	padding-right: 75px;
 	width: 630px;
 }
-.inputData{
-	width:-webkit-fill-available;
-	height: 310px;	
-}	
+.inputData {
+	width: -webkit-fill-available;
+	height: 310px;
+}
+*/body {
+	background-color: #161616;
+}/*
+.col-card {
+	border: #e4b503;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+} */
+/* dfkjkfj */
+.columnasContenido {
+	margin: 18px;
+	background-color: #161616;
+	border: #e4b503 !important;
+}
+#lista {
+	height: 100%;
+	overflow: auto;
+	font-size: large;
+	padding: 3%;
+}
+.inputData {
+	width: -webkit-fill-available;
+	height: 310px;
+}
