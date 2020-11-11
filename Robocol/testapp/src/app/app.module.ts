@@ -1,6 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+
+
 
 import { NgModule } from '@angular/core';
 //ROVER
@@ -32,6 +35,9 @@ import { from } from 'rxjs';
 
 //Para slider
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+
+import {APP_BASE_HREF} from '@angular/common';
+
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
@@ -70,7 +76,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     }),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [Title, {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

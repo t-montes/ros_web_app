@@ -1,10 +1,10 @@
 {
   "name": "testapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --deploy-url /static/",
     "test": "ng test",
     "lint": "ng lint",
     "postinstall": "ngcc",
@@ -35,7 +35,8 @@
     "zone.js": "~0.11.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1001.4",
+    "@angular-builders/custom-webpack": "^10.0.1",
+    "@angular-devkit/build-angular": "^0.1001.7",
     "@angular/cli": "^10.1.4",
     "@angular/compiler-cli": "^10.1.4",
     "@types/jasmine": "^3.5.14",
@@ -52,6 +53,7 @@
     "karma-jasmine-html-reporter": "^1.5.4",
     "protractor": "~7.0.0",
     "ts-node": "~9.0.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "webpack-bundle-tracker": "^0.4.2-beta"
   }
 }
