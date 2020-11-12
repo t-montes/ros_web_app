@@ -12,21 +12,21 @@ export class BrazoCinematicaInversaRotacionComponent implements OnInit {
   imageSrcYaw:String;
 
   imageButtonsPitch = [
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/PITCH inicial.png', name: 'PITCH inicial'},
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/PITCHCW activado.png', name: 'PITCHCW activado'}, 
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/PITCHCCW activado.png', name: 'PITCHCW activado'}
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/PITCH inicial.png', name: 'PITCH inicial'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/PITCHCW activado.png', name: 'PITCHCW activado'}, 
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/PITCHCCW activado.png', name: 'PITCHCW activado'}
   ];
 
   imageButtonsRoll = [
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/ROLL inicial.png', name: 'ROLL inicial'},
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/ROLLCW activado.png', name: 'ROLLCW activado'}, 
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/ROLLCCW activado.png', name: 'ROLLCW activado'}
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/ROLL inicial.png', name: 'ROLL inicial'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/ROLLCW activado.png', name: 'ROLLCW activado'}, 
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/ROLLCCW activado.png', name: 'ROLLCW activado'}
   ];
 
   imageButtonsYaw = [
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/YAW inicial.png', name: 'YAW inicial'},
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/YAWCW activado.png', name: 'YAWCW activado'}, 
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Rotacion/YAWCCW activado.png', name: 'YAWCW activado'}
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/YAW inicial.png', name: 'YAW inicial'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/YAWCW activado.png', name: 'YAWCW activado'}, 
+  {src:'./static/assets/Brazo/Cinematica Inversa/Rotacion/YAWCCW activado.png', name: 'YAWCW activado'}
   ];
 
   constructor() { }

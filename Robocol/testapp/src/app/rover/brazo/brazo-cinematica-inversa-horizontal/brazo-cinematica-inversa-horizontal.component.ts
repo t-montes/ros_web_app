@@ -10,13 +10,13 @@ export class BrazoCinematicaInversaHorizontalComponent implements OnInit {
   imageSrc:String;
 
   imageButtons = [
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/HORIZONTAL inicial.png', name: 'HORIZONTAL inicial'},
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/B activado.png', name: 'B activado'}, 
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/F activado.png', name: 'F activado'}, 
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/L activado.png', name: 'L activado'}, 
-  {src:'../../../../assets/Brazo/Cinematica Inversa/Horizontal/R activado.png', name: 'R activado'}
+  {src:'./static/assets/Brazo/Cinematica Inversa/Horizontal/HORIZONTAL inicial.png', name: 'HORIZONTAL inicial'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Horizontal/B activado.png', name: 'B activado'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Horizontal/F activado.png', name: 'F activado'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Horizontal/L activado.png', name: 'L activado'},
+  {src:'./static/assets/Brazo/Cinematica Inversa/Horizontal/R activado.png', name: 'R activado'}
   ];
-  
+
   constructor() { }
 
   ngOnInit(): void {

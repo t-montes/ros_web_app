@@ -144,10 +144,11 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "dist", "testapp"),
+    os.path.join(BASE_DIR, "dist", "testapp",'assets'),
 ]
 
 WEBPACK_LOADER = {
     'DEFAULT': {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
     }
-} 
+}
