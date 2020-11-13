@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { SensoricaService } from '../sensorica.service';
+import { SocketService } from "../../../socket.service";
+
 @Component({
   selector: 'app-measurements',
   templateUrl: './measurements.component.html',
@@ -44,7 +46,7 @@ export class MeasurementsComponent
   //Define the variables that will play as Subscribers to variables
   private _temperature_Sub: Subscription;
   // Constructor
-  constructor(private sensoricaService: SensoricaService) { }
+  constructor(private socketService: SocketService,private sensoricaService: SensoricaService) { }
   // On Init
   ngOnInit(): void
   {
@@ -81,6 +83,12 @@ export class MeasurementsComponent
   stop_changing_value()
   {
     this.sensoricaService.stop_changing_value();
+  }
+
+
+  sendMessage()
+  {
+      this.socketService.sendMessage("Test");
   }
 }
 

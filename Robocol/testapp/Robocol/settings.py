@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'channels',
+    'channels',
     # 'rest_framework',
     'webpack_loader'
 ]
@@ -144,7 +144,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "dist", "testapp"),
-    os.path.join(BASE_DIR, "dist", "testapp",'assets'),
+    # os.path.join(BASE_DIR, "dist", "testapp",'assets'),
 ]
 
 WEBPACK_LOADER = {

@@ -3,13 +3,13 @@
 print('Consumers...')
 import os,sys
 import json
-# import rospy
+import rospy
 # from channels.generic.websocket import WebsocketConsumer
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 # from std_msgs.msg import String
-# import threading
-# import time
+import threading
+import time
 # from std_msgs.msg import Float32
 # import test_socket
 # import eventlet
@@ -30,9 +30,9 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 # interface = ROS.Interface()
 
-# print("  Initializating Node...")
-# rospy.init_node('Interface_Node')
-# rospy.loginfo("Node successfully initialized.")
+print("  Initializating Node...")
+rospy.init_node('Interface_Node')
+rospy.loginfo("Node successfully initialized.")
 # interface = ROS.Interface()
 # # ROS threading
 # def thread_ros():
@@ -171,11 +171,11 @@ class HomeConsumer(AsyncWebsocketConsumer):
 #
 # threading.Thread(target=threadGUIupdate_sensors).start()
 
-# #ROS auxiliary exit check
-# def ROS_exit_helper():
-# 	while True:
-# 		if rospy.is_shutdown():
-# 			print("Killing Django...")
-# 			os._exit(0)
-# 		time.sleep(500E-3)
-# threading.Thread(target=ROS_exit_helper).start()
+# ROS auxiliary exit check
+def ROS_exit_helper():
+	while True:
+		if rospy.is_shutdown():
+			print("Killing Django...")
+			os._exit(0)
+		time.sleep(500E-3)
+threading.Thread(target=ROS_exit_helper).start()

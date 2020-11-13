@@ -142,7 +142,7 @@ import { AuthComponent } from './auth/auth.component';
         }
       },
 
-      // Rutas que no existen redirigir a home  
+      // Rutas que no existen redirigir a home
       { path: '**', redirectTo: 'home' },
       { path: ' ', redirectTo: 'home' }
     ])
