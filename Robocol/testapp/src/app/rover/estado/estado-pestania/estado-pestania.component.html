@@ -1,85 +1,94 @@
 <body scroll="no">
-	<div class="card border-warning bg-transparent text-center" id="stateTests">
-		<img
-				src="../../../assets/Rover_icon_status.png"
+	  <div class="row">
+	    <div class="col-6">
+	    	<div class="card border-warning bg-transparent text-center" id="stateTests">
+			<img
+					src="../../../assets/Rover_icon_status.png"
+					style="
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						margin: auto;
+						width: auto;
+						height: 80%;
+					">
+			<label
+				id="temperature"
 				style="
 					position: absolute;
 					left: 0;
 					right: 0;
-					top: 0;
+					top: 165px;
 					bottom: 0;
 					margin: auto;
-					width: auto;
-					height: 80%;
-				">
-		<label
-			id="temperature"
-			style="
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 165px;
-				bottom: 0;
-				margin: auto;
-				display: block;
-				text-align: center;
-			"
-			>Temperature<br />0 &degC</label
-		>
+					display: block;
+					text-align: center;
+				"
+				>Temperature<br />0 &degC</label
+			>
 
-		<div class="contenedorPeque" id="state_tests">
-			<label id="L0_speed">Speed: 0 RPM</label>
-			<label id="L0_current">Current: 0 A</label>
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests">
+				<label id="L0_speed">Speed: 0 RPM</label>
+				<label id="L0_current">Current: 0 A</label>
 
-			<button id="B2" class="button_enabled_motors">Enabled</button>
-		</div>
+				<button id="B2" class="button_enabled_motors">Enabled</button>
+			</div>
 
-		<div class="contenedorPeque" id="state_tests1">
-			<label id="L1_speed"> Speed: 0 RPM</label>
-			<label id="L1_current">Current: 0 A</label>
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests1">
+				<label id="L1_speed"> Speed: 0 RPM</label>
+				<label id="L1_current">Current: 0 A</label>
 
-			<button id="B1" class="button_enabled_motors">Enabled</button>
-		</div>
+				<button id="B1" class="button_enabled_motors">Enabled</button>
+			</div>
 
-		<div class="contenedorPeque" id="state_tests2">
-			<label id="L2_speed">Speed: 0 RPM</label>
-			<label id="L2_current">Current: 0 A</label>
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests2">
+				<label id="L2_speed">Speed: 0 RPM</label>
+				<label id="L2_current">Current: 0 A</label>
 
-			<button id="B0" class="button_enabled_motors">Enabled</button>
-		</div>
-		<div class="contenedorPeque" id="state_tests3">
-			<label id="R0_speed">Speed: 0 RPM</label>
-			<label id="R0_current">Current: 0 A</label>
+				<button id="B0" class="button_enabled_motors">Enabled</button>
+			</div>
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests3">
+				<label id="R0_speed">Speed: 0 RPM</label>
+				<label id="R0_current">Current: 0 A</label>
 
-			<button id="B5" class="button_enabled_motors">Enabled</button>
-		</div>
-		<div class="contenedorPeque" id="state_tests4">
-			<label id="R1_speed">Speed: 0 RPM</label>
-			<label id="R1_current">Current: 0 A</label>
+				<button id="B5" class="button_enabled_motors">Enabled</button>
+			</div>
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests4">
+				<label id="R1_speed">Speed: 0 RPM</label>
+				<label id="R1_current">Current: 0 A</label>
 
-			<button id="B4" class="button_enabled_motors">Enabled</button>
-		</div>
+				<button id="B4" class="button_enabled_motors">Enabled</button>
+			</div>
 
-		<div class="contenedorPeque" id="state_tests5">
-			<label id="R2_speed">Speed: 0 RPM</label>
-			<label id="R2_current">Current: 0 A</label>
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests5">
+				<label id="R2_speed">Speed: 0 RPM</label>
+				<label id="R2_current">Current: 0 A</label>
 
-			<button id="B3" class="button_enabled_motors">Enabled</button>
-		</div>
-		<!-- Hecho Franz -->
-		<div class="contenedorPeque" id="state_tests6">
-			<button id="B6" style="margin: 4.5px 0" class="button_enabled_motors">
-				Enable All
-			</button>
-		</div>
-		<!-- Termina Hecho Franz -->
+				<button id="B3" class="button_enabled_motors">Enabled</button>
+			</div>
+			<!-- Hecho Franz -->
+			<div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests6">
+				<button id="B6" style="margin: 4.5px 0" class="button_enabled_motors">
+					Enable All
+				</button>
+			</div>
+			<!-- Termina Hecho Franz -->
 	</div>
+
+    </div>
+    	<div id= "columnaCamara"class="col-6 card border-warning bg-transparent text-center">
+
+    	</div>
+  </div>
+
 	<div class="card border-warning bg-transparent text-center" id="batteries">
 		<div class="row">
 			<div class="col-sm">
 				<div class="bateria">
 					<div class="puntaBateria"></div>
-					<div class="contenedorBateria card border-warning bg-transparent">
+					<div class="contenedorBateria card border-warning bg-transparent" style="margin: 0">
 						<div class="carga"></div>
 						<div class="carga"></div>
 						<div class="carga"></div>
@@ -91,7 +100,10 @@
 						<div class="carga"></div>
 						<div class="carga"></div>
 					</div>
+				<p class= "descripcionBateria" style=" font-size: small; margin: 0;color: rgba(228, 181, 3, 1)"> Nombre </p> 
+				<p class= "descripcionBateria" style="font-size:xx-small; margin: 0;color: rgba(228, 181, 3, 1)"># v  # A  #C</p>
 				</div>
+
 			</div>
 			<div class="col-sm">
 				<div class="bateria">
@@ -109,6 +121,8 @@
 						<div class="carga"></div>
 					</div>
 				</div>
+					<p class= "descripcionBateria" style=" font-size: small; margin: 0;color: rgba(228, 181, 3, 1)"> Nombre </p> 
+				<p class= "descripcionBateria" style="font-size:xx-small; margin: 0;color: rgba(228, 181, 3, 1)"># v  # A  #C</p>
 			</div>
 			<div class="col-sm">
 				<div class="bateria">
@@ -126,6 +140,8 @@
 						<div class="carga"></div>
 					</div>
 				</div>
+				<p class= "descripcionBateria" style=" font-size: small; margin: 0;color: rgba(228, 181, 3, 1)"> Nombre </p> 
+				<p class= "descripcionBateria" style="font-size:xx-small; margin: 0;color: rgba(228, 181, 3, 1)"># v  # A  #C</p>
 			</div>
 			<div class="col-sm">
 				<div class="bateria">
@@ -143,11 +159,13 @@
 						<div class="carga"></div>
 					</div>
 				</div>
+					<p class= "descripcionBateria" style=" font-size: small; margin: 0;color: rgba(228, 181, 3, 1)"> Nombre </p> 
+				<p class= "descripcionBateria" style="font-size:xx-small; margin: 0;color: rgba(228, 181, 3, 1)"># v  # A  #C</p>
 			</div>
 			<div class="col-sm">
-				<div class="bateria">
+				<div class="bateria" >
 					<div class="puntaBateria"></div>
-					<div class="contenedorBateria card border-warning bg-transparent">
+					<div class="contenedorBateria card border-warning bg-transparent" style="margin-bottom: 0;">
 						<div class="carga"></div>
 						<div class="carga"></div>
 						<div class="carga"></div>
@@ -159,6 +177,8 @@
 						<div class="carga"></div>
 						<div class="carga"></div>
 					</div>
+					<p class= "descripcionBateria" style=" font-size: small; margin: 0;color: rgba(228, 181, 3, 1)"> Nombre </p> 
+					<p class= "descripcionBateria" style="font-size:xx-small; margin: 0;color: rgba(228, 181, 3, 1)"># v  # A  #C</p>
 				</div>
 			</div>
 		</div>

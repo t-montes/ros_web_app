@@ -112,7 +112,18 @@ body {
 .bateria {
 	height: 100%;
 	width: 50%;
+	margin-bottom: 0;
+	margin: auto;
 }
 .card{
-	border-radius: 8px
+	border-radius: 8px;
+	margin-bottom:15px;
+}
+.columnaCamara{
+	height: 100%;
+	margin-bottom:15px;
+
+}
+#descripcionBateria{
+	font-size: small; margin: 0;color: rgba(228, 181, 3, 1)
 }
