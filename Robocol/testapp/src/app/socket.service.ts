@@ -17,6 +17,7 @@ export class SocketService {
   }
   onMessage(): Observable<Object>
   {
+    console.log('MEEEEEEEESSSSSSSSSAAAAAAAAAAAAGGGGGGGGGEEEEEEEEEEEEEEEE RECEIVEEEEEEEEED');
     return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data)); };});
   }
 }

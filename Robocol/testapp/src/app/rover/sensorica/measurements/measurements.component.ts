@@ -85,6 +85,7 @@ export class MeasurementsComponent
     this.sensoricaService.stop_changing_value();
   }
 
+  // this.socketService.onMessage().subscribe((message: Object) => {this.messages = [...this.messages, message["message"]];});
 
   sendMessage()
   {
