@@ -5,7 +5,8 @@ import { Router } from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
-export class SocketService {
+export class SocketService
+{
   private socket;
   constructor(private router: Router )
   {
@@ -19,4 +20,11 @@ export class SocketService {
   {
     return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data)); };});
   }
+  close()
+  {
+    console.log("Closing Sensors socket...");
+    this.socket.close();
+    // this.socket.terminate();
+    console.log("Sensors socket closed.");
+  };
 }

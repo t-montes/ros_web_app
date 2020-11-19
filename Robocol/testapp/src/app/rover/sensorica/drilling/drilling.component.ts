@@ -98,20 +98,23 @@ export class DrillingComponent implements OnInit {
 
   //This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
 
-  get_value(object: string){
-    this.sensoricaService.get_value(object);
+  get_value(object: string)
+  {
+    // this.sensoricaService.get_value(object);
   }
 
   //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
 
-  change_value(object: string, action: string){
-    this.sensoricaService.change_value(object, action);
+  change_value(object: string, action: string)
+  {
+    // this.sensoricaService.change_value(object, action);
   }
 
   //This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
 
-  stop_changing_value(){
-    this.sensoricaService.stop_changing_value();
+  stop_changing_value()
+  {
+    // this.sensoricaService.stop_changing_value();
   }
 
 }
