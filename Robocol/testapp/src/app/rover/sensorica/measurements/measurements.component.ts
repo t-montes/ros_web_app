@@ -66,6 +66,7 @@ export class MeasurementsComponent
   // }
 
 
+  // this.socketService.onMessage().subscribe((message: Object) => {this.messages = [...this.messages, message["message"]];});
 
 }
 
