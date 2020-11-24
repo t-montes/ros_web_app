@@ -5,8 +5,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 //ROVER
 import { BrazoModule } from './rover/brazo/brazo.module';
-import { TraccionModule } from './rover/traccion/traccion.module';
 import { SensoricaModule } from './rover/sensorica/sensorica.module';
+import { PilotModule  } from "./rover/traccion/pilot/pilot.module";
+import { CopilotModule  } from "./rover/traccion/copilot/copilot.module";
 
 //SUBMARINO
 import { EstadosubModule } from "./submarino/estadosub/estadosub.module";
@@ -46,7 +47,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
     //ROVER
     BrazoModule,
-    TraccionModule,
+    PilotModule,
+    CopilotModule,
     SensoricaModule,
 
     //SUBMARINO
