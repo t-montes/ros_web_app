@@ -1,17 +1,25 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TraccionComponent } from './traccion.component';
-import { JoystickComponent } from './joystick/joystick.component';
-import { TelemetryComponent } from './telemetry/telemetry.component';
+import { LiveComponent } from './live/live.component';
+import { TelemetryComponent } from './copilot/telemetry/telemetry.component';
+import { JoystickComponent } from './pilot/joystick/joystick.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    TraccionComponent,
+    TraccionComponent, 
+    LiveComponent,
+
+    //Pilot
     JoystickComponent,
-    TelemetryComponent  
-  ]
+
+    //Copilot
+    TelemetryComponent
+    
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class TraccionModule { }
