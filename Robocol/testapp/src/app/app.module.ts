@@ -3,12 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
-
-
 import { NgModule } from '@angular/core';
 //ROVER
 import { BrazoModule } from './rover/brazo/brazo.module';
-import { TraccionModule } from './rover/traccion/traccion.module';
+import { PilotModule  } from "./rover/traccion/pilot/pilot.module";
+import { CopilotModule  } from "./rover/traccion/copilot/copilot.module";
+// import { TraccionModule } from './rover/traccion/traccion.module';
 import { SensoricaModule } from './rover/sensorica/sensorica.module';
 
 //SUBMARINO
@@ -52,7 +52,9 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
     //ROVER
     BrazoModule,
-    TraccionModule,
+    PilotModule,
+    CopilotModule,
+    // TraccionModule,
     SensoricaModule,
 
     //SUBMARINO

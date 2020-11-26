@@ -4,7 +4,9 @@ import { HomeViewComponent } from './views/home/home.component';
 
 //ROVER
 import { BrazoPestaniaComponent } from './rover/brazo/brazo-pestania/brazo-pestania.component';
-import { TraccionComponent } from './rover/traccion/traccion.component';
+import { PilotComponent } from './rover/traccion/pilot/pilot.component';
+import { CopilotComponent } from './rover/traccion/copilot/copilot.component';
+// import { TraccionComponent } from './rover/traccion/traccion.component';
 import { EstadoPestaniaComponent } from './rover/estado/estado-pestania/estado-pestania.component';
 import { SensoricaComponent } from './rover/sensorica/sensorica.component';
 import { EstadoTopicosComponent } from './rover/estado/estado-topicos/estado-topicos.component';
@@ -45,8 +47,8 @@ import { AuthComponent } from './auth/auth.component';
         }
       },
       {
-        path: 'traccion',
-        component: TraccionComponent,
+        path: 'pilot',
+        component: PilotComponent,
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
@@ -54,6 +56,26 @@ import { AuthComponent } from './auth/auth.component';
           }
         }
       },
+      {
+        path: 'copilot',
+        component: CopilotComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+            only: ['ROVER']
+          }
+        }
+      },
+      // {
+      //   path: 'traccion',
+      //   component: TraccionComponent,
+      //   canActivate: [NgxPermissionsGuard],
+      //   data: {
+      //     permissions: {
+      //       only: ['ROVER']
+      //     }
+      //   }
+      // },
       {
         path: 'estado',
         component: EstadoPestaniaComponent,
