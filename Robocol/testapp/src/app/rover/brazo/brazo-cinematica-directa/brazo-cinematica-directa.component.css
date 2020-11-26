@@ -1,6 +1,4 @@
 button{
-	padding-top: 3px;
-	padding-bottom: 3px;
 	padding-right: 6px;
 	padding-left: 6px;
 	margin-left: 3px;
@@ -23,7 +21,15 @@ table {
 } 
 
 td, th{
-	padding: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+td, th, button{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #joint1, #joint2, #joint3, #joint4, #joint5, #joint6, #joint7, #gripper{

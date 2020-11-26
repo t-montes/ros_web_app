@@ -15,25 +15,24 @@ export class SensoricaService
   private socket;
   constructor(private router: Router )
   {
-    console.log("Sensórica Service... está en construcción");
+    console.log("SensoricaService: constructor");
     this.socket = new WebSocket("ws://" + window.location.host + "/ws" + this.router.url + "/");
   }
   sendMessage(message: string)
   {
-    console.log("Servicio enviando mensaje...");
+    console.log("SensoricaService: sendMessage");
     this.socket.send(JSON.stringify({ message: message }));
   }
   onMessage(): Observable<Object>
   {
-    console.log("service on masaje... digo, mensaje...");
+    console.log("SensoricaService: onMessage");
     return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data)); };});
   }
   close()
   {
-    console.log("Closing Sensors socket...");
+    console.log("SensoricaService: close");
     this.socket.close();
     // this.socket.terminate();
-    console.log("Sensors socket closed.");
   };
 }
 

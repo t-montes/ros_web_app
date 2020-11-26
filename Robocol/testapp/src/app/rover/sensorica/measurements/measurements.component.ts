@@ -17,12 +17,12 @@ export class MeasurementsComponent
   // Constructor
   constructor(private sensoricaService: SensoricaService)//,private socketService: SocketService)
   {
-    console.log('JAJAJAJA es el measurements component')
+    console.log('MeasurementsComponent: constructor')
   }
   // On Init
   ngOnInit(): void
   {
-    console.log('Que bueno que es iniciar');
+    console.log('MeasurementsComponent: ngOnInit');
     // Define initial values for the variables
     this.measurements_value = -1;
     // Make the subscribers subscribe to their correspondent SensoricaService variable
@@ -38,14 +38,14 @@ export class MeasurementsComponent
   {
     // When this component is destroyed, the subscribers must unsubscribe
     // this._temperature_Sub.unsubscribe();
-    console.log(':( Me destruí')
-    this.sensoricaService.close();
+    // console.log('MeasurementsComponent: ngOnDestroy')
+    // this.sensoricaService.close();
   }
 
   sendMessage()
   {
-    console.log('Chateando...');
-    this.sensoricaService.sendMessage("Test");
+    console.log('MeasurementsComponent: sendMessage');
+    this.sensoricaService.sendMessage("Sensors");
   }
   // This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
   // get_value(object: string)

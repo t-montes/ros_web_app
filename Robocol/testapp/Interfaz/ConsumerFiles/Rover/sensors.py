@@ -41,7 +41,7 @@ class SensorsConsumer(AsyncWebsocketConsumer):
         # self.pub_cmd.publish(msg)
         print('')
         # await self.send("jeje")
-        await self.send(text_data=json.dumps({"message": "jujuju"}))
+        # await self.send(text_data=json.dumps({"message": "jujuju"}))
     async def chat_message(self, event):
         print('SENSORS MESSAGE')
         print(event)
