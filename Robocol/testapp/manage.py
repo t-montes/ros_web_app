@@ -14,8 +14,8 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     arguments = sys.argv
-    arguments.pop()
-    arguments.pop()
+    # arguments.pop()
+    # arguments.pop()
     execute_from_command_line(arguments)
 
 if __name__ == '__main__':
