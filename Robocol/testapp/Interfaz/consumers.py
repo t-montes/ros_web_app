@@ -31,8 +31,8 @@ import time
 # interface = ROS.Interface()
 
 print("  Initializating Node...")
-# rospy.init_node('Interface_Node')
-# rospy.loginfo("Node successfully initialized.")
+rospy.init_node('Interface_Node')
+rospy.loginfo("Node successfully initialized.")
 # interface = ROS.Interface()
 # # ROS threading
 # def thread_ros():
