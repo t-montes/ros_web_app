@@ -20,11 +20,24 @@ export class EstadoTopicosComponent implements OnInit
 	{
 
 	}
-	
-	get_value(object: string){
-    this.estadoService.get_value(object);
- 	 }
-  	receive_message(object: string){
-    this.estadoService.receive_message(object);
-  	}
+	//This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
+
+	get_value(object: string)
+	{
+		this.estadoService.get_value(object);
+	}
+
+	//This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
+
+	change_value(object: string, action: string)
+	{
+		this.estadoService.change_value(object, action);
+	}
+
+	//This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
+
+	stop_changing_value()
+	{
+		this.estadoService.stop_changing_value();
+	}
 }
