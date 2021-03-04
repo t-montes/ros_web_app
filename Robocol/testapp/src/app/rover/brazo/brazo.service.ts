@@ -8,6 +8,58 @@ import { Observable } from "rxjs";
 })
 export class BrazoService {
 
+  private socket;
+  constructor(private router: Router )
+  {
+    console.log("BrazoService: constructor");
+    console.log("ws://" + window.location.host + "/ws" + this.router.url + "/");
+    this.socket = new WebSocket("ws://" + window.location.host + "/ws" + this.router.url + "/");
+  }
+  change_value(object: String, action:String)
+  {
+    console.log("BrazoService: change_value");
+    this.socket.send(JSON.stringify({ id:"change_value", object: object, action: action}));
+  }
+
+  stop_changing_value()
+  {
+    console.log("BrazoService: stop_changing_value");
+    this.socket.send(JSON.stringify({ id:"stop_changing_value"}));
+  }
+
+  get_values(){
+    console.log("BrazoService: get_values");
+    this.socket.send(JSON.stringify({ id:"get_values"}));
+  }
+
+  onMessage(): Observable<Object>
+  {
+    console.log("BrazoService: onMessage");
+    return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data)); };});
+  }
+  close()
+  {
+    console.log("BrazoService: close");
+    this.socket.close();
+    // this.socket.terminate();
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
   //Define the variables that will be listening to the messages comming from the Socket Server  
   joint_1_value= this.socketIO.fromEvent<number>('joint_1_value');
   joint_2_value= this.socketIO.fromEvent<number>('joint_2_value');
@@ -62,5 +114,5 @@ export class BrazoService {
 
   stop_changing_value(){
     // this.socket.emit('stop_changing_value', {'mensaje': 'HOLA'});
-  }
+  }*/
 }

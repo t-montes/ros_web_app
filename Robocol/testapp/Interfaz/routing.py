@@ -12,7 +12,8 @@ from Interfaz.ConsumerFiles.Rover import traction
 
 websocket_urlpatterns = [
     path('ws/interfaz/', consumers.HomeConsumer),
-    path('ws/brazo/', arm.ArmConsumer),
+    path('ws/brazo/piloto/', arm.ArmConsumer),
+    path('ws/brazo/copiloto/', arm.ArmConsumer),
     path('ws/estadoTopicos/', ros.RosConsumer),
     path('ws/sensorica/', sensors.SensorsConsumer),
     path('ws/estado/', status.StatusConsumer),

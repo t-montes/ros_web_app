@@ -4,6 +4,7 @@ import { HomeViewComponent } from './views/home/home.component';
 
 //ROVER
 import { BrazoPestaniaComponent } from './rover/brazo/brazo-pestania/brazo-pestania.component';
+import { BrazoCopilotoComponent } from './rover/brazo/brazo-copiloto/brazo-copiloto.component';
 import { PilotComponent } from './rover/traccion/pilot/pilot.component';
 import { CopilotComponent } from './rover/traccion/copilot/copilot.component';
 // import { TraccionComponent } from './rover/traccion/traccion.component';
@@ -33,18 +34,31 @@ import { AuthComponent } from './auth/auth.component';
     RouterModule.forRoot([
       //Visible para todos
       { path: 'home', component: AuthComponent },
-
-
       //Visible para ROVER
       {
         path: 'brazo',
-        component: BrazoPestaniaComponent,
-        canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['ROVER']
-          }
-        }
+            children: [
+          {
+            path: 'piloto', 
+            component: BrazoPestaniaComponent,
+            canActivate: [NgxPermissionsGuard],
+            data: {
+              permissions: {
+              only: ['ROVER']
+              }
+            }
+          },
+          {
+            path: 'copiloto',
+            component: BrazoCopilotoComponent,
+            canActivate: [NgxPermissionsGuard],
+            data: {
+              permissions: {
+              only: ['ROVER']
+              }
+            }
+          },
+        ],
       },
       {
         path: 'pilot',

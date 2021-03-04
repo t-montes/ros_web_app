@@ -24,9 +24,14 @@ export class BrazoCinematicaInversaHorizontalComponent implements OnInit {
   	this.imageSrc = this.imageButtons[0].src;
   }
 
-  changeImage(imageNameObject) {
-    this.brazoService.sendMessage("Arm");
+  change_value(imageNameObject, action:String) {
+    this.brazoService.change_value('inverse_horizontal', action);
     this.imageSrc = imageNameObject.src;
+  }
+
+  stop_changing_value(){
+    this.stop_changing_value();
+    this.imageSrc = this.imageButtons[0].src;
   }
 
 }

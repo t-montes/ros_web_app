@@ -1,49 +1,38 @@
-<div class="row">
-	<div class="col">
-		<h6 style="margin-bottom: 15px;">Coordenadas deseadas</h6>
-		<div class="row justify-content-center text-center">
-			<p style="margin-right: 15px;">X: </p>
-			<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 70px; height: 30px;" name="" value="25 m" id = "xDeseada">
-		</div>
-		<div class="row justify-content-center text-center">
-			<p style="margin-right: 15px;">Y: </p>
-			<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 70px; height: 30px;" name="" value="25 m" id = "yDeseada">
-		</div>
-		<div class="row justify-content-center text-center">
-			<p style="margin-right: 15px;">Z: </p>
-			<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 70px; height: 30px;" name="" value="25 m" id = "zDeseada">
-		</div>
-	</div>
-	<div class="col">
-		<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 100%; height: 100%;" name="" value="ROS ;)" id = "rosText">
-	</div>
-	<div class="col">
-		<h6 style="margin-bottom: 15px;">Coordenadas actuales</h6>
-		<div class="row justify-content-center text-center">
-			<p style="margin-right: 15px;">X: </p>
-			<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 70px; height: 30px;" name="" value="25 m" id = "xActual">
-		</div>
-		<div class="row justify-content-center text-center">
-			<p style="margin-right: 15px;">Y: </p>
-			<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 70px; height: 30px;" name="" value="25 m" id = "yActual">
-		</div>
-		<div class="row justify-content-center text-center">
-			<p style="margin-right: 15px;">Z: </p>
-			<input class="justify-content-center text-center" disabled style="color: black;font-size: 15px; width: 70px; height: 30px;" name="" value="25 m" id = "zActual">
-		</div>
-	</div>
-</div>
-<div class="row" style="margin-top: 15px;">
-	<div class="col">
-		<button style="width: 80px;">Ir</button>
-	</div>
-	<div class="col">
-		<button style="margin-bottom: 7px;width: 80px;">Plan</button>
-		<button style="margin-bottom: 7px;width: 80px;">Execute</button>
-		<button style="width: 80px;">Plan & execute</button>
-	</div>
-	<div class="col">
-		<button style="margin-bottom: 7px; width: 80px;">Stop</button>
-		<button style="width: 80px;">Cancel</button>
-	</div>
+<div class="d-flex flex-row p-2 bd-highlight exterior justify-content-center align-items-center text-center" style="width: 100%; height: 100%;">
+   <div class="d-flex flex-column col-lg-4 bd-highlight justify-content-center align-items-center text-center" style="width: 100%; min-height: 100%; border-right: 1px solid #ccc;">
+      <div class="d-flex card border-0 bg-transparent justify-content-center align-items-center text-center rounded-0" style="display: flex; width: 100%; border-radius: 0;">
+         <div class="d-flex align-items-center card-body bg-black justify-content-around " style="display: flex; width: 100%; height: 42vh;">
+            <div class="d-flex flex-column justify-content-center align-items-center text-center"><label style="color: #6c757d;">-----"ROS"-----</label>
+            </div>
+         </div>
+         <div class="card-footer text-muted justify-content-around" style="padding: 0px; width: 100%;">
+            <div class="d-flex bd-highlight">
+               <div class="p-2 flex-fill bd-highlight" style="padding: 0px;"><button class="p-2 flex-fill bd-highlight" type="button" class="btn btn-primary rounded-0">Plan</button></div>
+               <div class="p-2 flex-fill bd-highlight" style="padding: 0px;"><button class="p-2 flex-fill bd-highlight" type="button" class="btn btn-primary rounded-0">Execute</button></div>
+               <div class="p-2 flex-fill bd-highlight" style="padding: 0px;"><button class="p-2 flex-fill bd-highlight" type="button" class="btn btn-primary rounded-0">P & E</button></div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="d-flex flex-column col-lg-8 bd-highlight justify-content-center align-items-center text-center" style="width: 100%; height: 100%;">
+      <div class="d-flex card bg-transparent justify-content-center align-items-center text-center tarjetaControl rounded-0" style="display: flex; width: 100%; border:none; border-radius: 0;">
+         <div class="card-header"><label style="color: #6c757d;">Current coordinates: X:25m Y:25m Z:25m</label><button class="p-2 flex-fill bd-highlight" type="button" class="btn btn-primary rounded-0" style="padding-top: 0px; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px; margin-left: 5px; margin-right: 2.5px;">Stop</button> <button class="p-2 flex-fill bd-highlight" type="button" class="btn btn-primary rounded-0" style="padding-top: 0px; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px; margin-left: 2.5px; margin-right: 5px;">Cancel</button></div>
+         <div class="d-flex align-items-center card-body bg-black justify-content-around cuerpoTarjetaControl" style="display: flex; width: 100%; height: 33vh;">
+            <div class="d-flex flex-column justify-content-center align-items-center text-center rotacion">
+               <img src="https://i.pinimg.com/originals/6e/07/dd/6e07ddaa95a55f9f48efa477556d7e52.gif">
+            </div>
+         </div>
+         <div class="card-footer text-muted">
+            <form class="form-inline" action=""> 
+               <label for="x">Desired coordinates X: </label> 
+               <input class="form-control rounded-0" id="x" name="x" style="padding: 0px; margin-left:5px; margin-right: 5px; width: 7vh;"> 
+               <label for="y">Y: </label> 
+               <input class="form-control rounded-0" id="y" name="y" style="padding: 0px; margin-left:5px; margin-right: 5px; width: 7vh;"> 
+               <label for="z">Z: </label> 
+               <input class="form-control rounded-0" id="z" name="z" style="padding: 0px; margin-left:5px; margin-right: 20px; width: 7vh;"> 
+               <button type="button" class="btn btn-primary rounded-0">Go</button>
+            </form>
+         </div>
+      </div>
+   </div>
 </div>

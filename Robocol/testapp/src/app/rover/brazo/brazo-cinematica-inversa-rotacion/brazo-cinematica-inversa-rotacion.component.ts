@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BrazoService } from '../brazo.service';
 
 @Component({
   selector: 'app-brazo-cinematica-inversa-rotacion',
@@ -29,7 +30,7 @@ export class BrazoCinematicaInversaRotacionComponent implements OnInit {
   {src:'/static/assets/Brazo/Cinematica Inversa/Rotacion/YAWCCW activado.png', name: 'YAWCW activado'}
   ];
 
-  constructor() { }
+  constructor(private brazoService: BrazoService) { }
 
   ngOnInit(): void {
     this.imageSrcPitch = this.imageButtonsPitch[0].src;
@@ -37,16 +38,26 @@ export class BrazoCinematicaInversaRotacionComponent implements OnInit {
     this.imageSrcYaw = this.imageButtonsYaw[0].src;
   }
 
-  changeImagePitch(index:number) {
+  changeImagePitch(index:number, action:String) {
+    this.brazoService.change_value('Pitch', action);
     this.imageSrcPitch = this.imageButtonsPitch[index].src;
   }
 
-  changeImageRoll(index:number) {
+  changeImageRoll(index:number, action:String) {
+    this.brazoService.change_value('Roll', action);
     this.imageSrcRoll = this.imageButtonsRoll[index].src;
   }
 
-  changeImageYaw(index:number) {
+  changeImageYaw(index:number, action:String) {
+    this.brazoService.change_value('Yaw', action);
     this.imageSrcYaw = this.imageButtonsYaw[index].src;
+  }
+
+  stop_changing_value(){
+    this.brazoService.stop_changing_value();
+    this.imageSrcYaw = this.imageButtonsYaw[0].src;
+    this.imageSrcRoll = this.imageButtonsRoll[0].src;
+    this.imageSrcPitch = this.imageButtonsPitch[0].src;
   }
 
 }
