@@ -4,8 +4,10 @@ import { HomeViewComponent } from './views/home/home.component';
 
 //ROVER
 import { BrazoPestaniaComponent } from './rover/brazo/brazo-pestania/brazo-pestania.component';
+import { BrazoCopilotoComponent } from './rover/brazo/brazo-copiloto/brazo-copiloto.component';
 import { PilotComponent } from './rover/traccion/pilot/pilot.component';
 import { CopilotComponent } from './rover/traccion/copilot/copilot.component';
+// import { TraccionComponent } from './rover/traccion/traccion.component';
 import { EstadoPestaniaComponent } from './rover/estado/estado-pestania/estado-pestania.component';
 import { SensoricaComponent } from './rover/sensorica/sensorica.component';
 import { EstadoTopicosComponent } from './rover/estado/estado-topicos/estado-topicos.component';
@@ -32,18 +34,31 @@ import { AuthComponent } from './auth/auth.component';
     RouterModule.forRoot([
       //Visible para todos
       { path: 'home', component: AuthComponent },
-
-
       //Visible para ROVER
       {
         path: 'brazo',
-        component: BrazoPestaniaComponent,
-        canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['ROVER']
-          }
-        }
+            children: [
+          {
+            path: 'piloto', 
+            component: BrazoPestaniaComponent,
+            canActivate: [NgxPermissionsGuard],
+            data: {
+              permissions: {
+              only: ['ROVER']
+              }
+            }
+          },
+          {
+            path: 'copiloto',
+            component: BrazoCopilotoComponent,
+            canActivate: [NgxPermissionsGuard],
+            data: {
+              permissions: {
+              only: ['ROVER']
+              }
+            }
+          },
+        ],
       },
       {
         path: 'pilot',
@@ -65,6 +80,16 @@ import { AuthComponent } from './auth/auth.component';
           }
         }
       },
+      // {
+      //   path: 'traccion',
+      //   component: TraccionComponent,
+      //   canActivate: [NgxPermissionsGuard],
+      //   data: {
+      //     permissions: {
+      //       only: ['ROVER']
+      //     }
+      //   }
+      // },
       {
         path: 'estado',
         component: EstadoPestaniaComponent,
@@ -153,7 +178,7 @@ import { AuthComponent } from './auth/auth.component';
         }
       },
 
-      // Rutas que no existen redirigir a home  
+      // Rutas que no existen redirigir a home
       { path: '**', redirectTo: 'home' },
       { path: ' ', redirectTo: 'home' }
     ])

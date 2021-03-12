@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SensorPresionComponent implements OnInit {
 
+  state:String;
+
   constructor() { }
 
   ngOnInit(): void {
+  	this.state = 'Not catched';
+  }
+
+  changeState(newState:String){
+  	this.state = newState;
+  }
+
+  catched():boolean{
+  	return this.state == 'Catched!';
   }
 
 }

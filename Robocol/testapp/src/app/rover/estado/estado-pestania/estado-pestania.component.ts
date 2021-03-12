@@ -11,8 +11,8 @@ import { EstadoService } from '../estado.service';
   templateUrl: './estado-pestania.component.html',
   styleUrls: ['./estado-pestania.component.css']
 })
-export class EstadoPestaniaComponent implements OnInit {
-
+export class EstadoPestaniaComponent implements OnInit
+{
 	voltaje1_value: number ; //topico echo
 	voltaje2_value: number ; //Data
 	voltaje3_value: number ; //Type
@@ -21,61 +21,66 @@ export class EstadoPestaniaComponent implements OnInit {
 	private _voltaje2_value: Subscription; //Data
 	private _voltaje3_value: Subscription; //Type
 
+	constructor(private estadoService: EstadoService) { }
 
-  constructor(private estadoService: EstadoService) { }
-
-  ngOnInit(): void {
-
-  	//Define initial values for the variables
+	ngOnInit(): void
+	{
+	  	//Define initial values for the variables
 		this.voltaje1_value = 12; 
 		this.voltaje2_value = 13; 
-				this.voltaje3_value = 14; 
+		this.voltaje3_value = 14; 
 
-		//Make the subscribers subscribe to their correspondent estadoService variable
-		this._voltaje1_value = this.estadoService.voltaje1_value.subscribe(
-			(value_received) => (this.voltaje1_value = value_received)
-		); //topico echo
-		this._voltaje2_value = this.estadoService.voltaje2_value.subscribe(
-			(value_received) => (this.voltaje2_value = value_received)
-		); //Data
-		this._voltaje3_value = this.estadoService.voltaje3_value.subscribe(
-			(value_received) => (this.voltaje3_value = value_received)
-		); //Type
+		// //Make the subscribers subscribe to their correspondent estadoService variable
+		// this._voltaje1_value = this.estadoService.voltaje1_value.subscribe(
+		// 	(value_received) => (this.voltaje1_value = value_received)
+		// ); //topico echo
+		// this._voltaje2_value = this.estadoService.voltaje2_value.subscribe(
+		// 	(value_received) => (this.voltaje2_value = value_received)
+		// ); //Data
+		// this._voltaje3_value = this.estadoService.voltaje3_value.subscribe(
+		// 	(value_received) => (this.voltaje3_value = value_received)
+		// ); //Type
 
 
 		//We ask for the values of the joints to start the labels
 		this.get_value('volate1'); //topico echo
 		this.get_value('volate2'); //Data
 		this.get_value('volate3'); //Type
-  }
-ngOnDestroy() {
+	}
+	ngOnDestroy()
+	{
 
-		this._voltaje1_value.unsubscribe(); //topico echo
-		this._voltaje2_value.unsubscribe(); //Data
-		this._voltaje3_value.unsubscribe(); //Type
+		// this._voltaje1_value.unsubscribe(); //topico echo
+		// this._voltaje2_value.unsubscribe(); //Data
+		// this._voltaje3_value.unsubscribe(); //Type
 
 	}
+	sendMessage()
+	  {
+	    console.log('EstadoPestaniaComponent: sendMessage');
+	    this.estadoService.sendMessage("Status");
+	  }
 	//This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
-
-	get_value(object: string) {
+	get_value(object: string)
+	{
 		this.estadoService.get_value(object);
 	}
 
 	//This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
-
-	change_value(object: string, action: string) {
+	change_value(object: string, action: string)
+	{
 		this.estadoService.change_value(object, action);
 	}
 
 	//This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
-
-	stop_changing_value() {
+	stop_changing_value()
+	{
 		this.estadoService.stop_changing_value();
-		console.log('joint_2');
 	}
 }
 
-function refreshLevel(level, bat) {
+function refreshLevel(level, bat)
+{
 	level = level + 2.6
 	document.getElementById("level"+bat).style.setProperty('--acid-height', (level * document.getElementById("battery").clientHeight) + "px");
 	level = level - 2.6
@@ -106,7 +111,8 @@ function refreshLevel(level, bat) {
 //refreshLevel(0.9,0)
 //refreshLevel(0.4,1)
 //refreshLevel(0.2,2)
-function changeButtonStatus(nBut, state) {
+function changeButtonStatus(nBut, state)
+{
 
 	if (state==false)
 	{

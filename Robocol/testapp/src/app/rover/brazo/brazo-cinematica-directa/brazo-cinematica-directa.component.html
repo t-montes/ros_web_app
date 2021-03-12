@@ -3,7 +3,7 @@
       <tr class="align-middle">
          <th class="align-middle" scope="row">J1</th>
          <td class="align-middle"><button (mousedown)="change_value('joint_1', 'decrease')" (mouseup)="stop_changing_value()" id="1_ATRAS" type="button" class="btn btn-secondary button_left"><i class="fas fa-angle-left fa-2x"></i></button></td>
-         <td class="align-middle" class="text-center col-6 align-middle" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px;">
+         <td class="align-middle" class="text-center col-6 align-middle" style="margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; min-width: 20vh; max-width: 20vh;">
             <div class="progress">
                <div class="progress-bar" role="progressbar" style="width: {{joint_1_value}}%; margin-left: 0px; margin-right: 0px;" attr.aria-valuenow="{{joint_1_value}}" attr.aria-valuemin="{{min_value_joint}}" attr.aria-valuemax="{{max_value_joint}}"></div>
             </div>

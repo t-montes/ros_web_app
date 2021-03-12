@@ -14,7 +14,7 @@ body {
 #stateTests {
 	height: 65vh;
 	/*background-image: url(../
-		./././assets/Rover_icon_status.png);*/	
+		/static/assets/Rover_icon_status.png);*/	
 	background-repeat: no-repeat;
 	background-position-x: center;
 }
@@ -120,7 +120,7 @@ body {
 	margin-bottom:15px;
 }
 .columnaCamara{
-	height: 100%;
+	/*height: 100%;*/
 	margin-bottom:15px;
 
 }

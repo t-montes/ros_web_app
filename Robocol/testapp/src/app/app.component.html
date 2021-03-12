@@ -2,7 +2,7 @@
   <!-- <div class="container-fluid bg-dark text-white" id="page"> -->
     <nav class="navbar navbar-dark navbar-expand-sm navbar-fixed-top" id="top-bar">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img style="height: 48px; padding: 2px 10px;" src="../assets/robocol-BLANCO.png"></a>
+        <a class="navbar-brand" href="home"><img style="height: 48px; padding: 2px 10px;" src="/static/assets/robocol-BLANCO.png"></a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
@@ -12,10 +12,15 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="nav navbar-nav">
           <!-- Pestanas del ROVER -->
-          <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
-            <a routerLinkActive="active" routerLink="/brazo" class="nav-link">ARM<span class="sr-only">(current)</span>  </a>
+          <li class="nav-item" ngbDropdown *ngxPermissionsOnly="['ROVER']">
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdownArm" role="button">
+              ARM
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdownArm" class="dropdown-menu">
+              <a ngbDropdownItem href="#" routerLink="/brazo/piloto">Pilot</a>
+              <a ngbDropdownItem href="#" routerLink="/brazo/copiloto">Copilot</a>
+            </div>
           </li>
-
           <li class="nav-item" ngbDropdown *ngxPermissionsOnly="['ROVER']">
             <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">
               TRACTION
@@ -25,7 +30,9 @@
               <a ngbDropdownItem href="#" routerLink="/copilot">Copilot</a>
             </div>
           </li>
-
+          <!-- <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
+            <a routerLinkActive="active" routerLink="/traccion" class="nav-link">TRACTION<span class="sr-only">(current)</span>  </a>
+          </li> -->
           <li class="nav-item" *ngxPermissionsOnly="['ROVER']">
             <a routerLinkActive="active" routerLink="/estado" class="nav-link">STATUS<span class="sr-only">(current)</span>  </a>
           </li>
@@ -58,7 +65,7 @@
           <ul class="navbar-nav ml-auto">
             <span class="navbar-text">
               <span class="badge badge-warning" *ngxPermissionsOnly="['ROVER']">ROVER</span>
-              <span class="badge badge-warning" *ngxPermissionsOnly="['SUBMARINO']">SUBMARINE</span>
+              <span class="badge badge-warning" *ngxPermissionsOnly="['SUBMARINO']">SUBMARINES</span>
               <span class="badge badge-warning" *ngxPermissionsOnly="['LUNABOT']">LUNABOT</span>
             </span>
           </ul>
