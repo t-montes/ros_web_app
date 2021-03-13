@@ -8,7 +8,21 @@
 						<th id="EVA_1_1" scope="row">
 							Temperature:
 							<br>
-							<input disabled id="temperature" name="field1" value="{{measurements_value['temp']}} °C"/>
+							<!-- <p *ngFor="let message of messages;let ultimo = last;"></p> -->
+							<!-- <input disabled id="temperature" name="field1" value="Test °C"/> -->
+
+							<!-- <input disabled id="temperature" name="field1" value="{{messages['text']}} °C"/> -->
+
+							<input disabled id="temperature" name="field1" value="{{lastMessage}} °C"/>
+							<!-- <input disabled id="temperature" name="field1" value={{message.text}}/> -->
+							<!-- <input disabled id="temperature" name="field1" value="{{messages[0]['text']}} °C"/> -->
+							<!-- <input disabled id="temperature" name="field1" value="JAJA °C"/> -->
+
+							<!-- <div *ngFor="let message of messages; let ultimo = last"> -->
+								<!-- <input name="name" [ngModel]="message[ultimo]"> -->
+								<!-- <input name="name" value="{{message[ultimo]}}"> -->
+								<!-- <input disabled id="temperature" name="field1" value="{{messages[ultimo]['text']}} °C"/> -->
+							<!-- </div> -->
 						</th>
 						<th id="EVA_1_1">
 							PH:
@@ -55,6 +69,10 @@
 				</table>
 				<!-- <br> -->
 				<button (click)="sendMessage()">Send</button>
+				<!-- <input disabled id="msgs" name="msgs" value="{{messages['message']}} msg"/> -->
+				<!-- <div>
+					<p *ngFor="let message of messages">{{message.text}}</p>
+				</div> -->
 				<!-- <button (mousedown)="change_value('Measurements','get')" (mouseup)="stop_changing_value()" type="button" class="btn btn-warning">
 					Get!
 				</button> -->

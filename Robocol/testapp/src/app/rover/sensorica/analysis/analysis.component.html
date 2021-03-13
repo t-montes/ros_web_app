@@ -10,15 +10,27 @@
 		</div> -->
 		<div class="row">
 			<div class="col">
-				<div class="categories">
-					<pre><b>Temperature:</b></pre>
-					<pre>	Tropical or megathermal.</pre>
-					<pre><b>PH:</b></pre>
-					<pre>	Alkaline.</pre>
-					<pre><b>CO:</b></pre>
-					<pre>	Volcanic gases.</pre>
-					<pre><b>Humidity:</b></pre>
-					<pre>	Perhumid.</pre>
+				<div class="row">
+					<div class="col">
+						<div class="categories">
+							<pre><b>Temperature:</b></pre>
+							<pre><b>PH:</b></pre>
+							<pre><b>CO:</b></pre>
+							<pre><b>Humidity:</b></pre>
+						</div>
+					</div>
+					<div class="col">
+						<div class="categories">
+							<input disabled id="ph" name="field2" value="Tropical or megathermal."/> <!--  value="{{measurements_value['temp']}}"/> -->
+							<input disabled id="ph" name="field2" value="Alkaline."/> <!-- value="{{measurements_value['ph']}}"/> -->
+							<input disabled id="ph" name="field2" value="Volcanic gases."/> <!-- value="{{measurements_value['c0']}}"/> -->
+							<input disabled id="ph" name="field2" value="Perhumid."/> <!-- value="{{measurements_value['hum']}}"/> -->
+							<!-- <pre>	Tropical or megathermal.</pre>
+							<pre>	Alkaline.</pre>
+							<pre>	Volcanic gases.</pre>
+							<pre>	Perhumid.</pre> -->
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col">
@@ -32,9 +44,9 @@
 						<!-- <div class="row">
 								<img src="/static/assets/pirita.jpg" alt="Rocks" width="150px">
 						</div> -->
-					</div>
-				</div>
 			</div>
+		</div>
+</div>
 		<!-- </div> -->
 	<!-- </div> -->
 <!-- </div> -->

@@ -1,9 +1,8 @@
 # Interfaz/routing.py
-# from django.urls import re_path
+# Django imports
 from django.urls import path
-# from channels.routing import route
+# Consumers
 from Interfaz import consumers
-# from . import
 from Interfaz.ConsumerFiles.Rover import arm
 from Interfaz.ConsumerFiles.Rover import ros
 from Interfaz.ConsumerFiles.Rover import sensors
@@ -17,7 +16,5 @@ websocket_urlpatterns = [
     path('ws/estadoTopicos/', ros.RosConsumer),
     path('ws/sensorica/', sensors.SensorsConsumer),
     path('ws/estado/', status.StatusConsumer),
-    path('ws/traccion/', traction.TractionConsumer),
-    # route('websocket.home',HomeConsumer),
-    #re_path(r'ws/chat/(?P<room_name>\w+)/$', consumers.ChatConsumer),
+    path('ws/traccion/', traction.TractionConsumer)
 ]

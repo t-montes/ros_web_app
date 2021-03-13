@@ -26,12 +26,12 @@ export class SensoricaService
   onMessage(): Observable<Object>
   {
     console.log("SensoricaService: onMessage");
-    return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data)); };});
+    return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data));};});
   }
   close()
   {
     console.log("SensoricaService: close");
-    this.socket.close();
+    // this.socket.close();
     // this.socket.terminate();
   };
 }

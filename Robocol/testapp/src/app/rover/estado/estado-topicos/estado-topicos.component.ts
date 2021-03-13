@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { EstadoService } from '../estado.service';
+import { Message } from "../../../message";
+import { MessageService } from "../../../message.service";
 
 @Component({
 	selector: 'app-estado-topicos',
@@ -9,35 +11,44 @@ import { EstadoService } from '../estado.service';
 })
 export class EstadoTopicosComponent implements OnInit
 {
+	tab: string;
+	lastMessage:string
+	message: string;
+	messages: Message[];
 
-	constructor(private estadoService: EstadoService) {}
+	constructor(private estadoService: EstadoService, private messageService: MessageService)
+	{
+		console.log('EstadoTopicosComponent: constructor')
+	}
 
 	ngOnInit(): void 
 	{
-
+		console.log('EstadoTopicosComponent: ngOnInit');
+		this.tab = "estadoTopicos";
+		this.getMessages();
+		this.estadoService.onMessage().subscribe((message: Object) => {this.messages = [...this.messages, message["message"]];});
+		this.estadoService.onMessage().subscribe((message: string) => {this.lastMessage = message["message"]['text'];});
 	}
 	ngOnDestroy()
 	{
-
-	}
-	//This function will call the BrazoService function, so the Socket Server will be asked to send the current value of the object
-
-	get_value(object: string)
-	{
-		this.estadoService.get_value(object);
+		console.log('EstadoTopicosComponent: ngOnDestroy');
 	}
 
-	//This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
-
-	change_value(object: string, action: string)
+	getMessages()
 	{
-		this.estadoService.change_value(object, action);
+		console.log('EstadoTopicosComponent: getMessages');
+		this.messageService.getMessages(this.tab).subscribe(messages => (this.messages = messages));
 	}
-
-	//This function will call the BrazoService function, so the Socket Server will be asked to stop increasing or decreasing the current value of the object
-
-	stop_changing_value()
+	listTopics()
 	{
-		this.estadoService.stop_changing_value();
+		console.log('EstadoTopicosComponent: listTopics');
+		this.estadoService.sendMessage("List");
+		console.log("last: "+this.lastMessage);
+	}
+	sendMessage()
+	{
+		console.log('EstadoTopicosComponent: sendMessage');
+		this.estadoService.sendMessage("Echo");
+		console.log("last: "+this.lastMessage);
 	}
 }

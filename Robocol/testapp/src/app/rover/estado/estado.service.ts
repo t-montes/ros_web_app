@@ -23,12 +23,12 @@ export class EstadoService
 		console.log("EstadoService: onMessage");
 		return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data)); };});
 	}
-	close()
-	{
-		console.log("BrazoService: close");
-		this.socket.close();
-		// this.socket.terminate();
-	};
+	// close()
+	// {
+	// 	console.log("BrazoService: close");
+	// 	this.socket.close();
+	// 	// this.socket.terminate();
+	// };
 
 
 
