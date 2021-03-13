@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class TabsComponent implements OnInit
 {
 
-  public isCollapsedEVA = true;
+  public isCollapsedEVA = false;
   public isCollapsedMeas = false;
-  public isCollapsedAnalysis = true;
-  public isCollapsedDrill = true;
+  public isCollapsedAnalysis = false;
+  public isCollapsedDrill = false;
   public isCollapsedLive = false;
-  public isCollapsedStation = true;
+  public isCollapsedStation = false;
 
   constructor() { }
 

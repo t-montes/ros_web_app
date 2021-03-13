@@ -10,6 +10,7 @@ import { PilotModule  } from "./rover/traccion/pilot/pilot.module";
 import { CopilotModule  } from "./rover/traccion/copilot/copilot.module";
 // import { TraccionModule } from './rover/traccion/traccion.module';
 import { SensoricaModule } from './rover/sensorica/sensorica.module';
+import { EstadoModule } from './rover/estado/estado.module';
 
 //SUBMARINO
 import { EstadosubModule } from "./submarino/estadosub/estadosub.module";
@@ -35,6 +36,9 @@ import { from } from 'rxjs';
 
 //Para slider
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+
+// Para Messages
+import { HttpClientModule } from '@angular/common/http';
 
 import {APP_BASE_HREF} from '@angular/common';
 
@@ -66,6 +70,10 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     EstadolunaModule,
     PruebaModule,
     
+    // MESSAGES
+    FormsModule,
+    HttpClientModule,
+
     NgxBootstrapSliderModule,
     SocketIoModule.forRoot(config),
     NgbModule,

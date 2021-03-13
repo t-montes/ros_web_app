@@ -3,7 +3,16 @@ body {
 	height: 85vh;
 }
 *{
-	color: white
+	color: white;
+}
+button
+{
+	color: black;
+}
+input
+{
+	background-color: white;
+	color: black;
 }
 .columnasContenido {
 	margin: 18px;
@@ -68,3 +77,10 @@ html {
 	text-align: left;
 }
 
+
+
+#topics
+{
+	background-color: white;
+	color: black;	
+}

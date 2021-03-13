@@ -1,36 +1,27 @@
 #!/usr/bin/env python3
 # Interfaz/consumers.py
-print('Consumers...')
+# Python imports
 import os,sys
-import json
-import rospy
-# from channels.generic.websocket import WebsocketConsumer
-from channels.generic.websocket import AsyncWebsocketConsumer
-
-# from std_msgs.msg import String
 import threading
 import time
-# from std_msgs.msg import Float32
-# import test_socket
+import json
+# Django imports
+# from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
+# ROS imports
+import rospy
+from std_msgs.msg import String
+from std_msgs.msg import Float32
+# SocketIO imports
 # import eventlet
 # import socketio
-# print(sys.path)
-# import Interfaz.ROS_funcs as ROS
-# import Interfaz.socket_arm as socket_arm
-# import Interfaz.socket_ros_info as socket_ros_info
-# import Interfaz.socket_sensors as socket_sensors
-# import Interfaz.socket_status as socket_status
-# import Interfaz.socket_traction as socket_traction
-# print('Importing Successfully.')
 
-# def thread_socket():
-#
-#
-# threading.Thread(target=thread_socket).start()
-
-# interface = ROS.Interface()
+# Channel REDIS layer
+# channel_layer = channels.layers.get_channel_layer()
 
 print("  Initializating Node...")
+rospy.init_node('Interface_Node')
+rospy.loginfo("Node successfully initialized.")
 rospy.init_node('Interface_Node')
 rospy.loginfo("Node successfully initialized.")
 # interface = ROS.Interface()
@@ -46,6 +37,37 @@ rospy.loginfo("Node successfully initialized.")
 # 	# 	time.sleep(500E-3)
 # threading.Thread(target=thread_ros).start()
 
+class HomeConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        print('HOME CONNECTED\n')
+        # -------------------------------------- Socket init --------------------------------------
+        self.tab_name = self.scope["url_route"]["kwargs"]["tab_name"]
+        print(' tab_name: ',self.tab_name)
+        self.tab_group_name = "chat_{}".format(self.tab_name)
+        await self.channel_layer.group_add(self.tab_group_name, self.channel_name)
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        print('HOME DISCONNECTED -> ','close_code: ',close_code)
+        await self.channel_layer.group_discard(self.tab_group_name, self.channel_name)
+
+    async def receive(self, text_data):
+        print('HOME RECEIVED -> ','text_data: ',text_data)
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
+        await self.send(text_data=json.dumps({'message': message}))
+
+# ROS auxiliary exit check
+def ROS_exit_helper():
+	while True:
+		if rospy.is_shutdown():
+			print("Killing Django...")
+			os._exit(0)
+		time.sleep(500E-3)
+threading.Thread(target=ROS_exit_helper).start()
+
+
+# REVISAR SI ALGO DE AQUÍ PARA ABAJO SIRVE, SINO IR BORRANDO
 # def ws_message(message):
 #     print('Message')
 #
@@ -54,23 +76,6 @@ rospy.loginfo("Node successfully initialized.")
 #
 # def ws_disconnect(message):
 #     print('Disonnected new socket')
-
-# temp = 0.0
-#
-# def callback(param):
-#     global message
-#     message = param.data
-#
-# def callback_temp(param):
-#     global temp
-#     temp = param.data
-#     print(temp)
-#
-# print('INICIANDO NODO....')
-# rospy.init_node('Django_node', anonymous=True)
-# rospy.Subscriber('topic_subs', String, callback)
-# rospy.Subscriber('/temperatura', Float32, callback_temp)
-# pub_Connection = rospy.Publisher('topic_pub', String, queue_size=10)
 
 # print('Creating socket as Server...')
 # sio = socketio.Server(cors_allowed_origins='*')
@@ -95,14 +100,6 @@ rospy.loginfo("Node successfully initialized.")
 #     eventlet.wsgi.server(eventlet.listen(('',port)), app)
 
 # threading.Thread(target=thread_sensors_socket).start()
-
-# socket_arm.arm(sio)
-# socket_ros_info.ros_info(sio)
-# socket_sensors.sensors(sio)
-# socket_status.status(sio)
-# socket_traction.traction(sio)
-
-
 
 # port = 4444
 # print('Listening on port',port,'\n')
@@ -133,31 +130,10 @@ rospy.loginfo("Node successfully initialized.")
 #
 # eventlet.wsgi.server(eventlet.listen(('', 4444)), app)
 
-# Channel REDIS layer
-# channel_layer = channels.layers.get_channel_layer()
 
 # message = ''
 # GUI_UPDATE_RATE = 100E-3
 
-class HomeConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
-        # REVISAR COMO HACER ESTO
-        # (AGREGUÉ os,time,threading, y falta el layer de channels)
-        # self.room_name = 'e'+str(time.time())
-		# self.room_group_name = 'bgUpdateConsumers_sensors'
-		# async_to_sync(self.channel_layer.group_add)(self.room_group_name, self.channel_name)
-        print('HomeConsumer connect')
-        await self.accept()
-
-    async def disconnect(self, close_code):
-        print('HomeConsumer disconnect')
-
-    async def receive(self, text_data):
-        # global message
-        print('HomeConsumer receive')
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
-        await self.send(text_data=json.dumps({'message': message}))
 
 # REVISAR COMO HACER ESTO ( NUEVO THREAD DE EXIT HELPER)
 # def threadGUIupdate_sensors():
@@ -171,11 +147,3 @@ class HomeConsumer(AsyncWebsocketConsumer):
 #
 # threading.Thread(target=threadGUIupdate_sensors).start()
 
-# ROS auxiliary exit check
-def ROS_exit_helper():
-	while True:
-		if rospy.is_shutdown():
-			print("Killing Django...")
-			os._exit(0)
-		time.sleep(500E-3)
-threading.Thread(target=ROS_exit_helper).start()

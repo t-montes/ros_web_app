@@ -1,3 +1,36 @@
+/* The animation code */
+@keyframes example
+{
+	0%		{left:   0px; top:0px;}
+	10%		{right: 80px; top:0px;}
+	20%		{right:160px; top:0px;}
+	30%		{right:240px; top:0px;}
+	40%		{right:320px; top:0px;}
+	50%		{right:400px; top:0px;}
+	60%		{right:480px; top:0px;}
+	70%		{right:560px; top:0px;}
+	80%		{right:640px; top:0px;}
+	90%		{right:720px; top:0px;}
+	100%	{right:800px; top:0px;}
+}
+
+/* The element to apply the animation to */
+#embudo
+{
+  /*width: 100px;
+  height: 100px;*/
+  position: relative;
+  /*background-color: red;*/
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+img
+{
+    padding-left:-20px;
+    padding-right:-20px;
+}
+
 label
 {
 	font-family: Helvetica;

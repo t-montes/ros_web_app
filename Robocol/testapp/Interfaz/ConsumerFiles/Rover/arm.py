@@ -31,6 +31,10 @@ class ArmConsumer(AsyncWebsocketConsumer):
     # rospy.Subscriber("/end_effector_state",String,end_effector_state)
     # print('')
 
+        message = Message(text=text, tab_name=self.tab_name)
+        # message.save()
+        async_to_sync(self.channel_layer.group_send)(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
+
     async def connect(self):
         print('ARM CONNECTED')
         try:

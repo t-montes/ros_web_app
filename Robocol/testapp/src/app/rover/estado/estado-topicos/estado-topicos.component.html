@@ -1,48 +1,42 @@
-
-<html>
-	<body>
+<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm">
 				<div class="card border-warning bg-transparent text-center">
 					<h1>Rostopic List</h1>
-					<br />
-					<div id="Layer1">
-						Aquí saldrá un scroll<br />
-						<br />
-						ejemplos <br />
-						de<br />
-						lista de<br />
-						topicos <br />
-					</div>
+					<br>
+					<!-- <p *ngFor="let message of messages">{{message.text}}</p> -->
+					<textarea id="topics" name="message" rows="10" cols="30">{{lastMessage}}</textarea>
+					<br>
+					<button class="col-2" (click)="listTopics()">List!</button>
 				</div>
 			</div>
 			<div class="col-sm">
 				<div class="card border-warning bg-transparent text-center">
 					<div id="topicoTitulo" class="row">
-						<div class="col-4 texto">Topico Echo:</div>
-						<div class="col-8 texto mensajeMostrar card">Ejemplo de topico</div>
+						<div class="col-4 texto">Topic echo:</div>
+						<div class="col-6 texto mensajeMostrar card">topic echo example</div>
+						<!-- <input disabled id="topic" name="topic" value="{{lastMessage}}"/> -->
+						<button class="col-2" (click)="sendMessage()">Echo!</button>
 					</div>
 
 					<p style="text-align: left; width: 20%">Data:</p>
-					<div id="contenedorData">Ejemplo de data</div>
+					<div id="contenedorData">Data example</div>
 					<br />
 
 					<div id="topicoTitulo" class="row">
 						<div class="col-4 texto">Type:</div>
-						<div class="col-8 texto mensajeMostrar card">Ejemplo de type</div>
+						<div class="col-8 texto mensajeMostrar card">type example</div>
 					</div>
 
 					<div id="topicoTitulo" class="row">
 						<div class="col-4 texto">Publishers:</div>
-						<div class="col-8 texto mensajeMostrar card">Ejemplo de publishers</div>
+						<div class="col-8 texto mensajeMostrar card">publishers example</div>
 					</div>
 					<div id="topicoTitulo" class="row">
 						<div class="col-4 texto">Subscribers:</div>
-						<div class="col-8 texto mensajeMostrar card">Ejemplo de subscribers</div>
+						<div class="col-8 texto mensajeMostrar card">subscribers example</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</body>
-</html>
-
+</div>
