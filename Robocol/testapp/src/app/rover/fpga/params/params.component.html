@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="table-responsive">
+				<table class="table table-borderless table-sm">
+					<tr>
+						<th scope="row">
+							Dip Switch:
+							<input disabled id="dip_sw" name="field1" value="{{lastMessage}}"/>
+						</th>
+						<th id="EVA_1_1">
+							LEDs:
+							<input disabled id="leds" name="field2" value="{{measurements_value['ph']}}"/>
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">
+							Prescale:
+							<input id="prescale" name="field3" value="{{lastMessage}}"/>
+							<button (click)="change_value('param','prescale')">Send</button>
+						</th>
+						<th>
+							PWM:
+							<input id="pwm" name="field4" value="{{measurements_value['ph']}}"/>
+							<button (click)="change_value('param','pwm')">Send</button>
+						</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

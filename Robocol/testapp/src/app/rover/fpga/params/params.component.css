@@ -1,0 +1,28 @@
+.card-horizontal
+{
+    display: flex;
+    flex: 1 1 auto;
+}
+label
+{
+	font-family: Helvetica;
+}
+th
+{
+	font-family: Helvetica;
+    color: white;
+}
+#dip_sw
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#leds
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}

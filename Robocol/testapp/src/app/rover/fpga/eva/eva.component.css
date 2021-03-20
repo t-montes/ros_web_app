@@ -1,0 +1,278 @@
+/* The animation code */
+@keyframes example
+{
+	0%		{left:   0px; top:0px;}
+	10%		{right: 80px; top:0px;}
+	20%		{right:160px; top:0px;}
+	30%		{right:240px; top:0px;}
+	40%		{right:320px; top:0px;}
+	50%		{right:400px; top:0px;}
+	60%		{right:480px; top:0px;}
+	70%		{right:560px; top:0px;}
+	80%		{right:640px; top:0px;}
+	90%		{right:720px; top:0px;}
+	100%	{right:800px; top:0px;}
+}
+
+/* The element to apply the animation to */
+#embudo
+{
+  /*width: 100px;
+  height: 100px;*/
+  position: relative;
+  /*background-color: red;*/
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+img
+{
+    padding-left:-20px;
+    padding-right:-20px;
+}
+
+label
+{
+	font-family: Helvetica;
+}
+table, th, td
+{
+	border: 1px solid black;
+	text-align: center;
+	font-size: 14px;
+	/* line-height: 150px; */
+}
+input
+{
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+/*EVA*/
+#EVA_info
+{
+	/* z-index: 1; */
+	/* height: 300px; */
+	width: calc(100vw - 4% - 50px);
+	position: absolute;
+	padding:1%;
+	/* top: 600px; */
+	/* bottom: 0; */
+	left: 50px;
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	background: #00000020;
+	margin: auto;
+}
+/* #EVA_table
+{
+	width:100%;
+	position: relative;
+	top:-20px
+} */
+
+/*Sample 1*/
+#EVA_1_1
+{
+	background:indianred;
+}
+#EVA_1_2
+{
+	background:lightgreen;
+}
+#EVA_1_3
+{
+	background:lightgreen;
+}
+#EVA_1_4
+{
+	background:lightgreen;
+}
+#EVA_1_5
+{
+	background:lightgreen;
+}
+#EVA_1_6
+{
+	background:lightgreen;
+}
+/*Sample 2*/
+#EVA_2_1
+{
+	background:lightblue;
+}
+#EVA_2_2
+{
+	background:lightblue;
+}
+#EVA_2_3
+{
+	background:lightblue;
+}
+#EVA_2_4
+{
+	background:lightblue;
+}
+#EVA_2_5
+{
+	background:lightblue;
+}
+#EVA_2_6
+{
+	background:lightblue;
+}
+/*Sample 3*/
+#EVA_3_1
+{
+	background:lightblue;
+}
+#EVA_3_2
+{
+	background:lightblue;
+}
+#EVA_3_3
+{
+	background:lightblue;
+}
+#EVA_3_4
+{
+	background:lightblue;
+}
+#EVA_3_5
+{
+	background:lightblue;
+}
+#EVA_3_6
+{
+	background:lightblue;
+}
+#EVA_pos
+{
+	background:lightyellow;
+}
+
+
+
+/*Sample 1*/
+#EVA_1_1 input
+{
+	width:100%;
+}
+#EVA_1_2 input
+{
+	width:100%;
+}
+#EVA_1_3 input
+{
+	width:100%;
+}
+#EVA_1_4 input
+{
+	width:100%;
+}
+#EVA_1_5 input
+{
+	width:100%;
+}
+#EVA_1_6 input
+{
+	width:100%;
+}
+/*Sample 2*/
+#EVA_2_1 input
+{
+	width:100%;
+}
+#EVA_2_2 input
+{
+	width:100%;
+}
+#EVA_2_3 input
+{
+	width:100%;
+}
+#EVA_2_4 input
+{
+	width:100%;
+}
+#EVA_2_5 input
+{
+	width:100%;
+}
+#EVA_2_6 input
+{
+	width:100%;
+}
+/*Sample 3*/
+#EVA_3_1 input
+{
+	width:100%;
+}
+#EVA_3_2 input
+{
+	width:100%;
+}
+#EVA_3_3 input
+{
+	width:100%;
+}
+#EVA_3_4 input
+{
+	width:100%;
+}
+#EVA_3_5 input
+{
+	width:100%;
+}
+#EVA_3_6 input
+{
+	width:100%;
+}
+#EVA_pos input
+{
+	width:100%;
+}
+
+/*img*/
+/* #sample_img
+{
+	z-index: 4;
+	position: absolute;
+	padding:2%;
+	top: 80px;
+	right: 50px;
+} */
+
+
+/* Container needed to position the button. Adjust the width as needed */
+/* .container {
+  position: relative;
+  width: 50%;
+} */
+
+/* Make the image responsive */
+/* .container img {
+  width: 100%;
+  height: auto;
+} */
+
+/* Style the button and place it in the middle of the container/image */
+/* .container .btn {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 7px;
+  padding: 0px 0px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px;
+} */
+
+/* .container .btn:hover {
+  background-color: black;
+} */

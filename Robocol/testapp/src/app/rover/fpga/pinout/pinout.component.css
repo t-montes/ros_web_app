@@ -1,0 +1,35 @@
+label
+{
+	font-family: Helvetica;
+}
+/* Sensor database information. */
+#sensors_info
+{
+	/* z-index: 2; */
+	/* height: 470px; */
+	width: calc(30vw - 4% - 50px);
+	position: absolute;
+	padding:5%;
+	bottom: 0;
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	background: #00000020;
+}
+.sensors_title
+{
+	/* position: relative; */
+	/* top: 0px; */
+	text-align: center
+}
+.categories
+{
+	color: white;
+	/* position: relative; */
+	/* top: 50px; */
+	/* right: 10px */
+}
+
+pre
+{
+	color: white;
+}

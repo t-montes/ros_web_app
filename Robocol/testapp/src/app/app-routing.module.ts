@@ -12,6 +12,8 @@ import { EstadoPestaniaComponent } from './rover/estado/estado-pestania/estado-p
 import { SensoricaComponent } from './rover/sensorica/sensorica.component';
 import { EstadoTopicosComponent } from './rover/estado/estado-topicos/estado-topicos.component';
 
+import { FPGAComponent } from './rover/fpga/fpga.component';
+
 //SUBMARINO
 import { EstadosubComponent } from './submarino/estadosub/estadosub.component';
 import { NavegacionComponent } from './submarino/navegacion/navegacion.component';
@@ -120,7 +122,16 @@ import { AuthComponent } from './auth/auth.component';
           }
         }
       },
-
+      {
+        path: 'fpga',
+        component: FPGAComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+            only: ['ROVER']
+          }
+        }
+      },
 
 
       // Visible para SUBMARINO

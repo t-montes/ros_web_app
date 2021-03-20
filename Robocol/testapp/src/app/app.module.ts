@@ -11,6 +11,7 @@ import { CopilotModule  } from "./rover/traccion/copilot/copilot.module";
 // import { TraccionModule } from './rover/traccion/traccion.module';
 import { SensoricaModule } from './rover/sensorica/sensorica.module';
 import { EstadoModule } from './rover/estado/estado.module';
+import { FPGAModule } from './rover/fpga/fpga.module'
 
 //SUBMARINO
 import { EstadosubModule } from "./submarino/estadosub/estadosub.module";
@@ -60,6 +61,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     CopilotModule,
     // TraccionModule,
     SensoricaModule,
+    FPGAModule,
 
     //SUBMARINO
     EstadosubModule,

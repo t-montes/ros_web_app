@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class BrazoService {
-
+export class BrazoService
+{
   private socket;
   constructor(private router: Router )
   {
@@ -27,7 +27,8 @@ export class BrazoService {
     this.socket.send(JSON.stringify({ id:"stop_changing_value"}));
   }
 
-  get_values(){
+  get_values()
+  {
     console.log("BrazoService: get_values");
     this.socket.send(JSON.stringify({ id:"get_values"}));
   }
