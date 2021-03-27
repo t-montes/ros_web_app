@@ -88,15 +88,15 @@ class ArmConsumer(AsyncWebsocketConsumer):
             print('done')
 
     def interface_arm_node():
-    pub = rospy.Publisher('/interface_events_arm_topic', String, queue_size=10)
-    rospy.Subscriber("/rover_events_arm_topic", String, callback)
-    rospy.init_node('interface_arm', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
-    while not rospy.is_shutdown():
-        hello_str = "hello world"
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
-        rate.sleep()
+        pub = rospy.Publisher('/interface_events_arm_topic', String, queue_size=10)
+        rospy.Subscriber("/rover_events_arm_topic", String, callback)
+        rospy.init_node('interface_arm', anonymous=True)
+        rate = rospy.Rate(10) # 10hz
+        while not rospy.is_shutdown():
+            hello_str = "hello world"
+            rospy.loginfo(hello_str)
+            pub.publish(hello_str)
+            rate.sleep()
 
     def callback(data):
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
