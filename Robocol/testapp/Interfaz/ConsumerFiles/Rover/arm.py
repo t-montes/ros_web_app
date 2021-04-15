@@ -8,50 +8,25 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 print('ARM LIBRARY')
 
-#variables to simulate the communication with ROS
-#0-6 represent the joints values
-#7 represents the greeper
+
 objetos = [50] * 8
 change = False
-#pub = rospy.Publisher('', Float64)
 
 class ArmConsumer(AsyncWebsocketConsumer):
     print('ARM CONSUMER')
 
-    # # CALLBACKS
-    # def end_effector_state(param):
-    #     print('Arm Callback')
-    #     print(param)
-    #     print('')
-    # # PUBLISHERS
-    # print('Publishing to /end_effector_command')
-    # pub_cmd = rospy.Publisher("/end_effector_command",Float32,queue_size=1)
-    # # SUBSCRIBERS
-    # print('Publishing to /end_effector_state')
-    # rospy.Subscriber("/end_effector_state",String,end_effector_state)
-    # print('')
-
-    # message = Message(text=text, tab_name=self.tab_name)
-    # # message.save()
-    # async_to_sync(self.channel_layer.group_send)(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
-
     async def connect(self):
         print('ARM CONNECTED')
         try:
-            #brazo()
+            interface_arm_node()
             await self.accept()
         except rospy.ROSInterruptException:
             pass
+
+            
     async def disconnect(self, close_code):
         print('ARM DISCONNECTED')
         print(close_code)
-
-    #def brazo():
-    #    rospy.init_node('brazo_interfaz', anonymous=True)
-    #    rospy.Subscriber("Orientacion", String, callbackOrientacion)
-    #    rospy.Subscriber("Distancia", String, callbackDistancia)
-    #    rospy.Subscriber("Agarre", String, callbackAgarre)
-     #   rospy.Subscriber("Posicion", String, callbackPosicion)
 
 
     async def receive(self, text_data):
@@ -112,8 +87,16 @@ class ArmConsumer(AsyncWebsocketConsumer):
             await self.send(text_data=json.dumps({'id': 'objects_values', 'values': objetos}))
             print('done')
 
+    def interface_arm_node():
+        pub = rospy.Publisher('/interface_events_arm_topic', String, queue_size=10)
+        rospy.Subscriber("/rover_events_arm_topic", String, callback)
+        rospy.init_node('interface_arm', anonymous=True)
+        rate = rospy.Rate(10) # 10hz
+        while not rospy.is_shutdown():
+            hello_str = "hello world"
+            rospy.loginfo(hello_str)
+            pub.publish(hello_str)
+            rate.sleep()
 
-    #async def chat_message(self, event):
-        #print('ARM MESSAGE')
-        #print(event)
-        #print('')
+    def callback(data):
+        rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
