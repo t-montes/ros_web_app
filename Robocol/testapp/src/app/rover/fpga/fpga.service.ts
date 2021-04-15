@@ -28,10 +28,10 @@ export class FPGAService
     console.log("FPGAService: onMessage");
     return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data));};});
   }
-  change_value(object: String, action:String)
+  change_value(object: String, action:String, value:String)
   {
     console.log("FPGAService: change_value");
-    this.socket.send(JSON.stringify({ id:"change_value", object: object, action: action}));
+    this.socket.send(JSON.stringify({ id:"change_value", object: object, action: action, value: value}));
   }
   get_values()
   {

@@ -2,6 +2,7 @@
 # # ROS imports
 import rospy
 from std_msgs.msg import String
+from std_msgs.msg import UInt32
 from std_msgs.msg import Float32
 # Django imports
 from channels.generic.websocket import AsyncWebsocketConsumer
@@ -25,12 +26,15 @@ class FPGAConsumer(AsyncWebsocketConsumer):
     #     print('Arm Callback')
     #     print(param)
     #     print('')
-    # # PUBLISHERS
-    # print('Publishing to /end_effector_command')
-    # pub_cmd = rospy.Publisher("/end_effector_command",Float32,queue_size=1)
+
+    msg = UInt32()
+    # PUBLISHERS
+    print('Publishing to /robocol/prescaller_data')
+    pub_cmd = rospy.Publisher("/robocol/prescaller_data",UInt32,queue_size=1)
+
     # # SUBSCRIBERS
-    # print('Publishing to /end_effector_state')
-    # rospy.Subscriber("/end_effector_state",String,end_effector_state)
+    # print('Publishing to /robocol/fpga/prescale')
+    # rospy.Subscriber("/robocol/fpga/prescale",String,end_effector_state)
     # print('')
 
     # message = Message(text=text, tab_name=self.tab_name)
@@ -70,12 +74,16 @@ class FPGAConsumer(AsyncWebsocketConsumer):
         print(' id: ',id)
         if id == 'change_value':
             objeto = text_data['object']
+            print(' object: ', objeto)
             action = text_data['action']
+            print(' action: ', action)
             change = True
             print('cambiar valor, con acción ' + action + ' al objeto ' + objeto)
-            if objeto == 'prescale':
+            if action == 'prescale':
+                self.msg.data = 100
+                self.pub_cmd.publish(self.msg)
                 objetos[0] = objetos[0] + 1
-            elif objeto == 'pwm':
+            elif action == 'pwm':
                 objetos[1] = objetos[1] + 1
             await self.send(text_data=json.dumps({'id': 'objects_values', 'values': objetos}))
             
