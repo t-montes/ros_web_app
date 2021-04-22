@@ -42,6 +42,7 @@ export class MeasurementsComponent
 		this.getMessages();
 
 		this._msgs_sub = this.sensoricaService.onMessage().subscribe((message: Object) => {this.messages = [...this.messages, message["message"]];});
+		// this._lMsg_sub = this.sensoricaService.onMessage().subscribe((message: string) => {this.lastMessage = message["message"]['text'];}); // FUNCIONANDO
 		this._lMsg_sub = this.sensoricaService.onMessage().subscribe((message: string) => {this.lastMessage = message["message"]['text'];});
 		// this.sensoricaService.onMessage().subscribe(messages => {console.log("Response from websocket: " + Object.keys(messages["message"]) );});//messages["message"]['text']['temp']);});
 		// this.sensoricaService.onMessage().subscribe((message: Object) => {this.messages = message["message"];});

@@ -1,47 +1,94 @@
 /* The animation code */
 @keyframes example
 {
-	0%		{left:   0px; top:0px;}
-	10%		{right: 80px; top:0px;}
-	20%		{right:160px; top:0px;}
-	30%		{right:240px; top:0px;}
-	40%		{right:320px; top:0px;}
-	50%		{right:400px; top:0px;}
-	60%		{right:480px; top:0px;}
-	70%		{right:560px; top:0px;}
-	80%		{right:640px; top:0px;}
-	90%		{right:720px; top:0px;}
-	100%	{right:800px; top:0px;}
+	0%		{right:0px; top:   0px;}
+	5%		{right:0px; top:-100px;}
+	10%		{right:0px; top:-157px;}
+	15%		{right:0px; top:-214px;}
+	20%		{right:0px; top:-271px;}
+	25%		{right:0px; top:-328px;}
+	30%		{right:0px; top:-385px;}
+	35%		{right:0px; top:-442px;}
+	40%		{right:0px; top:-499px;}
+	45%		{right:0px; top:-556px;}
+	50%		{right:0px; top:-613px;}
+	55%		{right:0px; top:-670px;}
+	/*60%		{right:0px; top:-540px;}*/
+	/*65%		{right:0px; top:-580px;}*/
+	/*70%		{right:0px; top:-620px;}*/
+	/*75%		{right:0px; top:-660px;}*/
+	/*80%		{right:0px; top:-700px;}*/
+	/*85%		{right:0px; top:-740px;}*/
+	/*90%		{right:0px; top:-780px;}*/
+	/*95%		{right:0px; top:-820px;}*/
+	/*100%	{right:0px; top:-860px;}*/
 }
+
+.no-gutters
+{
+	margin-right: 0;
+	margin-left: 0;
+	> .col,
+	> [class*="col-"]
+	{
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+/*#status_row
+{
+	width: 10%;
+}*/
 
 /* The element to apply the animation to */
 #embudo
 {
-  /*width: 100px;
-  height: 100px;*/
+  /*width: 100px;*/
+  /*height: 100px;*/
+  animation-name: example;
+  animation-duration: 50s;
+  width: 30%;
+  height: auto;
   position: relative;
   /*background-color: red;*/
-  animation-name: example;
-  animation-duration: 4s;
 }
 
-img
+#status
+{
+  width: 6%;
+  height: auto;
+}
+#box
+{
+  width: 50%;
+  height: auto;
+}
+
+/*.row
+{
+	width: fit-content;
+}*/
+
+
+/*img
 {
     padding-left:-20px;
     padding-right:-20px;
-}
+    width: 70%;
+    height: auto;
+}*/
 
 label
 {
 	font-family: Helvetica;
 }
-table, th, td
+/*table, th, td
 {
 	border: 1px solid black;
 	text-align: center;
 	font-size: 14px;
-	/* line-height: 150px; */
-}
+}*/
 input
 {
 	padding: 0;

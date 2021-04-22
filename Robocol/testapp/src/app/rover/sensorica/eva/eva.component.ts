@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './eva.component.html',
   styleUrls: ['./eva.component.css']
 })
-export class EvaComponent implements OnInit {
-
+export class EvaComponent implements OnInit
+{
   public isCollapsedSample1 = true;
   public isCollapsedSample1_1 = true;
   public isCollapsedSample1_2 = true;
@@ -30,9 +30,6 @@ export class EvaComponent implements OnInit {
   public isCollapsedSample3_4 = true;
   public isCollapsedSample3_5 = true;
   public isCollapsedSample3_6 = true;
-
   constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

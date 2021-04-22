@@ -28,10 +28,11 @@ class SensorsConsumer(AsyncWebsocketConsumer):
         print('Callback',param)
         text = str(param.data)
 
+        self.send(text_data=json.dumps({'id': 'objects_values', 'values': objetos, 'temp':str(100)}))
         # message = Message(text=text, tab_name=self.scope["url_route"]["kwargs"]["tab_name"])
-        message = Message(text=text, tab_name=self.tab_name)
+        # message = Message(text=text, tab_name=self.tab_name)
         # message.save()
-        async_to_sync(self.channel_layer.group_send)(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
+        # async_to_sync(self.channel_layer.group_send)(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
         # all_users = list(Member.objects.filter(is_active = True).values_list('id', flat = True))
         # for user_id in all_users:
 

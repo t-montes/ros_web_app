@@ -32,6 +32,7 @@ export class ParamsComponent
 		console.log('ParamsComponent: ngOnInit');
 		this.tab = "sensorica";
 		this.measurements_value = -1;
+		this.lastMessage = "test"
 		this.getMessages();
 		this._msgs_sub = this.fpgaService.onMessage().subscribe((message: Object) => {this.messages = [...this.messages, message["message"]];});
 		this._lMsg_sub = this.fpgaService.onMessage().subscribe((message: string) => {this.lastMessage = message["message"]['text'];});
@@ -59,7 +60,8 @@ export class ParamsComponent
 	}
 	change_value(object: string, action: string)
 	{
-    	this.fpgaService.change_value(object, action);
+		//var x = document.getElementById("prescale").value;
+    	this.fpgaService.change_value(object, action, this.lastMessage);
   	}
 
   	get_values()
