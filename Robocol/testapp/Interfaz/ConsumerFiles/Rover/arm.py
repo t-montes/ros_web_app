@@ -3,6 +3,7 @@
 import rospy
 from std_msgs.msg import String
 from std_msgs.msg import Float32
+#import .arm_publisher as arm_publisher
 # Django imports
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
@@ -17,11 +18,27 @@ class ArmConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
         print('ARM CONNECTED')
-        try:
-            interface_arm_node()
-            await self.accept()
-        except rospy.ROSInterruptException:
-            pass
+        
+        print("Initializing publisher")
+        self.pub = rospy.Publisher('/interface_events_arm_topic', String, queue_size=1)
+        print("Initializing subscriber")
+        rospy.Subscriber("/robocol_events_arm_topic", String, self.callback)
+        print("Initializing message")
+        #msg = String()
+        #msg.data = "Hello world!"
+        #pub.publish(msg)
+        #print("Initializing rate")
+        #rate = rospy.Rate(1000000000) # 10hz
+        await self.accept()
+        #contador = 0
+        #while contador < 5:
+        #    print("Publishing")
+        #    pub.publish(msg)
+        #    print("Sleeping")
+        #     rate.sleep()
+        #    contador = contador + 1
+        #arm_publisher.main()
+        
 
             
     async def disconnect(self, close_code):
@@ -87,16 +104,9 @@ class ArmConsumer(AsyncWebsocketConsumer):
             await self.send(text_data=json.dumps({'id': 'objects_values', 'values': objetos}))
             print('done')
 
-    def interface_arm_node():
-        pub = rospy.Publisher('/interface_events_arm_topic', String, queue_size=10)
-        rospy.Subscriber("/rover_events_arm_topic", String, callback)
-        rospy.init_node('interface_arm', anonymous=True)
-        rate = rospy.Rate(10) # 10hz
-        while not rospy.is_shutdown():
-            hello_str = "hello world"
-            rospy.loginfo(hello_str)
-            pub.publish(hello_str)
-            rate.sleep()
-
-    def callback(data):
-        rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
+    def callback(self, param):
+        print("Arm received a topic message")
+        msg = String()
+        msg.data = "Hello world!"
+        self.pub.publish(msg)
+        rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
