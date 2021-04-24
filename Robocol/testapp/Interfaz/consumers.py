@@ -22,8 +22,8 @@ from std_msgs.msg import Float32
 print("  Initializating Node...")
 rospy.init_node('Interface_Node')
 rospy.loginfo("Node successfully initialized.")
-rospy.init_node('Interface_Node')
-rospy.loginfo("Node successfully initialized.")
+#rospy.init_node('Interface_Node')
+#rospy.loginfo("Node successfully initialized.")
 # interface = ROS.Interface()
 # # ROS threading
 # def thread_ros():
