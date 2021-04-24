@@ -2,24 +2,24 @@
 		<div class="row">
 			<div class="col-sm">
 				<div class="card border-warning bg-transparent text-center">
-					<h1>Rostopic List</h1>
+					<h4>Rostopic List</h4>
 					<br>
 					<!-- <p *ngFor="let message of messages">{{message.text}}</p> -->
-					<textarea id="topics" name="message" rows="10" cols="30">{{lastMessage}}</textarea>
+					<div id="topics" name="message" rows="10" cols="30">{{lastMessage}}aaaaaaa</div>
 					<br>
-					<button class="col-2" (click)="listTopics()">List!</button>
+					<button class="btn btn-dark border-warning" (click)="listTopics()">List!</button>
 				</div>
 			</div>
 			<div class="col-sm">
 				<div class="card border-warning bg-transparent text-center">
 					<div id="topicoTitulo" class="row">
-						<div class="col-4 texto">Topic echo:</div>
-						<div class="col-6 texto mensajeMostrar card">topic echo example</div>
+						<div class="col-2 texto">Topic echo:</div>
+						<div class="col-7 texto mensajeMostrar card">topic echo example</div>
 						<!-- <input disabled id="topic" name="topic" value="{{lastMessage}}"/> -->
-						<button class="col-2" (click)="sendMessage()">Echo!</button>
+						<button class="col-3 btn btn-dark border-warning" (click)="sendMessage()">Echo!</button>
 					</div>
 
-					<p style="text-align: left; width: 20%">Data:</p>
+					<p style="text-align: left; width: 20% ; margin-top:5px">Data:</p>
 					<div id="contenedorData">Data example</div>
 					<br />
 

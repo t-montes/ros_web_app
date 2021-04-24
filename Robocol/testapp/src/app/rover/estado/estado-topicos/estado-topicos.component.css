@@ -82,5 +82,10 @@ html {
 #topics
 {
 	background-color: white;
-	color: black;	
+	color: black;
+  height: 100%;
+
+}
+.col-sm{
+  height: 80vh;
 }
