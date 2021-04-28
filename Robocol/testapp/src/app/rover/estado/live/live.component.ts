@@ -1,11 +1,12 @@
-import { Component, OnInit, ElementRef, Renderer2, ViewChild  } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild   } from '@angular/core';
 
 @Component({
   selector: 'app-live',
   templateUrl: './live.component.html',
-  styleUrls: ['./live.component.scss']
+  styleUrls: ['./live.component.css']
 })
 export class LiveComponent implements OnInit {
+
 
   @ViewChild('video', { static: true }) videoElement: ElementRef;
 

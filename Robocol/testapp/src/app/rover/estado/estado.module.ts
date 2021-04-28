@@ -5,6 +5,7 @@ import { EstadoTopicosComponent } from './estado-topicos/estado-topicos.componen
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
+import { LiveComponent } from './live/live.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,
     NgbModule
   ],
-  declarations: [EstadoPestaniaComponent, EstadoTopicosComponent],
+  declarations: [EstadoPestaniaComponent, EstadoTopicosComponent, LiveComponent],
   exports:[ EstadoPestaniaComponent]
 })
 export class EstadoModule { }

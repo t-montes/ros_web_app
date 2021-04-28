@@ -5,6 +5,7 @@ declare var $: any;
 // import { $ } from "../jquery-3.1.1";
 import { Observable, Subscription } from 'rxjs';
 import { EstadoService } from '../estado.service';
+import {Bateria} from '../bateria'
 
 @Component({
   selector: 'app-estado-pestania',
@@ -13,6 +14,15 @@ import { EstadoService } from '../estado.service';
 })
 export class EstadoPestaniaComponent implements OnInit
 {
+  lista: Bateria[] =[
+    new Bateria("/static/assets/estadoBaterias/0-10.png", "1","10", "14","bateria 1"),
+    new Bateria("/static/assets/estadoBaterias/51-60.png", "2","1", "41","bateria 2"),
+    new Bateria("/static/assets/estadoBaterias/91-100.png", "1","2", "31","bateria 3"),
+    new Bateria("/static/assets/estadoBaterias/61-70.png", "10","15", "51","bateria 4"),
+    new Bateria("/static/assets/estadoBaterias/Cargando.png", "100","12", "21","bateria 5"),
+  ]
+	// lista:string[]=["../../../assets/estadoBaterias/0-10.png","../../../assets/estadoBaterias/0-10.png","../../../assets/estadoBaterias/0-10.png","../../../assets/estadoBaterias/0-10.png","../../../assets/estadoBaterias/0-10.png"];
+
 	voltaje1_value: number ; //topico echo
 	voltaje2_value: number ; //Data
 	voltaje3_value: number ; //Type
@@ -26,9 +36,9 @@ export class EstadoPestaniaComponent implements OnInit
 	ngOnInit(): void
 	{
 	  	//Define initial values for the variables
-		this.voltaje1_value = 12; 
-		this.voltaje2_value = 13; 
-		this.voltaje3_value = 14; 
+		this.voltaje1_value = 12;
+		this.voltaje2_value = 13;
+		this.voltaje3_value = 14;
 
 		// //Make the subscribers subscribe to their correspondent estadoService variable
 		// this._voltaje1_value = this.estadoService.voltaje1_value.subscribe(

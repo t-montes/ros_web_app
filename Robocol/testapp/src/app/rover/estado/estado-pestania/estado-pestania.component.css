@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	/*height: 80vh;*/
-	background: #161616 !important;   
+	background: #161616 !important;
 	padding:0.25em;
 }
 .card {
@@ -14,12 +14,14 @@ body {
 #stateTests {
 	height: 65vh;
 	/*background-image: url(../
-		/static/assets/Rover_icon_status.png);*/	
+		/static/assets/Rover_icon_status.png);*/
 	background-repeat: no-repeat;
 	background-position-x: center;
 }
 #batteries {
 	height: 30vh;
+  padding: 15px;
+  margin-right: 15px;
 }
 
 .button_enabled_motors {
@@ -52,34 +54,43 @@ body {
 	display: block;
 }
 #state_tests {
-	top: 15%;
-	/* left: 5%; */
+  margin-top: 25px;
+  margin-left: 5px;
+  position: absolute;
 }
 #state_tests1 {
-	top: 45%;
+  position: absolute;
+  margin-top: 130px;
+  margin-left: 5px;
+	/* top: 45%; */
 	/* left: 25px; */
 }
 #state_tests2 {
-	top: 70%;
-	/* left: 25px; */
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 5px;
 }
 #state_tests3 {
-	top: 15%;
-	right: 25px;
+  position: absolute;
+  margin-top: 25px;
+	right: 5px;
 }
 #state_tests4 {
-	top: 45%;
-	right: 25px;
+  position: absolute;
+	margin-top: 130px;
+	right: 5px;
 }
 #state_tests5 {
-	float: right;
-	top: 70%;
-	right: 25px;
+  position: absolute;
+  margin-top: 260px;
+	right: 5px;
 }
 #state_tests6 {
-	top: 80%;
-	right: 278px;
-	height: 42px;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 40%;
+  width: 110px;
+  height: 37px;
 }
 .carga {
 	width: auto;
@@ -106,7 +117,7 @@ body {
 	height: 5%;
 	padding: 0;
 }
-.row {
+.row, .col, .col-8 {
 	height: 100%;
 }
 .bateria {
@@ -126,4 +137,21 @@ body {
 }
 #descripcionBateria{
 	font-size: small; margin: 0;color: rgba(228, 181, 3, 1)
+}
+img {
+	height: 100%;
+}
+p{
+	margin: 2px;
+	text-align: start;
+}
+.col-4, .col-8{
+	padding: 0;
+}
+/* #columnaCamara{
+  padding: 0;
+} */
+.col{
+  padding-left: 0;
+    padding-top: 5px;
 }
