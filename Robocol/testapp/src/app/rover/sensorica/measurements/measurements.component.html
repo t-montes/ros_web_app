@@ -13,7 +13,7 @@
 
 							<!-- <input disabled id="temperature" name="field1" value="{{messages['text']}} °C"/> -->
 
-							<input disabled id="temperature" name="field1" value="{{lastMessage}} °C"/>
+							<input disabled id="temperature" name="field1" value="{{temp}} °C"/>
 							<!-- <input disabled id="temperature" name="field1" value={{message.text}}/> -->
 							<!-- <input disabled id="temperature" name="field1" value="{{messages[0]['text']}} °C"/> -->
 							<!-- <input disabled id="temperature" name="field1" value="JAJA °C"/> -->
@@ -27,48 +27,54 @@
 						<th id="EVA_1_1">
 							PH:
 							<br>
-							<input disabled id="ph" name="field2" value="{{measurements_value['ph']}}"/>
+							<input disabled id="ph" name="field2" value="{{ph}}"/>
 						</th>
 					</tr>
 					<tr>
 						<th id="EVA_1_1">
 							Humidity:
 							<br>
-							<input disabled id="humidity" name="field1" value="{{measurements_value['humidity']}} %"/>
+							<input disabled id="humidity" name="field1" value="{{hum}} %"/>
 						</th>
-						<th id="EVA_1_1">
+						<!-- <th id="EVA_1_1">
 							Air Quality:
 							<br>
-							<input disabled id="air_quality" name="field2" value="{{measurements_value['air_quality']}}"/>
-						</th>
-					</tr>
-					<tr>
+							<input disabled id="air_quality" name="field2" value="{{air}}"/>
+						</th> -->
 						<th id="EVA_1_1">
 							CO:
 							<br>
-							<input disabled id="co" name="field1" value="{{measurements_value['co']}} ppm"/>
+							<input disabled id="co" name="field1" value="{{co}} ppm"/>
+						</th>
+					</tr>
+					<!-- <tr>
+						<th id="EVA_1_1">
+							CO:
+							<br>
+							<input disabled id="co" name="field1" value="{{co}} ppm"/>
 						</th>
 						<th id="EVA_1_1">
 							CO2:
 							<br>
-							<input disabled id="co2" name="field2" value="{{measurements_value['co2']}} ppm"/>
+							<input disabled id="co2" name="field2" value="{{co2}} ppm"/>
 						</th>
-					</tr>
+					</tr> -->
 					<tr>
 						<th id="EVA_1_1">
 							Methane Concentration:
 							<br>
-							<input disabled id="methane" name="field1" value="{{measurements_value['methane']}} ppm"/>
+							<input disabled id="methane" name="field1" value="{{met}} ppm"/>
 						</th>
 						<th id="EVA_1_1">
 							Hydrogen Concentration:
 							<br>
-							<input disabled id="hydrogen" name="field2" value="{{measurements_value['hydrogen']}} ppm"/>
+							<input disabled id="hydrogen" name="field2" value="{{hyd}} ppm"/>
 						</th>
 					</tr>
 				</table>
 				<!-- <br> -->
-				<button (click)="sendMessage()">Send</button>
+				<!-- <button (click)="sendMessage()">Send</button> -->
+				<button (click)="sendMsg()">Send</button>
 				<!-- <input disabled id="msgs" name="msgs" value="{{messages['message']}} msg"/> -->
 				<!-- <div>
 					<p *ngFor="let message of messages">{{message.text}}</p>

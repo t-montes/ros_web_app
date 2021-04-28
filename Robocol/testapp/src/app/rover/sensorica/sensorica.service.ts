@@ -28,6 +28,14 @@ export class SensoricaService
     console.log("SensoricaService: onMessage");
     return Observable.create(observer => {this.socket.onmessage = event => {observer.next(JSON.parse(event.data));};});
   }
+  get_value(object: String, action:String, param:String)
+  {
+    console.log("SensoricaService: get_value");
+    console.log(" object: ",object);
+    console.log(" action: ",action);
+    console.log(" param: ",param);
+    this.socket.send(JSON.stringify({ id:"get_value", object: object, action: action, param: param}));
+  }
   close()
   {
     console.log("SensoricaService: close");

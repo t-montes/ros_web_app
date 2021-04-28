@@ -12,7 +12,7 @@ export class MessageService
 
   getMessages(tab: string): Observable<Message[]>
   {
-  	let location:string = window.location.origin + "/api/messages/" + tab;
+  	let location:string = window.location.origin + "/ws/" + tab;
   	console.log("Location: " + location);
     return this.http.get<Message[]>(location);
   }

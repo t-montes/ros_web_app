@@ -1,27 +1,17 @@
 /* The animation code */
 @keyframes example
 {
-	0%		{right:0px; top:   0px;}
-	5%		{right:0px; top:-100px;}
-	10%		{right:0px; top:-157px;}
-	15%		{right:0px; top:-214px;}
-	20%		{right:0px; top:-271px;}
-	25%		{right:0px; top:-328px;}
-	30%		{right:0px; top:-385px;}
-	35%		{right:0px; top:-442px;}
-	40%		{right:0px; top:-499px;}
-	45%		{right:0px; top:-556px;}
-	50%		{right:0px; top:-613px;}
-	55%		{right:0px; top:-670px;}
-	/*60%		{right:0px; top:-540px;}*/
-	/*65%		{right:0px; top:-580px;}*/
-	/*70%		{right:0px; top:-620px;}*/
-	/*75%		{right:0px; top:-660px;}*/
-	/*80%		{right:0px; top:-700px;}*/
-	/*85%		{right:0px; top:-740px;}*/
-	/*90%		{right:0px; top:-780px;}*/
-	/*95%		{right:0px; top:-820px;}*/
-	/*100%	{right:0px; top:-860px;}*/
+	  0%	{right:0px; top:-320px;}
+	 10%	{right:0px; top:-280px;}
+	 20%	{right:0px; top:-210px;}
+	 30%	{right:0px; top:-140px;}
+	 40%	{right:0px; top: -70px;}
+	 50%	{right:0px; top:   0px;}
+	 60%	{right:0px; top:  70px;}
+	 70%	{right:0px; top: 140px;}
+	 80%	{right:0px; top: 210px;}
+	 90%	{right:0px; top: 270px;}
+	100%	{right:0px; top: 320px;}
 }
 
 .no-gutters
@@ -36,33 +26,111 @@
 	}
 }
 
-/*#status_row
-{
-	width: 10%;
-}*/
-
 /* The element to apply the animation to */
 #embudo
 {
-  /*width: 100px;*/
-  /*height: 100px;*/
   animation-name: example;
-  animation-duration: 50s;
-  width: 30%;
+  animation-duration: 3s;
+  width: 100%;
   height: auto;
   position: relative;
-  /*background-color: red;*/
+}
+#status_but
+{
+	width: 100%;
+	height: auto;
+	background: black;
+	/*background: url("/static/assets/Sensors/EVA/new_imgs/E(6).png")*/
+}
+#box_but
+{
+	width: 100%;
+	height: auto;
+	background: black;
+	border: none;
+	/*background: url("/static/assets/Sensors/EVA/new_imgs/E(10).png")*/
+}
+#move_but
+{
+	width: 100%;
+	height: auto;
+	background: black;
+	/*background: url("/static/assets/Sensors/EVA/new_imgs/E(6).png")*/
+}
+#trash_but
+{
+	width: 100%;
+	height: auto;
+	background: black;
 }
 
 #status
 {
-  width: 6%;
+  width: 100%;
   height: auto;
 }
 #box
 {
-  width: 50%;
+  width: 110%;
   height: auto;
+}
+#trash
+{
+  width: 110%;
+  height: auto;
+}
+#move
+{
+  width: 100%;
+  height: auto;
+}
+
+.eva_box0_txt
+{
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+	color: black;
+	font-family: 'Morris';
+}
+.eva_box1_txt
+{
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+	color: black;
+	font-family: 'Morris';
+}
+.eva_box2_txt
+{
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+	color: black;
+	font-family: 'Morris';
+}
+.eva_box3_txt
+{
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+	color: black;
+	font-family: 'Morris';
+}
+.eva_box4_txt
+{
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+	color: black;
+	font-family: 'Morris';
+}
+
+
+.img_eva_container
+{
+  position: relative;
+  text-align: center;
 }
 
 /*.row
@@ -70,25 +138,11 @@
 	width: fit-content;
 }*/
 
-
-/*img
-{
-    padding-left:-20px;
-    padding-right:-20px;
-    width: 70%;
-    height: auto;
-}*/
-
 label
 {
 	font-family: Helvetica;
 }
-/*table, th, td
-{
-	border: 1px solid black;
-	text-align: center;
-	font-size: 14px;
-}*/
+
 input
 {
 	padding: 0;
@@ -96,190 +150,6 @@ input
 	background: none;
 }
 
-/*EVA*/
-#EVA_info
-{
-	/* z-index: 1; */
-	/* height: 300px; */
-	width: calc(100vw - 4% - 50px);
-	position: absolute;
-	padding:1%;
-	/* top: 600px; */
-	/* bottom: 0; */
-	left: 50px;
-	border-radius: 20px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	background: #00000020;
-	margin: auto;
-}
-/* #EVA_table
-{
-	width:100%;
-	position: relative;
-	top:-20px
-} */
-
-/*Sample 1*/
-#EVA_1_1
-{
-	background:indianred;
-}
-#EVA_1_2
-{
-	background:lightgreen;
-}
-#EVA_1_3
-{
-	background:lightgreen;
-}
-#EVA_1_4
-{
-	background:lightgreen;
-}
-#EVA_1_5
-{
-	background:lightgreen;
-}
-#EVA_1_6
-{
-	background:lightgreen;
-}
-/*Sample 2*/
-#EVA_2_1
-{
-	background:lightblue;
-}
-#EVA_2_2
-{
-	background:lightblue;
-}
-#EVA_2_3
-{
-	background:lightblue;
-}
-#EVA_2_4
-{
-	background:lightblue;
-}
-#EVA_2_5
-{
-	background:lightblue;
-}
-#EVA_2_6
-{
-	background:lightblue;
-}
-/*Sample 3*/
-#EVA_3_1
-{
-	background:lightblue;
-}
-#EVA_3_2
-{
-	background:lightblue;
-}
-#EVA_3_3
-{
-	background:lightblue;
-}
-#EVA_3_4
-{
-	background:lightblue;
-}
-#EVA_3_5
-{
-	background:lightblue;
-}
-#EVA_3_6
-{
-	background:lightblue;
-}
-#EVA_pos
-{
-	background:lightyellow;
-}
-
-
-
-/*Sample 1*/
-#EVA_1_1 input
-{
-	width:100%;
-}
-#EVA_1_2 input
-{
-	width:100%;
-}
-#EVA_1_3 input
-{
-	width:100%;
-}
-#EVA_1_4 input
-{
-	width:100%;
-}
-#EVA_1_5 input
-{
-	width:100%;
-}
-#EVA_1_6 input
-{
-	width:100%;
-}
-/*Sample 2*/
-#EVA_2_1 input
-{
-	width:100%;
-}
-#EVA_2_2 input
-{
-	width:100%;
-}
-#EVA_2_3 input
-{
-	width:100%;
-}
-#EVA_2_4 input
-{
-	width:100%;
-}
-#EVA_2_5 input
-{
-	width:100%;
-}
-#EVA_2_6 input
-{
-	width:100%;
-}
-/*Sample 3*/
-#EVA_3_1 input
-{
-	width:100%;
-}
-#EVA_3_2 input
-{
-	width:100%;
-}
-#EVA_3_3 input
-{
-	width:100%;
-}
-#EVA_3_4 input
-{
-	width:100%;
-}
-#EVA_3_5 input
-{
-	width:100%;
-}
-#EVA_3_6 input
-{
-	width:100%;
-}
-#EVA_pos input
-{
-	width:100%;
-}
 
 /*img*/
 /* #sample_img

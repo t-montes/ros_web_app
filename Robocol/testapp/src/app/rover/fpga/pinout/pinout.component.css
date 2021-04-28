@@ -1,6 +1,13 @@
 label
 {
 	font-family: Helvetica;
+	color: #e4b503;
+}
+table
+{
+	font-family: Helvetica;
+	font-size: 12;
+	color: #e4b503;
 }
 /* Sensor database information. */
 #sensors_info
@@ -32,4 +39,13 @@ label
 pre
 {
 	color: white;
+}
+
+.rotateimg90
+{
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
