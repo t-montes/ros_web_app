@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { BrazoService } from '../brazo.service';
+import { WebsocketService } from "../../../websocket.service";
 
 @Component({
   selector: 'app-brazo-cinematica-inversa-rotacion',
   templateUrl: './brazo-cinematica-inversa-rotacion.component.html',
-  styleUrls: ['./brazo-cinematica-inversa-rotacion.component.css']
+  styleUrls: ['./brazo-cinematica-inversa-rotacion.component.css'],
+  providers: [WebsocketService, BrazoService]
 })
 export class BrazoCinematicaInversaRotacionComponent implements OnInit {
 
@@ -30,7 +33,14 @@ export class BrazoCinematicaInversaRotacionComponent implements OnInit {
   {src:'/static/assets/Brazo/Cinematica Inversa/Rotacion/YAWCCW activado.png', name: 'YAWCW activado'}
   ];
 
-  constructor(private brazoService: BrazoService) { }
+  constructor(private brazoService: BrazoService) {}
+  
+  private message = {
+    id: "",
+    object: "",
+    value: "",
+    action: ""
+  };
 
   ngOnInit(): void {
     this.imageSrcPitch = this.imageButtonsPitch[0].src;
@@ -38,26 +48,50 @@ export class BrazoCinematicaInversaRotacionComponent implements OnInit {
     this.imageSrcYaw = this.imageButtonsYaw[0].src;
   }
 
-  changeImagePitch(index:number, action:String) {
-    this.brazoService.change_value('Pitch', action);
+  changeImagePitch(index:number, action:string) {
+    this.change_value('Pitch', action);
     this.imageSrcPitch = this.imageButtonsPitch[index].src;
   }
 
-  changeImageRoll(index:number, action:String) {
-    this.brazoService.change_value('Roll', action);
+  changeImageRoll(index:number, action:string) {
+    this.change_value('Roll', action);
     this.imageSrcRoll = this.imageButtonsRoll[index].src;
   }
 
-  changeImageYaw(index:number, action:String) {
-    this.brazoService.change_value('Yaw', action);
+  changeImageYaw(index:number, action:string) {
+    this.change_value('Yaw', action);
     this.imageSrcYaw = this.imageButtonsYaw[index].src;
   }
 
+  change_value(object: string, action: string){
+    this.preparar_mensaje("change_value", object, action, "");
+    console.log("new message from brazo to websocket: ", this.message);
+    this.brazoService.messages.next(this.message);
+    this.limpiar_mensaje();
+  }
+
   stop_changing_value(){
-    this.brazoService.stop_changing_value();
+    this.preparar_mensaje("stop_changing_value", "", "", "");
+    console.log("new message from brazo to websocket: ", this.message);
+    this.brazoService.messages.next(this.message);
+    this.limpiar_mensaje();
     this.imageSrcYaw = this.imageButtonsYaw[0].src;
     this.imageSrcRoll = this.imageButtonsRoll[0].src;
     this.imageSrcPitch = this.imageButtonsPitch[0].src;
+  }
+
+  limpiar_mensaje(){
+    this.message.id = "";
+    this.message.object = "";
+    this.message.action = "";
+    this.message.value = "";
+  }
+
+  preparar_mensaje(id:string, object:string, action:string, value:string){
+    this.message.id = id;
+    this.message.object = object;
+    this.message.action = action;
+    this.message.value = value;
   }
 
 }
