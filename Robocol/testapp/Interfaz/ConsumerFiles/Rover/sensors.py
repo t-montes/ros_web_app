@@ -21,10 +21,6 @@ from Interfaz.serializers import MessageSerializer
 c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 # Variable de ROS
 boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub, test_pub = "","","","","",""
-mix_msg = UInt8()
-leave_msg = UInt8()
-move_msg = Float32()
-box_msg = UInt8()
 
 class SensorsConsumer(AsyncWebsocketConsumer):
 	print('SENSORS CONSUMER')
@@ -42,47 +38,38 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 	
 	# ROS CALLBACKS
 	async def temp_callback(self,param):
-		print(' temp_callback',param)
 		self.temp = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "temp",'value': self.temp})
 
 	async def ph_callback(self,param):
-		print(' ph_callback',param)
 		self.ph = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "ph",'value': self.ph})
 
 	async def hum_callback(self,param):
-		print(' hum_callback',param)
 		self.hum = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hum",'value': self.hum})
 
 	async def air_callback(self,param):
-		print(' air_callback',param)
 		self.air = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "air",'value': self.air})
 
 	async def co_callback(self,param):
-		print(' co_callback',param)
 		self.co = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co",'value': self.co})
 
 	async def co2_callback(self,param):
-		print(' co2_callback',param)
 		self.co2 = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co2",'value': self.co2})
 
 	async def met_callback(self,param):
-		print(' met_callback',param)
 		self.met = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "met",'value': self.met})
 
 	async def hyd_callback(self,param):
-		print(' hyd_callback',param)
 		self.hyd = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hyd",'value': self.hyd})
 
 	async def eva_pos_callback(self,param):
-		print(' eva_pos_callback',param)
 		self.eva_pos = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "eva_pos",'value': self.eva_pos})
 
@@ -120,10 +107,8 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 			rospy.Subscriber("/robocol/sensorica/metano",Float32,async_to_sync(self.met_callback))
 			print('   /robocol/sensorica/hidrogeno-> Float32')
 			rospy.Subscriber("/robocol/sensorica/hidrogeno",Float32,async_to_sync(self.hyd_callback))
-
 			print('   /robocol/sensorica/posicion_actual_eva-> Float32')
 			rospy.Subscriber("/robocol/sensorica/posicion_actual_eva",Float32,async_to_sync(self.eva_pos_callback))
-
 			# print('  /robocol/sensorica/air-> Float32')
 			# rospy.Subscriber("/robocol/sensorica/air",Float32,async_to_sync(self.air_callback))
 			# print('  /robocol/sensorica/co2-> Float32')
@@ -141,7 +126,6 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 
 	async def receive(self, text_data):
 		global boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub
-		global mix_msg, leave_msg, move_msg, box_msg
 		print(' SENSORS RECEIVED -> ','text_data: ',text_data)
 		text_data_json = json.loads(text_data)
 		tab_id = text_data_json['id']
@@ -149,12 +133,15 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 		value = text_data_json['value']
 
 		if(param=="mix"):
+			mix_msg = UInt8()
 			mix_msg.data = int(value)
 			vib_pub.publish(mix_msg)
 		if(param=="leave"):
+			leave_msg = UInt8()
 			leave_msg.data = int(value)
 			disp_pub.publish(leave_msg)
 		if(tab_id=="move"):
+			move_msg = Float32()
 			if(param=="up"):
 				self.eva_pos += 1
 				move_msg.data = self.eva_pos
@@ -166,6 +153,7 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 				move_msg.data = self.eva_pos
 			pos_eva_pub.publish(move_msg)
 		if(tab_id=="box"):
+			box_msg = UInt8()
 			if(param=="box1"):
 				if(value=="1"):
 					self.boxes_state += 16
@@ -225,7 +213,6 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 
 
 	async def send_message(self, event):
-		print(' SENSORS MESSAGE: ',event)
 		# Send message to WebSocket
 		await self.send(text_data=json.dumps({
 			'id': event['id'],

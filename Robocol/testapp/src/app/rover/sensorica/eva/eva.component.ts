@@ -95,6 +95,13 @@ export class EvaComponent implements OnInit, OnDestroy {
 	];
 
 	constructor(private sensoricaSocket: SensoricaSocket) {
+		this.message = {
+			id:	'',
+			object:	'',
+			action:	'',
+			param:	'',
+			value:	''
+		};
 		this.box0_0_src = this.imgs_but[0].src;
 		this.box0_1_src = this.imgs_but[4].src;
 		this.box0_2_src = this.imgs_but[4].src;
@@ -140,11 +147,9 @@ export class EvaComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.subscription = this.sensoricaSocket.messages.subscribe(msg => {
-			if(msg.param === 'eva') {
+			if(msg.param === 'eva_pos') {
 				this.param = msg.param;
 				this.value = msg.value;
-				console.log(" param: " + String(this.param));
-				console.log(" value: " + String(this.value));
 				this.emb_pos = parseInt(this.value);
 				this.embudo.style.top = String(this.emb_pos)+'px';
 			}
@@ -159,7 +164,6 @@ export class EvaComponent implements OnInit, OnDestroy {
 	}
 
 	box_change(box:number, state:number) {
-		console.log("Changing box.");
 		if(box==0)
 		{
 			this.box0_0_src = this.imgs_but[state-4].src;
@@ -247,7 +251,6 @@ export class EvaComponent implements OnInit, OnDestroy {
 	}
 	status_change(imageNameObject, status:number)
 	{
-		console.log("Changing box.");
 		this.message.id = "box";
 
 		if(status==0)
@@ -326,10 +329,8 @@ export class EvaComponent implements OnInit, OnDestroy {
 	}
 	eva_move(dir: String)
 	{
-		console.log("EVA move.");
 		if(dir=="up")
 		{
-			console.log(" Up.");
 			this.emb_pos = this.emb_pos - 10;
 			this.message.id = "move";
 			this.message.param = "up";
@@ -338,7 +339,6 @@ export class EvaComponent implements OnInit, OnDestroy {
 		}
 		if(dir=="down")
 		{
-			console.log(" Down.");
 			this.emb_pos = this.emb_pos + 10;
 			this.message.id = "move";
 			this.message.param = "down";
@@ -347,7 +347,6 @@ export class EvaComponent implements OnInit, OnDestroy {
 		}
 		if(dir=="stop")
 		{
-			console.log(" Down.");
 			this.emb_pos = this.emb_pos;
 			this.message.id = "move";
 			this.message.param = "stop";
@@ -358,7 +357,6 @@ export class EvaComponent implements OnInit, OnDestroy {
 	}
 	eva_mix()
 	{
-		console.log("EVA mix.");
 		this.message.id = "send";
 		this.message.param = "mix";
 		this.message.value = "1";
@@ -366,7 +364,6 @@ export class EvaComponent implements OnInit, OnDestroy {
 	}
 	eva_leave()
 	{
-		console.log("EVA leave.");
 		this.message.id = "send";
 		this.message.param = "leave";
 		this.message.value = "1";
