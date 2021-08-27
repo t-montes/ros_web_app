@@ -1,6 +1,5 @@
 <div class="container-fluid">
 	<div class="row">
-		<!-- -------------------------- DATA -------------------------- -->
 		<div class="col">
 			<div class="table-responsive">
 				<table class="table table-borderless table-sm">
@@ -8,80 +7,40 @@
 						<th id="EVA_1_1" scope="row">
 							Temperature:
 							<br>
-							<!-- <p *ngFor="let message of messages;let ultimo = last;"></p> -->
-							<!-- <input disabled id="temperature" name="field1" value="Test °C"/> -->
-
-							<!-- <input disabled id="temperature" name="field1" value="{{messages['text']}} °C"/> -->
-
-							<input disabled id="temperature" name="field1" value="{{temp}} °C"/>
-							<!-- <input disabled id="temperature" name="field1" value={{message.text}}/> -->
-							<!-- <input disabled id="temperature" name="field1" value="{{messages[0]['text']}} °C"/> -->
-							<!-- <input disabled id="temperature" name="field1" value="JAJA °C"/> -->
-
-							<!-- <div *ngFor="let message of messages; let ultimo = last"> -->
-								<!-- <input name="name" [ngModel]="message[ultimo]"> -->
-								<!-- <input name="name" value="{{message[ultimo]}}"> -->
-								<!-- <input disabled id="temperature" name="field1" value="{{messages[ultimo]['text']}} °C"/> -->
-							<!-- </div> -->
+							<input disabled id="temperature" name="field1" value="{{ measurements?.temp }} °C"/>
 						</th>
 						<th id="EVA_1_1">
 							PH:
 							<br>
-							<input disabled id="ph" name="field2" value="{{ph}}"/>
+							<input disabled id="ph" name="field2" value="{{ measurements?.ph }}"/>
 						</th>
 					</tr>
 					<tr>
 						<th id="EVA_1_1">
 							Humidity:
 							<br>
-							<input disabled id="humidity" name="field1" value="{{hum}} %"/>
+							<input disabled id="humidity" name="field1" value="{{ measurements?.hum }} %"/>
 						</th>
-						<!-- <th id="EVA_1_1">
-							Air Quality:
-							<br>
-							<input disabled id="air_quality" name="field2" value="{{air}}"/>
-						</th> -->
 						<th id="EVA_1_1">
 							CO:
 							<br>
-							<input disabled id="co" name="field1" value="{{co}} ppm"/>
+							<input disabled id="co" name="field1" value="{{ measurements?.co }} ppm"/>
 						</th>
 					</tr>
-					<!-- <tr>
-						<th id="EVA_1_1">
-							CO:
-							<br>
-							<input disabled id="co" name="field1" value="{{co}} ppm"/>
-						</th>
-						<th id="EVA_1_1">
-							CO2:
-							<br>
-							<input disabled id="co2" name="field2" value="{{co2}} ppm"/>
-						</th>
-					</tr> -->
 					<tr>
 						<th id="EVA_1_1">
 							Methane Concentration:
 							<br>
-							<input disabled id="methane" name="field1" value="{{met}} ppm"/>
+							<input disabled id="methane" name="field1" value="{{ measurements?.met }} ppm"/>
 						</th>
 						<th id="EVA_1_1">
 							Hydrogen Concentration:
 							<br>
-							<input disabled id="hydrogen" name="field2" value="{{hyd}} ppm"/>
+							<input disabled id="hydrogen" name="field2" value="{{ measurements?.hyd }} ppm"/>
 						</th>
 					</tr>
 				</table>
-				<!-- <br> -->
-				<!-- <button (click)="sendMessage()">Send</button> -->
 				<button (click)="sendMsg()">Send</button>
-				<!-- <input disabled id="msgs" name="msgs" value="{{messages['message']}} msg"/> -->
-				<!-- <div>
-					<p *ngFor="let message of messages">{{message.text}}</p>
-				</div> -->
-				<!-- <button (mousedown)="change_value('Measurements','get')" (mouseup)="stop_changing_value()" type="button" class="btn btn-warning">
-					Get!
-				</button> -->
 			</div>
 		</div>
 		<!-- -------------------------- GRAPH -------------------------- -->
@@ -104,119 +63,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- <div class="card border-warning bg-transparent"> -->
-	<!-- <div class="card-header text-warning text-center">
-		Measurements
-	</div> -->
-	<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-	<!-- <img class="card-img-top" src="/static/assets/pirita.jpg" alt="Rocks"> -->
-	<!-- <div class="card-body"> -->
-		<!-- <div class="img-square-wrapper">
-			<img class="" src="/static/assets/pirita.jpg" alt="Rocks" width="250px">
-		</div>
-
-		<div class="card-body">
-			<h4 class="card-title">Card title</h4>
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		</div>
-	</div>
-</div> -->
-
-
-
-<!-- <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-3">
-            <div class="card">
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
-	<!-- <div class="col">
-		<div class="row">
-			<div class="card-transparent">
-				<div class="card-body"> -->
-					<!-- <div class="row">
-							<h5 class="card-title">Measurements</h5>
-					</div> -->
-					<!-- <div class="row">
-					  <div class="col">
-					    <div class="row"> -->
-								<!-- <table id="EVA_table">
-
-									<tr>
-										<th id="EVA_1_1">Temperature:</th>
-										<th id="EVA_1_3"><input disabled id="temperature" name="field1" value="{{measurements_value['temp']}} °C"/></th>
-
-										<th id="EVA_1_1">PH:</th>
-										<th id="EVA_1_3"><input disabled id="ph" name="field2" value="{{measurements_value['ph']}}"/></th>
-									</tr>
-
-									<tr>
-										<th id="EVA_1_1">Humidity:</th>
-										<th id="EVA_1_3"><input disabled id="humidity" name="field1" value="{{measurements_value['humidity']}} %"/></th>
-
-										<th id="EVA_1_1">Air Quality:</th>
-										<th id="EVA_1_3"><input disabled id="air_quality" name="field2" value="{{measurements_value['air_quality']}}"/></th>
-									</tr>
-
-									<tr>
-										<th id="EVA_1_1">CO:</th>
-										<th id="EVA_1_3"><input disabled id="co" name="field1" value="{{measurements_value['co']}} ppm"/></th>
-
-										<th id="EVA_1_1">CO2:</th>
-										<th id="EVA_1_3"><input disabled id="co2" name="field2" value="{{measurements_value['co2']}} ppm"/></th>
-									</tr>
-
-									<tr>
-										<th id="EVA_1_1">Methane Concentration:</th>
-										<th id="EVA_1_3"><input disabled id="methane" name="field1" value="{{measurements_value['methane']}} ppm"/></th>
-
-										<th id="EVA_1_1">Hydrogen Concentration:</th>
-										<th id="EVA_1_3"><input disabled id="hydrogen" name="field2" value="{{measurements_value['hydrogen']}} ppm"/></th>
-									</tr>
-								</table> -->
-
-					    <!-- </div> -->
-							<!-- <div class="row">
-								<button (mousedown)="change_value('Measurements','get')" (mouseup)="stop_changing_value()" type="button" class="btn btn-warning">Get!</button>
-							</div> -->
-					  <!-- </div> -->
-
-						<!-- <div class="col"> -->
-							<!-- <div class="row"> -->
-							<!-- <div class="card-transparent"> -->
-								<!-- <div class="card-body"> -->
-									<!-- <div class="row"> -->
-											<!-- <h5 class="card-title">Graphs</h5>
-									</div>
-									<div class="row"> -->
-											<!-- <img src="/static/assets/pirita.jpg" alt="Rocks" width="250px"> -->
-									<!-- </div> -->
-									<!-- </div> -->
-								<!-- </div> -->
-							<!-- </div> -->
-						<!-- </div> -->
-					<!-- </div> -->
-				<!-- </div>
-			</div>
-		</div> -->
-	<!-- </div>
-</div> -->

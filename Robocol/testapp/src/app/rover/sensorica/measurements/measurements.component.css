@@ -17,14 +17,9 @@ th
 /* Sensor measurements. */
 #sensors_measurements
 {
-	/* z-index: 4; */
 	height: 470px;
-	/* width: calc(40vw - 4% - 0px); */
-	/* position: absolute; */
 	padding:2%;
 	top: 0px;
-	/* bottom: 0; */
-	/* left: 50px; */
 	border-radius: 20px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 	background: #00000020

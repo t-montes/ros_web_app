@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { WebsocketService } from "../../../websocket.service";
 import { SensoricaSocket } from "../sensoricaSocket.service";
+import { MessageService } from "../../../message.service";
+import { Message } from '../../../../../libs/models';
 
 @Component({
 	selector: 'app-eva',
@@ -8,31 +11,39 @@ import { SensoricaSocket } from "../sensoricaSocket.service";
 	styleUrls: ['./eva.component.css'],
 	providers: [WebsocketService, SensoricaSocket]
 })
-export class EvaComponent implements OnInit
-{
+export class EvaComponent implements OnInit, OnDestroy {
+	param: string
+	value: string
+	message: Message;
+	subscription: Subscription;
+
 	box0_0_src:String;
 	box0_1_src:String;
 	box0_2_src:String;
 	box0_3_src:String;
 	box0_4_src:String;
+	box0_5_src:String;
 
 	box1_0_src:String;
 	box1_1_src:String;
 	box1_2_src:String;
 	box1_3_src:String;
 	box1_4_src:String;
+	box1_5_src:String;
 
 	box2_0_src:String;
 	box2_1_src:String;
 	box2_2_src:String;
 	box2_3_src:String;
 	box2_4_src:String;
+	box2_5_src:String;
 
 	box3_0_src:String;
 	box3_1_src:String;
 	box3_2_src:String;
 	box3_3_src:String;
 	box3_4_src:String;
+	box3_5_src:String;
 
 	trash_src:String;
 
@@ -55,6 +66,7 @@ export class EvaComponent implements OnInit
 	box2_txt : HTMLCollectionOf<HTMLElement>;
 	box3_txt : HTMLCollectionOf<HTMLElement>;
 	box4_txt : HTMLCollectionOf<HTMLElement>;
+	box5_txt : HTMLCollectionOf<HTMLElement>;
 	
 	emb_pos: number;
 	
@@ -66,8 +78,6 @@ export class EvaComponent implements OnInit
 
 		{src:'/static/assets/Sensors/EVA/new_imgs/E(10).png', name: 'close_empty_2'},
 		{src:'/static/assets/Sensors/EVA/new_imgs/E(11).png', name: 'open_empty_2'},
-		// {src:'/static/assets/Sensors/EVA/new_imgs/E(8).png', name: 'open_full'},
-		// {src:'/static/assets/Sensors/EVA/new_imgs/E(9).png', name: 'close_full'},
 	];
 
 	status_imgs_but = [
@@ -84,34 +94,34 @@ export class EvaComponent implements OnInit
 		{src:'/static/assets/Sensors/EVA/new_imgs/E(5).png', name: 'trash'}
 	];
 
-	constructor(private sensoricaSocket: SensoricaSocket)
-	{
-		// sensoricaSocket.messages.subscribe(msg => {
-		// 	console.log(" EvaComponent: new message");
-		// });
+	constructor(private sensoricaSocket: SensoricaSocket) {
 		this.box0_0_src = this.imgs_but[0].src;
 		this.box0_1_src = this.imgs_but[4].src;
 		this.box0_2_src = this.imgs_but[4].src;
 		this.box0_3_src = this.imgs_but[4].src;
 		this.box0_4_src = this.imgs_but[4].src;
+		this.box0_5_src = this.imgs_but[4].src;
 
 		this.box1_0_src = this.imgs_but[4].src;
 		this.box1_1_src = this.imgs_but[4].src;
 		this.box1_2_src = this.imgs_but[4].src;
 		this.box1_3_src = this.imgs_but[4].src;
 		this.box1_4_src = this.imgs_but[4].src;
+		this.box1_5_src = this.imgs_but[4].src;
 
 		this.box2_0_src = this.imgs_but[4].src;
 		this.box2_1_src = this.imgs_but[4].src;
 		this.box2_2_src = this.imgs_but[4].src;
 		this.box2_3_src = this.imgs_but[4].src;
 		this.box2_4_src = this.imgs_but[4].src;
+		this.box2_5_src = this.imgs_but[4].src;
 
 		this.box3_0_src = this.imgs_but[4].src;
 		this.box3_1_src = this.imgs_but[4].src;
 		this.box3_2_src = this.imgs_but[4].src;
 		this.box3_3_src = this.imgs_but[4].src;
 		this.box3_4_src = this.imgs_but[4].src;
+		this.box3_5_src = this.imgs_but[4].src;
 
 		this.status0 = 0;
 		this.status1 = 0;
@@ -127,24 +137,28 @@ export class EvaComponent implements OnInit
 
 		this.trash_src = this.trash_imgs_but[0].src;
 	}
-	ngOnInit()
-	{
+
+	ngOnInit() {
+		this.subscription = this.sensoricaSocket.messages.subscribe(msg => {
+			if(msg.param === 'eva') {
+				this.param = msg.param;
+				this.value = msg.value;
+				console.log(" param: " + String(this.param));
+				console.log(" value: " + String(this.value));
+				this.emb_pos = parseInt(this.value);
+				this.embudo.style.top = String(this.emb_pos)+'px';
+			}
+		});
 		this.embudo = document.getElementById('embudo') as HTMLElement;
-		console.log(this.embudo);
 		this.emb_pos = 320;
 		this.embudo.style.top = String(this.emb_pos)+"px";
 	}
 
-	private message = {
-		id		:	'get_value',
-		object	:	'object',
-		action	:	'action',
-		param	:	'box',
-		value	:	'0'
-	};
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
+	}
 
-	box_change(box:number, state:number)
-	{
+	box_change(box:number, state:number) {
 		console.log("Changing box.");
 		if(box==0)
 		{
@@ -234,16 +248,21 @@ export class EvaComponent implements OnInit
 	status_change(imageNameObject, status:number)
 	{
 		console.log("Changing box.");
+		this.message.id = "box";
+
 		if(status==0)
 		{
+			this.message.param = "box1";
 			if(this.status0==0)
 			{
+				this.message.value = "1";
 				this.status0_src = this.status_imgs_but[1].src;
 				this.status0 = 1;
 				this.box_change(0,5);
 			}
 			else if(this.status0==1)
 			{
+				this.message.value = "0";
 				this.status0_src = this.status_imgs_but[0].src;
 				this.status0 = 0;
 				this.box_change(0,4);
@@ -251,14 +270,17 @@ export class EvaComponent implements OnInit
 		}
 		if(status==1)
 		{
+			this.message.param = "box2";
 			if(this.status1==0)
 			{
+				this.message.value = "1";
 				this.status1_src = this.status_imgs_but[1].src;
 				this.status1 = 1;
 				this.box_change(1,5);
 			}
 			else if(this.status1==1)
 			{
+				this.message.value = "0";
 				this.status1_src = this.status_imgs_but[0].src;
 				this.status1 = 0;
 				this.box_change(1,4);
@@ -266,14 +288,17 @@ export class EvaComponent implements OnInit
 		}
 		if(status==2)
 		{
+			this.message.param = "box3";
 			if(this.status2==0)
 			{
+				this.message.value = "1";
 				this.status2_src = this.status_imgs_but[1].src;
 				this.status2 = 1;
 				this.box_change(2,5);
 			}
 			else if(this.status2==1)
 			{
+				this.message.value = "0";
 				this.status2_src = this.status_imgs_but[0].src;
 				this.status2 = 0;
 				this.box_change(2,4);
@@ -281,19 +306,23 @@ export class EvaComponent implements OnInit
 		}
 		if(status==3)
 		{
+			this.message.param = "box4";
 			if(this.status3==0)
 			{
+				this.message.value = "1";
 				this.status3_src = this.status_imgs_but[1].src;
 				this.status3 = 1;
 				this.box_change(3,5);
 			}
 			else if(this.status3==1)
 			{
+				this.message.value = "0";
 				this.status3_src = this.status_imgs_but[0].src;
 				this.status3 = 0;
 				this.box_change(3,4);
 			}
 		}
+		this.sensoricaSocket.messages.next(this.message);
 	}
 	eva_move(dir: String)
 	{
@@ -302,27 +331,45 @@ export class EvaComponent implements OnInit
 		{
 			console.log(" Up.");
 			this.emb_pos = this.emb_pos - 10;
-			
+			this.message.id = "move";
+			this.message.param = "up";
+			this.message.value = "1";
+			this.sensoricaSocket.messages.next(this.message);
 		}
 		if(dir=="down")
 		{
 			console.log(" Down.");
 			this.emb_pos = this.emb_pos + 10;
+			this.message.id = "move";
+			this.message.param = "down";
+			this.message.value = "1";
+			this.sensoricaSocket.messages.next(this.message);
 		}
 		if(dir=="stop")
 		{
 			console.log(" Down.");
 			this.emb_pos = this.emb_pos;
+			this.message.id = "move";
+			this.message.param = "stop";
+			this.message.value = "0";
+			this.sensoricaSocket.messages.next(this.message);
 		}
 		this.embudo.style.top = String(this.emb_pos)+'px';
 	}
 	eva_mix()
 	{
 		console.log("EVA mix.");
+		this.message.id = "send";
+		this.message.param = "mix";
+		this.message.value = "1";
 		this.sensoricaSocket.messages.next(this.message);
 	}
 	eva_leave()
 	{
 		console.log("EVA leave.");
+		this.message.id = "send";
+		this.message.param = "leave";
+		this.message.value = "1";
+		this.sensoricaSocket.messages.next(this.message);
 	}
 }

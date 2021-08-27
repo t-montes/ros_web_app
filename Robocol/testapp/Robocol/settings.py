@@ -152,3 +152,5 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
     }
 }
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
