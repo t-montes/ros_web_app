@@ -83,7 +83,7 @@ $ cd ros_web_app_2/Robocol/testapp/
 $ npm install
 $ npm run build
 $ cd
-$ cd cd catkin_ws/
+$ cd catkin_ws/
 $ catkin_make
 ```
 ### Finally, run the app!
