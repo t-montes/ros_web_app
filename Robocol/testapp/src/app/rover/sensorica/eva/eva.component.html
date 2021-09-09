@@ -22,7 +22,7 @@
 				<div class="col col-lg-6">
 					<div class="row">
 						<div class="col col-lg-6">
-							<button id="move_but" (click)="eva_move('up')">
+							<button id="move_but" (mousedown)="eva_move('up')" (mouseup)="eva_move('stop')">
 								<img class="card-img-top" id="move" src="{{move_up_src}}" alt="EVA 1 img"/>
 							</button>
 						</div>
@@ -84,6 +84,14 @@
 									</div>
 								</button>
 							</div>
+							<div class="row">
+								<button id="box_but">
+									<div class="img_eva_container">
+										<img class="card-img-top" id="box" src="{{box0_5_src}}" alt="EVA 1 img"/>
+										<div class="eva_box0_txt">A6</div>
+									</div>
+								</button>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -133,6 +141,14 @@
 									</div>
 								</button>
 							</div>
+							<div class="row">
+								<button id="box_but">
+									<div class="img_eva_container">
+										<img class="card-img-top" id="box" src="{{box1_5_src}}" alt="EVA 1 img"/>
+										<div class="eva_box1_txt">B6</div>
+									</div>
+								</button>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -179,6 +195,22 @@
 									<div class="img_eva_container">
 										<img class="card-img-top" id="box" src="{{box2_4_src}}" alt="EVA 1 img"/>
 										<div class="eva_box2_txt">C5</div>
+									</div>
+								</button>
+							</div>
+							<div class="row">
+								<button id="box_but">
+									<div class="img_eva_container">
+										<img class="card-img-top" id="box" src="{{box2_4_src}}" alt="EVA 1 img"/>
+										<div class="eva_box2_txt">C5</div>
+									</div>
+								</button>
+							</div>
+							<div class="row">
+								<button id="box_but">
+									<div class="img_eva_container">
+										<img class="card-img-top" id="box" src="{{box2_5_src}}" alt="EVA 1 img"/>
+										<div class="eva_box2_txt">C6</div>
 									</div>
 								</button>
 							</div>
@@ -232,10 +264,23 @@
 								</button>
 							</div>
 							<div class="row">
-								<button id="trash_but">
-									<img class="card-img-top" id="trash" src="{{trash_src}}" alt="EVA 1 img"/>
+								<button id="box_but">
+									<div class="img_eva_container">
+										<img class="card-img-top" id="box" src="{{box3_4_src}}" alt="EVA 1 img"/>
+										<div class="eva_box3_txt">D6</div>
+									</div>
 								</button>
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-lg-3">
+							B
+						</div>
+						<div class="col col-lg-9">
+							<button id="trash_but">
+								<img class="card-img-top" id="trash" src="{{trash_src}}" alt="EVA 1 img"/>
+							</button>
 						</div>
 					</div>
 				</div>

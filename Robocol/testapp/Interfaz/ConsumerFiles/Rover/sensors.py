@@ -19,6 +19,8 @@ from Interfaz.models import Message
 from Interfaz.serializers import MessageSerializer
 
 c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
+# Variable de ROS
+boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub, test_pub = "","","","","",""
 
 class SensorsConsumer(AsyncWebsocketConsumer):
 	print('SENSORS CONSUMER')
@@ -31,63 +33,66 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 	co2 = 0
 	met = 0
 	hyd = 0
-	# Variable de ROS
-	test_msg = String() # Mensaje String() (TIPO ROS basado en import)
-	servo_msg = UInt8() # Mensaje UInt8() (TIPO ROS basado en import)
-	motor_msg = UInt8() # Mensaje UInt8() (TIPO ROS basado en import)
-
+	eva_pos = 0
+	boxes_state = 0
+	
 	# ROS CALLBACKS
 	async def temp_callback(self,param):
-		print(' temp_callback',param)
 		self.temp = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "temp",'value': self.temp})
 
 	async def ph_callback(self,param):
-		print(' ph_callback',param)
 		self.ph = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "ph",'value': self.ph})
 
 	async def hum_callback(self,param):
-		print(' hum_callback',param)
 		self.hum = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hum",'value': self.hum})
 
 	async def air_callback(self,param):
-		print(' air_callback',param)
 		self.air = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "air",'value': self.air})
 
 	async def co_callback(self,param):
-		print(' co_callback',param)
 		self.co = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co",'value': self.co})
 
 	async def co2_callback(self,param):
-		print(' co2_callback',param)
 		self.co2 = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co2",'value': self.co2})
 
 	async def met_callback(self,param):
-		print(' met_callback',param)
 		self.met = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "met",'value': self.met})
 
 	async def hyd_callback(self,param):
-		print(' hyd_callback',param)
 		self.hyd = str(param.data) # Sacar dato de ROS en variable string de Python
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hyd",'value': self.hyd})
 
+	async def eva_pos_callback(self,param):
+		self.eva_pos = str(param.data) # Sacar dato de ROS en variable string de Python
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "eva_pos",'value': self.eva_pos})
+
 	async def connect(self):
-		global c
+		global c, boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub,test_pub
 		print('\n SENSORS CONNECTED')
 		# -------------------------------------- Socket init --------------------------------------
 		if(c==0):
 			# ---------------------------------------- ROS init ----------------------------------------
 			# PUBLISHERS
 			print('  *** PUBLISHERS ***')
+			print('   /robocol/sensorica/mover_servos_cajas -> UInt8')
+			boxes_pub = rospy.Publisher("/robocol/sensorica/mover_servos_cajas",UInt8,queue_size=1)
+			print('   /robocol/sensorica/dispensador_eva -> UInt8')
+			disp_pub = rospy.Publisher("/robocol/sensorica/dispensador_eva",UInt8,queue_size=1)
+			print('   /robocol/sensorica/celda_carga -> Float32')
+			load_pub = rospy.Publisher("/robocol/sensorica/celda_carga",Float32,queue_size=1)
+			print('   /robocol/sensorica/posicion_actuador -> Float32')
+			pos_eva_pub = rospy.Publisher("/robocol/sensorica/posicion_actuador",Float32,queue_size=1)
+			print('   /robocol/sensorica/vibracion_motores -> UInt8')
+			vib_pub = rospy.Publisher("/robocol/sensorica/vibracion_motores",UInt8,queue_size=1)
 			print('   /robocol/sensorica/sensors_test_data -> String')
-			self.test_pub = rospy.Publisher("/robocol/sensorica/sensors_test_data",String,queue_size=1)
-			# self.pub_t_cmd = rospy.Publisher("/twist_test",Twist,queue_size=1)
+			test_pub = rospy.Publisher("/robocol/sensorica/sensors_test_data",String,queue_size=1)
 			# SUBSCRIBERS
 			print('  *** SUBSCRIBERS ***')
 			print('   /robocol/sensorica/temperatura -> Float32')
@@ -102,7 +107,8 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 			rospy.Subscriber("/robocol/sensorica/metano",Float32,async_to_sync(self.met_callback))
 			print('   /robocol/sensorica/hidrogeno-> Float32')
 			rospy.Subscriber("/robocol/sensorica/hidrogeno",Float32,async_to_sync(self.hyd_callback))
-
+			print('   /robocol/sensorica/posicion_actual_eva-> Float32')
+			rospy.Subscriber("/robocol/sensorica/posicion_actual_eva",Float32,async_to_sync(self.eva_pos_callback))
 			# print('  /robocol/sensorica/air-> Float32')
 			# rospy.Subscriber("/robocol/sensorica/air",Float32,async_to_sync(self.air_callback))
 			# print('  /robocol/sensorica/co2-> Float32')
@@ -110,74 +116,67 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 			c += 1
 			print("")
 
-		# # ## --------- ROS PUBLISH - PRUEBA ------- ##
-		# test = String()
-		# test.data = "JA"
-		# self.test_pub.publish(test)
-		# # ## --------- ROS PUBLISH - PRUEBA ------- ##
-		
-		print(self.test_pub)
-		self.test_msg.data = str("ja")
-		async_to_sync(self.test_pub.publish(self.test_msg))
-		print("SUCCESS")
-
-		# self.tab_name = self.scope["url_route"]["kwargs"]["tab_name"]
 		self.tab_name = "sensorica"
-		# self.tab_group_name = "chat_{}".format(self.tab_name)
 		await self.channel_layer.group_add(self.tab_name, self.channel_name)
-		print('  Channel layer')
 		await self.accept()
-		print('  Channel Accepted')
-
-
-		# # self.send(text_data=json.dumps({'id': 'objects_values', 'action': "load", 'param':"temp", "value": str(20)}))
-		# await self.channel_layer.group_send(
-		# 	self.tab_name,
-		# 	{
-		# 		'type': 'send_message',
-		# 		'id': "get_value",
-		# 		'param': "temp",
-		# 		'value': "40"
-		# 	}
-		# )
 
 	async def disconnect(self, close_code):
 		print(' SENSORS DISCONNECTED -> ','close_code: ',close_code)
 		await self.channel_layer.group_discard(self.tab_name, self.channel_name)
 
 	async def receive(self, text_data):
+		global boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub
 		print(' SENSORS RECEIVED -> ','text_data: ',text_data)
 		text_data_json = json.loads(text_data)
-		print('  JSON loads: ',text_data_json)
 		tab_id = text_data_json['id']
-		print('  id: ',tab_id)
+		param = text_data_json['param']
+		value = text_data_json['value']
 
-
-		# ## --------- ROS PUBLISH - PRUEBA ------- ##
-		# # text = text_data_json["value"] # Pide valor de llave "message" en diccionario text_data_json
-		# # print(' Dictionary: ',text)
-		# test = String()
-		# test.data = "JAJA"
-		# # self.test_msg.data = str(text) # Actualiza data en String() de ROS. (Inicializado más arriba)
-		# # print(self.test_msg)
-		# print(self.test_pub)
-		# self.test_pub.publish(self.test_msg) # Publica mensaje tipo ROS en pub_cmd
-		# print("end")
-		# ## --------- ROS PUBLISH - PRUEBA ------- ##
-
-
-
-		# Send message to room group
-		await self.channel_layer.group_send(
-			self.tab_name,
-			{
-				'type': 'send_message',
-				'id': tab_id,
-				'param': "temp",
-				'value': "20"
-			}
-		)
-
+		if(param=="mix"):
+			mix_msg = UInt8()
+			mix_msg.data = int(value)
+			vib_pub.publish(mix_msg)
+		if(param=="leave"):
+			leave_msg = UInt8()
+			leave_msg.data = int(value)
+			disp_pub.publish(leave_msg)
+		if(tab_id=="move"):
+			move_msg = Float32()
+			if(param=="up"):
+				self.eva_pos += 1
+				move_msg.data = self.eva_pos
+			elif(param=="down"):
+				self.eva_pos -= 1
+				move_msg.data = self.eva_pos
+			elif(param=="stop"):
+				print('STOP')
+				move_msg.data = self.eva_pos
+			pos_eva_pub.publish(move_msg)
+		if(tab_id=="box"):
+			box_msg = UInt8()
+			if(param=="box1"):
+				if(value=="1"):
+					self.boxes_state += 16
+					print(self.boxes_state)
+				elif(value=="0"):
+					self.boxes_state -= 16
+			elif(param=="box2"):
+				if(value=="1"):
+					self.boxes_state += 32
+				elif(value=="0"):
+					self.boxes_state -= 32
+			elif(param=="box3"):
+				if(value=="1"):
+					self.boxes_state += 64
+				elif(value=="0"):
+					self.boxes_state -= 64
+			elif(param=="box4"):
+				if(value=="1"):
+					self.boxes_state += 128
+				elif(value=="0"):
+					self.boxes_state -= 128
+			box_msg.data = self.boxes_state
+			boxes_pub.publish(box_msg)
 
 		## --------- MANEJO DE MOTORES - EN DESARROLLO ------- ##
 		# if id == 'move_servo':
@@ -198,7 +197,6 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 		# 		self.pub_t_cmd.publish(self.twist_msg)
 		# 		# self.send(text_data=json.dumps({'id': 'objects_values', 'action': "load", 'param':"ph", "value": str(text_data)}))
 		# 		self.send(text_data=json.dumps({'id': 'objects_values', 'action': "load", 'param':"ph", "value": str(text)}))
-		# 		print('jajajajaja')
 		# 	if param == 'ph':
 		# 		text = str(self.ph)
 		# 		# message = Message(text=text, tab_name=self.tab_name)
@@ -215,15 +213,9 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 
 
 	async def send_message(self, event):
-		print(' SENSORS MESSAGE: ',event)
-		tab_id = event['id']
-		param = event['param']
-		value = event['value']
-		print('  Message: ',tab_id)
 		# Send message to WebSocket
 		await self.send(text_data=json.dumps({
-			'id': tab_id,
-			'param': param,
-			'value': value
+			'id': event['id'],
+			'param': event['param'],
+			'value': event['value']
 		}))
-		print('  Message sent.')

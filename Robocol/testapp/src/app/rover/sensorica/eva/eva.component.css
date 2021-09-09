@@ -29,8 +29,6 @@
 /* The element to apply the animation to */
 #embudo
 {
-  animation-name: example;
-  animation-duration: 3s;
   width: 100%;
   height: auto;
   position: relative;
@@ -71,12 +69,12 @@
 }
 #box
 {
-  width: 110%;
+  width: 100%;
   height: auto;
 }
 #trash
 {
-  width: 110%;
+  width: 100%;
   height: auto;
 }
 #move
@@ -133,11 +131,6 @@
   text-align: center;
 }
 
-/*.row
-{
-	width: fit-content;
-}*/
-
 label
 {
 	font-family: Helvetica;
@@ -149,47 +142,3 @@ input
 	border: none;
 	background: none;
 }
-
-
-/*img*/
-/* #sample_img
-{
-	z-index: 4;
-	position: absolute;
-	padding:2%;
-	top: 80px;
-	right: 50px;
-} */
-
-
-/* Container needed to position the button. Adjust the width as needed */
-/* .container {
-  position: relative;
-  width: 50%;
-} */
-
-/* Make the image responsive */
-/* .container img {
-  width: 100%;
-  height: auto;
-} */
-
-/* Style the button and place it in the middle of the container/image */
-/* .container .btn {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #555;
-  color: white;
-  font-size: 7px;
-  padding: 0px 0px;
-  border: none;
-  cursor: pointer;
-  border-radius: 0px;
-} */
-
-/* .container .btn:hover {
-  background-color: black;
-} */
