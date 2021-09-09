@@ -63,6 +63,7 @@ $ python -m pip install -U channels
 ```console
 $ pip install django-webpack-loader==0.7.0
 $ pip install djangorestframework
+$ pip install netifaces
 $ pip install pyyaml
 $ pip install rospkg
 ```
