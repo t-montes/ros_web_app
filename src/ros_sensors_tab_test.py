@@ -1,23 +1,35 @@
 #!/usr/bin/env python3
 import rospy
 from std_msgs.msg import String
+from std_msgs.msg import UInt8
 from std_msgs.msg import Float32
 import time
 import random
 
 
-class App(object):
+class Eva(object):
+	move_eva = 0
+	pos_eva = Float32()
+	setPoint = 0
 	def __init__(self):
 		self.start_time = time.time()
 		print('*** ROS Node Init ***')
 		rospy.init_node('ROS_topics_test')
 		rospy.loginfo(' ROS_topics_test node started.')
-
-		# # SUBSCRIBERS
-		print('*** SUBSCRIBERS ***')
-		print(' Subscribing to /robocol/sensorica/sensors_test_data as String')
-		rospy.Subscriber("/robocol/sensorica/sensors_test_data", String, self.test_callback)
-
+		# SUBSCRIBERS
+		print('\n *** SUBSCRIBERS ***')
+		print('   /robocol/sensorica/mover_servos_cajas -> UInt8')
+		rospy.Subscriber("/robocol/sensorica/mover_servos_cajas",UInt8,self.boxes_callback)
+		print('   /robocol/sensorica/dispensador_eva -> UInt8')
+		rospy.Subscriber("/robocol/sensorica/dispensador_eva",UInt8,self.leave_callback)
+		print('   /robocol/sensorica/celda_carga -> Float32')
+		rospy.Subscriber("/robocol/sensorica/celda_carga",Float32,self.load_cell_callback)
+		print('   /robocol/sensorica/posicion_actuador -> Float32')
+		rospy.Subscriber("/robocol/sensorica/posicion_actuador",Float32,self.pos_callback)
+		print('   /robocol/sensorica/vibracion_motores -> UInt8')
+		rospy.Subscriber("/robocol/sensorica/vibracion_motores",UInt8,self.vib_callback)
+		print('   /robocol/sensorica/sensors_test_data -> String')
+		rospy.Subscriber("/robocol/sensorica/sensors_test_data",String,self.sensors_data_callback)
 		# PUBLISHERS
 		print('*** PUBLISHERS ***')
 		print(' Publishing to /robocol/sensorica/temperatura as Float32')
@@ -32,7 +44,8 @@ class App(object):
 		self.met_pub = rospy.Publisher("/robocol/sensorica/metano", Float32, queue_size=1)
 		print(' Publishing to /robocol/sensorica/hidrogeno as Float32')
 		self.hyd_pub = rospy.Publisher("/robocol/sensorica/hidrogeno", Float32, queue_size=1)
-
+		print(' Publishing /robocol/sensorica/posicion_actual_eva-> Float32')
+		self.pos_eva_pub = rospy.Publisher("/robocol/sensorica/posicion_actual_eva",Float32,queue_size=1)
 
 		# print(' Publishing to /robocol/sensorica/air as Float32')
 		# self.air_pub = rospy.Publisher("/robocol/sensorica/air", Float32, queue_size=1)
@@ -40,51 +53,84 @@ class App(object):
 		# self.co2_pub = rospy.Publisher("/robocol/sensorica/co2", Float32, queue_size=1)
 
 	def test_callback(self,param):
-	 	print(' Received: ',param.data)
+		print(' test_callback -> Received: ',param.data)
+
+	def boxes_callback(self,param):
+		print(' boxes_callback -> Received: ',param.data)
+
+	def leave_callback(self,param):
+		print(' leave_callback -> Received: ',param.data)
+
+	def load_cell_callback(self,param):
+		print(' load_cell_callback -> Received: ',param.data)
+
+	def pos_callback(self,param):
+		self.setPoint = param.data
+		print(' pos_callback -> Received: ',self.setPoint)
+		# if(self.move_eva==0):
+
+		# if(self.setPoint>self.pos_eva.data):
+		# 	print('UP')
+		# 	self.move_eva = 1
+		# elif(self.setPoint<self.pos_eva.data):
+		# 	print('DOWN')
+		# 	self.move_eva = -1
+		# elif (self.setPoint==self.pos_eva.data):
+		# 	print('STOP')
+		# 	self.move_eva = 0
+
+	def vib_callback(self,param):
+		print(' vib_callback -> Received: ',param.data)
+
+	def sensors_data_callback(self,param):
+		print(' sensors_data_callback -> Received: ',param.data)
+
+	def publish(self, pub, value):
+		msg = Float32()
+		msg.data = value
+		pub.publish(msg)
+
 	
 if __name__ == '__main__':
 	try:
-		app = App()
-		rate = rospy.Rate(100)
+		eva = Eva()
+		rate = rospy.Rate(5)
 		# c = 0
+		time.sleep(0.1)
+		print('\n\n Initial random position: ', end='')
+		rand = random.randint(-300,300)
+		print(rand)
+		eva.publish(eva.pos_eva_pub, rand)
+
 		while not rospy.is_shutdown():
 
-			txt_temp = Float32()
-			txt_temp.data = float(random.randint(20, 30))
-			app.temp_pub.publish(txt_temp)
+			# print(' EVA_POS -> Feedback: ',eva.pos_eva.data, '  Setpoint: ',eva.setPoint)
+			# if(eva.setPoint>eva.pos_eva.data):
+			# 	print('UP')
+			# 	eva.move_eva = 1
+			# 	eva.pos_eva.data +=  1
+			# elif(eva.setPoint<eva.pos_eva.data):
+			# 	print('DOWN')
+			# 	eva.move_eva = -1
+			# 	eva.pos_eva.data -=  1
+			# elif (eva.setPoint==eva.pos_eva.data):
+			# 	print('STOP')
+			# 	eva.move_eva = 0
 
-			txt_ph = Float32()
-			txt_ph.data = float(random.randint(0, 14))
-			app.ph_pub.publish(txt_ph)
+			eva.publish(eva.temp_pub, float(random.randint(20, 23)))
+			eva.publish(eva.ph_pub, float(random.randint(6, 8)))
+			eva.publish(eva.hum_pub, float(random.randint(35, 55)))
+			eva.publish(eva.co_pub, float(random.randint(65, 75)))
+			eva.publish(eva.met_pub, float(random.randint(45, 55)))
+			eva.publish(eva.hyd_pub, float(random.randint(475, 525)))
+			# eva.publish(eva.air_pub, float(random.randint(0, 100)))
+			# eva.publish(eva.co2_pub, float(random.randint(0, 800)))
 
-			txt_hum = Float32()
-			txt_hum.data = float(random.randint(20, 30))
-			app.hum_pub.publish(txt_hum)
-
-			txt_co = Float32()
-			txt_co.data = float(random.randint(0, 300))
-			app.co_pub.publish(txt_co)
-
-			txt_met = Float32()
-			txt_met.data = float(random.randint(0, 500))
-			app.met_pub.publish(txt_met)
-
-			txt_hyd = Float32()
-			txt_hyd.data = float(random.randint(0, 700))
-			app.hyd_pub.publish(txt_hyd)
-
-
-			# txt_air = Float32()
-			# txt_air.data = float(random.randint(0, 100))
-			# app.air_pub.publish(txt_air)
-
-			# txt_co2 = Float32()
-			# txt_co2.data = float(random.randint(0, 800))
-			# app.co2_pub.publish(txt_co2)
+			# if(eva.move_eva):
+			# 	eva.pos_eva.data = eva.pos_eva.data + 1
+			# 	eva.pos_eva_pub.publish(eva.pos_eva)
 
 			rate.sleep()
-			# print(' PUB -> n: '+ str(c) +'; t: '+str(round(time.time()-app.start_time,4))+' s; pub_msg: '+txt, end='\r')
-			# c +=1
-		# print('\n')
+
 	except rospy.ROSInterruptException:
 		pass

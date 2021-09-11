@@ -3,7 +3,6 @@ Robocol/testapp/node_modules/
 Robocol/testapp/package-lock.json
 Robocol/testapp/webpack-stats.json
 
-
 # -- PYTHON GITIGNORE --
 
 # Byte-compiled / optimized / DLL files
@@ -145,4 +144,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-*.pyc 
+*.pyc

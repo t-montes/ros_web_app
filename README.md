@@ -59,3 +59,37 @@ $ sudo apt-get install build-essential libssl-dev libffi-dev python3-dev cargo
 $ pip install cryptography --no-binary cryptography
 $ python -m pip install -U channels
 ```
+### Install python packages
+```console
+$ pip install django-webpack-loader==0.7.0
+$ pip install djangorestframework
+$ pip install netifaces
+$ pip install pyyaml
+$ pip install rospkg
+```
+### Create a ROS Workspace
+```console
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/
+$ catkin_make
+$ source devel/setup.bash
+$ echo $ROS_PACKAGE_PATH
+```
+### Clone repository and build project
+In catkin_ws/src
+```console
+$ git clone https://github.com/robocol-rem-u/ros_web_app_2.git
+$ git clone https://github.com/robocol-rem-u/master_msgs.git
+$ cd ros_web_app_2/Robocol/testapp/
+$ npm install
+$ npm run build
+$ cd
+$ cd catkin_ws/
+$ catkin_make
+```
+### Finally, run the app!
+```console
+$ roslaunch ros_web_app_2 launch_GUI.launch
+```
+Now you should see the interface if you go to http://localhost:8000/home
+Enjoy :)
