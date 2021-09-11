@@ -1,6 +1,6 @@
 .img-wrapper {
   position: relative;
- }
+}
 
 .img-responsive {
   width: 100%;
@@ -17,7 +17,7 @@
 }
 
 .img-overlay:before {
-  content: ' ';
+  content: " ";
   display: block;
   /* adjust 'height' to position overlay content vertically */
   height: 0%;
@@ -30,12 +30,12 @@
   opacity: 0;
 }
 
-.td{
+.td {
   padding: 0px;
 }
 
-table { 
+table {
   border-collapse: collapse;
   margin-bottom: 0vh;
   margin-top: 0vh;
-} 
+}

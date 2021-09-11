@@ -1,65 +1,54 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { BrazoService } from '../brazo.service';
-import { WebsocketService } from "../../../websocket.service";
+import { WebsocketService } from '../../../websocket.service';
 
 @Component({
   selector: 'app-brazo-cinematica-inversa-vertical',
   templateUrl: './brazo-cinematica-inversa-vertical.component.html',
   styleUrls: ['./brazo-cinematica-inversa-vertical.component.css'],
-  providers: [WebsocketService, BrazoService]
+  providers: [WebsocketService, BrazoService],
 })
 export class BrazoCinematicaInversaVerticalComponent implements OnInit {
-  
-  imageSrc:String;
+  imageSrc: String;
 
   imageButtons = [
-  {src:'/static/assets/Brazo/Cinematica Inversa/Vertical/VERTICAL inicial.png', name: 'VERTICAL inicial'},
-  {src:'/static/assets/Brazo/Cinematica Inversa/Vertical/U activado.png', name: 'U activado'}, 
-  {src:'/static/assets/Brazo/Cinematica Inversa/Vertical/D activado.png', name: 'D activado'}
+    {
+      src: '/static/assets/Brazo/Cinematica Inversa/Vertical/VERTICAL inicial.png',
+      name: 'VERTICAL inicial',
+    },
+    {
+      src: '/static/assets/Brazo/Cinematica Inversa/Vertical/U activado.png',
+      name: 'U activado',
+    },
+    {
+      src: '/static/assets/Brazo/Cinematica Inversa/Vertical/D activado.png',
+      name: 'D activado',
+    },
   ];
 
   constructor(private brazoService: BrazoService) {}
-
-  private message = {
-    id: "",
-    object: "",
-    value: "",
-    action: ""
-  };
 
   ngOnInit(): void {
     this.imageSrc = this.imageButtons[0].src;
   }
 
-  change_value(imageNameObject, action: string) {
+  change_value(imageNameObject, pAction: string) {
     this.imageSrc = imageNameObject.src;
-    this.preparar_mensaje("change_value", "inverse_vertical", action, "");
-    console.log("new message from brazo to websocket: ", this.message);
-    this.brazoService.messages.next(this.message);
-    this.limpiar_mensaje();
+    const message = {
+      id: 'inverse_kinematics_movements',
+      action: pAction,
+    };
+    console.log('new message from brazo to websocket: ', message);
+    this.brazoService.messages.next(message);
   }
 
-  stop_changing_value(){
+  stop_changing_value() {
+    const message = {
+      id: 'inverse_kinematics_movements',
+      action: "stop",
+    };
     this.imageSrc = this.imageButtons[0].src;
-    this.preparar_mensaje("stop_changing_value", "", "", "");
-    console.log("new message from brazo to websocket: ", this.message);
-    this.brazoService.messages.next(this.message);
-    this.limpiar_mensaje();
+    console.log('new message from brazo to websocket: ', message);
+    this.brazoService.messages.next(message);
   }
-
-  limpiar_mensaje(){
-    this.message.id = "";
-    this.message.object = "";
-    this.message.action = "";
-    this.message.value = "";
-  }
-
-  preparar_mensaje(id:string, object:string, action:string, value:string){
-    this.message.id = id;
-    this.message.object = object;
-    this.message.action = action;
-    this.message.value = value;
-  }
-
 }

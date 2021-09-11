@@ -10,60 +10,113 @@ from asgiref.sync import async_to_sync
 from asgiref.sync import sync_to_async
 print('ARM LIBRARY')
 
-#Nosotros publicamos en este - Brazo se suscribe a este
-topic_to_publish = '/interface_to_robocol_arm_topic'
+c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 
-#Nosotros nos suscribimos a este - Brazo publica en este
-topic_to_subscribe = '/robocol_to_interface_arm_topic'
+### VARIABLES DE LOS PUBLISHERS DE ROS ###
+pub_inverse_kinematics_rotation, pub_inverse_kinematics_motors, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage  = None, None, None, None, None
+
+
+### TOPICOS DE ROS ###
+
+#Example: "joint_1:increase"
+#Example: "joint_1:decrease"
+#Example: "joint_1:stop"
+topic_publish_inverse_kinematics_motors = '/robocol/interfaz/brazo/inverse_kinematics/motors'
+
+#Example: "Yaw:CW"
+#Example: "Yaw:CCW"
+#Example: "Yaw:stop"
+#Example: "Pitch:stop"
+topic_publish_inverse_kinematics_rotation  = '/robocol/interfaz/brazo/inverse_kinematics/rotation'
+
+#Example: "front"
+#Example: "back"
+#Example: "right"
+#Example: "left"
+#Example: "up"
+#Example: "down"
+#Example: "stop"
+topic_publish_inverse_kinematics_movements  = '/robocol/interfaz/brazo/inverse_kinematics/movements'
+
+#Example: "abort"
+topic_publish_abort  = '/robocol/interfaz/brazo/abort'
+
+#Example: "45"
+#Example: "100"
+#Example: "54"
+topic_publish_inverse_kinematics_percentage  = '/robocol/interfaz/brazo/inverse_kinematics/percentage'
+
+#Explanation: csv of values of joints and greeper
+#Explanation: "joint_1_value,joint_2_value,joint_3_value,...,joint_7_value,greeper_value"
+#Example: "34,54,35,75,24,0,65,56"
+topic_subscribe_direct_kinematics = '/robocol/brazo/interfaz/inverse_kinematics/motors'
+
+
+### CLASE ARM CONSUMER ###
 
 class ArmConsumer(AsyncWebsocketConsumer):
     print('ARM CONSUMER')
 
     async def connect(self):
-        print('ARM CONNECTED')
-        print("Initializing publisher")
-        self.pub = rospy.Publisher(topic_to_publish, String, queue_size=1)
-        print("Initializing subscriber")
-        rospy.Subscriber(topic_to_subscribe, String, async_to_sync(self.callback))
-        print("Initializing message")
+        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage
+        if(c==0):
+            print('ARM CONNECTED')
+            print("Initializing publishers")
+            pub_inverse_kinematics_motors = rospy.Publisher(topic_publish_inverse_kinematics_motors, String, queue_size=1)
+            pub_inverse_kinematics_rotation = rospy.Publisher(topic_publish_inverse_kinematics_rotation, String, queue_size=1)
+            pub_inverse_kinematics_movements = rospy.Publisher(topic_publish_inverse_kinematics_movements, String, queue_size=1)
+            pub_abort = rospy.Publisher(topic_publish_abort, String, queue_size=1)
+            pub_inverse_kinematics_percentage = rospy.Publisher(topic_publish_inverse_kinematics_percentage, String, queue_size=1)
+            print("Initializing subscriber")
+            rospy.Subscriber(topic_subscribe_direct_kinematics, String, async_to_sync(self.callback_inverse_kinematics_motors))
+            c+=1
         await self.accept()
 
-    #Ejemplos de mensajes que enviamos al tópico:
-    # - "joint_1:increase"
-    # - "stop_changing_value"
-    # - "get_values" (Con este, brazo debe enviar uno a uno los valores de los joints y del gripper)
     async def receive(self, text_data):
+        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage
         print('ARM RECEIVED')
         text_data = json.loads(text_data)
+        print(text_data)
         id = text_data['id']
         msg = String()
-        if id == 'change_value':
-            objeto = text_data['object']
+        if id == "inverse_kinematics_motors":
+            motor = text_data['motor']
             action = text_data['action']
-            msg.data = objeto + ":" + action
+            msg.data = motor + ":" + action
             print(msg.data)
-            self.pub.publish(msg)
-            print('done')
-        elif id == 'stop_changing_value':
-            msg.data = "stop_changing_value"
+            pub_inverse_kinematics_motors.publish(msg)
+            print('Message published to topic')
+        elif id == 'inverse_kinematics_rotation':
+            motor = text_data['motor']
+            action = text_data['action']
+            msg.data = motor + ":" + action
             print(msg.data)
-            self.pub.publish(msg)
-            print('dejar de cambiar valor')
-        elif id == 'get_values':
-            msg.data = "get_values"
+            pub_inverse_kinematics_rotation.publish(msg)
+            print('Message published to topic')
+        elif id == 'inverse_kinematics_movements':
+            action = text_data['action']
+            msg.data = action
             print(msg.data)
-            self.pub.publish(msg)
-            print('Solicitar el valor de los objetos')
+            pub_inverse_kinematics_movements.publish(msg)
+            print('Message published to topic')
+        elif id == 'abort':
+            msg.data = 'abort'
+            print(msg.data)
+            pub_abort.publish(msg)
+            print('Message published to topic')
+        elif id == 'inverse_kinematics_percentage':
+            percentage = text_data['percentage']
+            msg.data = percentage
+            print(msg.data)
+            pub_inverse_kinematics_percentage.publish(msg)
+            print('Message published to topic')
 
-    #Ejemplos de mensajes que esperamos recibir:
-    # - "joint_1:35"
-    # - "gripper:70"
-    async def callback(self, param):
-        print("Arm received a topic message")
+    async def callback_inverse_kinematics_motors(self, param):
+        print("Arm received a inverse_kinematics_motors topic message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
-        split = param.data.split(":")
-        await self.send(text_data=json.dumps({'id': 'object_value', 'object': split[0], 'value': split[1]}))
-
+        split = param.data.split(",")
+        await self.send(text_data=json.dumps({'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]}))
+    
     async def disconnect(self, close_code):
         print('ARM DISCONNECTED')
         print(close_code)
