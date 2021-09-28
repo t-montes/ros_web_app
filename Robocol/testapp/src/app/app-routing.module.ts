@@ -5,9 +5,8 @@ import { HomeViewComponent } from './views/home/home.component';
 //ROVER
 import { BrazoPestaniaComponent } from './rover/brazo/brazo-pestania/brazo-pestania.component';
 import { BrazoCopilotoComponent } from './rover/brazo/brazo-copiloto/brazo-copiloto.component';
-import { PilotComponent } from './rover/traccion/pilot/pilot.component';
-import { CopilotComponent } from './rover/traccion/copilot/copilot.component';
-// import { TraccionComponent } from './rover/traccion/traccion.component';
+import { TraccionCopilotoComponent } from './rover/traccion/traccion-copiloto/traccion-copiloto.component';
+import { TraccionPilotoComponent } from './rover/traccion/traccion-piloto/traccion-piloto.component';
 import { EstadoPestaniaComponent } from './rover/estado/estado-pestania/estado-pestania.component';
 import { SensoricaComponent } from './rover/sensorica/sensorica.component';
 import { EstadoTopicosComponent } from './rover/estado/estado-topicos/estado-topicos.component';
@@ -17,7 +16,7 @@ import { FPGAComponent } from './rover/fpga/fpga.component';
 //SUBMARINO
 import { EstadosubComponent } from './submarino/estadosub/estadosub.component';
 import { NavegacionComponent } from './submarino/navegacion/navegacion.component';
-import { PinzaComponent } from "./submarino/pinza/pinza.component";
+import { PinzaComponent } from './submarino/pinza/pinza.component';
 
 //LUNABOT
 import { PruebaComponent } from './lunabot/prueba/prueba.component';
@@ -29,9 +28,7 @@ import { NgxPermissionsGuard } from 'ngx-permissions';
 import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [
-
-  ],
+  declarations: [],
   imports: [
     RouterModule.forRoot([
       //Visible para todos
@@ -39,16 +36,16 @@ import { AuthComponent } from './auth/auth.component';
       //Visible para ROVER
       {
         path: 'brazo',
-            children: [
+        children: [
           {
-            path: 'piloto', 
+            path: 'piloto',
             component: BrazoPestaniaComponent,
             canActivate: [NgxPermissionsGuard],
             data: {
               permissions: {
-              only: ['ROVER']
-              }
-            }
+                only: ['ROVER'],
+              },
+            },
           },
           {
             path: 'copiloto',
@@ -56,51 +53,46 @@ import { AuthComponent } from './auth/auth.component';
             canActivate: [NgxPermissionsGuard],
             data: {
               permissions: {
-              only: ['ROVER']
-              }
-            }
+                only: ['ROVER'],
+              },
+            },
           },
         ],
       },
       {
-        path: 'pilot',
-        component: PilotComponent,
-        canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['ROVER']
-          }
-        }
+        path: 'traccion',
+        children: [
+          {
+            path: 'piloto',
+            component: TraccionPilotoComponent,
+            canActivate: [NgxPermissionsGuard],
+            data: {
+              permissions: {
+                only: ['ROVER'],
+              },
+            },
+          },
+          {
+            path: 'copiloto',
+            component: TraccionCopilotoComponent,
+            canActivate: [NgxPermissionsGuard],
+            data: {
+              permissions: {
+                only: ['ROVER'],
+              },
+            },
+          },
+        ],
       },
-      {
-        path: 'copilot',
-        component: CopilotComponent,
-        canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['ROVER']
-          }
-        }
-      },
-      // {
-      //   path: 'traccion',
-      //   component: TraccionComponent,
-      //   canActivate: [NgxPermissionsGuard],
-      //   data: {
-      //     permissions: {
-      //       only: ['ROVER']
-      //     }
-      //   }
-      // },
       {
         path: 'estado',
         component: EstadoPestaniaComponent,
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['ROVER']
-          }
-        }
+            only: ['ROVER'],
+          },
+        },
       },
       {
         path: 'estadoTopicos',
@@ -108,9 +100,9 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['ROVER']
-          }
-        }
+            only: ['ROVER'],
+          },
+        },
       },
       {
         path: 'sensorica',
@@ -118,9 +110,9 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['ROVER']
-          }
-        }
+            only: ['ROVER'],
+          },
+        },
       },
       {
         path: 'fpga',
@@ -128,11 +120,10 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['ROVER']
-          }
-        }
+            only: ['ROVER'],
+          },
+        },
       },
-
 
       // Visible para SUBMARINO
       {
@@ -141,9 +132,9 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['SUBMARINO']
-          }
-        }
+            only: ['SUBMARINO'],
+          },
+        },
       },
       {
         path: 'pinza',
@@ -151,9 +142,9 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['SUBMARINO']
-          }
-        }
+            only: ['SUBMARINO'],
+          },
+        },
       },
       {
         path: 'estadoSub',
@@ -161,11 +152,10 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['SUBMARINO']
-          }
-        }
+            only: ['SUBMARINO'],
+          },
+        },
       },
-
 
       // Visible para LUNABOT
       {
@@ -174,9 +164,9 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['LUNABOT']
-          }
-        }
+            only: ['LUNABOT'],
+          },
+        },
       },
       {
         path: 'prueba',
@@ -184,20 +174,17 @@ import { AuthComponent } from './auth/auth.component';
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ['LUNABOT']
-          }
-        }
+            only: ['LUNABOT'],
+          },
+        },
       },
 
       // Rutas que no existen redirigir a home
       { path: '**', redirectTo: 'home' },
-      { path: ' ', redirectTo: 'home' }
-    ])
+      { path: ' ', redirectTo: 'home' },
+    ]),
   ],
-  exports: [
-    RouterModule
-  ],
+  exports: [RouterModule],
   providers: [],
-
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

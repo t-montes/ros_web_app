@@ -1,0 +1,30 @@
+.card-body {
+  padding-left: 0vh;
+  padding-right: 0vh;
+  padding-top: 0vh;
+  padding-bottom: 0vh;
+}
+
+.img-responsive {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.flex-column {
+  width: 100%;
+}
+
+.exterior {
+  padding: 0px;
+}
+
+.col {
+  padding: 0px;
+}
+
+.tarjetaControl {
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 48vh;
+  min-height: 48vh;
+}
