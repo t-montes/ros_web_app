@@ -1,3 +1,4 @@
+#!/bin/bash
 . /opt/ros/melodic/setup.bash
 cd ../..
 source devel/setup.bash
