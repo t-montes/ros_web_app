@@ -93,8 +93,10 @@ $ roslaunch ros_web_app_2 launch_GUI.launch
 ```
 Now you should see the interface if you go to http://localhost:8000/home
 Enjoy :)
+
 -----
-##About Docker
+
+## About Docker
 ### To create the Docker Image
 Make sure you are inside ros_webapp_2 folder
 
