@@ -113,7 +113,6 @@ $ sudo docker buildx create --name multiarch --driver docker-container --use
 $ sudo docker buildx inspect --bootstrap
 $ sudo docker buildx inspect
 $ sudo docker buildx build --platform linux/arm,linux/arm64,linux/amd64 --progress=plain -t robocol/interfaz . --push
-$ sudo docker buildx build --platform linux/arm64 --progress=plain -t robocol/interfaz .
 ```
 The Docker image should be built and pushed to the DockerHub repository
 
