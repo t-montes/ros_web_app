@@ -43,6 +43,7 @@ RUN pip3 install rospkg
 
 #CREATE A ROS WORKSPACE
 RUN mkdir -p ~/catkin_ws/src
+WORKDIR /home/interfaz_folder/catkin_ws/src
 WORKDIR /home/interfaz_folder/catkin_ws
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN source ~/.bashrc
@@ -52,7 +53,9 @@ RUN git clone https://github.com/robocol-rem-u/master_msgs.git
 COPY . /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 WORKDIR /home/interfaz_folder/catkin_ws
 RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; catkin_make'
+RUN source devel/setup.bash
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 
 #EXECUTE ROSLAUNCH
-CMD docker_instructions.sh
+ENTRYPOINT ["./docker_instructions.sh"]
+#CMD docker_instructions.sh
