@@ -32,7 +32,7 @@ $ nvm install [version.number]
 ```
 ### Install Angular
 ```console
-$ npm install -g @angular/cli
+$ npm install -g @angular/cli@10.1.0
 ```
 ### Install Python 3 and configure development environment
 ```console
@@ -81,7 +81,7 @@ In catkin_ws/src
 $ git clone https://github.com/robocol-rem-u/ros_web_app_2.git
 $ git clone https://github.com/robocol-rem-u/master_msgs.git
 $ cd ros_web_app_2/Robocol/testapp/
-$ npm install
+$ npm install --legacy-peer-deps
 $ npm run build
 $ cd
 $ cd catkin_ws/
