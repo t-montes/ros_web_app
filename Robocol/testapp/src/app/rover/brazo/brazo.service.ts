@@ -9,7 +9,7 @@ const ARM_SOCKET_URL = "ws://" + window.location.host + "/ws/brazo/piloto/";
 })
 export class BrazoService
 {
-	public messages: Subject<any>;
+	public messages: Subject<any>; 
 
 	constructor(wsService: WebsocketService)
 	{
