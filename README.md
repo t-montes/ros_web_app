@@ -118,6 +118,6 @@ The Docker image should be built and pushed to the DockerHub repository
 
 ### To run the Docker Image
 ```console
-$ sudo docker run --rm -it -p 8000:8000 robocol/interfaz:latest
+$ sudo docker run --net=host --rm -it robocol/interfaz:latest
 ```
 Wait for a few seconds. You should see the normal outputs in the console and the app working in http://localhost:8000/home
