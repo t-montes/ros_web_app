@@ -93,3 +93,31 @@ $ roslaunch ros_web_app_2 launch_GUI.launch
 ```
 Now you should see the interface if you go to http://localhost:8000/home
 Enjoy :)
+
+-----
+
+## About Docker
+### To create the Docker Image
+Make sure you are inside ros_webapp_2 folder
+
+You need to login to DockerHub with Robocol´s credentials
+```console
+$ sudo docker login
+```
+Now, build the Docker Image:
+```console
+$ sudo docker buildx
+$ sudo docker buildx ls
+$ sudo docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+$ sudo docker buildx create --name multiarch --driver docker-container --use
+$ sudo docker buildx inspect --bootstrap
+$ sudo docker buildx inspect
+$ sudo docker buildx build --platform linux/arm,linux/arm64,linux/amd64 --progress=plain -t robocol/interfaz . --push
+```
+The Docker image should be built and pushed to the DockerHub repository
+
+### To run the Docker Image
+```console
+$ sudo docker run --net=host --rm -it robocol/interfaz:latest
+```
+Wait for a few seconds. You should see the normal outputs in the console and the app working in http://localhost:8000/home
