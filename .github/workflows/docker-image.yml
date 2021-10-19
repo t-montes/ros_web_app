@@ -18,10 +18,10 @@ jobs:
       with:
         node-version: '14'
         
-    - working-directory: ./Robocol/testapp
+    - working-directory: Robocol/testapp
       run: npm install
     
-    - working-directory: ./Robocol/testapp
+    - working-directory: Robocol/testapp
       run: npm run build
     
     -   name: Checkout
