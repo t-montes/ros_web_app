@@ -13,6 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        
+    - working-directory: ./Robocol/testapp
+      run: npm install
+    
+    - working-directory: ./Robocol/testapp
+      run: npm run build
+    
     -   name: Checkout
         uses: actions/checkout@v2
         
