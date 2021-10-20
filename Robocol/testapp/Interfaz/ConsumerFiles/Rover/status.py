@@ -21,6 +21,7 @@ pub_wheels  = None
 ### TOPICOS DE ROS ###
 
 topic_publish_wheels = '/robocol/interfaz/status/wheels'
+topic_subscriber_wheels = '/robocol/interfaz/status/wheels' #No se si es la misma direccion.. sería el mismo tópico, no ?
 
 topic_subscriber_batteries = '/robocol/interfaz/status/batteries'
 
@@ -39,6 +40,8 @@ class StatusConsumer(AsyncWebsocketConsumer):
             pub_wheels = rospy.Publisher(topic_publish_wheels, String, queue_size=1)
             print("Initializing subscriber")
             rospy.Subscriber(topic_subscriber_batteries, String, async_to_sync(self.callback_batteries)) 
+            rospy.Subscriber(topic_subscriber_wheels, String, async_to_sync(self.callback_wheels)) 
+            
             c+=1
         await self.accept() ## se crea el socket
 
@@ -48,8 +51,17 @@ class StatusConsumer(AsyncWebsocketConsumer):
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         #param tiene metadatos, y el mensaje está es param.data 
         #split = param.data.split(",") 
-        await self.send(text_data=json.dumps({'id': 'wheels #1', "status": param.data}))
+        await self.send(text_data=json.dumps({'id': 'batteries', "idBattery": param.data.id, "amps":param.data.amps, "ohms":param.data.ohms, "name":param.data.name, "volts":param.data.volts, "percentage":param.data.percentage}))
     
+    async def  callback_wheels(self, param):
+        #el param es el msg que llega del topico (cuando el subscriber me notifica que hubo un cambio)
+        print("Status received a wheels message")
+        rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
+        #param tiene metadatos, y el mensaje está es param.data 
+        #split = param.data.split(",") 
+        await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": param.data.id, "current":param.data.current, "speed": param.data.speed}))
+    
+   
     async def disconnect(self, close_code):
         print('STATUS DISCONNECTED')
         print(close_code)

@@ -102,44 +102,39 @@
           Temperature<br />0 &degC
         </label >
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests">
-          <label id="L0_speed">Speed: 0 RPM</label>
-          <label id="L0_current">Current: 0 A</label>
+          <label id="L0_speed">Speed: {{wheelsList[0].speed}} RPM</label>
+          <label id="L0_current">Current: {{wheelsList[0].current}} A</label>
 
-          <button id="B0" class="button_enabled_motors" (click)="button_wheel(1,'holaaaa')">Enabled</button>
-        </div>
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests1">
-          <label id="L1_speed"> Speed: 0 RPM</label>
-          <label id="L1_current">Current: 0 A</label>
-
-          <button id="B1" class="button_enabled_motors">Enabled</button>
+          <button id="B0" class="button_enabled_motors" (click)="button_wheel(0,'enable')" **ngIf="wheelsList[0].enable">Enabled</button>
+          <button id="B0" class="button_enabled_motors" (click)="button_wheel(0,'disable')" **ngIf="!wheelsList[0].enable">Enabled</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests2">
-          <label id="L2_speed">Speed: 0 RPM</label>
-          <label id="L2_current">Current: 0 A</label>
+          <label id="L2_speed">Speed: {{wheelsList[1].speed}} RPM</label>
+          <label id="L2_current">Current: {{wheelsList[1].current}} A</label>
 
-          <button id="B2" class="button_enabled_motors">Enabled</button>
+          <button id="B2" class="button_enabled_motors" (click)="button_wheel(1,'enable')" **ngIf="wheelsList[1].enable">Enabled</button>
+          <button id="B2" class="button_enabled_motors" (click)="button_wheel(1,'disable')" **ngIf="!wheelsList[1].enable">Disabled</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests3">
-          <label id="R0_speed">Speed: 0 RPM</label>
-          <label id="R0_current">Current: 0 A</label>
+          <label id="R0_speed">Speed:  {{wheelsList[2].speed}} RPM</label>
+          <label id="R0_current">Current: {{wheelsList[2].current}} A</label>
 
-          <button id="B3" class="button_enabled_motors">Enabled</button>
-        </div>
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests4">
-          <label id="R1_speed">Speed: 0 RPM</label>
-          <label id="R1_current">Current: 0 A</label>
-
-          <button id="B4" class="button_enabled_motors">Enabled</button>
+          <button id="B3" class="button_enabled_motors" (click)="button_wheel(2,'enable')" **ngIf="wheelsList[2].enable">Enabled</button>
+          <button id="B3" class="button_enabled_motors" (click)="button_wheel(2,'disable')" **ngIf="!wheelsList[2].enable">Disabled</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests5">
-          <label id="R2_speed">Speed: 0 RPM</label>
-          <label id="R2_current">Current: 0 A</label>
+          <label id="R2_speed">Speed: {{wheelsList[3].speed}} RPM</label>
+          <label id="R2_current">Current: {{wheelsList[3].speed}} A</label>
 
-          <button id="B5" class="button_enabled_motors">Enabled</button>
+          <button id="B5" class="button_enabled_motors" (click)="button_wheel(3,'enable')" **ngIf="wheelsList[3].enable">Enabled</button>
+          <button id="B5" class="button_enabled_motors" (click)="button_wheel(3,'disable')" **ngIf="!wheelsList[3].enable">Enabled</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests6">
-          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors">
+          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors" (click)="button_wheel(6,'enable')" **ngIf="wheelsList[3].enable">
             Enable All
+          </button>
+          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors" (click)="button_wheel(6,'disable')" **ngIf="!wheelsList[3].enable">
+            Disable All
           </button>
         </div>
       </div>

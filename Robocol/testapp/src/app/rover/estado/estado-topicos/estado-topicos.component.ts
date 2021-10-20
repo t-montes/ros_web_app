@@ -3,6 +3,8 @@ import { Observable, Subscription } from 'rxjs';
 import { EstadoService } from '../estado.service';
 import { Message } from "../../../message";
 import { MessageService } from "../../../message.service";
+import { WebsocketService } from '../../../websocket.service';
+
 
 @Component({
 	selector: 'app-estado-topicos',
@@ -16,7 +18,7 @@ export class EstadoTopicosComponent implements OnInit
 	message: string;
 	messages: Message[];
 
-	constructor( private messageService: MessageService)
+	constructor( private estadoService: EstadoService)
 	{
 		
 	}
