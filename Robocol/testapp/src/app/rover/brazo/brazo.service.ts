@@ -5,14 +5,12 @@ import { WebsocketService } from "../../websocket.service";
 const ARM_SOCKET_URL = "ws://" + window.location.host + "/ws/brazo/piloto/";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
-export class BrazoService
-{
+export class BrazoService {
 	public messages: Subject<any>;
 
-	constructor(wsService: WebsocketService)
-	{
+	constructor(wsService: WebsocketService) {
 		console.log("BrazoService: constructor");
 		this.messages = <Subject<any>>wsService.connect(ARM_SOCKET_URL).map(
 			(response: MessageEvent): any => {
