@@ -12,13 +12,33 @@ import { BrazoCinematicaInversaVerticalComponent } from './brazo-cinematica-inve
 import { BrazoCinematicaInversaRotacionComponent } from './brazo-cinematica-inversa-rotacion/brazo-cinematica-inversa-rotacion.component';
 import { BrazoCopilotoComponent } from './brazo-copiloto/brazo-copiloto.component';
 
-
-
 @NgModule({
-  declarations: [BrazoPestaniaComponent, BrazoCinematicaDirectaComponent, BrazoCoordenadasComponent, LiveComponent, SensorPresionComponent, AnalisisOperacionComponent, OnOffComponent, BrazoCinematicaInversaHorizontalComponent, BrazoCinematicaInversaVerticalComponent, BrazoCinematicaInversaRotacionComponent, BrazoCopilotoComponent],
-  imports: [
-    CommonModule
+  declarations: [
+    BrazoPestaniaComponent,
+    BrazoCinematicaDirectaComponent,
+    BrazoCoordenadasComponent,
+    LiveComponent,
+    SensorPresionComponent,
+    AnalisisOperacionComponent,
+    OnOffComponent,
+    BrazoCinematicaInversaHorizontalComponent,
+    BrazoCinematicaInversaVerticalComponent,
+    BrazoCinematicaInversaRotacionComponent,
+    BrazoCopilotoComponent,
   ],
-  exports: [BrazoPestaniaComponent, BrazoCinematicaDirectaComponent, BrazoCoordenadasComponent, LiveComponent, SensorPresionComponent, AnalisisOperacionComponent, OnOffComponent, BrazoCinematicaInversaHorizontalComponent, BrazoCinematicaInversaVerticalComponent, BrazoCinematicaInversaRotacionComponent, BrazoCopilotoComponent]
+  imports: [CommonModule],
+  exports: [
+    BrazoPestaniaComponent,
+    BrazoCinematicaDirectaComponent,
+    BrazoCoordenadasComponent,
+    LiveComponent,
+    SensorPresionComponent,
+    AnalisisOperacionComponent,
+    OnOffComponent,
+    BrazoCinematicaInversaHorizontalComponent,
+    BrazoCinematicaInversaVerticalComponent,
+    BrazoCinematicaInversaRotacionComponent,
+    BrazoCopilotoComponent,
+  ],
 })
-export class BrazoModule { }
+export class BrazoModule {}
