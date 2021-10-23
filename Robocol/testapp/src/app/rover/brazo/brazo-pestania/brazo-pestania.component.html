@@ -19,16 +19,16 @@
       <div class="d-flex card rounded-0 border-warning bg-transparent justify-content-center align-items-center text-center tarjetaControl" style="display: flex;">
          <div class="d-flex align-items-center card-body bg-black justify-content-around cuerpoTarjetaControl" style="display: flex;">
             <div class="d-flex justify-content-center align-items-center text-center rotacion">
-               <app-brazo-cinematica-directa></app-brazo-cinematica-directa>
+               <app-brazo-cinematica-directa [brazoService]="brazoService"></app-brazo-cinematica-directa>
             </div>
             <div class="d-flex justify-content-center align-items-center text-center rotacion">
-               <app-brazo-cinematica-inversa-rotacion></app-brazo-cinematica-inversa-rotacion>
+               <app-brazo-cinematica-inversa-rotacion [brazoService]="brazoService"></app-brazo-cinematica-inversa-rotacion>
             </div>
             <div class="d-flex justify-content-center align-items-center text-center vertical">
-               <app-brazo-cinematica-inversa-vertical></app-brazo-cinematica-inversa-vertical>
+               <app-brazo-cinematica-inversa-vertical [brazoService]="brazoService"></app-brazo-cinematica-inversa-vertical>
             </div>
             <div class="d-flex justify-content-center align-items-center text-center horizontal">
-               <app-brazo-cinematica-inversa-horizontal></app-brazo-cinematica-inversa-horizontal>
+               <app-brazo-cinematica-inversa-horizontal [brazoService]="brazoService"></app-brazo-cinematica-inversa-horizontal>
             </div>
          </div>
       </div>

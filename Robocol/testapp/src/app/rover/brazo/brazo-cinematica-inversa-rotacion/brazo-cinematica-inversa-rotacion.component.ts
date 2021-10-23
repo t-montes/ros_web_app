@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BrazoService } from '../brazo.service';
 import { WebsocketService } from '../../../websocket.service';
 
@@ -9,6 +9,7 @@ import { WebsocketService } from '../../../websocket.service';
   providers: [WebsocketService, BrazoService],
 })
 export class BrazoCinematicaInversaRotacionComponent implements OnInit {
+  @Input() brazoService: BrazoService; // decorate the property with @Input()
   imageSrcPitch: String;
   imageSrcRoll: String;
   imageSrcYaw: String;
@@ -58,7 +59,7 @@ export class BrazoCinematicaInversaRotacionComponent implements OnInit {
     },
   ];
 
-  constructor(private brazoService: BrazoService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.imageSrcPitch = this.imageButtonsPitch[0].src;
