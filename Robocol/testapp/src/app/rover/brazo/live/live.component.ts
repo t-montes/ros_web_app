@@ -8,7 +8,7 @@ import { BrazoService } from '../brazo.service';
   styleUrls: ['./live.component.css'],
   providers: [WebsocketService, BrazoService],
 })
-export class LiveComponent {
+export class LiveComponent implements OnDestroy, OnInit{
 
   constructor(private brazoService: BrazoService) {
     brazoService.messages.subscribe((msg) => {
@@ -17,5 +17,13 @@ export class LiveComponent {
         console.log(msg["data"]);
       }
     });
+  }
+
+  ngOnDestroy(){
+
+  }
+
+  ngOnInit(){
+    
   }
 }

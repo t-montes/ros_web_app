@@ -63,7 +63,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
     print('ARM CONSUMER')
 
     async def connect(self):
-        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage
+        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_cam1
         if(c==0):
             print('ARM CONNECTED')
             print("Initializing publishers")
@@ -78,9 +78,13 @@ class ArmConsumer(AsyncWebsocketConsumer):
             rospy.Subscriber(topic_subscribe_cam1, Image, async_to_sync(self.callback_cam1))
             c+=1
         await self.accept()
+        msg_start_camera = Float32()
+        msg_start_camera.data = 1
+        pub_cam1.publish(msg_start_camera)
+        
 
     async def receive(self, text_data):
-        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage
+        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_cam1
         print('ARM RECEIVED')
         text_data = json.loads(text_data)
         print(text_data)
@@ -123,12 +127,9 @@ class ArmConsumer(AsyncWebsocketConsumer):
             print('Message published to topic')
         elif id == 'cam1_signal':
             msg = Float32()
-            signal = text_data['signal']
-            msg.data = signal
-            print(msg.data)
+            msg.data = 0
             pub_cam1.publish(msg)
             print('Message published to topic')
-
     async def callback_inverse_kinematics_motors(self, param):
         print("Arm received a inverse_kinematics_motors topic message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
