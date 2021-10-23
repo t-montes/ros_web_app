@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { BrazoService } from '../brazo.service';
 import { WebsocketService } from '../../../websocket.service';
+import { Component, Input, OnInit } from '@angular/core'; // First, import Input
 
 @Component({
   selector: 'app-brazo-cinematica-directa',
@@ -9,6 +9,7 @@ import { WebsocketService } from '../../../websocket.service';
   providers: [WebsocketService, BrazoService],
 })
 export class BrazoCinematicaDirectaComponent implements OnInit {
+  @Input() brazoService: BrazoService; // decorate the property with @Input()
   //Define the variables that will contain the joint's current value, which will be display in the html's labels
 
   //Define the variables for the maximum and minimun values of the joints
@@ -30,8 +31,12 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
   min_value_gripper: number = 0;
   max_value_gripper: number = 100;
 
-  constructor(private brazoService: BrazoService) {
-    brazoService.messages.subscribe((msg) => {
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    console.log(this.brazoService);
+    this.brazoService.messages.subscribe((msg) => {
       console.log('Response from websocket: ' + msg);
       if (msg['id'] == 'inverse_kinematics_motors') {
         this.joint_1_value = Number(msg['joint_1']);
@@ -43,9 +48,6 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
         this.gripper_value = Number(msg['gripper']);
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 
   //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object

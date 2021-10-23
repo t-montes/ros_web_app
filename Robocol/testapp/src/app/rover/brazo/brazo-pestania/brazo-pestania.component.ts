@@ -8,16 +8,15 @@ import { BrazoService } from '../brazo.service';
   styleUrls: ['./brazo-pestania.component.css'],
   providers: [WebsocketService, BrazoService],
 })
-export class BrazoPestaniaComponent implements  OnDestroy {
+export class BrazoPestaniaComponent implements OnDestroy {
 
-  constructor(private brazoService: BrazoService) {
+  brazoService:BrazoService = new BrazoService(new WebsocketService());
+
+  constructor() {
+    console.log(this.brazoService)
   }
 
   ngOnDestroy(): void {
-    const message = {
-      id: 'cam1_signal',
-    };
-    this.brazoService.messages.next(message);
-    console.log('new message from brazo to websocket: ', message);
+    this.brazoService.messages.next({id:"cam1_signal"})
   }
 }
