@@ -4,6 +4,7 @@ SHELL ["/bin/bash","-c"]
 
 #NODE and NPM
 ENV NODE_VERSION=16.11.1
+RUN sudo apt-get update
 RUN sudo apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
