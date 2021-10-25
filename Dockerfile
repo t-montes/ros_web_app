@@ -2,6 +2,18 @@ FROM ros:melodic
 
 SHELL ["/bin/bash","-c"]
 
+#NODE and NPM
+ENV NODE_VERSION=16.11.1
+RUN sudo apt install -y curl
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+RUN node --version
+RUN npm --version
+
 WORKDIR /home/interfaz_folder
 
 #ROS
@@ -54,6 +66,9 @@ COPY . /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 WORKDIR /home/interfaz_folder/catkin_ws
 RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; catkin_make'
 RUN source devel/setup.bash
+WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2/Robocol/testapp
+RUN npm install --legacy-peer-deps
+RUN npm run build
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 
 #EXECUTE ROSLAUNCH
