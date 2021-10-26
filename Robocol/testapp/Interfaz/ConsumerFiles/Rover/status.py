@@ -19,11 +19,13 @@ c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 pub_wheels  = None
 
 ### TOPICOS DE ROS ###
+#Interfaz publica a potencia
+topic_publish_wheels = '/robocol/interfaz/potencia/wheels'
 
-topic_publish_wheels = '/robocol/interfaz/status/wheels'
-topic_subscriber_wheels = '/robocol/interfaz/status/wheels' #No se si es la misma direccion.. sería el mismo tópico, no ?
+#Potencia publica a interfaz
+topic_subscriber_wheels = '/robocol/potencia/interfaz/wheels'
 
-topic_subscriber_batteries = '/robocol/interfaz/status/batteries'
+topic_subscriber_batteries = '/robocol/potencia/interfaz/batteries'
 
 ### CLASE STATUS CONSUMER ###
 
@@ -50,8 +52,8 @@ class StatusConsumer(AsyncWebsocketConsumer):
         print("Status received a batteries message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         #param tiene metadatos, y el mensaje está es param.data 
-        #split = param.data.split(",") 
-        await self.send(text_data=json.dumps({'id': 'batteries', "idBattery": param.data.id, "amps":param.data.amps, "ohms":param.data.ohms, "name":param.data.name, "volts":param.data.volts, "percentage":param.data.percentage}))
+        split = param.data.split(",") 
+        await self.send(text_data=json.dumps({'id': 'batteries', "idBattery": split[0], "amps":split[1], "ohms":split[2], "name":split[3], "volts":split[4], "percentage":split[5]}))
     
     async def  callback_wheels(self, param):
         #el param es el msg que llega del topico (cuando el subscriber me notifica que hubo un cambio)
