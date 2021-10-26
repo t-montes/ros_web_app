@@ -60,8 +60,8 @@ class StatusConsumer(AsyncWebsocketConsumer):
         print("Status received a wheels message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         #param tiene metadatos, y el mensaje está es param.data 
-        #split = param.data.split(",") 
-        await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": param.data.id, "current":param.data.current, "speed": param.data.speed}))
+        split = param.data.split(",") 
+        await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": split[0], "current":split[1], "speed": split[2]}))
     
    
     async def disconnect(self, close_code):
