@@ -1,93 +1,8 @@
-<body scroll="no">
-	<!-- <div class="row">
-	  <div class="col-6">
-		  <div class="card border-warning bg-transparent text-center" id="stateTests">
-        <img
-            src="static/assets/Rover_icon_status.png"
-            style="
-              position: absolute;
-              left: 0;
-              right: 0;
-              top: 0;
-              bottom: 0;
-              margin: auto;
-              width: auto;
-              height: 80%;
-            ">
-        <label
-          id="temperature"
-          style="
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 165px;
-            bottom: 0;
-            margin: auto;
-            display: block;
-            text-align: center;
-          "
-          >Temperature<br />0 &degC</label
-        >
-
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests">
-          <label id="L0_speed">Speed: 0 RPM</label>
-          <label id="L0_current">Current: 0 A</label>
-
-          <button id="B2" class="button_enabled_motors">Enabled</button>
-        </div>
-
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests1">
-          <label id="L1_speed"> Speed: 0 RPM</label>
-          <label id="L1_current">Current: 0 A</label>
-
-          <button id="B1" class="button_enabled_motors">Enabled</button>
-        </div>
-
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests2">
-          <label id="L2_speed">Speed: 0 RPM</label>
-          <label id="L2_current">Current: 0 A</label>
-
-          <button id="B0" class="button_enabled_motors">Enabled</button>
-        </div>
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests3">
-          <label id="R0_speed">Speed: 0 RPM</label>
-          <label id="R0_current">Current: 0 A</label>
-
-          <button id="B5" class="button_enabled_motors">Enabled</button>
-        </div>
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests4">
-          <label id="R1_speed">Speed: 0 RPM</label>
-          <label id="R1_current">Current: 0 A</label>
-
-          <button id="B4" class="button_enabled_motors">Enabled</button>
-        </div>
-
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests5">
-          <label id="R2_speed">Speed: 0 RPM</label>
-          <label id="R2_current">Current: 0 A</label>
-
-          <button id="B3" class="button_enabled_motors">Enabled</button>
-        </div>
-
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests6">
-          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors">
-            Enable All
-          </button>
-        </div>
-      </div>
-	  <div id= "columnaCamara"class="col-6 card border-warning bg-transparent text-center">
-      <app-live></app-live>
-	  </div>
-  </div> -->
-
-
-<div >
+<div>
   <div style="height: 60vh; margin-left: 5px;">
-    <div  class="row" style="margin-left: 0; margin-right: 15px;">
+    <div class="row" style="margin-left: 0; margin-right: 15px;">
       <div class="col card border-warning bg-transparent text-center">
-        <img
-        src="static/assets/Rover_icon_status.png"
-        style="
+        <img src="static/assets/Rover_icon_status.png" style="
           position: absolute;
           left: 0;
           right: 0;
@@ -97,9 +12,7 @@
           width: auto;
           height: 80%;
         ">
-        <label
-        id="temperature"
-        style="
+        <label id="temperature" style="
           position: absolute;
           left: 0;
           right: 0;
@@ -108,49 +21,38 @@
           margin: auto;
           display: block;
           text-align: center;
-        "
-        >
-          Temperature<br />0 &degC
-        </label >
+        ">
+        </label>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests">
-          <label id="L0_speed">Speed: 0 RPM</label>
-          <label id="L0_current">Current: 0 A</label>
+          <label id="L0_speed">Speed: {{wheelsList[0].speed}} RPM</label>
+          <label id="L0_current">Current: {{wheelsList[0].current}} A</label>
 
-          <button id="B0" class="button_enabled_motors">Enabled</button>
-        </div>
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests1">
-          <label id="L1_speed"> Speed: 0 RPM</label>
-          <label id="L1_current">Current: 0 A</label>
-
-          <button id="B1" class="button_enabled_motors">Enabled</button>
+          <button id="B0" class="button_enabled_motors" (click)="button_wheel(0)">{{wheelsList[0].next_order}}</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests2">
-          <label id="L2_speed">Speed: 0 RPM</label>
-          <label id="L2_current">Current: 0 A</label>
+          <label id="L2_speed">Speed: {{wheelsList[1].speed}} RPM</label>
+          <label id="L2_current">Current: {{wheelsList[1].current}} A</label>
 
-          <button id="B2" class="button_enabled_motors">Enabled</button>
+          <button id="B2" class="button_enabled_motors" (click)="button_wheel(1)">{{wheelsList[1].next_order}}</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests3">
-          <label id="R0_speed">Speed: 0 RPM</label>
-          <label id="R0_current">Current: 0 A</label>
+          <label id="R0_speed">Speed: {{wheelsList[2].speed}} RPM</label>
+          <label id="R0_current">Current: {{wheelsList[2].current}} A</label>
 
-          <button id="B3" class="button_enabled_motors">Enabled</button>
-        </div>
-        <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests4">
-          <label id="R1_speed">Speed: 0 RPM</label>
-          <label id="R1_current">Current: 0 A</label>
-
-          <button id="B4" class="button_enabled_motors">Enabled</button>
+          <button id="B3" class="button_enabled_motors" (click)="button_wheel(2)">{{wheelsList[2].next_order}}</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests5">
-          <label id="R2_speed">Speed: 0 RPM</label>
-          <label id="R2_current">Current: 0 A</label>
+          <label id="R2_speed">Speed: {{wheelsList[3].speed}} RPM</label>
+          <label id="R2_current">Current: {{wheelsList[3].speed}} A</label>
 
-          <button id="B5" class="button_enabled_motors">Enabled</button>
+          <button id="B5" class="button_enabled_motors" (click)="button_wheel(3)">{{wheelsList[3].next_order}}</button>
         </div>
         <div class="contenedorPeque card border-warning bg-transparent text-center text-light" id="state_tests6">
-          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors">
+          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors" (click)="button_wheel(6,'Enable')">
             Enable All
+          </button>
+          <button id="B6" style="margin: 4.5px 0" class="button_enabled_motors" (click)="button_wheel(6,'Disable')">
+            Disable All
           </button>
         </div>
       </div>
@@ -161,23 +63,24 @@
     </div>
   </div>
 </div>
-
-
 <div class="card border-warning bg-transparent text-center" id="batteries">
   <div class="row">
-   <div *ngFor="let item of lista" class="col"   >
-     <div class="row">
-       <div class="col-8">
-         <img src={{item.url}} alt="Batteries">
-         </div>
-       <div class="col-4">
-           <p class= "descripcionBateria" style=" font-size: small;margin-top:0px ;color: rgba(228, 181, 3, 1)">{{item.nombre}} </p>
-           <p class= "descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.voltios}} V </p>
-           <p class= "descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.amperios}} A  </p>
-           <p class= "descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.corriente}} C </p>
-       </div>
-     </div>
-   </div>
- </div>
+    <div *ngFor="let item of lista" class="col">
+      <div class="row">
+        <div class="col-8">
+          <img src={{item.url}} alt="Batteries">
+        </div>
+        <div class="col-4">
+          <p class="descripcionBateria" style=" font-size: small;margin-top:0px ;color: rgba(228, 181, 3, 1)">
+            {{item.nombre}} </p>
+          <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.voltios}} V
+          </p>
+          <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.amperios}}
+            A </p>
+          <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.corriente}}
+            C </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</body>
