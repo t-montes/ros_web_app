@@ -12,8 +12,6 @@ export class SistemaExtraccionBComponent implements OnInit {
 
   @Input() brazoService: BrazoService;
   
-  //comentario para activar el workflow
-
   constructor() { }
 
   ngOnInit(): void {
