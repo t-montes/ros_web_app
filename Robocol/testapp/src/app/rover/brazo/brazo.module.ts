@@ -11,6 +11,7 @@ import { BrazoCinematicaInversaHorizontalComponent } from './brazo-cinematica-in
 import { BrazoCinematicaInversaVerticalComponent } from './brazo-cinematica-inversa-vertical/brazo-cinematica-inversa-vertical.component';
 import { BrazoCinematicaInversaRotacionComponent } from './brazo-cinematica-inversa-rotacion/brazo-cinematica-inversa-rotacion.component';
 import { BrazoCopilotoComponent } from './brazo-copiloto/brazo-copiloto.component';
+import { SistemaExtraccionBComponent } from './sistema-extraccion-b/sistema-extraccion-b.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,11 @@ import { BrazoCopilotoComponent } from './brazo-copiloto/brazo-copiloto.componen
     BrazoCinematicaInversaVerticalComponent,
     BrazoCinematicaInversaRotacionComponent,
     BrazoCopilotoComponent,
+    SistemaExtraccionBComponent,
   ],
   imports: [CommonModule],
   exports: [
+    SistemaExtraccionBComponent,
     BrazoPestaniaComponent,
     BrazoCinematicaDirectaComponent,
     BrazoCoordenadasComponent,

@@ -10,13 +10,13 @@ import { BrazoService } from '../brazo.service';
 })
 export class BrazoPestaniaComponent implements OnDestroy {
 
-  brazoService:BrazoService = new BrazoService(new WebsocketService());
+  brazoService: BrazoService = new BrazoService(new WebsocketService());
 
   constructor() {
     console.log(this.brazoService)
   }
 
   ngOnDestroy(): void {
-    this.brazoService.messages.next({id:"cam1_signal"})
+    this.brazoService.messages.next({ id: "cam1_signal" })
   }
 }

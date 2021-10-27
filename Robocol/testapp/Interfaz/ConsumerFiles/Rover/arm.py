@@ -14,10 +14,12 @@ print('ARM LIBRARY')
 c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 
 ### VARIABLES DE LOS PUBLISHERS DE ROS ###
-pub_inverse_kinematics_rotation, pub_inverse_kinematics_motors, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_cam1  = None, None, None, None, None, None
+pub_inverse_kinematics_rotation, pub_inverse_kinematics_motors, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_sistema_extraccion_b, pub_cam1  = None, None, None, None, None, None, None
 
 
 ### TOPICOS DE ROS ###
+
+topic_publish_sistema_extraccion_b = '/robocol/interfaz/brazo/sistema_extraccion_b'
 
 #Example: "joint_1:increase"
 #Example: "joint_1:decrease"
@@ -63,10 +65,11 @@ class ArmConsumer(AsyncWebsocketConsumer):
     print('ARM CONSUMER')
 
     async def connect(self):
-        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_cam1
+        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_sistema_extraccion_b, pub_cam1
         if(c==0):
             print('ARM CONNECTED')
             print("Initializing publishers")
+            pub_sistema_extraccion_b = rospy.Publisher(topic_publish_sistema_extraccion_b, Float32, queue_size=1)
             pub_inverse_kinematics_motors = rospy.Publisher(topic_publish_inverse_kinematics_motors, String, queue_size=1)
             pub_inverse_kinematics_rotation = rospy.Publisher(topic_publish_inverse_kinematics_rotation, String, queue_size=1)
             pub_inverse_kinematics_movements = rospy.Publisher(topic_publish_inverse_kinematics_movements, String, queue_size=1)
@@ -84,7 +87,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
         
 
     async def receive(self, text_data):
-        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_cam1
+        global c, pub_inverse_kinematics_motors, pub_inverse_kinematics_rotation, pub_inverse_kinematics_movements, pub_abort, pub_inverse_kinematics_percentage, pub_sistema_extraccion_b, pub_cam1
         print('ARM RECEIVED')
         text_data = json.loads(text_data)
         print(text_data)
@@ -124,6 +127,11 @@ class ArmConsumer(AsyncWebsocketConsumer):
             msg.data = percentage
             print(msg.data)
             pub_inverse_kinematics_percentage.publish(msg)
+            print('Message published to topic')
+        elif id == 'sistema_extraccion_b':
+            msg = Float32()
+            msg.data = text_data['command']
+            pub_sistema_extraccion_b.publish(msg)
             print('Message published to topic')
         elif id == 'cam1_signal':
             msg = Float32()
