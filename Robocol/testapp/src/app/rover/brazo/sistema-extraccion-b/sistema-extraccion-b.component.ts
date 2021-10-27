@@ -11,6 +11,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SistemaExtraccionBComponent implements OnInit {
 
   @Input() brazoService: BrazoService;
+  
+  //comentario para activar el workflow
 
   constructor() { }
 
