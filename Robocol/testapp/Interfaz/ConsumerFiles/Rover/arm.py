@@ -146,7 +146,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
 
     async def callback_cam1(self, param):
         print("Arm received a cam1 topic message")
-        print(param.msg)
+        print(param.data)
     
     async def disconnect(self, close_code):
         print('ARM DISCONNECTED')

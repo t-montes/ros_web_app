@@ -39,6 +39,7 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
     this.brazoService.messages.subscribe((msg) => {
       console.log('Response from websocket: ' + msg);
       if (msg['id'] == 'inverse_kinematics_motors') {
+        console.log("Recibí en el front de kinematics motors");
         this.joint_1_value = Number(msg['joint_1']);
         this.joint_2_value = Number(msg['joint_2']);
         this.joint_3_value = Number(msg['joint_3']);
