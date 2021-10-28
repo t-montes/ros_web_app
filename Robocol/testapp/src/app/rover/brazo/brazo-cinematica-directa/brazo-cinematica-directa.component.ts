@@ -1,6 +1,6 @@
 import { BrazoService } from '../brazo.service';
 import { WebsocketService } from '../../../websocket.service';
-import { Component, Input, OnInit } from '@angular/core'; // First, import Input
+import { Component, Input, OnInit, OnDestroy } from '@angular/core'; // First, import Input
 
 @Component({
   selector: 'app-brazo-cinematica-directa',
@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core'; // First, import Input
   styleUrls: ['./brazo-cinematica-directa.component.css'],
   providers: [WebsocketService, BrazoService],
 })
-export class BrazoCinematicaDirectaComponent implements OnInit {
+export class BrazoCinematicaDirectaComponent implements OnInit, OnDestroy {
   @Input() brazoService: BrazoService; // decorate the property with @Input()
   //Define the variables that will contain the joint's current value, which will be display in the html's labels
 
@@ -49,6 +49,10 @@ export class BrazoCinematicaDirectaComponent implements OnInit {
         this.gripper_value = Number(msg['gripper']);
       }
     });
+  }
+
+  ngOnDestroy():void{
+    this.brazoService.messages.unsubscribe();
   }
 
   //This function will call the BrazoService function, so the Socket Server will be asked to start increasing or decreasing the current value of the object
