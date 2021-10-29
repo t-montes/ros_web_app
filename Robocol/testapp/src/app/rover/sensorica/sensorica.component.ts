@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MeasurementsComponent } from './measurements/measurements.component';
+import { WebsocketService } from 'src/app/websocket.service';
+import { SensoricaSocket } from './sensoricaSocket.service';
 
 @Component({
   selector: 'app-sensorica',
@@ -8,6 +10,9 @@ import { MeasurementsComponent } from './measurements/measurements.component';
 })
 export class SensoricaComponent implements OnInit
 {
+
+  sensoricaSocket: SensoricaSocket = new SensoricaSocket(new WebsocketService());
+  
   // public isCollapsedEVA = true;
   // public isCollapsedMeas = false;
   // public isCollapsedAnalysis = true;

@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { WebsocketService } from "../../../websocket.service";
 import { SensoricaSocket } from "../sensoricaSocket.service";
-import { MessageService } from "../../../message.service";
 import { Message } from '../../../../../libs/models';
 
 @Component({
@@ -12,6 +11,9 @@ import { Message } from '../../../../../libs/models';
 	providers: [WebsocketService, SensoricaSocket]
 })
 export class EvaComponent implements OnInit, OnDestroy {
+
+	@Input() sensoricaSocket: SensoricaSocket
+
 	param: string
 	value: string
 	message: Message;
@@ -94,7 +96,7 @@ export class EvaComponent implements OnInit, OnDestroy {
 		{src:'/static/assets/Sensors/EVA/new_imgs/E(5).png', name: 'trash'}
 	];
 
-	constructor(private sensoricaSocket: SensoricaSocket) {
+	constructor() {
 		this.message = {
 			id:	'',
 			object:	'',

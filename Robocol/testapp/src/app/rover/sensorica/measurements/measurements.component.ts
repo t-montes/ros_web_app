@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import { WebsocketService } from "../../../websocket.service";
 import { SensoricaSocket } from "../sensoricaSocket.service";
 // import { Measurements } from '@testapp/models';
 import { Measurements, Message } from '../../../../../libs/models';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: "app-measurements",
@@ -12,11 +12,12 @@ import { Observable, Subscription } from 'rxjs';
 	providers: [WebsocketService, SensoricaSocket]
 })
 export class MeasurementsComponent implements OnInit {
+	@Input() sensoricaSocket: SensoricaSocket
 	measurements: Measurements;
 	message: Message;
 	subscription: Subscription;
 
-	constructor(private sensoricaSocket: SensoricaSocket) {
+	constructor() {
 		this.measurements = {
 			temp: 0,
 			ph: 0,
