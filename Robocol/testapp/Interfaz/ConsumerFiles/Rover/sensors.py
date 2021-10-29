@@ -24,54 +24,37 @@ boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub, test_pub = "","","","","","
 
 class SensorsConsumer(AsyncWebsocketConsumer):
 	print('SENSORS CONSUMER')
-	# Valor iniciales de variables
-	temp = 20
-	ph = 7
-	hum = 0
-	air = 0
-	co = 0
-	co2 = 0
-	met = 0
-	hyd = 0
-	eva_pos = 0
-	boxes_state = 0
 	
 	# ROS CALLBACKS
 	async def temp_callback(self,param):
-		self.temp = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "temp",'value': self.temp})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "temp",'value': param.data})
 
 	async def ph_callback(self,param):
-		self.ph = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "ph",'value': self.ph})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "ph",'value': param.data})
 
 	async def hum_callback(self,param):
-		self.hum = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hum",'value': self.hum})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hum",'value': param.data})
 
 	async def air_callback(self,param):
-		self.air = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "air",'value': self.air})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "air",'value': param.data})
 
 	async def co_callback(self,param):
-		self.co = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co",'value': self.co})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co",'value': param.data})
 
 	async def co2_callback(self,param):
-		self.co2 = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co2",'value': self.co2})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "co2",'value': param.data})
 
 	async def met_callback(self,param):
-		self.met = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "met",'value': self.met})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "met",'value': param.data})
 
 	async def hyd_callback(self,param):
-		self.hyd = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hyd",'value': self.hyd})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "hyd",'value': param.data})
 
 	async def eva_pos_callback(self,param):
-		self.eva_pos = str(param.data) # Sacar dato de ROS en variable string de Python
-		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "eva_pos",'value': self.eva_pos})
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "eva_pos",'value': param.data})
+
+	async def ang_dep_callback(self,param):
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "ang_dep",'value': param.data})
 
 	async def connect(self):
 		global c, boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub,test_pub
@@ -109,10 +92,8 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 			rospy.Subscriber("/robocol/sensorica/hidrogeno",Float32,async_to_sync(self.hyd_callback))
 			print('   /robocol/sensorica/posicion_actual_eva-> Float32')
 			rospy.Subscriber("/robocol/sensorica/posicion_actual_eva",Float32,async_to_sync(self.eva_pos_callback))
-			# print('  /robocol/sensorica/air-> Float32')
-			# rospy.Subscriber("/robocol/sensorica/air",Float32,async_to_sync(self.air_callback))
-			# print('  /robocol/sensorica/co2-> Float32')
-			# rospy.Subscriber("/robocol/sensorica/co2",Float32,async_to_sync(self.co2_callback))
+			print('   /robocol/sensorica/angulo_deposito-> Float32')
+			rospy.Subscriber("/robocol/sensorica/angulo_deposito",Float32,async_to_sync(self.ang_dep_callback))
 			c += 1
 			print("")
 
@@ -177,41 +158,7 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 					self.boxes_state -= 128
 			box_msg.data = self.boxes_state
 			boxes_pub.publish(box_msg)
-
-		## --------- MANEJO DE MOTORES - EN DESARROLLO ------- ##
-		# if id == 'move_servo':
-		# 	objeto = text_data_json['object']
-		# 	print(' object: ', objeto)
-		# 	action = text_data_json['action']
-		# 	print(' action: ', action)
-		# 	param = text_data_json['param']
-		# 	print(' param: ', param)
-		# 	if param == 'temp':
-		# 		text = str(self.temp)
-		# 		print(' text:', text)
-		# 		# message = Message(text=text, tab_name=self.tab_name)
-		# 		# await self.channel_layer.group_send(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
-		# 		self.temp_msg.data = str(text)
-		# 		self.pub_cmd.publish(self.temp_msg)
-		# 		self.twist_msg.linear.x = float(text)
-		# 		self.pub_t_cmd.publish(self.twist_msg)
-		# 		# self.send(text_data=json.dumps({'id': 'objects_values', 'action': "load", 'param':"ph", "value": str(text_data)}))
-		# 		self.send(text_data=json.dumps({'id': 'objects_values', 'action': "load", 'param':"ph", "value": str(text)}))
-		# 	if param == 'ph':
-		# 		text = str(self.ph)
-		# 		# message = Message(text=text, tab_name=self.tab_name)
-		# 		# await self.channel_layer.group_send(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
-		# 		# await self.send(text_data=json.dumps({'id': 'objects_values', 'values': objetos}))
-		## --------- MANEJO DE MOTORES - EN DESARROLLO ------- ##		
-
-		## --------- MANEJO DE BASE DE DATOS - EN DESARROLLO ------- ##
-		# # message = Message(text=text, tab_name=self.scope["url_route"]["kwargs"]["tab_name"])
-		# # message = Message(text=text, tab_name=self.tab_name)
-		# # message.save()
-		# # await self.channel_layer.group_send(self.tab_group_name,{"type": "chat_message", "message": MessageSerializer(message).data},)
-		## --------- MANEJO DE BASE DE DATOS - EN DESARROLLO ------- ##
-
-
+			
 	async def send_message(self, event):
 		# Send message to WebSocket
 		await self.send(text_data=json.dumps({
