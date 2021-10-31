@@ -76,8 +76,8 @@ WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 . /opt/ros/melodic/setup.bash
 WORKDIR  /home/interfaz_folder/catkin_ws/
 RUN source devel/setup.bash
-ARG ip = localhost
-RUN export ROS_HOSTNAME=ip
-RUN export ROS_IP=ip
+ENV ip_address = localhost
+RUN export ROS_HOSTNAME=${ip_address}
+RUN export ROS_IP=${ip_address}
 RUN roslaunch ros_web_app_2 launch_GUI.launch
 #ENTRYPOINT ["./docker_instructions.sh"]
