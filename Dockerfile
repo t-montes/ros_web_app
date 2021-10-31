@@ -73,11 +73,4 @@ RUN npm run build
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 
 #EXECUTE ROSLAUNCH
-. /opt/ros/melodic/setup.bash
-WORKDIR  /home/interfaz_folder/catkin_ws/
-RUN source devel/setup.bash
-ENV ip_address = localhost
-RUN export ROS_HOSTNAME=${ip_address}
-RUN export ROS_IP=${ip_address}
-RUN roslaunch ros_web_app_2 launch_GUI.launch
-#ENTRYPOINT ["./docker_instructions.sh"]
+ENTRYPOINT ["./docker_instructions.sh"]
