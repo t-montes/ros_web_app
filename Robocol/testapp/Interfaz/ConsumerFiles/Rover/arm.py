@@ -9,6 +9,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 from asgiref.sync import async_to_sync
 from asgiref.sync import sync_to_async
+from channels.layers import get_channel_layer
 print('ARM LIBRARY')
 
 c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
@@ -80,6 +81,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
             rospy.Subscriber(topic_subscribe_direct_kinematics, String, async_to_sync(self.callback_inverse_kinematics_motors))
             rospy.Subscriber(topic_subscribe_cam1, Image, async_to_sync(self.callback_cam1))
             c+=1
+        await self.channel_layer.group_add("brazo", self.channel_name)
         await self.accept()
         msg_start_camera = Float32()
         msg_start_camera.data = 1
@@ -142,7 +144,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
         print("Arm received a inverse_kinematics_motors topic message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         split = param.data.split(",")
-        await self.send(text_data=json.dumps({'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]}))
+        await self.channel_layer.group_send("brazo",{'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]})
 
     async def callback_cam1(self, param):
         print("Arm received a cam1 topic message")
@@ -150,4 +152,5 @@ class ArmConsumer(AsyncWebsocketConsumer):
     
     async def disconnect(self, close_code):
         print('ARM DISCONNECTED')
+        await self.channel_layer.group_discard("brazo", self.channel_name)
         print(close_code)
