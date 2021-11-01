@@ -119,11 +119,13 @@ The Docker image should be built and pushed to the DockerHub repository
 ### To run the Docker Image
 If you are running the container on linux:
 ```console
-$ sudo docker run --net=host --rm -it robocol/interfaz:latest
+$ sudo docker run -p 6379:6379 -d --name=redis redis
+$ sudo docker run --net=host --rm -it --link redis:redis robocol/interfaz:latest
 ```
-If you are running the container on windows or the linux subsystem for windows: 
+If you are running the container on Windows or WSL: 
 ```console
-$ docker run -p 8000:8000 --rm -it robocol/interfaz:latest
+$ docker run -p 6379:6379 -d --name=redis redis
+$ docker run -p 8000:8000 --rm -it --link redis:redis robocol/interfaz:latest
 ```
 
 Wait for a few seconds. You should see the normal outputs in the console and the app working in http://localhost:8000/home
