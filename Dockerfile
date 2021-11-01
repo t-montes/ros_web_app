@@ -72,9 +72,7 @@ WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2/Robocol/testapp
 RUN npm install --legacy-peer-deps
 RUN npm run build
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
-ENV ip_address = 192.168.1.106
-RUN export ROS_HOSTNAME=${ip_address}
-RUN export ROS_IP=${ip_address}
+ENV IP_ADDRESS = 192.168.1.106
 
 #EXECUTE ROSLAUNCH
 ENTRYPOINT ["./docker_instructions.sh"]
