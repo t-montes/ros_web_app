@@ -45,6 +45,7 @@ RUN sudo apt-get install -y libffi-dev
 RUN sudo apt-get install -y python3-dev
 RUN sudo apt-get install -y cargo
 RUN pip3 install cryptography --no-binary cryptography
+RUN pip3 install channels-redis
 RUN python3 -m pip install -U channels
 
 #PYTHON PACKAGES
