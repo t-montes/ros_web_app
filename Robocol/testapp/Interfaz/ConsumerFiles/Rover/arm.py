@@ -81,6 +81,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
             rospy.Subscriber(topic_subscribe_direct_kinematics, String, async_to_sync(self.callback_inverse_kinematics_motors))
             rospy.Subscriber(topic_subscribe_cam1, Image, async_to_sync(self.callback_cam1))
             c+=1
+        print(self.channel_name)
         await self.channel_layer.group_add("brazo", self.channel_name)
         await self.accept()
         msg_start_camera = Float32()
@@ -140,19 +141,28 @@ class ArmConsumer(AsyncWebsocketConsumer):
             msg.data = 0
             pub_cam1.publish(msg)
             print('Message published to topic')
+    
+
+    async def group_message(self, event):
+        if(event["id"] == 'inverse_kinematics_motors'):
+            await self.send(text_data=json.dumps({"id":event["id"], "joint_1":event["joint_1"],"joint_2":event["joint_2"],"joint_3":event["joint_3"],"joint_4":event["joint_4"],"joint_5":event["joint_5"],"joint_6":event["joint_6"],"gripper":event["gripper"]}))
+
+
     async def callback_inverse_kinematics_motors(self, param):
         print("Arm received a inverse_kinematics_motors topic message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         split = param.data.split(",")
         try:
-            await self.channel_layer.group_send("brazo",{'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]})
+            await self.channel_layer.group_send("brazo",{"type":"group_message",'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]})
         except Exception as e: 
             print(e)
+
 
     async def callback_cam1(self, param):
         print("Arm received a cam1 topic message")
         print(param.data)
     
+
     async def disconnect(self, close_code):
         print('ARM DISCONNECTED')
         await self.channel_layer.group_discard("brazo", self.channel_name)
