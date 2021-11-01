@@ -144,7 +144,10 @@ class ArmConsumer(AsyncWebsocketConsumer):
         print("Arm received a inverse_kinematics_motors topic message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         split = param.data.split(",")
-        await self.channel_layer.group_send("brazo",text_data=json.dumps({'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]}))
+        try:
+            await self.channel_layer.group_send("brazo",{'id': 'inverse_kinematics_motors', "joint_1":split[0],"joint_2":split[1],"joint_3":split[2],"joint_4":split[3],"joint_5":split[4],"joint_6":split[5],"gripper":split[6]})
+        except Exception as e: 
+            print(e)
 
     async def callback_cam1(self, param):
         print("Arm received a cam1 topic message")
