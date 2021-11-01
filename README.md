@@ -57,6 +57,7 @@ $ python -m pip install Django
 $ pip install setuptools-rust
 $ sudo apt-get install build-essential libssl-dev libffi-dev python3-dev cargo
 $ pip install cryptography --no-binary cryptography
+$ pip install channels-redis
 $ python -m pip install -U channels
 ```
 ### Install python packages
