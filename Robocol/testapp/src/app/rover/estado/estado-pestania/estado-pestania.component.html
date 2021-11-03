@@ -58,8 +58,8 @@
       </div>
 
       <div class="col card border-warning bg-transparent text-center">
-        <app-live></app-live>
-      </div>
+        <img class="img-responsive" src="http://192168:8080/stream?topic=/cam1"
+        </div>
     </div>
   </div>
 </div>
@@ -75,10 +75,10 @@
             {{item.nombre}} </p>
           <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.voltios}} V
           </p>
-          <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.amperios}}
+          {% comment %} <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.amperios}}
             A </p>
           <p class="descripcionBateriaNumeros" style="font-size:xx-small;color: rgba(228, 181, 3, 1)">{{item.corriente}}
-            C </p>
+            C </p> {% endcomment %}
         </div>
       </div>
     </div>
