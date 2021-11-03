@@ -3,25 +3,24 @@ import { WebsocketService } from '../../../websocket.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sistema-extraccion-b',
-  templateUrl: './sistema-extraccion-b.component.html',
-  styleUrls: ['./sistema-extraccion-b.component.css'],
+  selector: 'app-brazo-acciones',
+  templateUrl: './brazo-acciones.component.html',
+  styleUrls: ['./brazo-acciones.component.css'],
   providers: [WebsocketService, BrazoService],
 })
-export class SistemaExtraccionBComponent implements OnInit {
+export class BrazoAccionesComponent implements OnInit {
 
   @Input() brazoService: BrazoService;
-  
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  send_selection_sistema_extraccion_b(): void {
-    const command = document.getElementById("command_sistema_extraccion_b") as HTMLSelectElement;
+  send_actions(action:string): void {
     const message = {
-      id: "sistema_extraccion_b",
-      command: parseInt(command.value)
+      id: "movearm",
+      command: action
     }
     this.brazoService.messages.next(message);
     console.log('new message from brazo to websocket: ', message);

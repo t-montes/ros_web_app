@@ -1,0 +1,13 @@
+<div>
+    <h6 class="justify-content-center align-items-center text-center">GRIPPER</h6>
+    <div class="col">
+        <select class="justify-content-center align-items-center text-center" id="command_gripper" name="command_gripper" required
+            #command_gripper style="margin-bottom: 1.5rem;">
+            <option value="open_gripper">OPEN</option>
+            <option value="semi_gripper">SEMI</option>
+            <option value="close_gripper">CLOSE</option>
+        </select>
+        <input (click)="send_selection_gripper()" class="justify-content-center align-items-center text-center" type="submit"
+            value="Send" />
+    </div>
+</div>
