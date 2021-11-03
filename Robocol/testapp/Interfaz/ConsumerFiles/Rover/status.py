@@ -80,13 +80,6 @@ class StatusConsumer(AsyncWebsocketConsumer):
         except Exception as e:
             print(e)
 
-        await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": split[0], "current":split[1], "speed": split[2]}))
-
-
-    async def disconnect(self, close_code):
-        print('STATUS DISCONNECTED')
-        print(close_code)
-
     #Cuando envío un mensaje desde angular, se usa esta funcion (ej : cuando presiono un boton)
     #En sí, se les dice a los publishers que vayan y escriban en el topico (tablero)
     async def receive(self, text_data):
@@ -114,10 +107,11 @@ class StatusConsumer(AsyncWebsocketConsumer):
 
     async def group_message(self, event):
         if(event["id"] == 'batteries'):
-            await self.send(text_data=json.dumps({'id': 'batteries', "idBattery": event[0], "volts":event[1] }))
+            await self.send(text_data=json.dumps({'id': 'batteries', "idBattery": event["idBattery"], "volts":event["volts"] }))
         elif (event["id"]=="wheel"):
-            await self.channel_layer.group_send("status",{"type":"group_message",'id': 'wheel', "idWheel": event[0], "current":event[1], "speed": event[2]})
-
-    async def callback_cam1(self, param):
-        print("Arm received a cam1 topic message")
-        print(param.data)
+            await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": event["idWheel"], "current":event["current"], "speed": event["speed"]}))
+            
+    async def disconnect(self, close_code):
+        print('STATUS DISCONNECTED')
+        await self.channel_layer.group_discard("status", self.channel_name)
+        print(close_code)
