@@ -21,7 +21,6 @@ $ rosdep update
 ```console
 $ sudo apt update
 $ sudo apt install nodejs
-$ sudo apt install npm
 $ sudo apt update
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 $ source ~/.bashrc
