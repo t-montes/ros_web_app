@@ -1,0 +1,45 @@
+<div>
+  <h6 class="justify-content-center align-items-center text-center">MOTORS</h6>
+  <div class="col">
+    <select
+      class="justify-content-center align-items-center text-center"
+      id="command_motor"
+      name="command_motor"
+      required
+      #command_motor
+      style="margin-bottom: 1.5rem"
+    >
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    <select
+      class="justify-content-center align-items-center text-center"
+      id="command_sentido_rotacion"
+      name="command_sentido_rotacion"
+      required
+      #command_sentido_rotacion
+      style="margin-bottom: 1.5rem"
+    >
+      <option value="1">POSITIVE</option>
+      <option value="0">NEGATIVE</option>
+    </select>
+    <input
+      type="number"
+      id="command_grados"
+      name="command_grados"
+      placeholder="Degrees"
+      required
+      #command_grados
+    />
+    <input
+      (click)="send_selection_motors()"
+      class="justify-content-center align-items-center text-center"
+      type="submit"
+      value="Send"
+    />
+  </div>
+</div>

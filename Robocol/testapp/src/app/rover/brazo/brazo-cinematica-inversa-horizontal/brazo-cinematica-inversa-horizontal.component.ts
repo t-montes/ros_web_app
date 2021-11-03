@@ -44,8 +44,8 @@ export class BrazoCinematicaInversaHorizontalComponent implements OnInit {
   change_value(imageNameObject, pAction: string) {
     this.imageSrc = imageNameObject.src;
     const message = {
-      id: 'inverse_kinematics_movements',
-      action: pAction,
+      id: 'movearm',
+      command: pAction,
     };
     console.log('new message from brazo to websocket: ', message);
     this.brazoService.messages.next(message);
@@ -54,8 +54,8 @@ export class BrazoCinematicaInversaHorizontalComponent implements OnInit {
   stop_changing_value() {
     this.imageSrc = this.imageButtons[0].src;
     const message = {
-      id: 'inverse_kinematics_movements',
-      action: "stop",
+      id: 'movearm',
+      command: "stop",
     };
     console.log('new message from brazo to websocket: ', message);
     this.brazoService.messages.next(message);

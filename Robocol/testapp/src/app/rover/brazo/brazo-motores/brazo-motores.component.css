@@ -1,11 +1,10 @@
 h6 {
   color: #e4b503;
-  width: 100%;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 select {
-  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -24,5 +23,18 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
   float: right;
+  width: 100%;
+}
+
+input[type="number"] {
+  width: inherit;
+  margin-bottom: 1.5rem;
+}
+
+#command_sentido_rotacion {
+  width: auto;
+}
+
+#command_motor {
   width: 100%;
 }

@@ -1,0 +1,18 @@
+<div>
+    <h6 class="justify-content-center align-items-center text-center">POSITIONS</h6>
+    <div class="col">
+        <select class="justify-content-center align-items-center text-center" id="command_positions" name="command_positions" required
+            #command_positions style="margin-bottom: 1.5rem;">
+            <option value="pos_1">1</option>
+            <option value="pos_2">2</option>
+            <option value="pos_3">3</option>
+            <option value="pos_4">4</option>
+            <option value="pos_5">5</option>
+            <option value="pos_6">6</option>
+            <option value="pos_7">7</option>
+            <option value="pos_8">8</option>
+        </select>
+        <input (click)="send_selection_positions()" class="justify-content-center align-items-center text-center" type="submit"
+            value="Send" />
+    </div>
+</div>
