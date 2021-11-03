@@ -97,6 +97,7 @@ export class EstadoPestaniaComponent implements OnInit {
 	}
 	ngOnInit(): void {
 	}
-	ngOnDestroy() {
-	}
+  ngOnDestroy(): void {
+    this.estadoService.messages.next({ id: "cam1_signal" })
+  }
 }
