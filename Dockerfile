@@ -69,6 +69,7 @@ WORKDIR /home/interfaz_folder/catkin_ws
 RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; catkin_make'
 RUN source devel/setup.bash
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2/Robocol/testapp
+RUN rm -rf /usr/local/lib/node_modules/npm
 RUN npm install --legacy-peer-deps
 RUN npm run build
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
