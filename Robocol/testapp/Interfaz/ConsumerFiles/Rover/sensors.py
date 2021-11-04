@@ -2,7 +2,7 @@
 # IMPORTS
 # -- Python imports --
 import json
-import random
+import time
 # -- ROS imports --
 import rospy
 from std_msgs.msg import String
@@ -20,7 +20,7 @@ from Interfaz.serializers import MessageSerializer
 
 c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 # Variable de ROS
-boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub, test_pub = "","","","","",""
+boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub, test_pub, pub_cam1, pub_cam2 = None,None,None,None,None,None, None, None
 
 class SensorsConsumer(AsyncWebsocketConsumer):
 	print('SENSORS CONSUMER')
@@ -36,6 +36,7 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 	eva_pos = 0
 	ang_dep = 0
 	boxes_state = 0
+	load = 0
 	
 	# ROS CALLBACKS
 	async def temp_callback(self,param):
@@ -78,20 +79,26 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 		self.ang_dep = str(param.data)
 		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "ang_dep",'value': self.ang_dep})
 
+	async def load_callback(self,param):
+		self.load = str(param.data)
+		await self.channel_layer.group_send(self.tab_name,{'type': 'send_message','id': "get_value",'param': "load",'value': self.load})
+
 	async def connect(self):
-		global c, boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub,test_pub
+		global c, boxes_pub, disp_pub, load_pub, pos_eva_pub, vib_pub,test_pub, pub_cam1, pub_cam2
 		print('\n SENSORS CONNECTED')
 		# -------------------------------------- Socket init --------------------------------------
 		if(c==0):
 			# ---------------------------------------- ROS init ----------------------------------------
 			# PUBLISHERS
 			print('  *** PUBLISHERS ***')
+			pub_cam1 = rospy.Publisher("/cam1_signal",Float32,queue_size=1)
+			pub_cam2 = rospy.Publisher("/cam2_signal",Float32,queue_size=1)
 			print('   /robocol/sensorica/mover_servos_cajas -> UInt8')
 			boxes_pub = rospy.Publisher("/robocol/sensorica/mover_servos_cajas",UInt8,queue_size=1)
 			print('   /robocol/sensorica/dispensador_eva -> UInt8')
 			disp_pub = rospy.Publisher("/robocol/sensorica/dispensador_eva",UInt8,queue_size=1)
-			print('   /robocol/sensorica/celda_carga -> Float32')
-			load_pub = rospy.Publisher("/robocol/sensorica/celda_carga",Float32,queue_size=1)
+			print('   /scarga -> Float32')
+			load_pub = rospy.Publisher("/scarga",Float32,queue_size=1)
 			print('   /robocol/sensorica/posicion_actuador -> Float32')
 			pos_eva_pub = rospy.Publisher("/robocol/sensorica/posicion_actuador",Float32,queue_size=1)
 			print('   /robocol/sensorica/vibracion_motores -> UInt8')
@@ -100,32 +107,32 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 			test_pub = rospy.Publisher("/robocol/sensorica/sensors_test_data",String,queue_size=1)
 			# SUBSCRIBERS
 			print('  *** SUBSCRIBERS ***')
-			print('   /robocol/sensorica/temperatura -> Float32')
-			rospy.Subscriber("/robocol/sensorica/temperatura",Float32,async_to_sync(self.temp_callback))
-			print('   /robocol/sensorica/ph-> Float32')
-			rospy.Subscriber("/robocol/sensorica/ph",Float32,async_to_sync(self.ph_callback))
-			print('   /robocol/sensorica/humedad-> Float32')
-			rospy.Subscriber("/robocol/sensorica/humedad",Float32,async_to_sync(self.hum_callback))
-			print('   /robocol/sensorica/monoxido-> Float32')
-			rospy.Subscriber("/robocol/sensorica/monoxido",Float32,async_to_sync(self.co_callback))
-			print('   /robocol/sensorica/metano-> Float32')
-			rospy.Subscriber("/robocol/sensorica/metano",Float32,async_to_sync(self.met_callback))
-			print('   /robocol/sensorica/hidrogeno-> Float32')
-			rospy.Subscriber("/robocol/sensorica/hidrogeno",Float32,async_to_sync(self.hyd_callback))
+			print('   /stemp -> Float32')
+			rospy.Subscriber("/stemp",Float32,async_to_sync(self.temp_callback))
+			# print('   /robocol/sensorica/ph-> Float32')
+			# rospy.Subscriber("/robocol/sensorica/ph",Float32,async_to_sync(self.ph_callback))
+			print('   /shumed-> Float32')
+			rospy.Subscriber("/shumed",Float32,async_to_sync(self.hum_callback))
+			print('   /smonox-> Float32')
+			rospy.Subscriber("/smonox",Float32,async_to_sync(self.co_callback))
+			print('   /smeta-> Float32')
+			rospy.Subscriber("/smeta",Float32,async_to_sync(self.met_callback))
+			print('   /shidro-> Float32')
+			rospy.Subscriber("/shidro",Float32,async_to_sync(self.hyd_callback))
 			print('   /robocol/sensorica/posicion_actual_eva-> Float32')
 			rospy.Subscriber("/robocol/sensorica/posicion_actual_eva",Float32,async_to_sync(self.eva_pos_callback))
-			print('   /robocol/sensorica/angulo_deposito-> Float32')
-			rospy.Subscriber("/robocol/sensorica/angulo_deposito",Float32,async_to_sync(self.ang_dep_callback))
-			# print('  /robocol/sensorica/air-> Float32')
-			# rospy.Subscriber("/robocol/sensorica/air",Float32,async_to_sync(self.air_callback))
-			# print('  /robocol/sensorica/co2-> Float32')
-			# rospy.Subscriber("/robocol/sensorica/co2",Float32,async_to_sync(self.co2_callback))
+			print('   /sangle-> Float32')
+			rospy.Subscriber("/sangle",Float32,async_to_sync(self.ang_dep_callback))
+			print('   /scelda-> Float32')
+			rospy.Subscriber("/scelda",Float32,async_to_sync(self.load_callback))
 			c += 1
-			print("")
-
 		self.tab_name = "sensorica"
 		await self.channel_layer.group_add(self.tab_name, self.channel_name)
 		await self.accept()
+		msg_start_camera = Float32()
+		msg_start_camera.data = 1
+		pub_cam1.publish(msg_start_camera)
+		pub_cam2.publish(msg_start_camera)
 
 	async def disconnect(self, close_code):
 		print(' SENSORS DISCONNECTED -> ','close_code: ',close_code)
@@ -143,10 +150,36 @@ class SensorsConsumer(AsyncWebsocketConsumer):
 			mix_msg = UInt8()
 			mix_msg.data = int(value)
 			vib_pub.publish(mix_msg)
+		if(param=="empty"):
+			mix_msg = UInt8()
+			mix_msg.data = 0
+			disp_pub.publish(mix_msg)
+		if(param=="ajuste"):
+			mix_msg = Float32()
+			mix_msg.data = float(value)
+			pos_eva_pub.publish(mix_msg)
+		if(param=="trash"):
+			move = Float32()
+			disp = UInt8()
+			move.data = 0
+			disp.data = 2
+			pos_eva_pub.publish(move)
+			time.sleep(5)
+			disp_pub.publish(disp)
 		if(param=="leave"):
 			leave_msg = UInt8()
 			leave_msg.data = int(value)
 			disp_pub.publish(leave_msg)
+		if(param=="stop_dispenser"):
+			stop_dis_msg = UInt8()
+			stop_dis_msg.data = 0
+			disp_pub.publish(stop_dis_msg)
+		if(param=="cams_signal"):
+			msg = Float32()
+			msg.data = 0
+			pub_cam1.publish(msg)
+			pub_cam2.publish(msg)
+			print("SENSORS turned off its cameras")
 		if(tab_id=="move"):
 			move_msg = Float32()
 			if(param=="up"):

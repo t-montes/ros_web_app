@@ -88,7 +88,7 @@ th
 	width: 100%;
 	display: inline-block;
 }
-#ph
+#load
 {
 	background: white;
 	color:black;
@@ -131,6 +131,13 @@ th
 	display: inline-block;
 }
 #hydrogen
+{
+	background: white;
+	color:black;
+	width: 100%;
+	display: inline-block;
+}
+#eva_position
 {
 	background: white;
 	color:black;

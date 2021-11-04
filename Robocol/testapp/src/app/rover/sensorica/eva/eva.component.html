@@ -1,293 +1,452 @@
 <div class="card border-warning bg-transparent">
-	<div class="card-header text-warning text-center">
-		EVA
-	</div>
-	<div class="card-body bg-black">
-		<div id="EVA" class="container-fluid">
-			<div class="row align-items-center">
-				<div class="col col-lg-6">
-					<div class="row">
-						<div class="col col-lg-6">
-							<button class="text-warning" id="move_but" (click)="eva_mix()">
-								Mix
-							</button>
-						</div>
-						<div class="col col-lg-6">
-							<button class="text-warning" id="move_but" (click)="eva_leave()">
-								Leave
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="col col-lg-6">
-					<div class="row">
-						<div class="col col-lg-6">
-							<button id="move_but" (mousedown)="eva_move('up')" (mouseup)="eva_move('stop')">
-								<img class="card-img-top" id="move" src="{{move_up_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-						<div class="col col-lg-6">
-							<button id="move_but" (mousedown)="eva_move('down')" (mouseup)="eva_move('stop')">
-								<img class="card-img-top" id="move" src="{{move_down_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="row align-items-center">
-				<div class="col col-lg-6">
-					<div class="row">
-						<div class="col col-lg-4">
-							<button id="status_but" (click)="status_change(status_imgs_but[1],0)">
-								<img class="card-img-top" id="status" src="{{status0_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-						<div class="col col-lg-8">
-							<div class="row">
-								<button id="box_but" (click)="eva_move('up')">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box0_0_src}}" alt="EVA 1 img"/>
-										<div class="eva_box0_txt">A1</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box0_1_src}}" alt="EVA 1 img"/>
-										<div class="eva_box0_txt">A2</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box0_2_src}}" alt="EVA 1 img"/>
-										<div class="eva_box0_txt">A3</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box0_3_src}}" alt="EVA 1 img"/>
-										<div class="eva_box0_txt">A4</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box0_4_src}}" alt="EVA 1 img"/>
-										<div class="eva_box0_txt">A5</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box0_5_src}}" alt="EVA 1 img"/>
-										<div class="eva_box0_txt">A6</div>
-									</div>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-lg-4">
-							<button id="status_but" (click)="status_change(status_imgs_but[1],1)">
-								<img class="card-img-top" id="status" src="{{status1_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-						<div class="col col-lg-8">
-							<div class="row">
-								<button id="box_but" (click)="eva_move('up')">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box1_0_src}}" alt="EVA 1 img"/>
-										<div class="eva_box1_txt">B1</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box1_1_src}}" alt="EVA 1 img"/>
-										<div class="eva_box1_txt">B2</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box1_2_src}}" alt="EVA 1 img"/>
-										<div class="eva_box1_txt">B3</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box1_3_src}}" alt="EVA 1 img"/>
-										<div class="eva_box1_txt">B4</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box1_4_src}}" alt="EVA 1 img"/>
-										<div class="eva_box1_txt">B5</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box1_5_src}}" alt="EVA 1 img"/>
-										<div class="eva_box1_txt">B6</div>
-									</div>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-lg-4">
-							<button id="status_but" (click)="status_change(status_imgs_but[1],2)">
-								<img class="card-img-top" id="status" src="{{status2_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-						<div class="col col-lg-8">
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_0_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C1</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_1_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C2</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_2_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C3</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_3_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C4</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_4_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C5</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_4_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C5</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box2_5_src}}" alt="EVA 1 img"/>
-										<div class="eva_box2_txt">C6</div>
-									</div>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-lg-4">
-							<button id="status_but" (click)="status_change(status_imgs_but[1],3)">
-								<img class="card-img-top" id="status" src="{{status3_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-						<div class="col col-lg-8">
-							<div class="row">
-								<button id="box_but" (click)="eva_move('up')">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box3_0_src}}" alt="EVA 1 img"/>
-										<div class="eva_box3_txt">D1</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box3_1_src}}" alt="EVA 1 img"/>
-										<div class="eva_box3_txt">D2</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box3_2_src}}" alt="EVA 1 img"/>
-										<div class="eva_box3_txt">D3</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box3_3_src}}" alt="EVA 1 img"/>
-										<div class="eva_box3_txt">D4</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box3_4_src}}" alt="EVA 1 img"/>
-										<div class="eva_box3_txt">D5</div>
-									</div>
-								</button>
-							</div>
-							<div class="row">
-								<button id="box_but">
-									<div class="img_eva_container">
-										<img class="card-img-top" id="box" src="{{box3_4_src}}" alt="EVA 1 img"/>
-										<div class="eva_box3_txt">D6</div>
-									</div>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-lg-3">
-							B
-						</div>
-						<div class="col col-lg-9">
-							<button id="trash_but">
-								<img class="card-img-top" id="trash" src="{{trash_src}}" alt="EVA 1 img"/>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="col col-lg-6">
-					<img class="card-img-top" id="embudo" src="/static/assets/Sensors/EVA/new_imgs/E(13).png" alt="EVA 1 img"/>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="card-header text-warning text-center">EVA</div>
+  <div class="card-body bg-black">
+    <div id="EVA" class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col">
+          <div class="row">
+            <div class="col col-lg-6">
+              <button class="text-warning" id="move_but" (click)="eva_mix()">
+                Mix
+              </button>
+              <button class="text-warning" id="move_but" (click)="stop_dispenser()">
+                Stop
+              </button>
+            </div>
+            <div class="col col-lg-6">
+              <button class="text-warning" id="move_but" (click)="empty()">
+                Empty
+              </button>
+            </div>
+            <div class="col col-lg-6">
+              <button class="text-warning" id="move_but" (click)="eva_leave()">
+                Leave
+              </button>
+            </div>
+            <div class="col col-lg-6">
+              <input
+                type="number"
+                id="command_ajuste"
+                name="command_ajuste"
+                placeholder="Ajuste"
+                required
+                #command_ajuste
+              />
+              <input
+                (click)="send_ajuste()"
+                class="justify-content-center align-items-center text-center"
+                type="submit"
+                value="Send"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row align-items-center">
+        <div class="col col-lg-6">
+          <div class="row">
+            <div class="col col-lg-4">
+              <button
+                id="status_but"
+                (click)="status_change(status_imgs_but[1], 0)"
+              >
+                <img
+                  class="card-img-top"
+                  id="status"
+                  src="{{ status0_src }}"
+                  alt="EVA 1 img"
+                />
+              </button>
+            </div>
+            <div class="col col-lg-8">
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(15.083333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box0_0_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box0_txt">A1</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(28.166666667)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box0_1_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box0_txt">A2</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(41.250000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box0_2_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box0_txt">A3</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(54.333333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box0_3_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box0_txt">A4</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(67.416666666)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box0_4_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box0_txt">A5</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(80.500000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box0_5_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box0_txt">A6</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-lg-4">
+              <button
+                id="status_but"
+                (click)="status_change(status_imgs_but[1], 1)"
+              >
+                <img
+                  class="card-img-top"
+                  id="status"
+                  src="{{ status1_src }}"
+                  alt="EVA 1 img"
+                />
+              </button>
+            </div>
+            <div class="col col-lg-8">
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(97.583333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box1_0_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box1_txt">B1</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(110.666666667)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box1_1_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box1_txt">B2</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(123.750000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box1_2_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box1_txt">B3</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(136.833333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box1_3_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box1_txt">B4</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(149.916666666)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box1_4_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box1_txt">B5</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(163.000000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box1_5_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box1_txt">B6</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-lg-4">
+              <button
+                id="status_but"
+                (click)="status_change(status_imgs_but[1], 2)"
+              >
+                <img
+                  class="card-img-top"
+                  id="status"
+                  src="{{ status2_src }}"
+                  alt="EVA 1 img"
+                />
+              </button>
+            </div>
+            <div class="col col-lg-8">
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(182.083333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box2_0_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box2_txt">C1</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(195.166666667)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box2_1_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box2_txt">C2</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(208.250000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box2_2_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box2_txt">C3</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(221.333333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box2_3_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box2_txt">C4</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(234.416666667)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box2_4_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box2_txt">C5</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(247.500000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box2_4_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box2_txt">C6</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-lg-4">
+              <button
+                id="status_but"
+                (click)="status_change(status_imgs_but[1], 3)"
+              >
+                <img
+                  class="card-img-top"
+                  id="status"
+                  src="{{ status3_src }}"
+                  alt="EVA 1 img"
+                />
+              </button>
+            </div>
+            <div class="col col-lg-8">
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(264.583333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box3_0_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box3_txt">D1</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(277.666666666)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box3_1_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box3_txt">D2</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(290.750000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box3_2_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box3_txt">D3</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(303.833333333)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box3_3_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box3_txt">D4</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(316.916666666)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box3_4_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box3_txt">D5</div>
+                  </div>
+                </button>
+              </div>
+              <div class="row">
+                <button id="box_but" (click)="send_ajuste(330.000000000)">
+                  <div class="img_eva_container">
+                    <img
+                      class="card-img-top"
+                      id="box"
+                      src="{{ box3_4_src }}"
+                      alt="EVA 1 img"
+                    />
+                    <div class="eva_box3_txt">D6</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex align-items-end">
+            <div class="col col-lg-9">
+              <button id="trash_but" (click)="send_t()">
+                <img
+                  class="card-img-top"
+                  id="trash"
+                  src="{{ trash_src }}"
+                  alt="EVA 1 img"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-6">
+          <img
+            class="card-img-top"
+            id="embudo"
+            src="/static/assets/Sensors/EVA/new_imgs/E(13).png"
+            alt="EVA 1 img"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

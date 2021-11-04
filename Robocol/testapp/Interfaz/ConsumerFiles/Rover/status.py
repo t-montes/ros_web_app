@@ -19,7 +19,7 @@ c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 
 ### VARIABLES DE LOS PUBLISHERS DE ROS ###
 pub_wheels  = None
-pub_cam1=None
+pub_cam6=None
 
 ### TOPICOS DE ROS ###
 #Interfaz publica a potencia
@@ -30,7 +30,7 @@ topic_subscriber_wheels = '/robocol/potencia/interfaz/wheels'
 
 topic_subscriber_batteries = '/Robocol/Power/voltages'
 
-topic_publish_cam1 = "/cam1_signal"
+topic_publish_cam6 = "/cam6_signal"
 ### CLASE STATUS CONSUMER ###
 
 class StatusConsumer(AsyncWebsocketConsumer):
@@ -39,12 +39,12 @@ class StatusConsumer(AsyncWebsocketConsumer):
     ##Se llama cuando el angular crea un a pestaña y este crea un objeto de tipo service,
     ##ese service crea un socket y este se conecta con el archivo.
     async def connect(self):
-        global c, pub_wheels
+        global c, pub_wheels, pub_cam6
         if(c==0):
             print('STATUS CONNECTED')
             print("Initializing publishers")
             pub_wheels = rospy.Publisher(topic_publish_wheels, String, queue_size=1)
-            pub_cam1 = rospy.Publisher(topic_publish_cam1, Float32, queue_size=1)
+            pub_cam6 = rospy.Publisher(topic_publish_cam6, Float32, queue_size=1)
             print("Initializing subscriber")
             rospy.Subscriber(topic_subscriber_batteries, String, async_to_sync(self.callback_batteries))
             rospy.Subscriber(topic_subscriber_wheels, String, async_to_sync(self.callback_wheels))
@@ -54,7 +54,7 @@ class StatusConsumer(AsyncWebsocketConsumer):
         await self.accept() ## se crea el socket
         msg_start_camera = Float32()
         msg_start_camera.data = 1
-        pub_cam1.publish(msg_start_camera)
+        pub_cam6.publish(msg_start_camera)
 
 
     async def callback_batteries(self, param):
@@ -62,7 +62,7 @@ class StatusConsumer(AsyncWebsocketConsumer):
         print("Status received a batteries message")
         rospy.loginfo(rospy.get_caller_id() + "I heard %s", param.data)
         #param tiene metadatos, y el mensaje está es param.data
-        split = param.data.split(",")
+        split = param.data.split(":")
         try:
             await self.channel_layer.group_send("status",{"type":"group_message",'id': 'batteries', "idBattery": split[0], "volts":split[1]})
         except Exception as e:
@@ -76,14 +76,14 @@ class StatusConsumer(AsyncWebsocketConsumer):
         #param tiene metadatos, y el mensaje está es param.data
         split = param.data.split(",")
         try:
-            await self.channel_layer.group_send("status",{"type":"group_message",'id': 'wheel', "idWheel": split[0], "current":split[1], "speed": split[2]})
+            await self.channel_layer.group_send("status",{"type":"group_message",'id': 'wheel', "idWheel": split[0], "current":split[1]})
         except Exception as e:
             print(e)
 
     #Cuando envío un mensaje desde angular, se usa esta funcion (ej : cuando presiono un boton)
     #En sí, se les dice a los publishers que vayan y escriban en el topico (tablero)
     async def receive(self, text_data):
-        global c, pub_wheels
+        global c, pub_wheels, pub_cam6
         print('STATUS RECEIVED')
         #ext data es parecido al param, es lo que recibo del angular
         text_data = json.loads(text_data)
@@ -99,17 +99,17 @@ class StatusConsumer(AsyncWebsocketConsumer):
             print ("en el msg ")
             pub_wheels.publish(msg)
             print('Wheels message published to topic')
-        elif id == 'cam1_signal':
+        elif id == 'cams_signal':
             msg = Float32()
             msg.data = 0
-            pub_cam1.publish(msg)
+            pub_cam6.publish(msg)
             print('Message published to topic')
 
     async def group_message(self, event):
         if(event["id"] == 'batteries'):
             await self.send(text_data=json.dumps({'id': 'batteries', "idBattery": event["idBattery"], "volts":event["volts"] }))
         elif (event["id"]=="wheel"):
-            await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": event["idWheel"], "current":event["current"], "speed": event["speed"]}))
+            await self.send(text_data=json.dumps({'id': 'wheel', "idWheel": event["idWheel"], "current":event["current"]}))
             
     async def disconnect(self, close_code):
         print('STATUS DISCONNECTED')

@@ -15,7 +15,7 @@ print('ARM LIBRARY')
 c = 0 # CONTADOR PARA SOLO CARGAR LOS SUBSCRIBERS Y PUBLISHERS DE ROS UNA VEZ
 
 ### VARIABLES DE LOS PUBLISHERS DE ROS ###
-pub_movearm, pub_sistema_extraccion_b, pub_cam1  = None, None, None
+pub_movearm, pub_sistema_extraccion_b, pub_cam3, pub_cam4  = None, None, None, None
 
 
 ### TOPICOS DE ROS ###
@@ -24,7 +24,9 @@ topic_publish_sistema_extraccion_b = '/robocol/interfaz/brazo/sistema_extraccion
 
 topic_publish_brazo = '/robocol/interfaz/movearm'
 
-topic_publish_cam1 = "/cam1_signal"
+topic_publish_cam3 = "/cam3_signal"
+
+topic_publish_cam4 = "/cam4_signal"
 
 
 ### CLASE ARM CONSUMER ###
@@ -32,20 +34,22 @@ topic_publish_cam1 = "/cam1_signal"
 class ArmConsumer(AsyncWebsocketConsumer):
     print('ARM CONSUMER')
     async def connect(self):
-        global c, pub_movearm, pub_sistema_extraccion_b, pub_cam1
+        global c, pub_movearm, pub_sistema_extraccion_b, pub_cam3, pub_cam4
         if(c==0):
             print('ARM CONNECTED')
             print("Initializing publishers")
             pub_sistema_extraccion_b = rospy.Publisher(topic_publish_sistema_extraccion_b, Float32, queue_size=1)
             pub_movearm = rospy.Publisher(topic_publish_brazo, String, queue_size=1)
-            pub_cam1 = rospy.Publisher(topic_publish_cam1, Float32, queue_size=1)
+            pub_cam3 = rospy.Publisher(topic_publish_cam3, Float32, queue_size=1)
+            pub_cam4 = rospy.Publisher(topic_publish_cam4, Float32, queue_size=1)
             c+=1
         print(self.channel_name)
         await self.channel_layer.group_add("brazo", self.channel_name)
         await self.accept()
         msg_start_camera = Float32()
         msg_start_camera.data = 1
-        pub_cam1.publish(msg_start_camera)
+        pub_cam3.publish(msg_start_camera)
+        pub_cam4.publish(msg_start_camera)
         
 
     async def receive(self, text_data):
@@ -66,12 +70,13 @@ class ArmConsumer(AsyncWebsocketConsumer):
             print(msg.data)
             pub_sistema_extraccion_b.publish(msg)
             print('Message published to topic /robocol/interfaz/brazo/sistema_extraccion_b')
-        elif id == 'cam1_signal':
+        elif id == 'cams_signal':
             msg = Float32()
             msg.data = 0
             print(msg.data)
-            pub_cam1.publish(msg)
-            print('Message published to topic /cam1_signal')
+            pub_cam3.publish(msg)
+            pub_cam4.publish(msg)
+            print('Message published to topic')
     
 
     async def disconnect(self, close_code):
