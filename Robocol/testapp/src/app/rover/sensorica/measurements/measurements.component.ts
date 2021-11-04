@@ -25,6 +25,9 @@ export class MeasurementsComponent implements OnInit {
 			co: 0,
 			met: 0,
 			hyd: 0,
+			load: 0,
+			eva_pos: 0
+
 			// air: 0,
 			// co2: 0,
 		}

@@ -17,6 +17,6 @@ export class BrazoPestaniaComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.brazoService.messages.next({ id: "cam1_signal" })
+    this.brazoService.messages.next({ id: "cams_signal" })
   }
 }

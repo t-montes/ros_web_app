@@ -10,9 +10,9 @@
 							<input disabled id="temperature" name="field1" value="{{ measurements?.temp }} °C"/>
 						</th>
 						<th id="EVA_1_1">
-							PH:
+							Load:
 							<br>
-							<input disabled id="ph" name="field2" value="{{ measurements?.ph }}"/>
+							<input disabled id="load" name="field2" value="{{ measurements?.load }}"/>
 						</th>
 					</tr>
 					<tr>
@@ -39,27 +39,17 @@
 							<input disabled id="hydrogen" name="field2" value="{{ measurements?.hyd }} ppm"/>
 						</th>
 					</tr>
+					<tr>
+						<th id="EVA_1_1" scope="row">
+							EVA Position:
+							<br>
+							<input disabled id="eva_position" name="field1" value="{{ measurements?.eva_pos }} mm"/>
+						</th>
+					</tr>
 				</table>
 				<button (click)="sendMsg()">Send</button>
 			</div>
 		</div>
 		<!-- -------------------------- GRAPH -------------------------- -->
-		<div class="col">
-			<!-- <div style="display: block">
-				<canvas mdbChart
-					[chartType]="chartType"
-					[datasets]="chartDatasets"
-					[labels]="chartLabels"
-					[colors]="chartColors"
-					[options]="chartOptions"
-					[legend]="true"
-					(chartHover)="chartHovered($event)"
-					(chartClick)="chartClicked($event)">
-				</canvas>
-			</div> -->
-			Graph
-			<br>
-			<img class="card-img-top" src="/static/assets/Sensors/graph.gif" alt="Rocks">
-		</div>
 	</div>
 </div>
