@@ -73,6 +73,7 @@ RUN npm install --legacy-peer-deps
 RUN npm run build
 WORKDIR /home/interfaz_folder/catkin_ws/src/ros_web_app_2
 ENV IP_ADDRESS = 192.168.1.106
+ENV IP_ROS_MASTER = 192.168.1.106
 
 #EXECUTE ROSLAUNCH
 ENTRYPOINT ["./docker_instructions.sh"]
