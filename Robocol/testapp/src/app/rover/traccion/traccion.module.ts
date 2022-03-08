@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TraccionCopilotoComponent } from './traccion-copiloto/traccion-copiloto.component';
 import { TraccionPilotoComponent } from './traccion-piloto/traccion-piloto.component';
 import { TraccionLiveComponent } from './traccion-live/traccion-live.component';
-import { NgxJoystickModule } from 'ngx-joystick';
+// import { NgxJoystickModule } from 'ngx-joystick';
 import { TraccionJoystickComponent } from './traccion-joystick/traccion-joystick.component';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { TraccionJoystickComponent } from './traccion-joystick/traccion-joystick
     TraccionLiveComponent,
     TraccionJoystickComponent,
   ],
-  imports: [CommonModule, NgxJoystickModule ],
+  // imports: [CommonModule, NgxJoystickModule ],
   exports: [
     TraccionCopilotoComponent,
     TraccionPilotoComponent,

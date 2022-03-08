@@ -1,0 +1,54 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ROLL</th>
+      <th scope="col">PITCH</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <button
+          class="btn btn-default btn-block"
+          (mousedown)="change_value('ROLL', 'CW')"
+          (mouseup)="stop_changing_value()"
+          class="btn btn-default btn-block"
+        >
+          CW
+        </button>
+      </td>
+      <td>
+        <button
+          class="btn btn-default btn-block"
+          (mousedown)="change_value('PITCH', 'CW')"
+          (mouseup)="stop_changing_value()"
+          class="btn btn-default btn-block"
+        >
+          CW
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button
+          class="btn btn-default btn-block"
+          (mousedown)="change_value('ROLL', 'CCW')"
+          (mouseup)="stop_changing_value()"
+          class="btn btn-default btn-block"
+        >
+          CCW
+        </button>
+      </td>
+      <td>
+        <button
+          class="btn btn-default btn-block"
+          (mousedown)="change_value('PITCH', 'CCW')"
+          (mouseup)="stop_changing_value()"
+          class="btn btn-default btn-block"
+        >
+          CCW
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

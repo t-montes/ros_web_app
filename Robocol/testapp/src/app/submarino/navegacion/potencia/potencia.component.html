@@ -1,0 +1,21 @@
+<div>
+  <h6 class="justify-content-center align-items-center text-center">
+    POTENCIA
+  </h6>
+  <div class="col">
+    <input
+      type="number"
+      id="command_potencia"
+      name="command_potencia"
+      placeholder="Potencia %"
+      required
+      #command_potencia
+    />
+    <input
+      (click)="send_potencia()"
+      class="justify-content-center align-items-center text-center"
+      type="submit"
+      value="Send"
+    />
+  </div>
+</div>

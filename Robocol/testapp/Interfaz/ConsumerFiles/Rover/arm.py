@@ -50,6 +50,7 @@ class ArmConsumer(AsyncWebsocketConsumer):
         msg_start_camera.data = 1
         pub_cam3.publish(msg_start_camera)
         pub_cam4.publish(msg_start_camera)
+
         
 
     async def receive(self, text_data):
