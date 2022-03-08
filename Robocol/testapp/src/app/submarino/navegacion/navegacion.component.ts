@@ -12,4 +12,7 @@ export class NavegacionComponent implements OnInit {
   ngOnInit() {
   }
 
+  abort() {
+    /* TODO */
+  }
 }

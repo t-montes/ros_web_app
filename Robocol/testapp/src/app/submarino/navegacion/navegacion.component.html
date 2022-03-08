@@ -1,1 +1,36 @@
-<app-horizontal></app-horizontal>
+
+<div class="row">
+  <div class="column ccamera">
+    <!-- Camera -->
+    Camera goes here
+  </div>
+  <div class="column cpanel">
+    <!-- Panel -->
+    <table>
+      <tbody>
+        <tr class="justify-content-center text-center align-middle">
+          <!-- Panel-Abort -->
+          <div class="img-wrapper">
+            <img class="img-responsive" src="../../../../src/static/assets/Submarino/abort.png" />
+            <button
+            class="btn btn-default btn-block"
+            (mousedown)="abort()"
+            >
+            </button>
+          </div>
+        </tr>
+        <tr class="justify-content-center text-center align-middle">
+          <app-horizontal></app-horizontal>
+        </tr>
+        <tr class="justify-content-center text-center align-middle">
+          <app-vertical></app-vertical>
+        </tr>
+        <tr class="justify-content-center text-center align-middle">
+          <app-roll-pitch></app-roll-pitch>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

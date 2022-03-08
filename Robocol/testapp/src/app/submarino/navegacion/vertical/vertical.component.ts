@@ -7,26 +7,76 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerticalComponent implements OnInit {
 
-  imageSrc: String;
+  imageSrcD: String;
+  imageSrcU: String;
 
-  imageButtons = [
+  imageButtonsD = [
     {
-      src: '/static/assets/Brazo/Cinematica Inversa/Vertical/VERTICAL inicial.png',
-      name: 'VERTICAL inicial',
+      src: '../../../../static/assets/Submarino/down.png',
+      name: 'Down initial',
     },
     {
-      src: '/static/assets/Brazo/Cinematica Inversa/Vertical/U activado.png',
-      name: 'U activado',
+      src: '../../../../static/assets/Submarino/down_touched.png',
+      name: 'Down activated',
+    }
+  ]
+
+  imageButtonsU = [
+    {
+      src: '../../../../static/assets/Submarino/up.png',
+      name: 'Up initial',
     },
     {
-      src: '/static/assets/Brazo/Cinematica Inversa/Vertical/D activado.png',
-      name: 'D activado',
-    },
+      src: '../../../../static/assets/Submarino/up_touched.png',
+      name: 'Up activated',
+    }
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.imageSrcD = this.imageButtonsD[0].src;
+    this.imageSrcU = this.imageButtonsU[0].src;
+  }
+
+  change_valueD(imageNameObject, pAction: string) {
+    this.imageSrcD = imageNameObject.src;
+    const message = {
+      id: 'movevertical',
+      command: pAction,
+    };
+    console.log('new message from vertical to websocket: ', message);
+    // this.brazoService.messages.next(message);
+  }
+
+  stop_changing_valueD() {
+    this.imageSrcD = this.imageButtonsD[0].src;
+    const message = {
+      id: 'movevertical',
+      command: 'stop',
+    };
+    console.log('new message from vertical to websocket: ', message);
+    // this.brazoService.messages.next(message);
+  }
+
+  change_valueU(imageNameObject, pAction: string) {
+    this.imageSrcU = imageNameObject.src;
+    const message = {
+      id: 'movevertical',
+      command: pAction,
+    };
+    console.log('new message from vertical to websocket: ', message);
+    // this.brazoService.messages.next(message);
+  }
+
+  stop_changing_valueU() {
+    this.imageSrcU = this.imageButtonsU[0].src;
+    const message = {
+      id: 'movevertical',
+      command: 'stop',
+    };
+    console.log('new message from vertical to websocket: ', message);
+    // this.brazoService.messages.next(message);
   }
 
 }
