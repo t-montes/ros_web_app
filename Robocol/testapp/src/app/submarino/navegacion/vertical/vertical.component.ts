@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NavegacionService } from '../navegacion.service';
+import { WebsocketService } from '../../../websocket.service';
 
 @Component({
   selector: 'app-vertical',
   templateUrl: './vertical.component.html',
-  styleUrls: ['./vertical.component.css']
+  styleUrls: ['./vertical.component.css'],
+  providers: [WebsocketService, NavegacionService],
 })
 export class VerticalComponent implements OnInit {
+
+  @Input() navegacionService: NavegacionService; // decorate the property with @Input()
 
   imageSrcD: String;
   imageSrcU: String;
@@ -42,41 +47,41 @@ export class VerticalComponent implements OnInit {
   change_valueD(imageNameObject, pAction: string) {
     this.imageSrcD = imageNameObject.src;
     const message = {
-      id: 'movevertical',
+      id: 'control',
       command: pAction,
     };
-    console.log('new message from vertical to websocket: ', message);
-    // this.brazoService.messages.next(message);
+    console.log('new message from navegacion to websocket: ', message);
+    this.navegacionService.messages.next(message);
   }
 
   stop_changing_valueD() {
     this.imageSrcD = this.imageButtonsD[0].src;
     const message = {
-      id: 'movevertical',
-      command: 'stop',
+      id: 'control',
+      command: 'Stop',
     };
-    console.log('new message from vertical to websocket: ', message);
-    // this.brazoService.messages.next(message);
+    console.log('new message from navegacion to websocket: ', message);
+    this.navegacionService.messages.next(message);
   }
 
   change_valueU(imageNameObject, pAction: string) {
     this.imageSrcU = imageNameObject.src;
     const message = {
-      id: 'movevertical',
+      id: 'control',
       command: pAction,
     };
-    console.log('new message from vertical to websocket: ', message);
-    // this.brazoService.messages.next(message);
+    console.log('new message from navegacion to websocket: ', message);
+    this.navegacionService.messages.next(message);
   }
 
   stop_changing_valueU() {
     this.imageSrcU = this.imageButtonsU[0].src;
     const message = {
-      id: 'movevertical',
-      command: 'stop',
+      id: 'control',
+      command: 'Stop',
     };
-    console.log('new message from vertical to websocket: ', message);
-    // this.brazoService.messages.next(message);
+    console.log('new message from navegacion to websocket: ', message);
+    this.navegacionService.messages.next(message);
   }
 
 }

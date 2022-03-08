@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NavegacionService } from '../navegacion.service';
+import { WebsocketService } from '../../../websocket.service';
 
 @Component({
   selector: 'app-horizontal',
   templateUrl: './horizontal.component.html',
   styleUrls: ['./horizontal.component.css'],
+  providers: [WebsocketService, NavegacionService],
 })
 export class HorizontalComponent implements OnInit {
+  @Input() navegacionService: NavegacionService; // decorate the property with @Input()
   imageSrc: String;
 
   imageButtons = [
@@ -40,20 +44,20 @@ export class HorizontalComponent implements OnInit {
   change_value(imageNameObject, pAction: string) {
     this.imageSrc = imageNameObject.src;
     const message = {
-      id: 'movearm',
+      id: 'control',
       command: pAction,
     };
-    console.log('new message from brazo to websocket: ', message);
-    // this.brazoService.messages.next(message);
+    console.log('new message from navegacion to websocket: ', message);
+    this.navegacionService.messages.next(message);
   }
 
   stop_changing_value() {
     this.imageSrc = this.imageButtons[0].src;
     const message = {
-      id: 'movearm',
-      command: 'stop',
+      id: 'control',
+      command: 'Stop',
     };
-    console.log('new message from brazo to websocket: ', message);
-    // this.brazoService.messages.next(message);
+    console.log('new message from navegacion to websocket: ', message);
+    this.navegacionService.messages.next(message);
   }
 }

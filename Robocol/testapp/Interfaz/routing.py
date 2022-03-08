@@ -9,6 +9,7 @@ from Interfaz.ConsumerFiles.Rover import sensors
 from Interfaz.ConsumerFiles.Rover import status
 from Interfaz.ConsumerFiles.Rover import traction
 from Interfaz.ConsumerFiles.Rover import fpga
+from Interfaz.ConsumerFiles.Rover import navegacion
 
 websocket_urlpatterns = [
     #path('ws/interfaz/', consumers.HomeConsumer),
@@ -26,5 +27,6 @@ websocket_urlpatterns = [
     path('ws/sensorica/', sensors.SensorsConsumer.as_asgi()),
     path('ws/estado/', status.StatusConsumer.as_asgi()),
     path('ws/traccion/', traction.TractionConsumer.as_asgi()),
-    path('ws/fpga/', fpga.FPGAConsumer.as_asgi())
+    path('ws/fpga/', fpga.FPGAConsumer.as_asgi()),
+    path('ws/submarino/navegacion/', navegacion.NavegacionConsumer.as_asgi())
 ]
